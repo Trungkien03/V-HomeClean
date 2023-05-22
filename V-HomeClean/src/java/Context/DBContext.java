@@ -21,7 +21,7 @@ public class DBContext {
         public static Connection getConnection() throws ClassNotFoundException, SQLException{
         Connection conn = null;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=ShoppingProject";//chỉnh sửa lại tên của database tại đây
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=ShoppingProject";    //chỉnh sửa lại tên của database tại đây
         conn = DriverManager.getConnection(url, "sa", "12345");
         return conn;   
     }
