@@ -41,7 +41,7 @@ CREATE TABLE Blog
   Author NVARCHAR(100) NOT NULL,
   Title NVARCHAR(255) NOT NULL,
   BlogCateID INT NOT NULL,
-  Time INT NOT NULL,
+  Time DATETIME NOT NULL,
   Image NVARCHAR(255) NOT NULL,
   PRIMARY KEY (BlogID),
   FOREIGN KEY (BlogCateID) REFERENCES BlogCate(BlogCateID)
@@ -65,8 +65,9 @@ CREATE TABLE Account
   Phone NVARCHAR(20) NOT NULL,
   RoleID INT NOT NULL,
   Gender NVARCHAR(20) NOT NULL,
+  DateOfBirth DATETIME NOT NULL,
   Status BIT NOT NULL,
-  Image NVARCHAR(255) NOT NULL,
+  Image NVARCHAR(MAX) NOT NULL,
   Salary MONEY,
   PRIMARY KEY (AccountID),
   FOREIGN KEY (RoleID) REFERENCES RoleAccount(RoleID)
@@ -114,7 +115,7 @@ CREATE TABLE Comment
 (
   CommentID INT NOT NULL IDENTITY(1,1),
   Message NVARCHAR(MAX) NOT NULL,
-  Time DATE NOT NULL,
+  Time DATETIME NOT NULL,
   AccountID NVARCHAR(20) NOT NULL,
   BlogID NVARCHAR(20) NOT NULL,
   PRIMARY KEY (CommentID),
@@ -170,7 +171,7 @@ BEGIN
   DECLARE @MaxID INT = ISNULL((SELECT MAX(RIGHT(AccountID, LEN(AccountID) - LEN(@Prefix))) FROM Account), 0);
 
   -- Lặp qua các hàng được chèn vào bảng Account
-  INSERT INTO Account (AccountID, Email, Password, FullName, Address, Phone, RoleID, Status, Image, Salary)
+  INSERT INTO Account (AccountID, Email, Password, FullName, Address, Phone, RoleID, Gender, DateOfBirth, Status, Image, Salary)
   SELECT @Prefix + RIGHT('0000' + CAST(@MaxID + ROW_NUMBER() OVER (ORDER BY (SELECT 1)) AS NVARCHAR(4)), 4),
          Email,
          Password,
@@ -178,6 +179,8 @@ BEGIN
          Address,
          Phone,
          RoleID,
+		 Gender,
+		 DateOfBirth,
          Status,
          Image,
          Salary
@@ -188,9 +191,6 @@ END;
 
 
 -----------------------INSERT DATA TO TABLE(NHỚ INSERT DỮ LIỆU THEO THỨ TỰ BẢNG ĐƯỢC TẠO Ở CODE TRÊN) --------------------------------------------------
-
-
-
 
 
 
