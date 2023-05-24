@@ -64,6 +64,7 @@ CREATE TABLE Account
   Address NVARCHAR(255) NOT NULL,
   Phone NVARCHAR(20) NOT NULL,
   RoleID INT NOT NULL,
+  DateOfBirth NVARCHAR(100) NOT NULL,
   Status BIT NOT NULL,
   Image NVARCHAR(255) NOT NULL,
   Salary MONEY,
@@ -187,6 +188,14 @@ END;
 
 
 -----------------------INSERT DATA TO TABLE(NHỚ INSERT DỮ LIỆU THEO THỨ TỰ BẢNG ĐƯỢC TẠO Ở CODE TRÊN) --------------------------------------------------
+
+INSERT INTO RoleAccount (RoleID,RoleName)
+VALUES(1,'ADMIN');
+
+INSERT INTO RoleAccount (RoleID,RoleName)
+VALUES(0,'User');
+
+
 
 
 
