@@ -9,25 +9,24 @@ package DTO;
  *
  * @author Asus
  */
-public class UserError {
+public class AccountDTO {
     private String accountID;
     private String email;
     private String password;
     private String fullName;
     private String address;
     private String phone;
-    private String roleID;
+    private int roleID;
     private String dateOfBirth;
     private String gender;
     private String status;
     private String image;
-    private String salary;
-    private String confirm;
+    private double salary;
 
-    public UserError() {
+    public AccountDTO() {
     }
 
-    public UserError(String accountID, String email, String password, String fullName, String address, String phone, String roleID, String dateOfBirth, String gender, String status, String image, String salary, String confirm) {
+    public AccountDTO(String accountID, String email, String password, String fullName, String address, String phone, int roleID, String dateOfBirth, String gender, String status, String image, double salary) {
         this.accountID = accountID;
         this.email = email;
         this.password = password;
@@ -40,8 +39,17 @@ public class UserError {
         this.status = status;
         this.image = image;
         this.salary = salary;
-        this.confirm = confirm;
     }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    
 
     public String getAccountID() {
         return accountID;
@@ -91,11 +99,11 @@ public class UserError {
         this.phone = phone;
     }
 
-    public String getRoleID() {
+    public int getRoleID() {
         return roleID;
     }
 
-    public void setRoleID(String roleID) {
+    public void setRoleID(int roleID) {
         this.roleID = roleID;
     }
 
@@ -107,16 +115,12 @@ public class UserError {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getStatus() {
-        return status;
+        if(this.status.equalsIgnoreCase("0")){
+            return "False";
+        }else{
+            return "True";
+        }
     }
 
     public void setStatus(String status) {
@@ -131,23 +135,23 @@ public class UserError {
         this.image = image;
     }
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
-    public String getConfirm() {
-        return confirm;
+    @Override
+    public String toString() {
+        return "UserDTO{" + "accountID=" + accountID + ", email=" + email + ", password=" + password + ", fullName=" + fullName + ", address=" + address + ", phone=" + phone + ", roleID=" + roleID + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + ", status=" + status + ", image=" + image + ", salary=" + salary + '}';
     }
 
-    public void setConfirm(String confirm) {
-        this.confirm = confirm;
-    }
-
- 
+  
+    
+    
+    
     
     
 }
