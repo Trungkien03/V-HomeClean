@@ -192,13 +192,10 @@ END;
 
 
 -----------------------INSERT DATA TO TABLE(NHỚ INSERT DỮ LIỆU THEO THỨ TỰ BẢNG ĐƯỢC TẠO Ở CODE TRÊN) --------------------------------------------------
-
-
+GO
 INSERT INTO RoleAccount(RoleID,RoleName)
 VALUES(1, 'ADMIN'),
 	  (2, 'USER');
-
-
+GO
 INSERT INTO Account (Email, Password, FullName, Address, Phone, RoleID, Gender, DateOfBirth, Status, Image, Salary)
-VALUES ('test@example.com', 'password123', 'Test User', '456 Elm St', '9876543210', 1, 'Male', '2000-01-01', 1, 'image.jpg', 6000.00);
-
+VALUES ('hieudoan280102@gmail.com', '1', 'Doan Thanh Hieu', 'Binh Duong', '0987654321', 1, 'Male', '2000-02-12', 1, 'image.jpg', 6000888.00);
