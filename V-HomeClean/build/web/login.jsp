@@ -50,40 +50,40 @@
 
         %>
 
-        <div class="d-lg-flex half">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div  class="col-md-9 form">
-                            <h3>Đăng nhập vào <strong style="color: #f8e43c">V-HomeClean</strong></h3>
-                            <strong style="color: red">${ERROR}</strong>
-                            <form action="MainController" method="post">
-                                <div class="form-group first mb-3">
-                                    <label for="username">Tên Đăng Nhập</label>
-                                    <input name="email" type="email" class="form-control" placeholder="Email của bạn" id="username" value="<%=uname%>">
-                                </div>
-                                <div class="form-group last mb-3">
-                                    <label for="password">Mật Khẩu</label>
-                                    <input name="password" type="password" class="form-control" placeholder="Mật Khẩu Của Bạn" id="password" value="<%=pass%>">
-                                </div>
-                                <div class="form-group d-flex mb-5 align-items-center">
-                                    <label for="remember-me" class="control control--checkbox mb-0">Nhớ Mật Khẩu
-                                        <input name="remember-me" type="checkbox"/>
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                    <label class="ml-auto">
-                                        <a style="color:black;" href="#" class="forgot-pass">Quên Mật Khẩu</a>
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <input style="color: white; background-color:  #309cf4; border: none;" name="action" type="submit" value="Đăng Nhập" class="btn btn-block btn-primary">
-                                </div>
-                            </form>
-                        </div>
+        <div class="d-lg-flex half d-lg-flex half">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div  class="col-md-9 form">
+                        <h3>Đăng nhập vào <strong style="color: #f8e43c">V-HomeClean</strong></h3>
+                        <strong style="color: red">${ERROR}</strong>
+                        <form action="MainController" method="post">
+                            <div class="form-group first mb-3">
+                                <label for="username">Tên Đăng Nhập</label>
+                                <input name="email" type="email" class="form-control" placeholder="Email của bạn" id="username" value="<%=uname%>">
+                            </div>
+                            <div class="form-group last mb-3">
+                                <label for="password">Mật Khẩu</label>
+                                <input name="password" type="password" class="form-control" placeholder="Mật Khẩu Của Bạn" id="password" value="<%=pass%>">
+                            </div>
+                            <div class="form-group d-flex mb-5 align-items-center">
+                                <label for="remember-me">Nhớ Mật Khẩu
+                                    <input name="remember-me" type="checkbox" checked=""/>
+                                    <div class="control__indicator"></div>
+                                </label>
+                                <label class="ml-auto">
+                                    <a style="color:black;" href="#" class="forgot-pass">Quên Mật Khẩu</a>
+                                </label>
+                            </div>
+                            <div style="text-align: center;" class="form-group">
+                                <input name="action" type="submit" value="Đăng Nhập" class="btn btn-block btn-primary">
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
 
 
-                           
+
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-9 form">
@@ -153,8 +153,8 @@
                                 <strong style="color: #e72734;" ><%= userError.getDateOfBirth()%></strong>
                                 <% }%>
                             </div>
-                            <div class="form-group">
-                                <input style="color: white; background-color:  #309cf4; border: none;" name="action" type="submit" value="Đăng Ký" class="btn btn-block btn-primary">
+                            <div style="text-align: center;" class="form-group">
+                                <input name="action" type="submit" value="Đăng Ký" class="btn btn-block btn-primary">
                             </div>
                         </form>
                     </div>

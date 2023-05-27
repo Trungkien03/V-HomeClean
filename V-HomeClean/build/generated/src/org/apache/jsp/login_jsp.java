@@ -65,40 +65,39 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("        ");
 
-                String uname = "";
-                String pass = "";
-                Cookie[] cookies = request.getCookies();
+            String uname = "";
+            String pass = "";
+            Cookie[] cookies = request.getCookies();
 
-                if (cookies != null) {
-                    for (Cookie cook : cookies) {
-                        if (cook.getName().equals("email")) {
-                            uname = cook.getValue();
-                        } else if (cook.getName().equals("Pass")) {
-                            pass = cook.getValue();
-                        }
+            if (cookies != null) {
+                for (Cookie cook : cookies) {
+                    if (cook.getName().equals("email")) {
+                        uname = cook.getValue();
+                    } else if (cook.getName().equals("Pass")) {
+                        pass = cook.getValue();
                     }
-
                 }
+
+            }
 
 
         
       out.write("\r\n");
       out.write("\r\n");
       out.write("        ");
+            UserError userError = (UserError) request.getAttribute("USER_ERROR");
+            if (userError == null) {
+                userError = new UserError();
+            }
 
-                UserError userError = (UserError) request.getAttribute("USER_ERROR");
-                if (userError == null) {
-                    userError = new UserError();
-                }
-                
-                 
+
         
       out.write("\r\n");
       out.write("\r\n");
-      out.write("        <div class=\"d-lg-flex half\">\r\n");
+      out.write("        <div class=\"d-lg-flex half d-lg-flex half\">\r\n");
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row align-items-center justify-content-center\">\r\n");
-      out.write("                    <div class=\"col-md-8 form\">\r\n");
+      out.write("                    <div  class=\"col-md-9 form\">\r\n");
       out.write("                        <h3>Đăng nhập vào <strong style=\"color: #f8e43c\">V-HomeClean</strong></h3>\r\n");
       out.write("                        <strong style=\"color: red\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ERROR}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -117,31 +116,34 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\">\r\n");
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"form-group d-flex mb-5 align-items-center\">\r\n");
-      out.write("                                <label for=\"remember-me\" class=\"control control--checkbox mb-0\"><span class=\"caption\">Nhớ Mật Khẩu</span>\r\n");
-      out.write("                                    <input name=\"remember-me\" type=\"checkbox\" checked=\"checked\" />\r\n");
+      out.write("                                <label for=\"remember-me\">Nhớ Mật Khẩu\r\n");
+      out.write("                                    <input name=\"remember-me\" type=\"checkbox\" checked=\"\"/>\r\n");
       out.write("                                    <div class=\"control__indicator\"></div>\r\n");
       out.write("                                </label>\r\n");
       out.write("                                <label class=\"ml-auto\">\r\n");
-      out.write("                                    <a href=\"#\" class=\"forgot-pass\">Quên Mật Khẩu</a>\r\n");
+      out.write("                                    <a style=\"color:black;\" href=\"#\" class=\"forgot-pass\">Quên Mật Khẩu</a>\r\n");
       out.write("                                </label>\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
-      out.write("                                <input style=\"color: white; background-color:  #309cf4; border: none;\" name=\"action\" type=\"submit\" value=\"Đăng Nhập\" class=\"btn btn-block btn-primary\">\r\n");
+      out.write("                            <div style=\"text-align: center;\" class=\"form-group\">\r\n");
+      out.write("                                <input name=\"action\" type=\"submit\" value=\"Đăng Nhập\" class=\"btn btn-block btn-primary\">\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </form>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row align-items-center justify-content-center\">\r\n");
-      out.write("                    <div class=\"col-md-8 form\">\r\n");
+      out.write("                    <div class=\"col-md-9 form\">\r\n");
       out.write("                        <h3>Đăng ký vào <strong style=\"color: #f8e43c\">V-HomeClean</strong></h3>\r\n");
       out.write("                        <form action=\"MainController\" method=\"post\">\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
+      out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"username\">Tên Đăng Nhập</label>\r\n");
       out.write("                                <input type=\"email\" name=\"email\" class=\"form-control\" placeholder=\"Email của bạn\" id=\"username\">\r\n");
       out.write("                                ");
- if (userError.getEmail() != null) { 
+ if (userError.getEmail() != null) {
       out.write("\r\n");
       out.write("                                <strong style=\"color: #e72734;\" >");
       out.print(userError.getEmail());
@@ -150,11 +152,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
  } 
       out.write("\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
+      out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"password\">Mật Khẩu</label>\r\n");
       out.write("                                <input name=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Mật Khẩu Của Bạn\" id=\"password\">\r\n");
       out.write("                                ");
- if (userError.getPassword() != null) { 
+ if (userError.getPassword() != null) {
       out.write("\r\n");
       out.write("                                <strong style=\"color: #e72734;\" >");
       out.print(userError.getPassword());
@@ -163,11 +165,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
  } 
       out.write("\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
+      out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"password\">Xác Nhận Mật Khẩu</label>\r\n");
       out.write("                                <input type=\"password\" name=\"confirmP\" class=\"form-control\" placeholder=\"Mật Khẩu Của Bạn\" id=\"password\">\r\n");
       out.write("                                ");
- if (userError.getConfirm() != null) { 
+ if (userError.getConfirm() != null) {
       out.write("\r\n");
       out.write("                                <strong style=\"color: #e72734;\" >");
       out.print(userError.getConfirm());
@@ -176,11 +178,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
  } 
       out.write("\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
+      out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"password\">Họ Và Tên</label>\r\n");
       out.write("                                <input type=\"text\" name=\"fullName\" class=\"form-control\" placeholder=\"Họ Và Tên Của Bạn\" id=\"password\">\r\n");
       out.write("                                ");
- if (userError.getFullName() != null) { 
+ if (userError.getFullName() != null) {
       out.write("\r\n");
       out.write("                                <strong style=\"color: #e72734;\" >");
       out.print(userError.getFullName());
@@ -189,11 +191,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
  } 
       out.write("\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
+      out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"password\">Địa Chỉ</label>\r\n");
       out.write("                                <input type=\"text\" name=\"address\" class=\"form-control\" placeholder=\"Địa Chỉ Của Bạn\" id=\"password\">\r\n");
       out.write("                                ");
- if (userError.getAddress() != null) { 
+ if (userError.getAddress() != null) {
       out.write("\r\n");
       out.write("                                <strong style=\"color: #e72734;\" >");
       out.print(userError.getAddress());
@@ -202,11 +204,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
  } 
       out.write("\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
+      out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"password\">Số Điện Thoại</label>\r\n");
       out.write("                                <input type=\"text\" name=\"phone\" class=\"form-control\" placeholder=\"Số Điện Thoại Của Bạn\" id=\"password\">\r\n");
       out.write("                                ");
- if (userError.getPhone() != null) { 
+ if (userError.getPhone() != null) {
       out.write("\r\n");
       out.write("                                <strong style=\"color: #e72734;\" >");
       out.print(userError.getPhone());
@@ -215,41 +217,42 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
  } 
       out.write("\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
+      out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"password\">Giới Tính:</label>\r\n");
       out.write("                                <label>\r\n");
-      out.write("                                    <input type=\"radio\" name=\"gender\" value=\"male\">\r\n");
-      out.write("                                    Nam\r\n");
-      out.write("                                    <input type=\"radio\" name=\"gender\" value=\"female\">\r\n");
-      out.write("                                    Nữ\r\n");
-      out.write("                                    <input type=\"radio\" name=\"gender\" value=\"other\">\r\n");
-      out.write("                                    Khác\r\n");
+      out.write("                                    <input type=\"radio\" name=\"gender\" value=\"male\"> Nam\r\n");
+      out.write("                                </label>\r\n");
+      out.write("                                <label>\r\n");
+      out.write("                                    <input type=\"radio\" name=\"gender\" value=\"female\"> Nữ\r\n");
+      out.write("                                </label>\r\n");
+      out.write("                                <label>\r\n");
+      out.write("                                    <input type=\"radio\" name=\"gender\" value=\"other\"> Khác\r\n");
       out.write("                                </label>\r\n");
       out.write("                            </div>\r\n");
       out.write("                            ");
- if (userError.getGender() != null) { 
+ if (userError.getGender() != null) {
       out.write("\r\n");
       out.write("                            <strong style=\"color: #e72734;\">");
-      out.print( userError.getGender() );
+      out.print( userError.getGender());
       out.write("</strong>\r\n");
       out.write("                            ");
  } 
       out.write("\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
+      out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"DateOfBirth\">Ngày sinh</label>\r\n");
       out.write("                                <input type=\"date\" name=\"DateOfBirth\" class=\"form-control\" placeholder=\"Ngày sinh của bạn\" id=\"password\">\r\n");
       out.write("                                ");
- if (userError.getDateOfBirth() != null) { 
+ if (userError.getDateOfBirth() != null) {
       out.write("\r\n");
       out.write("                                <strong style=\"color: #e72734;\" >");
       out.print( userError.getDateOfBirth());
       out.write("</strong>\r\n");
       out.write("                                ");
- } 
+ }
       out.write("\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group\">\r\n");
-      out.write("                                <input style=\"color: white; background-color:  #309cf4; border: none;\" name=\"action\" type=\"submit\" value=\"Đăng Ký\" class=\"btn btn-block btn-primary\">\r\n");
+      out.write("                            <div style=\"text-align: center;\" class=\"form-group\">\r\n");
+      out.write("                                <input name=\"action\" type=\"submit\" value=\"Đăng Ký\" class=\"btn btn-block btn-primary\">\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </form>\r\n");
       out.write("                    </div>\r\n");
