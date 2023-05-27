@@ -1,10 +1,19 @@
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #fff; }
+  background-image: url("../img/background-login.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+}
 
 p {
   color: #b3b3b3;
   font-weight: 300; }
+
+h3{
+    text-align: center;
+    margin-bottom: 10px;
+}
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -30,6 +39,7 @@ h2 {
 @media (max-width: 991.98px) {
   .half .bg {
     height: 200px; } }
+
 
 .half .contents {
   background: #f6f7fc; }
@@ -62,7 +72,9 @@ h2 {
 .half .btn {
   height: 54px;
   padding-left: 30px;
-  padding-right: 30px; }
+  padding-right: 30px; 
+  border-radius: 10px;
+}
 
 .half .forgot-pass {
   position: relative;
@@ -76,10 +88,6 @@ h2 {
   margin-bottom: 15px;
   cursor: pointer;
   font-size: 14px; }
-  .control .caption {
-    position: relative;
-    top: .2rem;
-    color: #888; }
 
 .control input {
   position: absolute;
@@ -142,3 +150,21 @@ h2 {
 .control--checkbox input:disabled:checked ~ .control__indicator {
   background-color: #7e0cf5;
   opacity: .2; }
+
+.form {
+    background-color: rgba(11, 127, 171,0.5);
+    padding: 10px;
+    border: 5px solid #8ecae6;
+    border-radius: 15px;
+}
+
+.form-group label {
+    margin-right: 30px;
+    color:black;
+}
+
+.caption .forgot-pass{
+    color: black;
+}
+
+

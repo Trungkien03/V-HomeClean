@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,9 +27,10 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
         String pass = request.getParameter("password");
+        String checkboxValue = request.getParameter("remember-me");
         AccountDAO ACdao = new AccountDAO();
         AccountDTO a = ACdao.Login(email, pass);
         
@@ -39,6 +41,18 @@ public class LoginController extends HttpServlet {
         }else{
             HttpSession session = request.getSession();
             session.setAttribute("acc", a);
+            
+            
+            if (checkboxValue != null && checkboxValue.equalsIgnoreCase("on")) {
+                    Cookie u = new Cookie("User", email);
+                    Cookie p = new Cookie("Pass", pass);
+                    u.setMaxAge(60 * 2);
+                    p.setMaxAge(60 * 2);
+                    response.addCookie(u);
+                    response.addCookie(p);
+                }
+            
+            
             
             response.sendRedirect("index.jsp");
         }
