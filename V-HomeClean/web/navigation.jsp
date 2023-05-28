@@ -83,6 +83,8 @@
                     <c:if test="${sessionScope.acc != null}">
                         <a href="LogoutController" class="dropdown-item">Đăng xuất</a>
                     </c:if>
+                        
+                        <a href="dashboard/index.jsp" class="dropdown-item">Dashboard</a>
                 </div>
             </div>
 
