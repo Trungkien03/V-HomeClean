@@ -1,27 +1,47 @@
 <%-- 
-    Document   : index
-    Created on : May 23, 2023, 2:28:25 PM
-    Author     : Asus
+    Document   : 404
+    Created on : May 20, 2023, 9:49:33 PM
+    Author     : Trung Kien
 --%>
 
 <%@page import="DTO.UserError"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="fonts/icomoon/style.css">
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/Loginstyle.css">
-        <title>Login Page</title>
+        <title>Apex - Home Repair Website Template</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/Loginstyle.css" rel="stylesheet">
     </head>
 
     <body>
-
+        <jsp:include page="navigation.jsp"></jsp:include>
 
         <%
             String uname = "";
@@ -38,22 +58,20 @@
                 }
 
             }
-
-
         %>
 
-        <%            UserError userError = (UserError) request.getAttribute("USER_ERROR");
+        <%
+            UserError userError = (UserError) request.getAttribute("USER_ERROR");
             if (userError == null) {
                 userError = new UserError();
+                request.setAttribute("USER_ERROR", userError);
             }
-
-
         %>
 
-        <div class="d-lg-flex half d-lg-flex half">
+        <div class="d-lg-flex half">
             <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div  class="col-md-9 form">
+                <div class="row align-items-center justify-content-center login-form">
+                    <div  class="col-md-7 form">
                         <h3>Đăng nhập vào <strong style="color: #f8e43c">V-HomeClean</strong></h3>
                         <strong style="color: red">${ERROR}</strong>
                         <form action="MainController" method="post">
@@ -86,7 +104,7 @@
 
             <div class="container">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-md-9 form">
+                    <div class="col-md-8 form">
                         <h3>Đăng ký vào <strong style="color: #f8e43c">V-HomeClean</strong></h3>
                         <form action="MainController" method="post">
                             <div class="form-group mb-3">
@@ -162,11 +180,26 @@
             </div>
         </div>
 
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+
+        <!-- Footer Start -->
+        <jsp:include page="footer.jsp"></jsp:include>
+        <!-- Footer End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
         <script src="js/main.js"></script>
     </body>
 
 </html>
-

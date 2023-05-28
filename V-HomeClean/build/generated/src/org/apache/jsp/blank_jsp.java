@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import DTO.UserError;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class blank_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -77,7 +77,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("        <!-- Template Stylesheet -->\n");
       out.write("        <link href=\"css/style.css\" rel=\"stylesheet\">\n");
-      out.write("        <link href=\"css/Loginstyle.css\" rel=\"stylesheet\">\n");
       out.write("    </head>\n");
       out.write("\n");
       out.write("    <body>\n");
@@ -116,7 +115,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("        <div class=\"d-lg-flex half\">\n");
       out.write("            <div class=\"container\">\n");
-      out.write("                <div class=\"row align-items-center justify-content-center\">\n");
+      out.write("                <div class=\"row align-items-center justify-content-center sticky-div\">\n");
       out.write("                    <div  class=\"col-md-6 form\">\n");
       out.write("                        <h3>Đăng nhập vào <strong style=\"color: #f8e43c\">V-HomeClean</strong></h3>\n");
       out.write("                        <strong style=\"color: red\">");
@@ -279,6 +278,12 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
+      out.write("\n");
+      out.write("        <script src=\"js/jquery-3.3.1.min.js\"></script>\n");
+      out.write("        <script src=\"js/popper.min.js\"></script>\n");
+      out.write("        <script src=\"js/bootstrap.min.js\"></script>\n");
+      out.write("        <script src=\"js/main.js\"></script>\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("        <!-- Footer Start -->\n");
