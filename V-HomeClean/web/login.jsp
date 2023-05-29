@@ -56,7 +56,7 @@
                                     <input type="checkbox" checked="checked"/>
                                     <div class="control__indicator"></div>
                                 </label>
-                                <span class="ml-auto"><a href="#" class="forgot-pass">Quên Mật Khẩu</a></span> 
+                                <span class="ml-auto"><a href="forgotPassword.jsp" class="forgot-pass">Quên Mật Khẩu</a></span> 
                             </div>
 
 

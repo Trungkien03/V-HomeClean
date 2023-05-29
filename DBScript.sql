@@ -199,3 +199,6 @@ VALUES(1, 'ADMIN'),
 GO
 INSERT INTO Account (Email, Password, FullName, Address, Phone, RoleID, Gender, DateOfBirth, Status, Image, Salary)
 VALUES ('hieudoan280102@gmail.com', '1', 'Doan Thanh Hieu', 'Binh Duong', '0987654321', 1, 'Male', '2000-02-12', 1, 'image.jpg', 6000888.00);
+GO
+INSERT INTO Account (Email, Password, FullName, Address, Phone, RoleID, Gender, DateOfBirth, Status, Image, Salary)
+VALUES ('hieublockchain2002@gmail.com', '1', 'Doan Thanh Hieu', 'Binh Duong', '0987654321', 1, 'Male', '2000-02-12', 1, 'image.jpg', 6000888.00);
