@@ -67,11 +67,15 @@
                 </div>
             </div>
             <a href="contact.jsp" class="nav-item nav-link">Contact Us</a>
-
+            
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <c:if test="${sessionScope.acc == null}">Tài Khoản</c:if>
-                    <c:if test="${sessionScope.acc != null}">Hello ${sessionScope.acc.fullName}</c:if>
+                    <c:if test="${sessionScope.acc != null}">
+                        <img></img>
+                        <img src="img/user.jpg" style="width: 20px; height: 20px;" >
+                        ${sessionScope.acc.fullName}
+                    </c:if>
                     </a>
                     <div class="dropdown-menu bg-light m-0">
                     <c:if test="${sessionScope.acc == null}">

@@ -186,6 +186,7 @@
                 <a class="dropdown-item" href="general.jsp">My Profile</a>
                 <a class="dropdown-item" href="general.jsp">Account Settings</a>
                 <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="../index.jsp">Back to V-HomeClean</a>
             </div>
         </li>
     </ul>
