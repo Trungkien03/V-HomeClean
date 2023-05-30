@@ -38,6 +38,7 @@ public class ValidOtpController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         int value = Integer.parseInt(request.getParameter("otp"));
         HttpSession session = request.getSession();
         int otp = (int) session.getAttribute("otp");
@@ -54,7 +55,7 @@ public class ValidOtpController extends HttpServlet {
             dispatcher.forward(request, response);
 
         } else {
-            request.setAttribute("message", "wrong otp");
+            request.setAttribute("message", "Mã OTP sai. Vui lòng kiểm tra lại!");
 
             dispatcher = request.getRequestDispatcher("enterOtp.jsp");
             dispatcher.forward(request, response);

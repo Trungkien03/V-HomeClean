@@ -4,6 +4,7 @@
     Author     : Asus
 --%>
 
+<%@page import="DTO.UserError"%>
 <%@page import="java.util.List"%>
 <%@page import="DTO.AccountDTO"%>
 <%@page import="DTO.AccountDTO"%>
@@ -13,7 +14,7 @@
     <head>
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>Reset Password Page</title>
+        <title>V-HomeClean - Cập Nhật Lại Mật Khẩu</title>
         <link
             href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
             rel='stylesheet'>
@@ -34,16 +35,17 @@
         </style>
     </head>
 
-    <h1>alo</h1>
     <%
         AccountDTO Acc = (AccountDTO) session.getAttribute("Account");
         if (Acc != null) {
-           
-    %>
-    <body oncontextmenu='return false' class='snippet-body bg-info'>
 
+    %>
+
+    <body oncontextmenu='return false' class='snippet-body bg-info'>
+      
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
+        
 
         <div>
             <!-- Container containing all contents -->
@@ -55,42 +57,34 @@
                             <!-- Main Heading -->
                             <div class="row justify-content-center align-items-center pt-3">
                                 <h1>
-                                    <strong>Reset Password</strong>
+                                    <strong>Cập Nhật Lại Mật Khẩu</strong>
                                 </h1>
                             </div>
                             <div class="pt-3 pb-3">
 
-                  
+                                <strong style="color: red">${ERROR}</strong>
                                 <form class="form-horizontal" action="MainController" method="POST">
-
-
-                                    <!-- User Name Input -->
                                     <div class="form-group row justify-content-center px-3">
                                         <div class="col-9 px-0">
-                                            <input type="text" name="password" placeholder="&#xf084; &nbsp; New Password"
+                                            <input type="password" name="password" placeholder="&#xf084; &nbsp; Mật Khẩu Mới"
                                                    class="form-control border-info placeicon" >
-
                                         </div>
                                     </div>
-                                    <!-- Password Input -->
                                     <div class="form-group row justify-content-center px-3">
                                         <div class="col-9 px-0">
                                             <input type="password" name="confirm" 
-                                                   placeholder="&#xf084; &nbsp; Confirm New Password"
+                                                   placeholder="&#xf084; &nbsp; Xác Nhận Mật Khẩu Mới"
                                                    class="form-control border-info placeicon">
                                         </div>
                                     </div>
 
-                                    <!-- Log in Button -->
                                     <div class="form-group row justify-content-center">
                                         <div class="col-3 px-3 mt-3">
-                                            <input type="submit" name="action" value="Update"
+                                            <input class="btn btn-primary" type="submit" name="action" value="Cập nhật mật khẩu"
                                                    class="btn btn-block btn-info">
                                         </div>
                                     </div>
                                 </form>
-                          
-
                             </div>
                             <!-- Alternative Login -->
                             <div class="mx-0 px-0 bg-light">
@@ -103,9 +97,11 @@
                                 <div class="pt-2">
                                     <div class="row justify-content-center">
                                         <h5>
-                                            Don't have an Account?<span><a href="#"
-                                                                           class="text-danger"> Register Now!</a></span>
+                                            Bạn đã có tài khoản?<span><a href="login.jsp"
+                                                                         class="text-danger"> Đăng ký ngay!</a></span>
                                         </h5>
+
+
                                     </div>
                                     <div
                                         class="row justify-content-center align-items-center pt-4 pb-5">
@@ -121,11 +117,14 @@
             </div>
         </div>
 
-        <%
-                
-            }
+        <%            }
         %>
-        <script type='text/javascript'
+
+     <br>
+          
+     
+     <script type='text/javascript'
         src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
+        
     </body>
 </html>

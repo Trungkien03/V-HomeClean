@@ -37,7 +37,9 @@ public class ForgotPasswordController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
+        
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String email = request.getParameter("email");
         RequestDispatcher dispatcher = null;
         int otpvalue = 0;
@@ -45,7 +47,7 @@ public class ForgotPasswordController extends HttpServlet {
         AccountDAO dao = new AccountDAO();
         AccountDTO account = dao.checkAccount(email);
         if (account == null) {
-            request.setAttribute("message", "Email does not exist");
+            request.setAttribute("message", "Địa chỉ email không tồn tại!");
             request.getRequestDispatcher("forgotPassword.jsp").forward(request, response);
         }else{
              mySession.setAttribute("Account", account);
@@ -84,7 +86,7 @@ public class ForgotPasswordController extends HttpServlet {
                 throw new RuntimeException(e);
             }
             dispatcher = request.getRequestDispatcher("enterOtp.jsp");
-            request.setAttribute("message", "OTP is sent to your email id");
+            request.setAttribute("message", "OTP được gửi đến địa chỉ email của bạn!");
             //request.setAttribute("connection", con);
             mySession.setAttribute("otp", otpvalue);
             mySession.setAttribute("email", email);

@@ -3,7 +3,7 @@
     Created on : May 20, 2023, 10:23:13 PM
     Author     : Trung Kien
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Spinner Start -->
@@ -67,6 +67,32 @@
                 </div>
             </div>
             <a href="contact.jsp" class="nav-item nav-link">Contact Us</a>
+            
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <c:if test="${sessionScope.acc == null}">Tài Khoản</c:if>
+                    <c:if test="${sessionScope.acc != null}">
+                        <img></img>
+                        <img src="img/user.jpg" style="width: 20px; height: 20px;" >
+                        ${sessionScope.acc.fullName}
+                    </c:if>
+                    </a>
+                    <div class="dropdown-menu bg-light m-0">
+                    <c:if test="${sessionScope.acc == null}">
+                        <a href="login.jsp" class="dropdown-item">Đăng Nhập</a>
+                    </c:if>
+                    <c:if test="${sessionScope.acc != null}">
+                        <a href="404.jsp" class="dropdown-item">Tải Khoản của bạn</a>
+                    </c:if>    
+                    <c:if test="${sessionScope.acc != null}">
+                        <a href="LogoutController" class="dropdown-item">Đăng xuất</a>
+                    </c:if>
+                        
+                        <a href="dashboard/index.jsp" class="dropdown-item">Dashboard</a>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </nav>
