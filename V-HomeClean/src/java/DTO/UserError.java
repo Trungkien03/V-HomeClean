@@ -23,11 +23,12 @@ public class UserError {
     private String image;
     private String salary;
     private String confirm;
+    private String errorMessage;
 
     public UserError() {
     }
 
-    public UserError(String accountID, String email, String password, String fullName, String address, String phone, String roleID, String dateOfBirth, String gender, String status, String image, String salary, String confirm) {
+    public UserError(String accountID, String email, String password, String fullName, String address, String phone, String roleID, String dateOfBirth, String gender, String status, String image, String salary, String confirm, String errorMessage) {
         this.accountID = accountID;
         this.email = email;
         this.password = password;
@@ -41,6 +42,7 @@ public class UserError {
         this.image = image;
         this.salary = salary;
         this.confirm = confirm;
+         this.errorMessage = errorMessage;
     }
 
     public String getAccountID() {
@@ -145,6 +147,14 @@ public class UserError {
 
     public void setConfirm(String confirm) {
         this.confirm = confirm;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
  

@@ -5,59 +5,56 @@
  */
 package controller;
 
+import DAO.AccountDAO;
+import DTO.AccountDTO;
+import DTO.UserError;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Asus
  */
-public class MainController extends HttpServlet {
+@WebServlet(name = "UpdatePasswordController", urlPatterns = {"/UpdatePasswordController"})
+public class UpdatePasswordController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String LOGIN = "Đăng Nhập";
-    private static final String LOGIN_CONTROLLER = "LoginController";
-    private static final String REGISTER = "Đăng Ký";
-    private static final String REGISTER_CONTROLLER = "RegisterController";
-    private static final String LOGOUT = "Đăng xuất";
-    private static final String LOGOUT_CONTROLLER = "LogoutController";
-    private static final String FORGOT = "Get New Password";
-    private static final String FORGOTPASSWORD_CONTROLLER = "ForgotPasswordController";
-    private static final String VALID_OTP = "Reset Password";
-    private static final String VALID_OTP_CONTROLLER = "ValidOtpController";
-    private static final String UPDATE_PASSWORD = "Update";
-    private static final String UPDATE_PASSWORD_CONTROLLER = "UpdatePasswordController";
-   
+    private static final String ERROR = "404.jsp";
+    private static final String SUCCESS = "login.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         String url = ERROR;
         try {
-            String action = request.getParameter("action");
-            if (LOGIN.equals(action)) {
-                url = LOGIN_CONTROLLER;
-            }else if(REGISTER.equals(action)){
-                url = REGISTER_CONTROLLER;
-            }else if(LOGOUT.equals(action)){
-                url = LOGOUT_CONTROLLER;
-            } else if (FORGOT.equals(action)) {
-                url = FORGOTPASSWORD_CONTROLLER;
-            } else if (VALID_OTP.equals(action)) {
-                url = VALID_OTP_CONTROLLER;
-            } else if (UPDATE_PASSWORD.equals(action)) {
-                url = UPDATE_PASSWORD_CONTROLLER;
-            }
-            else {
-                request.setAttribute("ERROR", "Your action is not supported!");
+//            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String confirm = request.getParameter("confirm");
+
+//            UserError userError = new UserError();
+            AccountDAO dao = new AccountDAO();
+//            AccountDTO listAcc = dao.checkAccount(email);
+            HttpSession session = request.getSession();
+
+            AccountDTO account = (AccountDTO) session.getAttribute("Account");
+            if (password.equals(confirm)) {
+                account.setPassword(password);
+                session.setAttribute("Account", account);
+                boolean checkUpdate = dao.updateAccount(account);
+
+                if (checkUpdate) {
+                    url = SUCCESS;
+                } else {
+                    request.setAttribute("ERROR", "Update fail: ");
+                }
             }
         } catch (Exception e) {
-            log("Error at: MainController" + e.toString());
+            log("Error at UpdatePasswordController: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

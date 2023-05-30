@@ -5,61 +5,60 @@
  */
 package controller;
 
+import DTO.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Asus
  */
-public class MainController extends HttpServlet {
+@WebServlet(name = "ValidOtpController", urlPatterns = {"/ValidOtpController"})
+public class ValidOtpController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String LOGIN = "Đăng Nhập";
-    private static final String LOGIN_CONTROLLER = "LoginController";
-    private static final String REGISTER = "Đăng Ký";
-    private static final String REGISTER_CONTROLLER = "RegisterController";
-    private static final String LOGOUT = "Đăng xuất";
-    private static final String LOGOUT_CONTROLLER = "LogoutController";
-    private static final String FORGOT = "Get New Password";
-    private static final String FORGOTPASSWORD_CONTROLLER = "ForgotPasswordController";
-    private static final String VALID_OTP = "Reset Password";
-    private static final String VALID_OTP_CONTROLLER = "ValidOtpController";
-    private static final String UPDATE_PASSWORD = "Update";
-    private static final String UPDATE_PASSWORD_CONTROLLER = "UpdatePasswordController";
-   
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String url = ERROR;
-        try {
-            String action = request.getParameter("action");
-            if (LOGIN.equals(action)) {
-                url = LOGIN_CONTROLLER;
-            }else if(REGISTER.equals(action)){
-                url = REGISTER_CONTROLLER;
-            }else if(LOGOUT.equals(action)){
-                url = LOGOUT_CONTROLLER;
-            } else if (FORGOT.equals(action)) {
-                url = FORGOTPASSWORD_CONTROLLER;
-            } else if (VALID_OTP.equals(action)) {
-                url = VALID_OTP_CONTROLLER;
-            } else if (UPDATE_PASSWORD.equals(action)) {
-                url = UPDATE_PASSWORD_CONTROLLER;
-            }
-            else {
-                request.setAttribute("ERROR", "Your action is not supported!");
-            }
-        } catch (Exception e) {
-            log("Error at: MainController" + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        int value = Integer.parseInt(request.getParameter("otp"));
+        HttpSession session = request.getSession();
+        int otp = (int) session.getAttribute("otp");
+
+        RequestDispatcher dispatcher = null;
+
+        if (value == otp) {
+
+            request.setAttribute("email", request.getParameter("email"));
+            AccountDTO acc = (AccountDTO) session.getAttribute("Account");
+            session.setAttribute("Account", acc);
+            request.setAttribute("status", "success");
+            dispatcher = request.getRequestDispatcher("resetPassword.jsp");
+            dispatcher.forward(request, response);
+
+        } else {
+            request.setAttribute("message", "wrong otp");
+
+            dispatcher = request.getRequestDispatcher("enterOtp.jsp");
+            dispatcher.forward(request, response);
+
         }
     }
 

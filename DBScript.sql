@@ -205,10 +205,33 @@ GO
 
 ----------------------------------------------------------------------------------------------------------------------------------
 GO
-INSERT INTO RoleAccount(RoleID,RoleName)
-VALUES(1, 'ADMIN'),
-	  (2, 'USER');
+INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (1, N'ADMIN')
+INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (2, N'STAFF')
+INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (3, N'MANAGER')
+INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (4, N'CUSTOMER')
 GO
 INSERT INTO Account (Email, Password, FullName, Address, Phone, RoleID, Gender, DateOfBirth, Status, Image, Salary)
-VALUES ('hieudoan280102@gmail.com', '1', 'Doan Thanh Hieu', 'Binh Duong', '0987654321', 1, 'Male', '2000-02-12', 1, 'image.jpg', 6000888.00),
+VALUES ('hieublockchain2002@gmail.com', '1', 'Doan Thanh Hieu', 'Binh Duong', '0987654321', 1, 'Male', '2000-02-12', 1, 'image.jpg', 6000888.00),
 	   ('trungkiennguyen0310@gmail.com','1','Nguyễn Trung Kiên','32/3, Gia Tan 1, Thong Nhat, Dong Nai','0974102437',1,'Male','2002-10-03',1,'/img/user.jpg',0.0000);
+
+GO
+INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (1, N'Dịch vụ vệ sinh')
+INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (2, N'Dịch vụ sửa chữa')
+INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (3, N'Dịch vụ giúp việc')
+INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (4, N'Dịch vụ chăm sóc')
+GO
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE01', N'Tổng vệ sinh ', 500000.0000, N'8000đ/1m2', 1, N'hehe', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE02', N'Vệ sinh phòng', 100000.0000, N'100000đ/phòng', 1, N'hehe', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE03', N'Vệ sinh sofa, rèm, nệm, kính', 300000.0000, N'báo giá trực tiếp', 1, N'hehe', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE04', N'Vệ sinh máy lạnh', 200000.0000, N'Máy lạnh treo tường: 240000đ, Máy lạnh tủ đứng: 300000đ, Máy lạnh âm trần: 650000(giá cả sẽ tùy vào HP)', 1, N'hehe', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE05', N'Sửa chữa đồ điện', 100000.0000, N'Giá cả phụ thuộc vào loại thiết bị và vấn đề sửa chữa', 2, N'hihi', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE06', N'Sửa chữa nước', 100000.0000, N'Giá cả phụ thuộc vào loại thiết bị và vấn đề sửa chữa', 2, N'hihih', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE07', N'Sửa chữa thiết bị gia dụng', 100000.0000, N'Giá cả phụ thuộc vào loại thiết bị và vấn đề sửa chữa', 2, N'hihi', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE08', N'Sửa chữa thiết bị điện tử', 100000.0000, N'Giá cả phụ thuộc vào loại thiết bị và vấn đề sửa chữa', 2, N'hihi', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE09', N'Giúp việc theo giờ', 200000.0000, N'Giá cả phụ thuộc vào thời điểm và diện tích căn hộ', 3, N'hoho', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE10', N'Đi chợ hộ', 50000.0000, N'Phí vận chuyển cho một đơn hàng trong bán kính 5km là 15000', 3, N'hoho', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE11', N'Nấu ăn hộ', 150000.0000, N'Giá cả phụ thuộc vào số lượng món', 3, N'hoho', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE12', N'Chăm sóc người già', 250000.0000, N'Giá cả phụ thuộc vào số giờ làm', 4, N'haha', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE13', N'Chăm sóc trẻ em', 300000.0000, N'Giá cả phụ thuộc vào số giờ làm', 4, N'haha', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE14', N'Chăm sóc người bệnh', 200000.0000, N'Giá cả phụ thuộc vào số giờ làm', 4, N'haha', 1)
+GO

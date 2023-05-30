@@ -51,7 +51,7 @@ public class RegisterController extends HttpServlet {
             String fullName = request.getParameter("fullName");
             String address = request.getParameter("address");
             String phone = request.getParameter("phone");
-            int roleID = 2;
+            int roleID = 4;
             String Gender = request.getParameter("gender");
             String dateOfBirth = request.getParameter("DateOfBirth");
             String status = "1";

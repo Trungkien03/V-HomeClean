@@ -89,7 +89,7 @@
                                     <div class="control__indicator"></div>
                                 </label>
                                 <label class="ml-auto">
-                                    <a style="color:black;" href="#" class="forgot-pass">Quên Mật Khẩu</a>
+                                    <a style="color:black;" href="forgotPassword.jsp" class="forgot-pass">Quên Mật Khẩu</a>
                                 </label>
                             </div>
                             <div style="text-align: center;" class="form-group">
