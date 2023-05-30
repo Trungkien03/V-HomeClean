@@ -45,6 +45,7 @@ public class UpdatePasswordController extends HttpServlet {
                 boolean checkUpdate = dao.updateAccount(account);
 
                 if (checkUpdate) {
+                    request.setAttribute("message", "Cập nhật mật khẩu thành công!");
                     url = SUCCESS;
                 } else {
                     request.setAttribute("ERROR", "Cập nhật thất bại! ");
@@ -52,7 +53,7 @@ public class UpdatePasswordController extends HttpServlet {
                 }
             } else {
                 request.setAttribute("ERROR", " Mật khẩu và xác nhận mật khẩu "
-                        + "không trùng khớp. ");
+                        + "không trùng khớp! ");
                 request.getRequestDispatcher("resetPassword.jsp").forward(request, response);
             }
 

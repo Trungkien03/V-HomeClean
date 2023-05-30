@@ -160,7 +160,6 @@ public class AccountDAO {
     //CheckAccount để lấy thông tin từ reset pass - By Hieu
     public AccountDTO checkAccount(String email) throws ClassNotFoundException {
 
-
         try {
             conn = new DBContext().getConnection();
             if (conn != null) {

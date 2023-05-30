@@ -213,7 +213,7 @@ INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (4, N'CUSTOMER')
 GO
 INSERT INTO Account (Email, Password, FullName, Address, Phone, RoleID, Gender, DateOfBirth, Status, Image, Salary)
 VALUES ('hieublockchain2002@gmail.com', '1', 'Doan Thanh Hieu', 'Binh Duong', '0987654321', 1, 'Male', '2000-02-12', 1, '/img/user.jpg', 6000888.00),
-	   ('trungkiennguyen0310@gmail.com','1','Nguyễn Trung Kiên','32/3, Gia Tan 1, Thong Nhat, Dong Nai','0974102437',1,'Male','2002-10-03',1,'/img/user.jpg',0.0000);
+	   ('trungkiennguyen0310@gmail.com','1',N'Nguyễn Trung Kiên','32/3, Gia Tan 1, Thong Nhat, Dong Nai','0974102437',1,'Male','2002-10-03',1,'/img/user.jpg',0.0000);
 
 GO
 INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (1, N'Dịch vụ vệ sinh')
