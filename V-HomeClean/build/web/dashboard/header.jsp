@@ -8,17 +8,7 @@
 <!DOCTYPE html>
 <div class="header">
     <div class="header-left">
-        <a href="index.jsp" class="logo">
-            <img src="assets/img/logo.png" alt="Logo" />
-        </a>
-        <a href="index.jsp" class="logo logo-small">
-            <img
-                src="assets/img/logo-small.png"
-                alt="Logo"
-                width="30"
-                height="30"
-                />
-        </a>
+        <h3 class="logo"><i class="fa fa-building text-primary"></i>V-HomeClean</h3>
     </div>
 
     <a href="javascript:void(0);" id="toggle_btn">
@@ -185,7 +175,7 @@
                 </div>
                 <a class="dropdown-item" href="general.jsp">My Profile</a>
                 <a class="dropdown-item" href="general.jsp">Account Settings</a>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="login.jsp">Logout</a>
                 <a class="dropdown-item" href="../index.jsp">Back to V-HomeClean</a>
             </div>
         </li>

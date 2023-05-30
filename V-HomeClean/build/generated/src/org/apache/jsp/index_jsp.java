@@ -46,6 +46,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html lang=\"en\">\r\n");
       out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <meta charset=\"utf-8\">\r\n");
       out.write("        <title>Apex - Home Repair Website Template</title>\r\n");
       out.write("        <meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\">\r\n");

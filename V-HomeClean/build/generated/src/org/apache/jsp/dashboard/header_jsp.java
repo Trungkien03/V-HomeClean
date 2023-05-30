@@ -224,8 +224,8 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("                <a class=\"dropdown-item\" href=\"general.jsp\">My Profile</a>\n");
       out.write("                <a class=\"dropdown-item\" href=\"general.jsp\">Account Settings</a>\n");
-      out.write("                <a class=\"dropdown-item\" href=\"#\">Logout</a>\n");
-      out.write("                <a class=\"dropdown-item\" href=\"../index.jsp\">Logout</a>\n");
+      out.write("                <a class=\"dropdown-item\" href=\"login.jsp\">Logout</a>\n");
+      out.write("                <a class=\"dropdown-item\" href=\"../index.jsp\">Back to V-HomeClean</a>\n");
       out.write("            </div>\n");
       out.write("        </li>\n");
       out.write("    </ul>\n");

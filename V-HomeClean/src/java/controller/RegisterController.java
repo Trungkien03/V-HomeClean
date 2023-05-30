@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -115,8 +116,9 @@ public class RegisterController extends HttpServlet {
 
             if (checkValidation == true) {
                 dao.Register(email, password, fullName, address, phone, roleID, dateOfBirth, Gender, status, image, salary);
-                String message = "Sign Up Successfully !!!";
-                request.setAttribute("message", message);
+                AccountDTO c = dao.Login(email, password);
+                HttpSession session = request.getSession();
+                session.setAttribute("acc", c);
                 url = SUCCESS;
             } else {
                 request.setAttribute("USER_ERROR", error);
