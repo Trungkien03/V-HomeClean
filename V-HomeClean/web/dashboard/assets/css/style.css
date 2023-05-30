@@ -4280,3 +4280,7 @@ li {
 .fe-text-align-left, .fa-search{
     color: #07A6F6;
 }
+
+.btn-block{
+    background-color: #423B3F;
+}
