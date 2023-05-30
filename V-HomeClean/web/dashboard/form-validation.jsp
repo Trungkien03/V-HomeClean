@@ -1,505 +1,507 @@
 <%-- 
     Document   : form-validation
-    Created on : May 21, 2023, 9:42:12 PM
+    Created on : May 28, 2023, 11:31:17 PM
     Author     : Trung Kien
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Focus Admin: Form Validation</title>
-        <!-- ================= Favicon ================== -->
-        <!-- Standard -->
-        <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
-        <!-- Retina iPad Touch Icon-->
-        <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
-        <!-- Retina iPhone Touch Icon-->
-        <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
-        <!-- Standard iPad Touch Icon-->
-        <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
-        <!-- Standard iPhone Touch Icon-->
-        <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
-        <!-- Styles -->
-        <link href="css/lib/select2/select2.min.css" rel="stylesheet">
-        <link href="css/lib/font-awesome.min.css" rel="stylesheet">
-        <link href="css/lib/themify-icons.css" rel="stylesheet">
-        <link href="css/lib/menubar/sidebar.css" rel="stylesheet">
-        <link href="css/lib/bootstrap.min.css" rel="stylesheet">
-        <link href="css/lib/helper.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=0"
+            />
+        <title>Dreamchat - Dashboard</title>
+
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="assets/img/favicon.png"
+            />
+
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+        <link rel="stylesheet" href="assets/css/feathericon.min.css" />
+
+        <link rel="stylesheet" href="assets/plugins/morris/morris.css" />
+
+        <link rel="stylesheet" href="assets/css/style.css" />
     </head>
-
     <body>
-
-        <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
-            <div class="nano">
-                <div class="nano-content">
-                    <div class="logo"><a href="index.jsp"><!-- <img src="images/logo.png" alt="" /> --><span>Focus</span></a></div>
-                    <ul>
-                        <li class="label">Main</li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard <span class="badge badge-primary">2</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="index.jsp">Dashboard 1</a></li>
-                                <li><a href="index.jsp">Dashboard 2</a></li>
-
-
-
-                            </ul>
-                        </li>
-
-                        <li class="label">Apps</li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i>  Charts  <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="chart-flot.jsp">Flot</a></li>
-                                <li><a href="chart-morris.jsp">Morris</a></li>
-                                <li><a href="chartjs.jsp">Chartjs</a></li>
-                                <li><a href="chartist.jsp">Chartist</a></li>
-                                <li><a href="chart-peity.jsp">Peity</a></li>
-                                <li><a href="chart-sparkline.jsp">Sparkle</a></li>
-                                <li><a href="chart-knob.jsp">Knob</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="app-event-calender.jsp"><i class="ti-calendar"></i> Calender </a></li>
-                        <li><a href="app-email.jsp"><i class="ti-email"></i> Email</a></li>
-                        <li><a href="app-profile.jsp"><i class="ti-user"></i> Profile</a></li>
-                        <li><a href="app-widget-card.jsp"><i class="ti-layout-grid2-alt"></i> Widget</a></li>
-                        <li class="label">Features</li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-layout"></i> UI Elements <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="ui-typography.jsp">Typography</a></li>
-                                <li><a href="ui-alerts.jsp">Alerts</a></li>
-
-                                <li><a href="ui-button.jsp">Button</a></li>
-                                <li><a href="ui-dropdown.jsp">Dropdown</a></li>
-
-                                <li><a href="ui-list-group.jsp">List Group</a></li>
-
-                                <li><a href="ui-progressbar.jsp">Progressbar</a></li>
-                                <li><a href="ui-tab.jsp">Tab</a></li>
-
-                            </ul>
-                        </li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-panel"></i> Components <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="uc-calendar.jsp">Calendar</a></li>
-                                <li><a href="uc-carousel.jsp">Carousel</a></li>
-                                <li><a href="uc-weather.jsp">Weather</a></li>
-                                <li><a href="uc-datamap.jsp">Datamap</a></li>
-                                <li><a href="uc-todo-list.jsp">To do</a></li>
-                                <li><a href="uc-scrollable.jsp">Scrollable</a></li>
-                                <li><a href="uc-sweetalert.jsp">Sweet Alert</a></li>
-                                <li><a href="uc-toastr.jsp">Toastr</a></li>
-                                <li><a href="uc-range-slider-basic.jsp">Basic Range Slider</a></li>
-                                <li><a href="uc-range-slider-advance.jsp">Advance Range Slider</a></li>
-                                <li><a href="uc-nestable.jsp">Nestable</a></li>
-
-                                <li><a href="uc-rating-bar-rating.jsp">Bar Rating</a></li>
-                                <li><a href="uc-rating-jRate.jsp">jRate</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-layout-grid4-alt"></i> Table <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="table-basic.jsp">Basic</a></li>
-
-                                <li><a href="table-export.jsp">Datatable Export</a></li>
-                                <li><a href="table-row-select.jsp">Datatable Row Select</a></li>
-                                <li><a href="table-jsgrid.jsp">Editable </a></li>
-                            </ul>
-                        </li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-heart"></i> Icons <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="font-themify.jsp">Themify</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-map"></i> Maps <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="gmaps.jsp">Basic</a></li>
-                                <li><a href="vector-map.jsp">Vector Map</a></li>
-                            </ul>
-                        </li>
-                        <li class="label">Form</li>
-                        <li><a href="form-basic.jsp"><i class="ti-view-list-alt"></i> Basic Form </a></li>
-                        <li class="label">Extra</li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-files"></i> Invoice <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="invoice.jsp">Basic</a></li>
-                                <li><a href="invoice-editable.jsp">Editable</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="sidebar-sub-toggle"><i class="ti-target"></i> Pages <span class="sidebar-collapse-icon ti-angle-down"></span></a>
-                            <ul>
-                                <li><a href="page-login.jsp">Login</a></li>
-                                <li><a href="page-register.jsp">Register</a></li>
-                                <li><a href="page-reset-password.jsp">Forgot password</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../documentation/index.jsp"><i class="ti-file"></i> Documentation</a></li>
-                        <li><a><i class="ti-close"></i> Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- /# sidebar -->
-
-
-        <div class="header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="float-left">
-                            <div class="hamburger sidebar-toggle">
-                                <span class="line"></span>
-                                <span class="line"></span>
-                                <span class="line"></span>
-                            </div>
-                        </div>
-                        <div class="float-right">
-                            <div class="dropdown dib">
-                                <div class="header-icon" data-toggle="dropdown">
-                                    <i class="ti-bell"></i>
-                                    <div class="drop-down dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-content-heading">
-                                            <span class="text-left">Recent Notifications</span>
-                                        </div>
-                                        <div class="dropdown-content-body">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <img class="pull-left m-r-10 avatar-img" src="images/avatar/3.jpg" alt="" />
-                                                        <div class="notification-content">
-                                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                            <div class="notification-heading">Mr. John</div>
-                                                            <div class="notification-text">5 members joined today </div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <img class="pull-left m-r-10 avatar-img" src="images/avatar/3.jpg" alt="" />
-                                                        <div class="notification-content">
-                                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                            <div class="notification-heading">Mariam</div>
-                                                            <div class="notification-text">likes a photo of you</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <img class="pull-left m-r-10 avatar-img" src="images/avatar/3.jpg" alt="" />
-                                                        <div class="notification-content">
-                                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                            <div class="notification-heading">Tasnim</div>
-                                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <img class="pull-left m-r-10 avatar-img" src="images/avatar/3.jpg" alt="" />
-                                                        <div class="notification-content">
-                                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                            <div class="notification-heading">Mr. John</div>
-                                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="text-center">
-                                                    <a href="#" class="more-link">See All</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown dib">
-                                <div class="header-icon" data-toggle="dropdown">
-                                    <i class="ti-email"></i>
-                                    <div class="drop-down dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-content-heading">
-                                            <span class="text-left">2 New Messages</span>
-                                            <a href="email.jsp">
-                                                <i class="ti-pencil-alt pull-right"></i>
-                                            </a>
-                                        </div>
-                                        <div class="dropdown-content-body">
-                                            <ul>
-                                                <li class="notification-unread">
-                                                    <a href="#">
-                                                        <img class="pull-left m-r-10 avatar-img" src="images/avatar/1.jpg" alt="" />
-                                                        <div class="notification-content">
-                                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                            <div class="notification-heading">Michael Qin</div>
-                                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="notification-unread">
-                                                    <a href="#">
-                                                        <img class="pull-left m-r-10 avatar-img" src="images/avatar/2.jpg" alt="" />
-                                                        <div class="notification-content">
-                                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                            <div class="notification-heading">Mr. John</div>
-                                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <img class="pull-left m-r-10 avatar-img" src="images/avatar/3.jpg" alt="" />
-                                                        <div class="notification-content">
-                                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                            <div class="notification-heading">Michael Qin</div>
-                                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <img class="pull-left m-r-10 avatar-img" src="images/avatar/2.jpg" alt="" />
-                                                        <div class="notification-content">
-                                                            <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                            <div class="notification-heading">Mr. John</div>
-                                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li class="text-center">
-                                                    <a href="#" class="more-link">See All</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown dib">
-                                <div class="header-icon" data-toggle="dropdown">
-                                    <span class="user-avatar">John
-                                        <i class="ti-angle-down f-s-10"></i>
-                                    </span>
-                                    <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-content-heading">
-                                            <span class="text-left">Upgrade Now</span>
-                                            <p class="trial-day">30 Days Trail</p>
-                                        </div>
-                                        <div class="dropdown-content-body">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ti-user"></i>
-                                                        <span>Profile</span>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ti-email"></i>
-                                                        <span>Inbox</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ti-settings"></i>
-                                                        <span>Setting</span>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ti-lock"></i>
-                                                        <span>Lock Screen</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ti-power-off"></i>
-                                                        <span>Logout</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="content-wrap">
-            <div class="main">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-8 p-r-0 title-margin-right">
-                            <div class="page-header">
-                                <div class="page-title">
-                                    <h1>Form Validation</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /# column -->
-                        <div class="col-lg-4 p-l-0 title-margin-left">
-                            <div class="page-header">
-                                <div class="page-title">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Form Validation</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /# column -->
-                    </div>
-                    <!-- /# row -->
-                    <section id="main-content">
+        <div class="main-wrapper">
+            <jsp:include page="header.jsp"></jsp:include>
+            <jsp:include page="sidebar.jsp"></jsp:include>
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+                    <div class="page-header">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="form-validation">
-                                            <form class="form-valide" action="#" method="post">
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-username">Username <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
+                            <div class="col-sm-12">
+                                <h3 class="page-title">Form Validation</h3>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.jsp">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">Form Validation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Custom Bootstrap Form Validation</h5>
+                                    <p class="card-text">
+                                        For custom Bootstrap form validation messages, you’ll need
+                                        to add the <code>novalidate</code> boolean attribute to your
+                                        form. For server side validation
+                                        <a
+                                            href="https://getbootstrap.com/docs/5.1/forms/overview/"
+                                            target="_blank"
+                                            >read full documentation</a
+                                        >.
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <form class="needs-validation" novalidate>
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom01">First name</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationCustom01"
+                                                            placeholder="First name"
+                                                            value="Mark"
+                                                            required
+                                                            />
+                                                        <div class="valid-feedback">Looks good!</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustom02">Last name</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationCustom02"
+                                                            placeholder="Last name"
+                                                            value="Otto"
+                                                            required
+                                                            />
+                                                        <div class="valid-feedback">Looks good!</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationCustomUsername"
+                                                               >Username</label
+                                                        >
+                                                        <div class="input-group">
+                                                            <span
+                                                                class="input-group-text"
+                                                                id="inputGroupPrepend"
+                                                                >@</span
+                                                            >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="validationCustomUsername"
+                                                                placeholder="Username"
+                                                                aria-describedby="inputGroupPrepend"
+                                                                required
+                                                                />
+                                                            <div class="invalid-feedback">
+                                                                Please choose a username.
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-email">Email <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" class="form-control" id="val-email" name="val-email" placeholder="Your valid email..">
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="validationCustom03">City</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationCustom03"
+                                                            placeholder="City"
+                                                            required
+                                                            />
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid city.
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label for="validationCustom04">State</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationCustom04"
+                                                            placeholder="State"
+                                                            required
+                                                            />
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid state.
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label for="validationCustom05">Zip</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationCustom05"
+                                                            placeholder="Zip"
+                                                            required
+                                                            />
+                                                        <div class="invalid-feedback">
+                                                            Please provide a valid zip.
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-password">Password <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-8">
-                                                        <input type="password" class="form-control" id="val-password" name="val-password" placeholder="Choose a safe one..">
+                                                <div class="form-group">
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            value=""
+                                                            id="invalidCheck"
+                                                            required
+                                                            />
+                                                        <label class="form-check-label" for="invalidCheck">
+                                                            Agree to terms and conditions
+                                                        </label>
+                                                        <div class="invalid-feedback">
+                                                            You must agree before submitting.
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-confirm-password">Confirm Password <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-8">
-                                                        <input type="password" class="form-control" id="val-confirm-password" name="val-confirm-password" placeholder="..and confirm it!">
+                                                <button class="btn btn-primary" type="submit">
+                                                    Submit form
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Browser defaults</h5>
+                                    <p class="card-text">
+                                        Not interested in custom validation feedback messages or
+                                        writing JavaScript to change form behaviors? All good, you
+                                        can use the browser defaults. Try submitting the form below.
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationDefault01">First name</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationDefault01"
+                                                            placeholder="First name"
+                                                            value="Mark"
+                                                            required
+                                                            />
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationDefault02">Last name</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationDefault02"
+                                                            placeholder="Last name"
+                                                            value="Otto"
+                                                            required
+                                                            />
+                                                    </div>
+                                                    <div class="col-md-4 mb-3">
+                                                        <label for="validationDefaultUsername"
+                                                               >Username</label
+                                                        >
+                                                        <div class="input-group">
+                                                            <span
+                                                                class="input-group-text"
+                                                                id="inputGroupPrepend2"
+                                                                >@</span
+                                                            >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="validationDefaultUsername"
+                                                                placeholder="Username"
+                                                                aria-describedby="inputGroupPrepend2"
+                                                                required
+                                                                />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-select2">Select2 <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-8">
-                                                        <select class="js-select2 form-control" id="val-select2" name="val-select2" style="width: 100%;" data-placeholder="Choose one..">
-                                                            <option></option>
-                                                            <option value="html">HTML</option>
-                                                            <option value="css">CSS</option>
-                                                            <option value="javascript">JavaScript</option>
-                                                            <option value="angular">Angular</option>
-                                                            <option value="angular">React</option>
-                                                            <option value="vuejs">Vue.js</option>
-                                                            <option value="ruby">Ruby</option>
-                                                            <option value="php">PHP</option>
-                                                            <option value="asp">ASP.NET</option>
-                                                            <option value="python">Python</option>
-                                                            <option value="mysql">MySQL</option>
-                                                        </select>
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="validationDefault03">City</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationDefault03"
+                                                            placeholder="City"
+                                                            required
+                                                            />
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label for="validationDefault04">State</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationDefault04"
+                                                            placeholder="State"
+                                                            required
+                                                            />
+                                                    </div>
+                                                    <div class="col-md-3 mb-3">
+                                                        <label for="validationDefault05">Zip</label>
+                                                        <input
+                                                            type="text"
+                                                            class="form-control"
+                                                            id="validationDefault05"
+                                                            placeholder="Zip"
+                                                            required
+                                                            />
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-select2-multiple">Select2 Multiple <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-8">
-                                                        <select class="js-select2 form-control" id="val-select2-multiple" name="val-select2-multiple" style="width: 100%;" data-placeholder="Choose at least two.." multiple>
-                                                            <option></option>
-                                                            <option value="html">HTML</option>
-                                                            <option value="css">CSS</option>
-                                                            <option value="javascript">JavaScript</option>
-                                                            <option value="angular">Angular</option>
-                                                            <option value="angular">React</option>
-                                                            <option value="vuejs">Vue.js</option>
-                                                            <option value="ruby">Ruby</option>
-                                                            <option value="php">PHP</option>
-                                                            <option value="asp">ASP.NET</option>
-                                                            <option value="python">Python</option>
-                                                            <option value="mysql">MySQL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-suggestions">Suggestions <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-8">
-                                                        <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="5" placeholder="What would you like to see?"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-skill">Best Skill <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-6">
-                                                        <select class="form-control" id="val-skill" name="val-skill">
-                                                            <option value="">Please select</option>
-                                                            <option value="html">HTML</option>
-                                                            <option value="css">CSS</option>
-                                                            <option value="javascript">JavaScript</option>
-                                                            <option value="angular">Angular</option>
-                                                            <option value="angular">React</option>
-                                                            <option value="vuejs">Vue.js</option>
-                                                            <option value="ruby">Ruby</option>
-                                                            <option value="php">PHP</option>
-                                                            <option value="asp">ASP.NET</option>
-                                                            <option value="python">Python</option>
-                                                            <option value="mysql">MySQL</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-currency">Currency <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-6">
-                                                        <input type="text" class="form-control" id="val-currency" name="val-currency" placeholder="$21.60">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-website">Website <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-6">
-                                                        <input type="text" class="form-control" id="val-website" name="val-website" placeholder="http://example.com">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-phoneus">Phone (US) <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-6">
-                                                        <input type="text" class="form-control" id="val-phoneus" name="val-phoneus" placeholder="212-999-0000">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-digits">Digits <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-6">
-                                                        <input type="text" class="form-control" id="val-digits" name="val-digits" placeholder="5">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-number">Number <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-6">
-                                                        <input type="text" class="form-control" id="val-number" name="val-number" placeholder="5.0">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label" for="val-range">Range [1, 5] <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-6">
-                                                        <input type="text" class="form-control" id="val-range" name="val-range" placeholder="4">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-lg-4 col-form-label"><a data-toggle="modal" data-target="#modal-terms" href="#">Terms &amp; Conditions</a> <span class="text-danger">*</span></label>
-                                                    <div class="col-lg-8">
-                                                        <label class="css-control css-control-primary css-checkbox" for="val-terms">
-                                                            <input type="checkbox" class="css-control-input" id="val-terms" name="val-terms" value="1">
-                                                            <span class="css-control-indicator"></span> I agree to the terms
+                                                <div class="form-group">
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="checkbox"
+                                                            value=""
+                                                            id="invalidCheck2"
+                                                            required
+                                                            />
+                                                        <label class="form-check-label" for="invalidCheck2">
+                                                            Agree to terms and conditions
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-8 ml-auto">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button class="btn btn-primary" type="submit">
+                                                    Submit form
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Server side</h5>
+                                    <p class="card-text">
+                                        We recommend using client side validation, but in case you
+                                        require server side, you can indicate invalid and valid form
+                                        fields with <code>.is-invalid</code> and
+                                        <code>.is-valid</code>. Note that
+                                        <code>.invalid-feedback</code> is also supported with these
+                                        classes.
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationServer01">First name</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control is-valid"
+                                                    id="validationServer01"
+                                                    placeholder="First name"
+                                                    value="Mark"
+                                                    required
+                                                    />
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationServer02">Last name</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control is-valid"
+                                                    id="validationServer02"
+                                                    placeholder="Last name"
+                                                    value="Otto"
+                                                    required
+                                                    />
+                                                <div class="valid-feedback">Looks good!</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationServerUsername">Username</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text" id="inputGroupPrepend3"
+                                                          >@</span
+                                                    >
+                                                    <input
+                                                        type="text"
+                                                        class="form-control is-invalid"
+                                                        id="validationServerUsername"
+                                                        placeholder="Username"
+                                                        aria-describedby="inputGroupPrepend3"
+                                                        required
+                                                        />
+                                                    <div class="invalid-feedback">
+                                                        Please choose a username.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="validationServer03">City</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control is-invalid"
+                                                    id="validationServer03"
+                                                    placeholder="City"
+                                                    required
+                                                    />
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid city.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="validationServer04">State</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control is-invalid"
+                                                    id="validationServer04"
+                                                    placeholder="State"
+                                                    required
+                                                    />
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid state.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="validationServer05">Zip</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control is-invalid"
+                                                    id="validationServer05"
+                                                    placeholder="Zip"
+                                                    required
+                                                    />
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid zip.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input
+                                                    class="form-check-input is-invalid"
+                                                    type="checkbox"
+                                                    value=""
+                                                    id="invalidCheck3"
+                                                    required
+                                                    />
+                                                <label class="form-check-label" for="invalidCheck3">
+                                                    Agree to terms and conditions
+                                                </label>
+                                                <div class="invalid-feedback">
+                                                    You must agree before submitting.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">
+                                            Submit form
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Supported elements</h5>
+                                    <p class="card-text">
+                                        Form validation styles are also available for bootstrap
+                                        custom form controls.
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <form class="was-validated">
+                                                <div class="form-check form-checkbox mb-3">
+                                                    <input
+                                                        type="checkbox"
+                                                        class="form-check-input"
+                                                        id="customControlValidation1"
+                                                        required
+                                                        />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="customControlValidation1"
+                                                        >Check this custom checkbox</label
+                                                    >
+                                                    <div class="invalid-feedback">
+                                                        Example invalid feedback text
+                                                    </div>
+                                                </div>
+                                                <div class="form-check form-radio">
+                                                    <input
+                                                        type="radio"
+                                                        class="form-check-input"
+                                                        id="customControlValidation2"
+                                                        name="radio-stacked"
+                                                        required
+                                                        />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="customControlValidation2"
+                                                        >Toggle this custom radio</label
+                                                    >
+                                                </div>
+                                                <div class="form-check form-radio mb-3">
+                                                    <input
+                                                        type="radio"
+                                                        class="form-check-input"
+                                                        id="customControlValidation3"
+                                                        name="radio-stacked"
+                                                        required
+                                                        />
+                                                    <label
+                                                        class="form-check-label"
+                                                        for="customControlValidation3"
+                                                        >Or toggle this other custom radio</label
+                                                    >
+                                                    <div class="invalid-feedback">
+                                                        More example invalid feedback text
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-select" required>
+                                                        <option value="">Open this select menu</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Example invalid custom select feedback
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input
+                                                        type="file"
+                                                        class="form-control"
+                                                        aria-label="file example"
+                                                        required
+                                                        />
+                                                    <div class="invalid-feedback">
+                                                        Example invalid form file feedback
                                                     </div>
                                                 </div>
                                             </form>
@@ -507,34 +509,120 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="footer">
-                                    <p>2018 © Admin Board. - <a href="#">example.com</a></p>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Tooltips</h5>
+                                    <p class="card-text">
+                                        You can swap the
+                                        <code>.{valid|invalid}-feedback</code> classes for
+                                        <code>.{valid|invalid}-tooltip</code> classes to display
+                                        validation feedback in a styled tooltip.
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <form class="needs-validation" novalidate>
+                                        <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationTooltip01">First name</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="validationTooltip01"
+                                                    placeholder="First name"
+                                                    value="Mark"
+                                                    required
+                                                    />
+                                                <div class="valid-tooltip">Looks good!</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationTooltip02">Last name</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="validationTooltip02"
+                                                    placeholder="Last name"
+                                                    value="Otto"
+                                                    required
+                                                    />
+                                                <div class="valid-tooltip">Looks good!</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="validationTooltipUsername">Username</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="validationTooltipUsername"
+                                                    placeholder="Username"
+                                                    required
+                                                    />
+                                                <div class="invalid-tooltip">
+                                                    Please choose a unique and valid username.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="validationTooltip03">City</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="validationTooltip03"
+                                                    placeholder="City"
+                                                    required
+                                                    />
+                                                <div class="invalid-tooltip">
+                                                    Please provide a valid city.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="validationTooltip04">State</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="validationTooltip04"
+                                                    placeholder="State"
+                                                    required
+                                                    />
+                                                <div class="invalid-tooltip">
+                                                    Please provide a valid state.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="validationTooltip05">Zip</label>
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="validationTooltip05"
+                                                    placeholder="Zip"
+                                                    required
+                                                    />
+                                                <div class="invalid-tooltip">
+                                                    Please provide a valid zip.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">
+                                            Submit form
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- jquery vendor -->
-        <script src="js/lib/jquery.min.js"></script>
-        <script src="js/lib/jquery.nanoscroller.min.js"></script>
-        <!-- nano scroller -->
-        <script src="js/lib/menubar/sidebar.js"></script>
-        <script src="js/lib/preloader/pace.min.js"></script>
-        <!-- sidebar -->
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
 
-        <!-- bootstrap -->
-        <!-- Select2 -->
-        <script src="js/lib/select2/select2.full.min.js"></script>
-        <script src="js/lib/form-validation/jquery.validate.min.js"></script>
-        <script src="js/lib/form-validation/jquery.validate-init.js"></script>
-        <script src="js/lib/bootstrap.min.js"></script><script src="js/scripts.js"></script>
-        <!-- scripit init-->
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+        <script src="assets/js/form-validation.js"></script>
+
+        <script src="assets/js/script.js"></script>
     </body>
-
 </html>
+
