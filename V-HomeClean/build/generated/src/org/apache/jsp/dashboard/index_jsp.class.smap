@@ -1,0 +1,12 @@
+SMAP
+index_jsp.java
+JSP
+*S JSP
+*F
++ 0 index.jsp
+dashboard/index.jsp
+*L
+5,31:44
+36,2:75,3
+38,165:81
+*E
