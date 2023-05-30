@@ -25,16 +25,17 @@ public class MainController extends HttpServlet {
     private static final String REGISTER_CONTROLLER = "RegisterController";
     private static final String LOGOUT = "Đăng xuất";
     private static final String LOGOUT_CONTROLLER = "LogoutController";
-    private static final String FORGOT = "Get New Password";
+    private static final String FORGOT = "Lấy lại mật khẩu";
     private static final String FORGOTPASSWORD_CONTROLLER = "ForgotPasswordController";
-    private static final String VALID_OTP = "Reset Password";
+    private static final String VALID_OTP = "Nhập OTP";
     private static final String VALID_OTP_CONTROLLER = "ValidOtpController";
-    private static final String UPDATE_PASSWORD = "Update";
+    private static final String UPDATE_PASSWORD = "Cập nhật mật khẩu";
     private static final String UPDATE_PASSWORD_CONTROLLER = "UpdatePasswordController";
    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String url = ERROR;

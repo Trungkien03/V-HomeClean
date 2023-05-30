@@ -30,15 +30,12 @@ public class UpdatePasswordController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String url = ERROR;
         try {
-//            String email = request.getParameter("email");
             String password = request.getParameter("password");
             String confirm = request.getParameter("confirm");
-
-//            UserError userError = new UserError();
             AccountDAO dao = new AccountDAO();
-//            AccountDTO listAcc = dao.checkAccount(email);
             HttpSession session = request.getSession();
 
             AccountDTO account = (AccountDTO) session.getAttribute("Account");
@@ -48,11 +45,18 @@ public class UpdatePasswordController extends HttpServlet {
                 boolean checkUpdate = dao.updateAccount(account);
 
                 if (checkUpdate) {
+                    request.setAttribute("message", "Cập nhật mật khẩu thành công!");
                     url = SUCCESS;
                 } else {
-                    request.setAttribute("ERROR", "Update fail: ");
+                    request.setAttribute("ERROR", "Cập nhật thất bại! ");
+
                 }
+            } else {
+                request.setAttribute("ERROR", " Mật khẩu và xác nhận mật khẩu "
+                        + "không trùng khớp. ");
+                request.getRequestDispatcher("resetPassword.jsp").forward(request, response);
             }
+
         } catch (Exception e) {
             log("Error at UpdatePasswordController: " + e.toString());
         } finally {

@@ -159,11 +159,6 @@ public class AccountDAO {
     
     //CheckAccount để lấy thông tin từ reset pass - By Hieu
     public AccountDTO checkAccount(String email) throws ClassNotFoundException {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        AccountDTO account = null;
-
         try {
             conn = new DBContext().getConnection();
             if (conn != null) {
@@ -188,34 +183,17 @@ public class AccountDAO {
                 }
             }
         } catch (SQLException e) {
-            // Handle any SQL errors
-            e.printStackTrace();
-        } finally {
-            // Close connections and resources
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
-
-        return account;
+        return null;
     }
 
 
-
     //By Hieu
+
     private static final String UPDATE = "UPDATE Account SET Password = ? WHERE email=?";
+
     public boolean updateAccount(AccountDTO account) throws SQLException {
-        
+
         boolean checkUpdate = false;
         Connection conn = null;
         PreparedStatement ps = null;

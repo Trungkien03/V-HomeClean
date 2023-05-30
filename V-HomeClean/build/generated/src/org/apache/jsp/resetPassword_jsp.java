@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import DTO.UserError;
 import java.util.List;
 import DTO.AccountDTO;
 import DTO.AccountDTO;
@@ -50,6 +51,7 @@ public final class resetPassword_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -75,20 +77,19 @@ public final class resetPassword_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("            }\n");
       out.write("        </style>\n");
       out.write("    </head>\n");
-      out.write("    \n");
-      out.write("    <h1>alo</h1>\n");
+      out.write("\n");
       out.write("    ");
 
-        List<AccountDTO> ListAcc = (List<AccountDTO>) request.getAttribute("Account");
-        if (ListAcc != null) {
-            if (ListAcc.size() > 0) {
+        AccountDTO Acc = (AccountDTO) session.getAttribute("Account");
+        if (Acc != null) {
+
     
       out.write("\n");
-      out.write("    <body oncontextmenu='return false' class='snippet-body bg-info'>\n");
       out.write("\n");
+      out.write("    <body oncontextmenu='return false' class='snippet-body bg-info'>\n");
       out.write("        <link rel=\"stylesheet\"\n");
       out.write("              href=\"https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css\">\n");
-      out.write("\n");
+      out.write("        \n");
       out.write("        <div>\n");
       out.write("            <!-- Container containing all contents -->\n");
       out.write("            <div class=\"container\">\n");
@@ -99,28 +100,21 @@ public final class resetPassword_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                            <!-- Main Heading -->\n");
       out.write("                            <div class=\"row justify-content-center align-items-center pt-3\">\n");
       out.write("                                <h1>\n");
-      out.write("                                    <strong>Reset Password</strong>\n");
+      out.write("                                    <strong>V-HomeClean - Cập nhật lại mật khẩu</strong>\n");
       out.write("                                </h1>\n");
       out.write("                            </div>\n");
       out.write("                            <div class=\"pt-3 pb-3\">\n");
       out.write("\n");
-      out.write("                                ");
-
-                                    for (AccountDTO account : ListAcc) {
-                                
-      out.write("\n");
+      out.write("                                <strong style=\"color: red\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ERROR}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</strong>\n");
       out.write("                                <form class=\"form-horizontal\" action=\"MainController\" method=\"POST\">\n");
-      out.write("                                    \n");
-      out.write("                                    \n");
-      out.write("                                    <!-- User Name Input -->\n");
       out.write("                                    <div class=\"form-group row justify-content-center px-3\">\n");
       out.write("                                        <div class=\"col-9 px-0\">\n");
-      out.write("                                            <input type=\"text\" name=\"password\" placeholder=\"&#xf084; &nbsp; New Password\"\n");
+      out.write("                                            <input type=\"password\" name=\"password\" placeholder=\"&#xf084; &nbsp; New Password\"\n");
       out.write("                                                   class=\"form-control border-info placeicon\" >\n");
-      out.write("                                            \n");
       out.write("                                        </div>\n");
       out.write("                                    </div>\n");
-      out.write("                                    <!-- Password Input -->\n");
       out.write("                                    <div class=\"form-group row justify-content-center px-3\">\n");
       out.write("                                        <div class=\"col-9 px-0\">\n");
       out.write("                                            <input type=\"password\" name=\"confirm\" \n");
@@ -128,20 +122,14 @@ public final class resetPassword_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                                                   class=\"form-control border-info placeicon\">\n");
       out.write("                                        </div>\n");
       out.write("                                    </div>\n");
-      out.write("\n");
-      out.write("                                    <!-- Log in Button -->\n");
+      out.write("                                    \n");
       out.write("                                    <div class=\"form-group row justify-content-center\">\n");
       out.write("                                        <div class=\"col-3 px-3 mt-3\">\n");
-      out.write("                                            <input type=\"submit\" name=\"action\" value=\"Update Password\"\n");
+      out.write("                                            <input type=\"submit\" name=\"action\" value=\"Update\"\n");
       out.write("                                                   class=\"btn btn-block btn-info\">\n");
       out.write("                                        </div>\n");
       out.write("                                    </div>\n");
       out.write("                                </form>\n");
-      out.write("                                ");
-
-                                    }
-                                
-      out.write("\n");
       out.write("\n");
       out.write("                            </div>\n");
       out.write("                            <!-- Alternative Login -->\n");
@@ -172,14 +160,14 @@ public final class resetPassword_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("        <script type='text/javascript'\n");
-      out.write("        src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>\n");
+      out.write("\n");
       out.write("        ");
-
-                }
             }
         
       out.write("\n");
+      out.write("\n");
+      out.write("        <script type='text/javascript'\n");
+      out.write("        src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

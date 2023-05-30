@@ -8,7 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>V-HomeClean - Nhập mã OTP</title>
         <link
             href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
             rel="stylesheet" id="bootstrap-css">
@@ -38,43 +40,43 @@
                                 <h3>
                                     <i class="fa fa-lock fa-4x"></i>
                                 </h3>
-                                <h2 class="text-center">Enter OTP</h2>
-                                <%
-                                    if (request.getAttribute("message") != null) {
-                                        out.print("<p class='text-danger ml-1'>" + request.getAttribute("message") + "</p>");
-                                    }
+                                                            <h2 class="text-center">Nhập mã OTP</h2>
+                                                        <%
+                                                            if (request.getAttribute("message") != null) {
+                                                                out.print("<p class='text-danger ml-1'>" + request.getAttribute("message") + "</p>");
+                                                            }
 
-                                %>
+                                                        %>
 
-                                <div class="panel-body">
+                                                        <div class="panel-body">
 
-                                    <form id="register-form" action="MainController" role="form" autocomplete="off"
-                                          class="form" method="post">
+                                                            <form id="register-form" action="MainController" role="form" autocomplete="off"
+                                                                  class="form" method="post">
 
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i
-                                                        class="glyphicon glyphicon-envelope color-blue"></i></span> <input
-                                                    id="opt" name="otp" placeholder="Enter OTP"
-                                                    class="form-control" type="text" required="required">
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i
+                                                                                class="glyphicon glyphicon-envelope color-blue"></i></span> <input
+                                                                            id="opt" name="otp" placeholder="Nhập mã OTP"
+                                                                            class="form-control" type="text" required="required">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input name="action"
+                                                                           class="btn btn-lg btn-primary btn-block"
+                                                                           value="Nhập OTP" type="submit">
+                                                                </div>
+
+                                                                <input type="hidden" class="hide" name="token" id="token"
+                                                                       value="">
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input name="action"
-                                                   class="btn btn-lg btn-primary btn-block"
-                                                   value="Reset Password" type="submit">
-                                        </div>
-
-                                        <input type="hidden" class="hide" name="token" id="token"
-                                               value="">
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+                                    </div>
+                                </div>  
+                                </body>
+                                </html>

@@ -120,6 +120,9 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"row align-items-center justify-content-center login-form\">\r\n");
       out.write("                    <div  class=\"col-md-7 form\">\r\n");
       out.write("                        <h3>Đăng nhập vào <strong style=\"color: #f8e43c\">V-HomeClean</strong></h3>\r\n");
+      out.write("                        <strong style=\"color: green\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${message}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</strong>\r\n");
       out.write("                        <strong style=\"color: red\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ERROR}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</strong>\r\n");

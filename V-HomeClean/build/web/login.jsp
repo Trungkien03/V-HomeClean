@@ -74,6 +74,7 @@
                 <div class="row align-items-center justify-content-center login-form">
                     <div  class="col-md-7 form">
                         <h3>Đăng nhập vào <strong style="color: #f8e43c">V-HomeClean</strong></h3>
+                        <strong style="color: green">${message}</strong>
                         <strong style="color: red">${ERROR}</strong>
                         <form action="MainController" method="post">
                             <div class="form-group first mb-3">
