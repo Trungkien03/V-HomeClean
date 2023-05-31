@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +71,7 @@
                     <div class="row g-5">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px;">
-                                <img class="position-absolute w-100 h-100" src="img/serviceTongVeSinh.jpg" alt="" style="object-fit: cover;">
+                                <img class="position-absolute w-100 h-100" src="${ServiceDetail.image}" alt="" style="object-fit: cover;">
                                 <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
                                     <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                         <h1 class="text-white">25</h1>
@@ -83,24 +85,23 @@
                             <div class="h-100">
                                 <div class="border-start border-5 border-primary ps-4 mb-5">
                                     <h6 class="text-body text-uppercase mb-2">Dịch Vụ Dọn Dẹp</h6>
-                                    <h1 class="display-6 mb-0">Dịch Vụ Tổng Vệ sinh</h1>
-                                </div>
-                                <p>Dịch vụ tổng vệ sinh cho căn hộ chung cư mang đến sự sạch sẽ và thoáng mát cho không gian sống của bạn. Đội ngũ người giúp việc sẽ dọn dẹp và vệ sinh sàn nhà, lau kính, vệ sinh cửa, cửa sổ và màn cửa, vệ sinh lỗ thông hơi, gầm tủ và các góc khuất khác trong căn hộ. Ngoài ra, nội thất như ghế sofa, bàn, giường và tủ cũng sẽ được làm sạch kỹ lưỡng. Dịch vụ này đảm bảo không gian sống của bạn trở nên sạch sẽ và thoải mái để bạn có thể tận hưởng cuộc sống hàng ngày một cách thoải mái.</p>
-                                <h6 class="mb-2">Giá ước lượng giao động từ: 500.000 VND</h6>
-                                <div class="border-top mt-4 pt-4">
-                                    <div class="row g-4">
-                                        <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.1s">
-                                            <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                            <h6 class="mb-0">Luôn đúng giờ</h6>
-                                        </div>
-                                        <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
-                                            <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                            <h6 class="mb-0">24/7 giờ làm việc</h6>
-                                        </div>
-                                        <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
-                                            <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                            <h6 class="mb-0">Chuyên nghiệp</h6>
-                                        </div>
+                                    <h1 class="display-6 mb-0">${ServiceDetail.serviceName}</h1>
+                            </div>
+                            <p>${ServiceDetail.serviceDetail}</p>
+                            <h6 class="mb-2">Giá ước lượng chỉ từ <fmt:formatNumber value="${ServiceDetail.price}" pattern="###,### VND"/></h6>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="row g-4">
+                                    <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.1s">
+                                        <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
+                                        <h6 class="mb-0">Luôn đúng giờ</h6>
+                                    </div>
+                                    <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
+                                        <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
+                                        <h6 class="mb-0">24/7 giờ làm việc</h6>
+                                    </div>
+                                    <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
+                                        <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
+                                        <h6 class="mb-0">Chuyên nghiệp</h6>
                                     </div>
                                 </div>
                             </div>
@@ -108,90 +109,109 @@
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
-            <!-- Appointment Start -->
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="row g-5">
-                        <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-body text-uppercase mb-2">Booking service</h6>
-                                <h1 class="display-6 mb-0">V-HomeClean: Căn hộ của bạn luôn sạch sẽ, gọn gàng và thật thoải mái!</h1>
-                            </div>
-                            <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+        <!-- Appointment Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="border-start border-5 border-primary ps-4 mb-5">
+                            <h6 class="text-body text-uppercase mb-2">Booking service</h6>
+                            <h1 class="display-6 mb-0">V-HomeClean: Căn hộ của bạn luôn sạch sẽ, gọn gàng và thật thoải mái!</h1>
                         </div>
-                        <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">
-                                            <label for="gname">Họ và Tên</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">
-                                            <label for="gmail">Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-light border-0" id="cname" placeholder="Child Name">
-                                            <label for="cname">Số điện thoại</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-light border-0" id="cname" placeholder="Child Name">
-                                            <label for="cname">Số điện thoại</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <select class="form-select bg-light border-0" name="typeService" aria-label="Guardian Relationship">
-                                                <option value=""selected disabled>Chọn loại dịch vụ</option>
-                                                <option value="Dịch vụ 1 lần">Dịch vụ 1 lần</option>
-                                                <option value="Định kì theo tuần">Định kì theo tuần</option>
-                                                <option value="Định kì theo tháng">Định kì theo tháng</option>
-                                            </select>
-                                            <label for="relationship">Chọn loại dịch vụ</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <select class="form-select bg-light border-0" name="typeService" aria-label="Guardian Relationship">
-                                                <option value="Dịch vụ 1 lần" selected="">Dịch vụ 1 lần</option>
-                                                <option value="Định kì theo tuần">Định kì theo tuần</option>
-                                                <option value="Định kì theo tháng">Định kì theo tháng</option>
-                                            </select>
-                                            <label for="relationship">Dịch vụ Định kì</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Message</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
+                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    </div>
+                    <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input value="${acc.fullName}" type="text" class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">
+                                        <label for="gname">Họ và Tên</label>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input value="${acc.email}" type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">
+                                        <label for="gmail">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input value="${acc.phone}" type="text" class="form-control bg-light border-0" id="cname" placeholder="Child Name">
+                                        <label for="cname">Số điện thoại</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+
+                                    <div class="form-floating">
+                                        <select class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
+                                            <option value="">-- Chọn Vinhomes --</option>
+                                            <option value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - TP. Hồ Chí Minh</option>
+                                            <option value="Vinhomes Golden River - TP. Hồ Chí Minh">Vinhomes Golden River - TP. Hồ Chí Minh</option>
+                                            <option value="Vinhomes Metropolis - Hà Nội">Vinhomes Metropolis - Hà Nội</option>
+
+                                        </select>
+                                        <label for="relationship">Chọn loại dịch vụ</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <select class="form-select bg-light border-0" name="service" aria-label="Guardian Relationship">
+                                            <c:forEach items="${listS}" var="s">
+                                                <option value="${s.serviceID}">${s.serviceName}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <label for="relationship">Chọn loại dịch vụ</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <select class="form-select bg-light border-0" name="typeService" aria-label="Guardian Relationship">
+                                            <option value="Dịch vụ 1 lần" selected="">Dịch vụ 1 lần</option>
+                                            <option value="Định kì theo tuần">Định kì theo tuần</option>
+                                            <option value="Định kì theo tháng">Định kì theo tháng</option>
+                                        </select>
+                                        <label for="relationship">Dịch vụ Định kì</label>
+                                    </div>
+                                </div>
+                                <div class="form-floating">
+                                    <select class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
+                                        <option value="">-- Chọn Vinhomes --</option>
+                                        <option value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - TP. Hồ Chí Minh</option>
+                                        <option value="Vinhomes Golden River - TP. Hồ Chí Minh">Vinhomes Golden River - TP. Hồ Chí Minh</option>
+                                        <option value="Vinhomes Metropolis - Hà Nội">Vinhomes Metropolis - Hà Nội</option>
+
+                                    </select>
+                                    <label for="relationship">Chọn loại dịch vụ</label>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!-- Appointment End -->
+        </div>
+        <!-- Appointment End -->
 
 
-            <!-- Footer Start -->
+        <!-- Footer Start -->
         <jsp:include page="footer.jsp"></jsp:include>
         <!-- Footer End -->
 

@@ -81,16 +81,19 @@
                     <div class="row g-4 justify-content-center">
 
                     <c:forEach items="${listS}" var="o">
-                        <input value="${o.serviceID}" type="hidden">
+                        
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <form action="GetAppointmentController" method="post">
+                            <input name="serviceID" value="${o.serviceID}" type="hidden">
                             <div class="service-item bg-light overflow-hidden h-100">
                                 <img class="img-fluid" src="${o.image}" alt="">
                                 <div class="service-text position-relative text-center h-100 p-4">
                                     <h5 class="mb-3">${o.serviceName}</h5>
                                     <p>Giá ước lượng chỉ từ <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
-                                    <a class="small" href="">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
+                                    <button class="small"  type="submit">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></button>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </c:forEach>
 

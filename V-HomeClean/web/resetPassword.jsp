@@ -62,9 +62,13 @@
                                 </h1>
                             </div>
                             <div class="pt-3 pb-3">
+
+
+                                
                                 <form class="form-horizontal" action="MainController" method="POST">
                                     <div class="form-group row justify-content-center px-3">
-                                        <strong style="color: red">${ERROR}</strong>
+                                        <strong style="color: red" >${ERROR}</strong>
+
                                         <div class="col-9 px-0">
                                             <input type="password" name="password" placeholder="&#xf084; &nbsp; Mật Khẩu Mới"
                                                    class="form-control border-info placeicon" >

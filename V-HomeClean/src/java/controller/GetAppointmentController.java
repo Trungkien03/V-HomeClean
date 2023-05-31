@@ -5,11 +5,12 @@
  */
 package controller;
 
-import DAO.AccountDAO;
+import DAO.ServiceDAO;
 import DTO.AccountDTO;
-import DTO.UserError;
+import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,46 +22,33 @@ import javax.servlet.http.HttpSession;
  *
  * @author Asus
  */
-@WebServlet(name = "UpdatePasswordController", urlPatterns = {"/UpdatePasswordController"})
-public class UpdatePasswordController extends HttpServlet {
+@WebServlet(name = "GetAppointmentController", urlPatterns = {"/GetAppointmentController"})
+public class GetAppointmentController extends HttpServlet {
 
-    private static final String ERROR = "404.jsp";
-    private static final String SUCCESS = "login.jsp";
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String url = ERROR;
-        try {
-            String password = request.getParameter("password");
-            String confirm = request.getParameter("confirm");
-            AccountDAO dao = new AccountDAO();
-            HttpSession session = request.getSession();
-
-            AccountDTO account = (AccountDTO) session.getAttribute("Account");
-            if (password.equals(confirm)) {
-                account.setPassword(password);
-                session.setAttribute("Account", account);
-                boolean checkUpdate = dao.updateAccount(account);
-
-                if (checkUpdate) {
-                    request.setAttribute("message", "Cập nhật mật khẩu thành công!");
-                    url = SUCCESS;
-                } else {
-                    request.setAttribute("ERROR", "Cập nhật thất bại! ");
-
-                }
-            } else {
-                request.setAttribute("ERROR", " Mật khẩu và xác nhận mật khẩu "
-                        + "không trùng khớp! ");
-                request.getRequestDispatcher("resetPassword.jsp").forward(request, response);
-            }
-
-        } catch (Exception e) {
-            log("Error at UpdatePasswordController: " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        HttpSession session = request.getSession();
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        if (a == null) {
+            response.sendRedirect("login.jsp");
+        } else {
+            String serviceID = request.getParameter("serviceID");
+            ServiceDAO dao = new ServiceDAO();
+            List<ServiceDTO> list = dao.getAllService();
+            ServiceDTO s = dao.getServiceByID(serviceID);
+            request.setAttribute("listS", list);
+            request.setAttribute("ServiceDetail", s);
+            request.getRequestDispatcher("SeviceDetails-GetAppointment.jsp").forward(request, response);
         }
     }
 
