@@ -46,7 +46,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
     <a href="index.jsp" class="navbar-brand d-flex align-items-center">
-        <h1 class="m-0"><i class="fa fa-building text-primary me-3"></i>V-HomeClean</h1>
+        <h1 style="color: #f8e43c" class="m-0"><i class="fa fa-building text-primary me-3"></i>V-HomeClean</h1>
     </a>
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,7 @@
         <div class="navbar-nav ms-auto py-3 py-lg-0">
             <a href="index.jsp" class="nav-item nav-link active">Home</a>
             <a href="about.jsp" class="nav-item nav-link">About Us</a>
-            <a href="service.jsp" class="nav-item nav-link">Our Services</a>
+            <a href="ServicePageController" class="nav-item nav-link">Our Services</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                 <div class="dropdown-menu bg-light m-0">

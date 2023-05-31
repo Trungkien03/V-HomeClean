@@ -40,8 +40,8 @@ public class AccountDAO {
                 return new AccountDTO(rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
+                        rs.getNString(4),
+                        rs.getNString(5),
                         rs.getString(6),
                         rs.getInt(7),
                         rs.getString(8),
@@ -93,17 +93,17 @@ public class AccountDAO {
             ps.setString(1, sdt);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new AccountDTO(rs.getNString(1),
-                        rs.getNString(2),
-                        rs.getNString(3),
-                        rs.getNString(4),
-                        rs.getNString(5),
+                return new AccountDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
                         rs.getString(6),
                         rs.getInt(7),
-                        rs.getNString(8),
-                        rs.getNString(9),
-                        rs.getNString(10),
-                        rs.getNString(11),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
                         rs.getDouble(12));
             }
         } catch (Exception e) {
@@ -141,16 +141,16 @@ public class AccountDAO {
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setNString(1, email);
-            ps.setNString(2, password);
+            ps.setString(1, email);
+            ps.setString(2, password);
             ps.setNString(3, fullName);
             ps.setNString(4, address);
             ps.setString(5, phone);
             ps.setInt(6, roleID);
-            ps.setNString(7, gender);
-            ps.setNString(8, dateOfBirth);
-            ps.setNString(9, status);
-            ps.setNString(10, image);
+            ps.setString(7, gender);
+            ps.setString(8, dateOfBirth);
+            ps.setString(9, status);
+            ps.setString(10, image);
             ps.setDouble(11, salary);
             ps.executeUpdate();
         } catch (Exception e) {
@@ -170,15 +170,15 @@ public class AccountDAO {
                 while (rs.next()) {
                     return new AccountDTO(rs.getString(1),
                             rs.getString(2),
-                            rs.getNString(3),
+                            rs.getString(3),
                             rs.getNString(4),
                             rs.getNString(5),
                             rs.getString(6),
                             rs.getInt(7),
-                            rs.getNString(8),
-                            rs.getNString(9),
-                            rs.getNString(10),
-                            rs.getNString(11),
+                            rs.getString(8),
+                            rs.getString(9),
+                            rs.getString(10),
+                            rs.getString(11),
                             rs.getDouble(12));
                 }
             }
@@ -216,5 +216,11 @@ public class AccountDAO {
             }
         }
         return checkUpdate;
+    }
+    
+    public static void main(String[] args) {
+        AccountDAO dao = new AccountDAO();
+        AccountDTO a = dao.Login("trungkiennguyen0310@gmail.com", "1");
+        System.out.println(a.getStatus());
     }
 }
