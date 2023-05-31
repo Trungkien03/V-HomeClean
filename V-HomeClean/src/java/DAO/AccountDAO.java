@@ -40,8 +40,8 @@ public class AccountDAO {
                 return new AccountDTO(rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
+                        rs.getNString(4),
+                        rs.getNString(5),
                         rs.getString(6),
                         rs.getInt(7),
                         rs.getString(8),
@@ -143,8 +143,8 @@ public class AccountDAO {
             ps = conn.prepareStatement(query);
             ps.setString(1, email);
             ps.setString(2, password);
-            ps.setString(3, fullName);
-            ps.setString(4, address);
+            ps.setNString(3, fullName);
+            ps.setNString(4, address);
             ps.setString(5, phone);
             ps.setInt(6, roleID);
             ps.setString(7, gender);
@@ -172,8 +172,8 @@ public class AccountDAO {
                     return new AccountDTO(rs.getString(1),
                             rs.getString(2),
                             rs.getString(3),
-                            rs.getString(4),
-                            rs.getString(5),
+                            rs.getNString(4),
+                            rs.getNString(5),
                             rs.getString(6),
                             rs.getInt(7),
                             rs.getString(8),
@@ -219,5 +219,11 @@ public class AccountDAO {
             }
         }
         return checkUpdate;
+    }
+    
+    public static void main(String[] args) {
+        AccountDAO dao = new AccountDAO();
+        AccountDTO a = dao.Login("trungkiennguyen0310@gmail.com", "1");
+        System.out.println(a.getStatus());
     }
 }

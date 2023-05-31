@@ -164,6 +164,10 @@ h2 {
     border-right: 5px solid #182333;
 }
 
+.register-form{
+    padding-bottom: 50px;
+}
+
 .caption .forgot-pass{
     color: black;
 }

@@ -108,12 +108,14 @@ public final class resetPassword_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"pt-3 pb-3\">\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("                                \r\n");
       out.write("                                <form class=\"form-horizontal\" action=\"MainController\" method=\"POST\">\r\n");
       out.write("                                    <div class=\"form-group row justify-content-center px-3\">\r\n");
       out.write("                                        <strong style=\"color: red\" >");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ERROR}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</strong>\r\n");
+      out.write("\r\n");
       out.write("                                        <div class=\"col-9 px-0\">\r\n");
       out.write("                                            <input type=\"password\" name=\"password\" placeholder=\"&#xf084; &nbsp; Mật Khẩu Mới\"\r\n");
       out.write("                                                   class=\"form-control border-info placeicon\" >\r\n");
