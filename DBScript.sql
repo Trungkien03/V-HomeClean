@@ -220,6 +220,8 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0004', N'staff2@gmail.com', N'1', N'Johnson Micheal', N'Tân Bình', N'0897654321', 2, N'Male', CAST(N'2002-10-10' AS Date), 1, N'img/cleanner2.jpg', NULL)
 GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0005', N'staff3@gmail.com', N'1', N'Micheal Diana', N'Quận 9, Thành phố Hồ Chí Minh', N'0987675321', 2, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner3.jpg', NULL)
+GO
 GO
 INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (1, N'Dịch vụ vệ sinh')
 INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (2, N'Dịch vụ sửa chữa')

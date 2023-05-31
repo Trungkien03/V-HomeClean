@@ -53,7 +53,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-3 py-lg-0">
-            <a href="index.jsp" class="nav-item nav-link active">Home</a>
+            <a href="HomePageController" class="nav-item nav-link active">Home</a>
             <a href="about.jsp" class="nav-item nav-link">About Us</a>
             <a href="ServicePageController" class="nav-item nav-link">Our Services</a>
             <div class="nav-item dropdown">

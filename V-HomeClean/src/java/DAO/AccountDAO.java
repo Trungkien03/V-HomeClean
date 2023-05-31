@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -53,6 +55,34 @@ public class AccountDAO {
         } catch (Exception e) {
         }
         return null;
+    }
+    
+    //lấy accounts bằng roleID - created by Kien
+    public List<AccountDTO> GetAccountsByRoleID(int roleID){
+        List<AccountDTO> list = new ArrayList<>();
+        String query = "SELECT * FROM Account WHERE RoleID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, roleID);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new AccountDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getNString(4),
+                        rs.getNString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getDouble(12)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
 
     //dùng để check duplicate Email - created by Kien
@@ -220,7 +250,7 @@ public class AccountDAO {
     
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        AccountDTO a = dao.Login("trungkiennguyen0310@gmail.com", "1");
-        System.out.println(a.getStatus());
+        List<AccountDTO> list = dao.GetAccountsByRoleID(2);
+        System.out.println(list.size());
     }
 }

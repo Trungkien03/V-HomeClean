@@ -4,6 +4,8 @@
     Author     : Trung Kien
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -277,27 +279,20 @@
                     <div class="row g-4 justify-content-center">
             <!--Thẻ service ở đây-->
             
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <c:forEach items="${listS}" begin="1" end="6" var="o">
+                        <input value="${o.serviceID}" type="hidden">
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="img/serviceTongVeSinh.jpg" alt="">
+                                <img class="img-fluid" src="${o.image}" alt="">
                                 <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">Tổng Vệ Sinh</h5>
-                                    <p>Giá ước lượng giao động từ: 500.000 VND</p>
-                                    <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
+                                    <h5 class="mb-3">${o.serviceName}</h5>
+                                    <p>Giá ước lượng chỉ từ <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
+                                    <a class="small" href="">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
                         </div>
+                    </c:forEach>
             
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="img/serviceSuaChuaGiaDung.jpg" alt="">
-                                <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">Tổng Vệ Sinh</h5>
-                                    <p>Giá ước lượng giao động từ: 500.000 VND</p>
-                                    <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -376,33 +371,18 @@
                         </div>
                     </div>
                     <div class="row g-4">
+                    <c:forEach items="${ListA}" var="o">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="team-item position-relative">
-                                <img class="img-fluid" src="img/cleanner1.jpg" alt="">
+                                <img class="img-fluid" src="${o.image}" alt="">
                                 <div class="team-text bg-white p-4">
-                                    <h5>Full Name</h5>
-                                    <span>Engineer</span>
+                                    <h5>${o.fullName}</h5>
+                                    <span>Staff</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="team-item position-relative">
-                                <img class="img-fluid" src="img/cleanner2.jpg" alt="">
-                                <div class="team-text bg-white p-4">
-                                    <h5>Full Name</h5>
-                                    <span>Engineer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="team-item position-relative">
-                                <img class="img-fluid" src="img/team-3.jpg" alt="">
-                                <div class="team-text bg-white p-4">
-                                    <h5>Full Name</h5>
-                                    <span>Engineer</span>
-                                </div>
-                            </div>
-                        </div>
+                       </c:forEach>
+                        
                     </div>
                 </div>
             </div>

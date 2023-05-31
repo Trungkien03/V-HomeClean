@@ -6,12 +6,14 @@
 package controller;
 
 import DAO.AccountDAO;
+import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,43 +21,33 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Asus
+ * @author Trung Kien
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "HomePageController", urlPatterns = {"/HomePageController"})
+public class HomePageController extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        String checkboxValue = request.getParameter("remember-me");
-        AccountDAO ACdao = new AccountDAO();
-        AccountDTO a = ACdao.Login(email, pass);
-        
-        
-        if(a==null){
-            request.setAttribute("ERROR", "Incorrect UserID or Password");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            
-            
-            if (checkboxValue != null && checkboxValue.equalsIgnoreCase("on")) {
-                    Cookie u = new Cookie("User", email);
-                    Cookie p = new Cookie("Pass", pass);
-                    u.setMaxAge(60 * 2);
-                    p.setMaxAge(60 * 2);
-                    response.addCookie(u);
-                    response.addCookie(p);
-                }
-            
-            
-            
-            request.getRequestDispatcher("HomePageController").forward(request, response);
-        }
+        response.setContentType("text/html;charset=UTF-8");
+        int StaffID = 2;
+        HttpSession session = request.getSession();
+        ServiceDAO dao = new ServiceDAO();
+        AccountDAO aDao = new AccountDAO();
+        List<ServiceDTO> list = dao.getAllService();
+        List<AccountDTO> listAc = aDao.GetAccountsByRoleID(StaffID);
+        request.setAttribute("ListA", listAc);
+        request.setAttribute("listS", list);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
