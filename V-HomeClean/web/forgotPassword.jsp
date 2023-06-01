@@ -43,7 +43,6 @@
             .padding-bottom-3x {
                 padding-bottom: 72px !important
             }
-
             .card-footer {
                 background-color: #fff
             }

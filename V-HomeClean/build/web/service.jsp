@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +25,10 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"> 
+        <!--        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -38,102 +44,58 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     </head>
-
     <body>
         <jsp:include page="navigation.jsp"></jsp:include>
 
 
-        <!-- Page Header Start -->
-        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center py-5">
-                <h1 class="display-4 text-white animated slideInDown mb-4">Our Services</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb justify-content-center mb-0">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-primary active" aria-current="page">Our Services</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <!-- Page Header End -->
-
-
-        <!-- Service Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-5 align-items-end mb-5">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="border-start border-5 border-primary ps-4">
-                            <h6 class="text-body text-uppercase mb-2">Our Services</h6>
-                            <h1 class="display-6 mb-0">Construction And Renovation Solutions</h1>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
-                        <a class="btn btn-primary py-3 px-5" href="">More Services</a>
-                    </div>
+            <!-- Page Header Start -->
+            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="container text-center py-5">
+                    <h1 class="display-4 text-white animated slideInDown mb-4">Our Services</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb justify-content-center mb-0">
+                            <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Home</a></li>
+                            <li class="breadcrumb-item text-primary active" aria-current="page">Our Services</li>
+                        </ol>
+                    </nav>
                 </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item bg-light overflow-hidden h-100">
-                            <img class="img-fluid" src="img/service-1.jpg" alt="">
-                            <div class="service-text position-relative text-center h-100 p-4">
-                                <h5 class="mb-3">Building Construction</h5>
-                                <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
+            <!-- Page Header End -->
+
+
+            <!-- Service Start -->
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="row g-5 align-items-end mb-5">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="border-start border-5 border-primary ps-4">
+                                <h6 class="text-body text-uppercase mb-2">Our Services</h6>
+                                <h1 class="display-6 mb-0">Construction And Renovation Solutions</h1>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item bg-light overflow-hidden h-100">
-                            <img class="img-fluid" src="img/service-2.jpg" alt="">
-                            <div class="service-text position-relative text-center h-100 p-4">
-                                <h5 class="mb-3">Home Maintainance</h5>
-                                <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
+                        <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
+                            <a class="btn btn-primary py-3 px-5" href="">More Services</a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item bg-light overflow-hidden h-100">
-                            <img class="img-fluid" src="img/service-3.jpg" alt="">
-                            <div class="service-text position-relative text-center h-100 p-4">
-                                <h5 class="mb-3">Renovation and Painting</h5>
-                                <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
+                    <div class="row g-4 justify-content-center">
+
+                    <c:forEach items="${listS}" var="o">
+                        
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <input name="serviceID" value="${o.serviceID}" type="hidden">
+                            <div class="service-item bg-light overflow-hidden h-100">
+                                <img class="img-fluid" src="${o.image}" alt="">
+                                <div class="service-text position-relative text-center h-100 p-4">
+                                    <h5 class="mb-3">${o.serviceName}</h5>
+                                    <p>Giá ước lượng chỉ từ <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
+                                    <a class="small" href="GetAppointmentController?serviceID=${o.serviceID}">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item bg-light overflow-hidden h-100">
-                            <img class="img-fluid" src="img/service-4.jpg" alt="">
-                            <div class="service-text position-relative text-center h-100 p-4">
-                                <h5 class="mb-3">Wiring and installation</h5>
-                                <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item bg-light overflow-hidden h-100">
-                            <img class="img-fluid" src="img/service-5.jpg" alt="">
-                            <div class="service-text position-relative text-center h-100 p-4">
-                                <h5 class="mb-3">Tiling and Painting</h5>
-                                <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item bg-light overflow-hidden h-100">
-                            <img class="img-fluid" src="img/service-6.jpg" alt="">
-                            <div class="service-text position-relative text-center h-100 p-4">
-                                <h5 class="mb-3">Interior Design</h5>
-                                <p>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</p>
-                                <a class="small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
+
+
+
                 </div>
             </div>
         </div>

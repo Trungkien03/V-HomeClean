@@ -8,7 +8,9 @@
 <!DOCTYPE html>
 <div class="header">
     <div class="header-left">
-        <h3 class="logo"><i class="fa fa-building text-primary"></i>V-HomeClean</h3>
+        <a href="../HomePageController" class="navbar-brand d-flex align-items-center">
+            <h3 style="color: #f8e43c" class="logo"><i class="fa fa-building text-primary me-3"></i><strong>V-HomeClean</strong></h3>
+    </a>
     </div>
 
     <a href="javascript:void(0);" id="toggle_btn">

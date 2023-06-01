@@ -118,8 +118,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"d-lg-flex half\">\r\n");
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row align-items-center justify-content-center login-form\">\r\n");
-      out.write("                    <div  class=\"col-md-7 form\">\r\n");
-      out.write("                        <h3>Đăng nhập vào <strong style=\"color: #f8e43c\">V-HomeClean</strong></h3>\r\n");
+      out.write("                    <div  class=\"col-md-8 form\">\r\n");
+      out.write("                        <h3 class=\"m-2\">Đăng Nhập</h3>\r\n");
       out.write("                        <strong style=\"color: green\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${message}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</strong>\r\n");
@@ -161,7 +161,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row align-items-center justify-content-center\">\r\n");
       out.write("                    <div class=\"col-md-8 form\">\r\n");
-      out.write("                        <h3>Đăng ký vào <strong style=\"color: #f8e43c\">V-HomeClean</strong></h3>\r\n");
+      out.write("                        <h3 class=\"m-2\">Đăng Ký</h3>\r\n");
       out.write("                        <form action=\"MainController\" method=\"post\">\r\n");
       out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"username\">Tên Đăng Nhập</label>\r\n");

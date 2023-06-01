@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet {
             
             
             
-            response.sendRedirect("index.jsp");
+            request.getRequestDispatcher("HomePageController").forward(request, response);
         }
     }
 

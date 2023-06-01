@@ -53,7 +53,7 @@ public class UpdatePasswordController extends HttpServlet {
                 }
             } else {
                 request.setAttribute("ERROR", " Mật khẩu và xác nhận mật khẩu "
-                        + "không trùng khớp. ");
+                        + "không trùng khớp! ");
                 request.getRequestDispatcher("resetPassword.jsp").forward(request, response);
             }
 

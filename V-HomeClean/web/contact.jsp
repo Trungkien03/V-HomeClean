@@ -5,12 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
-        <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
         <title>Apex - Home Repair Website Template</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
@@ -22,7 +24,10 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"> 
+        <!--        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -43,56 +48,42 @@
         <jsp:include page="navigation.jsp"></jsp:include>
 
 
-        <!-- Page Header Start -->
-        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center py-5">
-                <h1 class="display-4 text-white animated slideInDown mb-4">Contact Us</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb justify-content-center mb-0">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-primary active" aria-current="page">Contact Us</li>
-                    </ol>
-                </nav>
+            <!-- Page Header Start -->
+            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="container text-center py-5">
+                    <h1 class="display-4 text-white animated slideInDown mb-4">Liên Hệ Với Chúng Tôi</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb justify-content-center mb-0">
+                            <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Trang Chủ</a></li>
+                            <li class="breadcrumb-item text-primary active" aria-current="page">Liên Hệ</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-        </div>
-        <!-- Page Header End -->
+            <!-- Page Header End -->
 
 
-        <!-- Contact Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-5">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="row g-4 align-items-center">
-                            <div class="col-sm-6">
-                                <img class="img-fluid" src="img/team-1.jpg" alt="">
-                            </div>
-                            <div class="col-sm-6">
-                                <h3 class="mb-0">Full Name</h3>
-                                <p>Head of Sales</p>
-                                <h6>Contact Details</h6>
-                                <p>Lorem ipsum dolor sit amet conse elit sed eiu smod lab ore.</p>
-                                <p class="mb-0">Call: +012 345 6789</p>
-                                <p class="mb-0">Email: sales@example.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="row g-4 align-items-center">
-                            <div class="col-sm-6">
-                                <img class="img-fluid" src="img/team-2.jpg" alt="">
-                            </div>
-                            <div class="col-sm-6">
-                                <h3 class="mb-0">Full Name</h3>
-                                <p>Head of Marketing</p>
-                                <h6>Contact Details</h6>
-                                <p>Lorem ipsum dolor sit amet conse elit sed eiu smod lab ore.</p>
-                                <p class="mb-0">Call: +012 345 6789</p>
-                                <p class="mb-0">Email: sales@example.com</p>
+            <!-- Contact Start -->
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="row g-5">
+                    <c:forEach items="${ListA}" var="o">
+                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="row g-4 align-items-center">
+                                <div class="col-sm-6">
+                                    <img class="img-fluid" src="${o.image}" alt="">
+                                </div>
+                                <div class="col-sm-6">
+                                    <h3 class="mb-0">${o.fullName}</h3>
+                                    <p>Head of Project</p>
+                                    <h6>Thông tin liên lạc:</h6>
+                                    <p>${o.address}</p>
+                                    <p class="mb-0">Call: ${o.phone}</p>
+                                    <p class="mb-0">Email: ${o.email}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </c:forEach>
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 450px;">
                         <div class="position-relative h-100">
                             <iframe class="position-relative w-100 h-100"
@@ -104,7 +95,7 @@
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="border-start border-5 border-primary ps-4 mb-5">
                             <h6 class="text-body text-uppercase mb-2">Contact Us</h6>
-                            <h1 class="display-6 mb-0">If You Have Any Query, Please Contact Us</h1>
+                            <h1 class="display-6 mb-0">Hãy điền thông tin để chúng tôi có thể hỗ trợ bạn nhé</h1>
                         </div>
                         <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
                         <form>
