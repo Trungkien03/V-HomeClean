@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Trang chủ</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -58,11 +58,11 @@
                                             <h5 class="text-light text-uppercase mb-3 animated slideInDown">Chào mừng đến với <span style="color: #f8e43c">V-HomeClean</span></h5>
                                             <h1 class="display-2 text-light mb-3 animated slideInDown">Công ty dịch vụ chuyên vệ sinh và sửa chữa khu dân cư VinHomes</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
-                                                <li class="breadcrumb-item fs-5 text-light">Commercial</li>
-                                                <li class="breadcrumb-item fs-5 text-light">Residential</li>
-                                                <li class="breadcrumb-item fs-5 text-light">Industrial</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Uy Tín</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Nhanh Chóng</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Tiện Lợi</li>
                                             </ol>
-                                            <a href="" class="btn btn-primary py-3 px-5">More Details</a>
+                                            <a href="" class="btn btn-primary py-3 px-5">Chi tiết về V-HomeClean</a>
                                         </div>
                                     </div>
                                 </div>
