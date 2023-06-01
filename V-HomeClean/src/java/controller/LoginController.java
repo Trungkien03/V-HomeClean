@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
         
         
         if(a==null){
-            request.setAttribute("ERROR", "Incorrect UserID or Password");
+            request.setAttribute("ERROR", "Tài khoản hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
             HttpSession session = request.getSession();

@@ -268,12 +268,12 @@
                     <div class="row g-5 align-items-end mb-5">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4">
-                                <h6 class="text-body text-uppercase mb-2">Our Services</h6>
-                                <h1 class="display-6 mb-0">Construction And Renovation Solutions</h1>
+                                <h6 class="text-body text-uppercase mb-2">Dịch vụ của chúng tôi</h6>
+                                <h1 class="display-6 mb-0">Nâng cấp không gian sống cho bạn! </h1>
                             </div>
                         </div>
                         <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
-                            <a class="btn btn-primary py-3 px-5" href="ServicePageController">More Services</a>
+                            <a class="btn btn-primary py-3 px-5" href="ServicePageController">Xem thêm dịch vụ</a>
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
@@ -362,12 +362,12 @@
                     <div class="row g-5 align-items-end mb-5">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4">
-                                <h6 class="text-body text-uppercase mb-2">Our Team</h6>
-                                <h1 class="display-6 mb-0">Our Expert Worker</h1>
+                                <h6 class="text-body text-uppercase mb-2">Đội ngũ của chúng tôi</h6>
+                                <h1 class="display-6 mb-0">Nhân viên tiêu biểu</h1>
                             </div>
                         </div>
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                            <p class="mb-0">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>
                         </div>
                     </div>
                     <div class="row g-4">
@@ -395,24 +395,24 @@
                     <div class="row g-5">
                         <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-body text-uppercase mb-2">Testimonial</h6>
-                                <h1 class="display-6 mb-0">What Our Happy Clients Say!</h1>
+                                <h6 class="text-body text-uppercase mb-2">Feedbacks</h6>
+                                <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeCLeam</h1>
                             </div>
-                            <p class="mb-4">Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                            <p class="mb-4">Đây là những phản hồi nổi bật của khách hàng đã trải nghiệm sử dụng dịch vụ của V-HomeClean. Giúp bạn có thể chọn sử dụng dịch vụ của chúng tôi một cách an tâm từ những trải nghiệm tốt, thực tế của những khách hàng trước.</p>
                             <div class="row g-4">
                                 <div class="col-sm-6">
                                     <div class="d-flex align-items-center mb-2">
                                         <i class="fa fa-users fa-2x text-primary flex-shrink-0"></i>
-                                        <h1 class="ms-3 mb-0">123+</h1>
+                                        <h1 class="ms-3 mb-0">777</h1>
                                     </div>
-                                    <h5 class="mb-0">Happy Clients</h5>
+                                    <h5 class="mb-0">Khách hàng thân thiết</h5>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="d-flex align-items-center mb-2">
                                         <i class="fa fa-check fa-2x text-primary flex-shrink-0"></i>
-                                        <h1 class="ms-3 mb-0">123+</h1>
+                                        <h1 class="ms-3 mb-0">789</h1>
                                     </div>
-                                    <h5 class="mb-0">Projects Done</h5>
+                                    <h5 class="mb-0">Dịch vụ đã cung cấp</h5>
                                 </div>
                             </div>
                         </div>
