@@ -77,8 +77,8 @@ public class ForgotPasswordController extends HttpServlet {
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(email));// change accordingly
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setSubject("Hello");
-                message.setText("your OTP is: " + otpvalue);
+                message.setSubject("Hệ Thống V-HomeClean gửi bạn mã OTP để thay đổi mật khẩu!", "utf-8");
+                message.setText("Mã OTP của bạn là: " + otpvalue, "utf-8");
                 // send message
                 Transport.send(message);
                 System.out.println("message sent successfully");
