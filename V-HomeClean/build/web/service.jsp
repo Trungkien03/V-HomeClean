@@ -82,7 +82,6 @@
                     <c:forEach items="${listS}" var="o">
                         
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <form action="GetAppointmentController" method="post">
                             <input name="serviceID" value="${o.serviceID}" type="hidden">
                             <div class="service-item bg-light overflow-hidden h-100">
                                 <img class="img-fluid" src="${o.image}" alt="">
@@ -92,7 +91,6 @@
                                     <a class="small" href="GetAppointmentController?serviceID=${o.serviceID}">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
-                            </form>
                         </div>
                     </c:forEach>
 
