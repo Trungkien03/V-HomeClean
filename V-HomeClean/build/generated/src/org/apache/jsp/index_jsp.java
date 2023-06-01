@@ -11,10 +11,26 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items_end_begin;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatNumber_value_pattern_nobody;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_forEach_var_items_end_begin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_c_forEach_var_items.release();
+    _jspx_tagPool_c_forEach_var_items_end_begin.release();
+    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -41,6 +57,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
@@ -312,33 +330,17 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                        <div class=\"col-lg-6 text-lg-end wow fadeInUp\" data-wow-delay=\"0.3s\">\r\n");
-      out.write("                            <a class=\"btn btn-primary py-3 px-5\" href=\"\">More Services</a>\r\n");
+      out.write("                            <a class=\"btn btn-primary py-3 px-5\" href=\"ServicePageController\">More Services</a>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"row g-4 justify-content-center\">\r\n");
       out.write("            <!--Thẻ service ở đây-->\r\n");
       out.write("            \r\n");
-      out.write("                        <div class=\"col-lg-4 col-md-6 wow fadeInUp\" data-wow-delay=\"0.1s\">\r\n");
-      out.write("                            <div class=\"service-item bg-light overflow-hidden h-100\">\r\n");
-      out.write("                                <img class=\"img-fluid\" src=\"img/serviceTongVeSinh.jpg\" alt=\"\">\r\n");
-      out.write("                                <div class=\"service-text position-relative text-center h-100 p-4\">\r\n");
-      out.write("                                    <h5 class=\"mb-3\">Tổng Vệ Sinh</h5>\r\n");
-      out.write("                                    <p>Giá ước lượng giao động từ: 500.000 VND</p>\r\n");
-      out.write("                                    <a class=\"small\" href=\"\">READ MORE<i class=\"fa fa-arrow-right ms-3\"></i></a>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("                            </div>\r\n");
-      out.write("                        </div>\r\n");
+      out.write("                    ");
+      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write("            \r\n");
-      out.write("                        <div class=\"col-lg-4 col-md-6 wow fadeInUp\" data-wow-delay=\"0.1s\">\r\n");
-      out.write("                            <div class=\"service-item bg-light overflow-hidden h-100\">\r\n");
-      out.write("                                <img class=\"img-fluid\" src=\"img/serviceSuaChuaGiaDung.jpg\" alt=\"\">\r\n");
-      out.write("                                <div class=\"service-text position-relative text-center h-100 p-4\">\r\n");
-      out.write("                                    <h5 class=\"mb-3\">Tổng Vệ Sinh</h5>\r\n");
-      out.write("                                    <p>Giá ước lượng giao động từ: 500.000 VND</p>\r\n");
-      out.write("                                    <a class=\"small\" href=\"\">READ MORE<i class=\"fa fa-arrow-right ms-3\"></i></a>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("                            </div>\r\n");
-      out.write("                        </div>\r\n");
       out.write("\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
@@ -417,33 +419,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"row g-4\">\r\n");
-      out.write("                        <div class=\"col-lg-4 col-md-6 wow fadeInUp\" data-wow-delay=\"0.1s\">\r\n");
-      out.write("                            <div class=\"team-item position-relative\">\r\n");
-      out.write("                                <img class=\"img-fluid\" src=\"img/cleanner1.jpg\" alt=\"\">\r\n");
-      out.write("                                <div class=\"team-text bg-white p-4\">\r\n");
-      out.write("                                    <h5>Full Name</h5>\r\n");
-      out.write("                                    <span>Engineer</span>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("                            </div>\r\n");
-      out.write("                        </div>\r\n");
-      out.write("                        <div class=\"col-lg-4 col-md-6 wow fadeInUp\" data-wow-delay=\"0.3s\">\r\n");
-      out.write("                            <div class=\"team-item position-relative\">\r\n");
-      out.write("                                <img class=\"img-fluid\" src=\"img/cleanner2.jpg\" alt=\"\">\r\n");
-      out.write("                                <div class=\"team-text bg-white p-4\">\r\n");
-      out.write("                                    <h5>Full Name</h5>\r\n");
-      out.write("                                    <span>Engineer</span>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("                            </div>\r\n");
-      out.write("                        </div>\r\n");
-      out.write("                        <div class=\"col-lg-4 col-md-6 wow fadeInUp\" data-wow-delay=\"0.5s\">\r\n");
-      out.write("                            <div class=\"team-item position-relative\">\r\n");
-      out.write("                                <img class=\"img-fluid\" src=\"img/team-3.jpg\" alt=\"\">\r\n");
-      out.write("                                <div class=\"team-text bg-white p-4\">\r\n");
-      out.write("                                    <h5>Full Name</h5>\r\n");
-      out.write("                                    <span>Engineer</span>\r\n");
-      out.write("                                </div>\r\n");
-      out.write("                            </div>\r\n");
-      out.write("                        </div>\r\n");
+      out.write("                    ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("                        \r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
@@ -536,5 +516,133 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items_end_begin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_0.setParent(null);
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${listS}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setBegin(1);
+    _jspx_th_c_forEach_0.setEnd(6);
+    _jspx_th_c_forEach_0.setVar("o");
+    int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
+      if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                        <input value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.serviceID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" type=\"hidden\">\r\n");
+          out.write("                        <div class=\"col-lg-4 col-md-6 wow fadeInUp\" data-wow-delay=\"0.5s\">\r\n");
+          out.write("                            <div class=\"service-item bg-light overflow-hidden h-100\">\r\n");
+          out.write("                                <img class=\"img-fluid\" src=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" alt=\"\">\r\n");
+          out.write("                                <div class=\"service-text position-relative text-center h-100 p-4\">\r\n");
+          out.write("                                    <h5 class=\"mb-3\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.serviceName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</h5>\r\n");
+          out.write("                                    <p>Giá ước lượng chỉ từ ");
+          if (_jspx_meth_fmt_formatNumber_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("</p>\r\n");
+          out.write("                                    <a class=\"small\" href=\"GetAppointmentController?serviceID=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.serviceID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">Đặt Lịch Ngay<i class=\"fa fa-arrow-right ms-3\"></i></a>\r\n");
+          out.write("                                </div>\r\n");
+          out.write("                            </div>\r\n");
+          out.write("                        </div>\r\n");
+          out.write("                    ");
+          int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_0.doFinally();
+      _jspx_tagPool_c_forEach_var_items_end_begin.reuse(_jspx_th_c_forEach_0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatNumber_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatNumber
+    org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag _jspx_th_fmt_formatNumber_0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag) _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag.class);
+    _jspx_th_fmt_formatNumber_0.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatNumber_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_fmt_formatNumber_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.price}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_fmt_formatNumber_0.setPattern("###,### VND");
+    int _jspx_eval_fmt_formatNumber_0 = _jspx_th_fmt_formatNumber_0.doStartTag();
+    if (_jspx_th_fmt_formatNumber_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_0);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ListA}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setVar("o");
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("                        <div class=\"col-lg-4 col-md-6 wow fadeInUp\" data-wow-delay=\"0.1s\">\r\n");
+          out.write("                            <div class=\"team-item position-relative\">\r\n");
+          out.write("                                <img class=\"img-fluid\" src=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" alt=\"\">\r\n");
+          out.write("                                <div class=\"team-text bg-white p-4\">\r\n");
+          out.write("                                    <h5>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${o.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</h5>\r\n");
+          out.write("                                    <span>Staff</span>\r\n");
+          out.write("                                </div>\r\n");
+          out.write("                            </div>\r\n");
+          out.write("                        </div>\r\n");
+          out.write("                       ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
+    return false;
   }
 }

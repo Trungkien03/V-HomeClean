@@ -273,7 +273,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
-                            <a class="btn btn-primary py-3 px-5" href="">More Services</a>
+                            <a class="btn btn-primary py-3 px-5" href="ServicePageController">More Services</a>
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
@@ -287,7 +287,7 @@
                                 <div class="service-text position-relative text-center h-100 p-4">
                                     <h5 class="mb-3">${o.serviceName}</h5>
                                     <p>Giá ước lượng chỉ từ <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
-                                    <a class="small" href="">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
+                                    <a class="small" href="GetAppointmentController?serviceID=${o.serviceID}">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
                         </div>

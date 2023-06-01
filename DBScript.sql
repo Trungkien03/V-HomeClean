@@ -212,9 +212,9 @@ INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (2, N'STAFF')
 INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (3, N'MANAGER')
 INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (4, N'CUSTOMER')
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0001', N'hieublockchain2002@gmail.com', N'1', N'Đoàn Thanh Hiếu', N'Bình Dương', N'0987654321', 1, N'Male', CAST(N'2000-02-12' AS Date), 1, N'/img/user.jpg', 6000888.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0001', N'hieublockchain2002@gmail.com', N'1', N'Đoàn Thanh Hiếu', N'Bình Dương', N'0987654321', 1, N'Male', CAST(N'2000-02-12' AS Date), 1, N'img/adminHieu.jpg', 6000888.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'1', N'Nguyễn Trung Kiên', N'32/3, Gia Tan 1, Thong Nhat, Dong Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'/img/user.jpg', 0.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'1', N'Nguyễn Trung Kiên', N'32/3, Gia Tân 1, Thống Nhất, Đồng Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 0.0000)
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0003', N'staff1@gmail.com', N'1', N'Adela JohnSon', N'Lê Văn Việt', N'0987654321', 2, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner1.jpg', NULL)
 GO

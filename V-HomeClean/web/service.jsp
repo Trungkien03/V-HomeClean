@@ -54,8 +54,7 @@
                     <h1 class="display-4 text-white animated slideInDown mb-4">Our Services</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb justify-content-center mb-0">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Home</a></li>
                             <li class="breadcrumb-item text-primary active" aria-current="page">Our Services</li>
                         </ol>
                     </nav>
@@ -90,7 +89,7 @@
                                 <div class="service-text position-relative text-center h-100 p-4">
                                     <h5 class="mb-3">${o.serviceName}</h5>
                                     <p>Giá ước lượng chỉ từ <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
-                                    <button class="small"  type="submit">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></button>
+                                    <a class="small" href="GetAppointmentController?serviceID=${o.serviceID}">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
                                 </div>
                             </div>
                             </form>

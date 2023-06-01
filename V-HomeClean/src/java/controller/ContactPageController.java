@@ -6,9 +6,7 @@
 package controller;
 
 import DAO.AccountDAO;
-import DAO.ServiceDAO;
 import DTO.AccountDTO;
-import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,14 +15,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Trung Kien
  */
-@WebServlet(name = "HomePageController", urlPatterns = {"/HomePageController"})
-public class HomePageController extends HttpServlet {
+@WebServlet(name = "ContactPageController", urlPatterns = {"/ContactPageController"})
+public class ContactPageController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,15 +36,11 @@ public class HomePageController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int StaffID = 2;
-        HttpSession session = request.getSession();
-        ServiceDAO dao = new ServiceDAO();
-        AccountDAO aDao = new AccountDAO();
-        List<ServiceDTO> list = dao.getAllService();
-        List<AccountDTO> listAc = aDao.GetAccountsByRoleID(StaffID);
+        int adminRole = 1;
+        AccountDAO dao = new AccountDAO();
+        List<AccountDTO> listAc = dao.GetAccountsByRoleID(adminRole);
         request.setAttribute("ListA", listAc);
-        request.setAttribute("listS", list);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("contact.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

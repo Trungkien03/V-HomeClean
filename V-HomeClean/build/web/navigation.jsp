@@ -45,7 +45,7 @@
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-    <a href="index.jsp" class="navbar-brand d-flex align-items-center">
+    <a href="HomePageController" class="navbar-brand d-flex align-items-center">
         <h1 style="color: #f8e43c" class="m-0"><i class="fa fa-building text-primary me-3"></i>V-HomeClean</h1>
     </a>
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -53,11 +53,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-3 py-lg-0">
-            <a href="HomePageController" class="nav-item nav-link active">Home</a>
-            <a href="about.jsp" class="nav-item nav-link">About Us</a>
-            <a href="ServicePageController" class="nav-item nav-link">Our Services</a>
+            <a href="HomePageController" class="nav-item nav-link active"><strong>Trang Chủ</strong></a>
+            <a href="about.jsp" class="nav-item nav-link"><strong>Giới Thiệu</strong></a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <a href="ServicePageController" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Dịch Vụ</strong></a>
+                <div class="dropdown-menu bg-light m-0">
+                    <a href="ServicePageController" class="dropdown-item">Tổng hợp dịch vụ</a>
+                    <a href="#" class="dropdown-item">Dịch Vụ Sửa Chữa</a>
+                    <a href="#" class="dropdown-item">Dịch Vụ Dọn Dẹp</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Blog</strong></a>
                 <div class="dropdown-menu bg-light m-0">
                     <a href="feature.jsp" class="dropdown-item">Features</a>
                     <a href="appointment.jsp" class="dropdown-item">Appointment</a>
@@ -66,14 +73,14 @@
                     <a href="404.jsp" class="dropdown-item">404 Page</a>
                 </div>
             </div>
-            <a href="contact.jsp" class="nav-item nav-link">Contact Us</a>
+            <a href="ContactPageController" class="nav-item nav-link"><strong>Liên Hệ</strong></a>
             
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <c:if test="${sessionScope.acc == null}">Tài Khoản</c:if>
+                    <c:if test="${sessionScope.acc == null}"><strong>Tài Khoản</strong></c:if>
                     <c:if test="${sessionScope.acc != null}">
                         <img></img>
-                        <img src="img/user.jpg" style="width: 20px; height: 20px;" >
+                        <img src="${sessionScope.acc.image}" style="width: 20px; height: 20px;" >
                         ${sessionScope.acc.fullName}
                     </c:if>
                     </a>

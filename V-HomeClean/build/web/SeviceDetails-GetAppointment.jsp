@@ -84,7 +84,7 @@
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="h-100">
                                 <div class="border-start border-5 border-primary ps-4 mb-5">
-                                    <h6 class="text-body text-uppercase mb-2">Dịch Vụ Dọn Dẹp</h6>
+                                    <h6 class="text-body text-uppercase mb-2">${ServiceDetail.cateServiceName}</h6>
                                     <h1 class="display-6 mb-0">${ServiceDetail.serviceName}</h1>
                             </div>
                             <p>${ServiceDetail.serviceDetail}</p>
@@ -163,7 +163,7 @@
                                     <div class="form-floating">
                                         <select class="form-select bg-light border-0" name="service" aria-label="Guardian Relationship">
                                             <c:forEach items="${listS}" var="s">
-                                                <option value="${s.serviceID}">${s.serviceName}</option>
+                                                <option value="${s.serviceID}" <c:if test="${s.serviceID eq ServiceDetail.serviceID}">selected</c:if>>${s.serviceName}</option>
                                             </c:forEach>
                                         </select>
                                         <label for="relationship">Chọn loại dịch vụ</label>
