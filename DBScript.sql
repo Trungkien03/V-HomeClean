@@ -41,29 +41,6 @@ CREATE TABLE Service
 );
 GO
 
--- Tạo bảng BlogCate
-CREATE TABLE BlogCate
-(
-  BlogCateID INT NOT NULL PRIMARY KEY,
-  CateName NVARCHAR(255) NOT NULL
-);
-GO
-
--- Tạo bảng Blog
-CREATE TABLE Blog
-(
-  BlogID NVARCHAR(20) NOT NULL,
-  CommentID INT NOT NULL,
-  Content NVARCHAR(MAX) NOT NULL,
-  Author NVARCHAR(100) NOT NULL,
-  Title NVARCHAR(255) NOT NULL,
-  BlogCateID INT NOT NULL,
-  Time DATETIME NOT NULL,
-  Image NVARCHAR(255) NOT NULL,
-  PRIMARY KEY (BlogID),
-  FOREIGN KEY (BlogCateID) REFERENCES BlogCate(BlogCateID)
-);
-GO
 
 -- Tạo bảng RoleAccount
 CREATE TABLE RoleAccount
@@ -91,6 +68,31 @@ CREATE TABLE Account
   Salary MONEY,
   PRIMARY KEY (AccountID),
   FOREIGN KEY (RoleID) REFERENCES RoleAccount(RoleID)
+);
+GO
+
+-- Tạo bảng BlogCate
+CREATE TABLE BlogCate
+(
+  BlogCateID INT NOT NULL PRIMARY KEY,
+  CateName NVARCHAR(255) NOT NULL
+);
+GO
+
+-- Tạo bảng Blog
+CREATE TABLE Blog
+(
+  BlogID NVARCHAR(20) NOT NULL,
+  CommentID INT NOT NULL,
+  Title NVARCHAR(255) NOT NULL,
+  Content NVARCHAR(MAX) NOT NULL,
+  AccountID NVARCHAR(20) NOT NULL,
+  BlogCateID INT NOT NULL,
+  Time DATETIME NOT NULL,
+  Image NVARCHAR(255) NOT NULL,
+  PRIMARY KEY (BlogID),
+  FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
+  FOREIGN KEY (BlogCateID) REFERENCES BlogCate(BlogCateID)
 );
 GO
 
