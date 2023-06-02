@@ -1,0 +1,12 @@
+SMAP
+accounts_jsp.java
+JSP
+*S JSP
+*F
++ 0 accounts.jsp
+dashboard/accounts.jsp
+*L
+5,26:44
+31,2:70,3
+33,321:76
+*E

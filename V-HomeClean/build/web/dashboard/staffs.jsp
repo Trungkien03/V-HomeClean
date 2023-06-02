@@ -45,12 +45,12 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h3 class="page-title">Users Management</h3>
+                                <h3 class="page-title">Staffs Management</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="index.jsp">Dashboard</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Users Management</li>
+                                    <li class="breadcrumb-item active">Staffs Management</li>
                                 </ul>
                             </div>
                         </div>
@@ -69,58 +69,25 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <table class="datatable table table-center table-stripped">
+                                        <table class="datatable table table-stripped">
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Position</th>
                                                     <th>Office</th>
                                                     <th>Age</th>
-                                                    <th>Information</th>
+                                                    <th>Start date</th>
                                                     <th>Salary</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a
-                                                                href="general.jsp"
-                                                                class="avatar avatar-sm me-2"
-                                                                ><img
-                                                                    class="avatar-img rounded-circle"
-                                                                    src="assets/img/profiles/avatar-16.jpg"
-                                                                    alt="User Image"
-                                                                    /></a>
-                                                            <a href="general.jsp"
-                                                               >John Lee <span>#0001</span></a
-                                                            >
-                                                        </h2>
-                                                    </td>
+                                                    <td>Tiger Nixon</td>
                                                     <td>System Architect</td>
                                                     <td>Edinburgh</td>
                                                     <td>61</td>
-                                                    <td> 
-                                                        <div class="actions">
-                                                            <a
-                                                                href="#"
-                                                                class="btn btn-sm bg-success-light me-2"
-                                                                title="View Document"
-                                                                >
-                                                                <i class="fe fe-eye"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="actions">
-                                                            <a href="#" class="btn btn-sm bg-success-light me-2">
-                                                                <i class="fe fe-pencil"></i>
-                                                            </a>
-                                                            <a href="#" class="btn btn-sm bg-danger-light">
-                                                                <i class="fe fe-trash"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
+                                                    <td>2011/04/25</td>
+                                                    <td>$320,800</td>
                                                 </tr>
                                             </tbody>
                                         </table>

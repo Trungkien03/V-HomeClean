@@ -74,7 +74,7 @@
                 </div>
             </div>
             <a href="ContactPageController" class="nav-item nav-link"><strong>Liên Hệ</strong></a>
-            
+
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <c:if test="${sessionScope.acc == null}"><strong>Tài Khoản</strong></c:if>
@@ -83,19 +83,23 @@
                         <img src="${sessionScope.acc.image}" style="width: 20px; height: 20px;" >
                         ${sessionScope.acc.fullName}
                     </c:if>
-                    </a>
-                    <div class="dropdown-menu bg-light m-0">
+                </a>
+                <div class="dropdown-menu bg-light m-0">
                     <c:if test="${sessionScope.acc == null}">
                         <a href="login.jsp" class="dropdown-item">Đăng Nhập</a>
                     </c:if>
+                    <c:if test="${sessionScope.acc == null}">
+                        <a href="login.jsp" class="dropdown-item">Đăng Ký</a>
+                    </c:if>
                     <c:if test="${sessionScope.acc != null}">
-                        <a href="404.jsp" class="dropdown-item">Tải Khoản của bạn</a>
+                        <a href="userProfile.jsp" class="dropdown-item">Thông Tin Tài Khoản</a>
                     </c:if>    
                     <c:if test="${sessionScope.acc != null}">
                         <a href="LogoutController" class="dropdown-item">Đăng xuất</a>
                     </c:if>
-                        
+                    <c:if test="${sessionScope.acc != null}">
                         <a href="dashboard/index.jsp" class="dropdown-item">Dashboard</a>
+                    </c:if>
                 </div>
             </div>
 
