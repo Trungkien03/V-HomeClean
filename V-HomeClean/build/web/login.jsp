@@ -68,7 +68,7 @@
                 request.setAttribute("USER_ERROR", userError);
             }
         %>
-
+        <strong>
         <div class="d-lg-flex half">
             <div class="container">
                 <div class="row align-items-center justify-content-center login-form">
@@ -181,7 +181,7 @@
                 </div>
             </div>
         </div>
-
+</strong>
 
         <!-- Footer Start -->
         <jsp:include page="footer.jsp"></jsp:include>
