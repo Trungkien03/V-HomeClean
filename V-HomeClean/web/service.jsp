@@ -14,7 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Dịch Vụ</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -51,11 +51,11 @@
             <!-- Page Header Start -->
             <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container text-center py-5">
-                    <h1 class="display-4 text-white animated slideInDown mb-4">Our Services</h1>
+                    <h1 class="display-4 text-white animated slideInDown mb-4">Dịch Vụ Của Chúng Tôi</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb justify-content-center mb-0">
-                            <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Home</a></li>
-                            <li class="breadcrumb-item text-primary active" aria-current="page">Our Services</li>
+                            <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Trang chủ</a></li>
+                            <li class="breadcrumb-item text-primary active" aria-current="page">Dịch Vụ Của Chúng Tôi</li>
                         </ol>
                     </nav>
                 </div>
@@ -69,12 +69,12 @@
                     <div class="row g-5 align-items-end mb-5">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4">
-                                <h6 class="text-body text-uppercase mb-2">Our Services</h6>
-                                <h1 class="display-6 mb-0">Construction And Renovation Solutions</h1>
+                                <h6 class="text-body text-uppercase mb-2">Dịch Vụ Của Chúng Tôi</h6>
+                                <h1 class="display-6 mb-0">Nâng cấp không gian sống của bạn!</h1>
                             </div>
                         </div>
                         <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
-                            <a class="btn btn-primary py-3 px-5" href="">More Services</a>
+                            <a class="btn btn-primary py-3 px-5" href="">Xem Thêm Dịch Vụ</a>
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">

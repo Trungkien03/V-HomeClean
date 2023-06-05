@@ -101,8 +101,7 @@
                                 <div class="pt-2">
                                     <div class="row justify-content-center">
                                         <h5>
-                                            Bạn đã có tài khoản?<span><a href="login.jsp"
-                                                                         class="text-danger"> Đăng ký ngay!</a></span>
+                                            <span><a href="login.jsp" style="text-align: center"> Quay về trang đăng nhập</a></span>
                                         </h5>
 
 
