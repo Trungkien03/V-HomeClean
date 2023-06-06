@@ -97,17 +97,27 @@ CREATE TABLE Blog
 );
 GO
 
+CREATE TABLE BlogRating
+(
+	AccountID NVARCHAR(20) NOT NULL,
+	BlogID NVARCHAR(20) NOT NULL,
+	Rating INT NOT NULL,
+	FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
+	FOREIGN KEY (BlogID) REFERENCES Blog(BlogID)
+)
+
+GO
+
 -- Tạo bảng Booking
 CREATE TABLE Booking
 (
   BookingID INT IDENTITY(1,1) NOT NULL,
   AccountID NVARCHAR(20) NOT NULL,
-  BookingStatus BIT NOT NULL,
+  BookingStatus NVARCHAR(100) NOT NULL,
   StaffID NVARCHAR(20),
   ServiceID NVARCHAR(20) NOT NULL,
   PRIMARY KEY (BookingID),
   FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
-  FOREIGN KEY (StaffID) REFERENCES Account(AccountID),
   FOREIGN KEY (ServiceID) REFERENCES Service(ServiceID)
 );
 GO
@@ -118,9 +128,10 @@ CREATE TABLE BookingDetail
   BookingDetail_ID INT IDENTITY(1,1) NOT NULL, 
   BookingID INT NOT NULL,
   TotalPrice MONEY,
-  BookingDate DATE NOT NULL,
+  BookingDate DATETIME NOT NULL,
   BookingAddress NVARCHAR(255) NOT NULL,
   TypeOfService NVARCHAR(100) NOT NULL,
+  Message NVARCHAR(MAX),
   PRIMARY KEY (BookingDetail_ID),
   FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 );

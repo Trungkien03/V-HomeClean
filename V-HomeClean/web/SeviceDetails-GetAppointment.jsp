@@ -72,20 +72,20 @@
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px;">
                                 <img class="position-absolute w-100 h-100" src="${ServiceDetail.image}" alt="" style="object-fit: cover;">
-                                <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
-                                    <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-                                        <h1 class="text-white">25</h1>
-                                        <h2 class="text-white">Years</h2>
-                                        <h5 class="text-white mb-0">Experience</h5>
-                                    </div>
+                            <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
+                                <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
+                                    <h1 class="text-white">25</h1>
+                                    <h2 class="text-white">Years</h2>
+                                    <h5 class="text-white mb-0">Experience</h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="h-100">
-                                <div class="border-start border-5 border-primary ps-4 mb-5">
-                                    <h6 class="text-body text-uppercase mb-2">${ServiceDetail.cateServiceName}</h6>
-                                    <h1 class="display-6 mb-0">${ServiceDetail.serviceName}</h1>
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="h-100">
+                            <div class="border-start border-5 border-primary ps-4 mb-5">
+                                <h6 class="text-body text-uppercase mb-2">${ServiceDetail.cateServiceName}</h6>
+                                <h1 class="display-6 mb-0">${ServiceDetail.serviceName}</h1>
                             </div>
                             <p>${ServiceDetail.serviceDetail}</p>
                             <h6 class="mb-2">Giá ước lượng chỉ từ <fmt:formatNumber value="${ServiceDetail.price}" pattern="###,### VND"/></h6>
@@ -125,28 +125,45 @@
                         <p class="mb-0">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>
                     </div>
                     <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <form>
+                        
+                        
+                        <form action="MainController" method="post">
+                            <input type="hidden" value="${sessionScope.acc.accountID}" name="accountID">
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input value="${acc.fullName}" type="text" class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">
-                                        <label for="gname">Họ và Tên</label>
+                                        <input value="${acc.fullName}" type="text" class="form-control bg-light border-0" id="gname" name="fullName" placeholder="Gurdian Name">
+                                        <label for="fulName">Họ và Tên</label>
                                     </div>
+                                        <strong style="color: #e72734;" >${fullNameError}</strong>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input value="${acc.email}" type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">
+                                        <input value="${acc.email}" type="email" class="form-control bg-light border-0" id="gmail" name="email" placeholder="Gurdian Email">
                                         <label for="gmail">Email</label>
                                     </div>
+                                        <strong style="color: #e72734;" >${emailError}</strong>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input value="${acc.phone}" type="text" class="form-control bg-light border-0" id="cname" placeholder="Child Name">
-                                        <label for="cname">Số điện thoại</label>
+                                        <input value="${acc.phone}" type="text" class="form-control bg-light border-0" id="cname" name="phone" placeholder="Child Name">
+                                        <label for="phone">Số điện thoại</label>
+                                    </div>
+                                        <strong style="color: #e72734;" >${phoneError}</strong>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <select class="form-select bg-light border-0" name="serviceID" aria-label="Guardian Relationship">
+                                            <c:forEach items="${listS}" var="s">
+                                                <option value="${s.serviceID}" <c:if test="${s.serviceID eq ServiceDetail.serviceID}">selected</c:if>>${s.serviceName}</option>
+                                            </c:forEach>
+                                        </select>
+                                        <label for="relationship">Chọn loại dịch vụ</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-
                                     <div class="form-floating">
                                         <select class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
                                             <option value="">-- Chọn Vinhomes --</option>
@@ -155,19 +172,9 @@
                                             <option value="Vinhomes Metropolis - Hà Nội">Vinhomes Metropolis - Hà Nội</option>
 
                                         </select>
-                                        <label for="relationship">Chọn loại dịch vụ</label>
+                                        <label for="relationship">Chọn khu vực VinHomes của bạn</label>
                                     </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <select class="form-select bg-light border-0" name="service" aria-label="Guardian Relationship">
-                                            <c:forEach items="${listS}" var="s">
-                                                <option value="${s.serviceID}" <c:if test="${s.serviceID eq ServiceDetail.serviceID}">selected</c:if>>${s.serviceName}</option>
-                                            </c:forEach>
-                                        </select>
-                                        <label for="relationship">Chọn loại dịch vụ</label>
-                                    </div>
+                                    <strong style="color: #e72734;" >${areaError}</strong>
                                 </div>
 
 
@@ -179,31 +186,45 @@
                                             <option value="Định kì theo tháng">Định kì theo tháng</option>
                                         </select>
                                         <label for="relationship">Dịch vụ Định kì</label>
+                                        <strong style="color: #e72734;" >${typeOfServiceError}</strong>
                                     </div>
                                 </div>
-                                <div class="form-floating">
-                                    <select class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
-                                        <option value="">-- Chọn Vinhomes --</option>
-                                        <option value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - TP. Hồ Chí Minh</option>
-                                        <option value="Vinhomes Golden River - TP. Hồ Chí Minh">Vinhomes Golden River - TP. Hồ Chí Minh</option>
-                                        <option value="Vinhomes Metropolis - Hà Nội">Vinhomes Metropolis - Hà Nội</option>
-
-                                    </select>
-                                    <label for="relationship">Chọn loại dịch vụ</label>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control bg-light border-0" name="date">
+                                        <label for="date">Ngày tháng năm:</label>
+                                    </div>
+                                    <strong style="color: #e72734;" >${dateError}</strong>
                                 </div>
 
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="time" class="form-control bg-light border-0" name="time">
+                                        <label for="time">Giờ cụ thể:</label>
+                                    </div>
+                                    <strong style="color: #e72734;" >${timeError}</strong>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control bg-light border-0" name="vinHomesID" placeholder="Gurdian Email">
+                                        <label for="gmail">Mã Phòng:</label>
+                                    </div>
+                                    <strong style="color: #e72734;" >${vinHomeIDError}</strong>
+                                </div>
 
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                        <label for="message">Message</label>
+                                        <textarea class="form-control bg-light border-0" placeholder="Leave a message here" name="message" style="height: 100px"></textarea>
+                                        <label for="message">Ghi Chú:</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit" name="action" value="Booking">Booking Service</button>
                                 </div>
                             </div>
                         </form>
+                                        
+                                        
                     </div>
                 </div>
             </div>

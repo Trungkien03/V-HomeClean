@@ -58,7 +58,7 @@
             <div class="nav-item dropdown">
                 <a href="ServicePageController" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Dịch Vụ</strong></a>
                 <div class="dropdown-menu bg-light m-0">
-                    <a href="ServicePageController" class="dropdown-item">Tổng hợp dịch vụ</a>
+                    <a href="ServicePageController" class="dropdown-item">Tổng Hợp Dịch Vụ</a>
                     <a href="#" class="dropdown-item">Dịch Vụ Sửa Chữa</a>
                     <a href="#" class="dropdown-item">Dịch Vụ Dọn Dẹp</a>
                 </div>

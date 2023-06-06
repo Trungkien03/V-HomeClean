@@ -31,6 +31,11 @@ public class MainController extends HttpServlet {
     private static final String VALID_OTP_CONTROLLER = "ValidOtpController";
     private static final String UPDATE_PASSWORD = "Cập nhật mật khẩu";
     private static final String UPDATE_PASSWORD_CONTROLLER = "UpdatePasswordController";
+    private static final String BOOKING = "Booking";
+    private static final String BOOKING_CONTROLLER = "BookingController";
+    private static final String CHANGE_PASSWORD = "changePasswords";
+    private static final String CHANGE_PASSWORD_CONTROLLER = "ChangePassword";
+    
    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -53,6 +58,10 @@ public class MainController extends HttpServlet {
                 url = VALID_OTP_CONTROLLER;
             } else if (UPDATE_PASSWORD.equals(action)) {
                 url = UPDATE_PASSWORD_CONTROLLER;
+            } else if(BOOKING.equals(action)){
+                url = BOOKING_CONTROLLER;
+            } else if(CHANGE_PASSWORD.equals(action)){
+                url = CHANGE_PASSWORD_CONTROLLER;
             }
             else {
                 request.setAttribute("ERROR", "Your action is not supported!");

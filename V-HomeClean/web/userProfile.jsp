@@ -4,6 +4,7 @@
     Author     : Trung Kien
 --%>
 
+<%@page import="DTO.AccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,10 +47,23 @@
         <jsp:include page="navigation.jsp"></jsp:include>
 
 
-        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center py-5">
-                <h1 class="display-4 text-white animated slideInDown mb-4">Thông Tin Tài Khoản</h1>
+            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="container text-center py-5">
+                    <h1 class="display-4 text-white animated slideInDown mb-4">Thông Tin Tài Khoản</h1>
+                </div>
+
+
             </div>
+        <style>
+            .message_Noti{
+                text-align: center;
+                font-size: larger;
+            }
+            
+        </style>
+        <div class="message_Noti">
+            <strong style="color: red" >${ERROR}</strong>
+        <strong style="color: green" >${message}</strong>
         </div>
         <section class="py-5 my-5">
             <div class="container">
@@ -86,7 +100,7 @@
                     </div>
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
-                            <h3 class="mb-4">Account Settings</h3>
+                            <h3 class="mb-4"></h3>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -136,35 +150,60 @@
                                 <button class="btn btn-light">Cancel</button>
                             </div>
                         </div>
+
+                        <!--                        PASSWORD CHANGE -->
+
+
+
+
+                        <%
+                            AccountDTO account = (AccountDTO) session.getAttribute("acc");
+                            if (account != null) {
+
+                        %>
+
+
                         <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                             <h3 class="mb-4">Password Settings</h3>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Old password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>New password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Confirm new password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
                             <div>
-                                <button class="btn btn-primary">Update</button>
-                                <button class="btn btn-light">Cancel</button>
+
+                                <form action="MainController" method="POST">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+
+                                                <label>Old password</label>
+                                                <input type="password" name="password" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>New password</label>
+                                                <input type="password" name="newPassword" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Confirm new password</label>
+                                                <input type="password" name="confirm" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input class="btn btn-primary" type="submit" name="action" value="changePasswords"
+                                           class="btn btn-block btn-info">
+                                    <!--                            <div>
+                                                                    <button class="btn btn-primary">Update</button>
+                                                                    <button class="btn btn-light">Cancel</button>
+                                                                </div>-->
+                                </form>
                             </div>
                         </div>
+
                         <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
                             <h3 class="mb-4">Security Settings</h3>
                             <div class="row">
@@ -255,6 +294,8 @@
                     </div>
                 </div>
             </div>
+            <%            }
+            %>
         </section>
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
