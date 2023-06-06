@@ -5,11 +5,10 @@
  */
 package controller;
 
-import DAO.ServiceDAO;
+import DAO.AccountDAO;
 import DTO.AccountDTO;
-import DTO.ServiceDTO;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +18,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Asus
+ * @author Trung Kien
  */
-@WebServlet(name = "GetAppointmentController", urlPatterns = {"/GetAppointmentController"})
-public class GetAppointmentController extends HttpServlet {
+@WebServlet(name = "ProfilePageController", urlPatterns = {"/ProfilePageController"})
+public class ProfilePageController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,16 +38,40 @@ public class GetAppointmentController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        AccountDAO aDao = new AccountDAO();
+        String action = request.getParameter("action");
+        String url = "404.jsp";
         if (a == null) {
             response.sendRedirect("login.jsp");
         } else {
-            String serviceID = request.getParameter("serviceID");
-            ServiceDAO dao = new ServiceDAO();
-            List<ServiceDTO> list = dao.getAllService();
-            ServiceDTO s = dao.getServiceByID(serviceID);
-            request.setAttribute("listS", list);
-            request.setAttribute("ServiceDetail", s);
-            request.getRequestDispatcher("SeviceDetails-GetAppointment.jsp").forward(request, response);
+            try {
+                if (action.equalsIgnoreCase("Cập nhật")) {
+                    String fullName = request.getParameter("fullName");
+                    String dateOfBirth = request.getParameter("dateOfBirth");
+                    String email = request.getParameter("email");
+                    String phone = request.getParameter("phone");
+                    String address = request.getParameter("address");
+                    String gender = request.getParameter("gender");
+                    int roleID = a.getRoleID();
+                    String password = a.getPassword();
+                    String accountID = a.getAccountID();
+                    String image = request.getParameter("image");
+                    if (image == null || image.isEmpty()) {
+                        image = a.getImage();
+                    }
+                    aDao.UpdateAccountProfile(email, password, fullName, address, phone, roleID, gender, dateOfBirth, image, 0.0, accountID);
+                    a = aDao.Login(email, password);
+                    session.setAttribute("acc", a);
+                    url = "userProfile.jsp"; 
+                }
+                if (action.equalsIgnoreCase("Cập nhật mật khẩu")) {
+
+                }
+            } catch (Exception e) {
+            } finally {
+                request.getRequestDispatcher(url).forward(request, response);
+            }
+
         }
     }
 

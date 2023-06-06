@@ -17,8 +17,8 @@ public class AccountDTO {
     private String address;
     private String phone;
     private int roleID;
-    private String dateOfBirth;
     private String gender;
+    private String dateOfBirth;
     private String status;
     private String image;
     private double salary;
@@ -26,7 +26,7 @@ public class AccountDTO {
     public AccountDTO() {
     }
 
-    public AccountDTO(String accountID, String email, String password, String fullName, String address, String phone, int roleID, String dateOfBirth, String gender, String status, String image, double salary) {
+    public AccountDTO(String accountID, String email, String password, String fullName, String address, String phone, int roleID, String gender, String dateOfBirth, String status, String image, double salary) {
         this.accountID = accountID;
         this.email = email;
         this.password = password;
@@ -34,12 +34,14 @@ public class AccountDTO {
         this.address = address;
         this.phone = phone;
         this.roleID = roleID;
-        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
         this.status = status;
         this.image = image;
         this.salary = salary;
     }
+
+    
 
     public String getGender() {
         return gender;

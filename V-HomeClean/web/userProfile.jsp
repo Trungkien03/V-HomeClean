@@ -4,7 +4,10 @@
     Author     : Trung Kien
 --%>
 
+<%@page import="DTO.AccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,13 +42,51 @@
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/ProfileStyle.css">
+        <style>
+            .profile-image-label {
+                display: block;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #f5f5f5;
+                color: #999;
+                font-size: 20px;
+                text-align: center;
+                line-height: 40px;
+                cursor: pointer;
+                position: absolute;
+                bottom: 70px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .profile-image-label:hover {
+                background-color: #CCC;
+            }
+
+            .profile-image-label i {
+                margin-top: 10px;
+            }
+            @media (max-width: 768px){
+                .profile-image-label{
+                     position: absolute;
+                bottom: 40px;
+
+                }
+            }
+
+        </style>
     </head>
 
     <body>
 
         <jsp:include page="navigation.jsp"></jsp:include>
 
-
+        <%
+            AccountDTO user = (AccountDTO) session.getAttribute("acc");
+            if (user == null) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container text-center py-5">
                 <h1 class="display-4 text-white animated slideInDown mb-4">Thông Tin Tài Khoản</h1>
@@ -57,14 +98,18 @@
                     <div class="profile-tab-nav border-right">
                         <div class="p-4">
                             <div class="img-circle text-center mb-3">
-                                <img src="img/user.jpg" alt="Image" class="shadow">
+                                <img src="${acc.image}" alt="Image" class="shadow">
                             </div>
-                            <h4 class="text-center">Kiran Acharya</h4>
+                            <input type="file" name="image" id="profile-image" accept="image/*" style="display: none;">
+                            <label for="profile-image" class="profile-image-label">
+                                <i class="fas fa-camera"></i>
+                            </label>
+                            <h4 class="text-center">${acc.fullName}</h4>
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
                                 <i class="fa fa-home text-center mr-1"></i> 
-                                Account
+                                Tài Khoản
                             </a>
                             <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
                                 <i class="fa fa-key text-center mr-1"></i> 
@@ -86,55 +131,63 @@
                     </div>
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
-                            <h3 class="mb-4">Account Settings</h3>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" value="Kiran">
+                            <form action="ProfilePageController" method="post">
+                                <h3 class="mb-4">Thông Tin Tài Khoản</h3>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Họ và Tên</label>
+                                            <input name="fullName" type="text" class="form-control" value="${acc.fullName}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Ngày Sinh</label>
+                                            <input name="dateOfBirth" type="date" class="form-control" value="${acc.dateOfBirth}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input name="email" type="email" class="form-control" value="${acc.email}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Số Điện Thoại</label>
+                                            <input name="phone" type="text" class="form-control" value="${acc.phone}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Địa chỉ</label>
+                                            <input name="address" type="text" class="form-control" value="${acc.address}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Gender</label>
+                                            <select name="gender" class="form-control">
+                                                <option value="Male">Nam</option>
+                                                <option value="Female">Nữ</option>
+                                                <option value="Other">Khác</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Bio</label>
+                                            <textarea class="form-control" rows="4"></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" value="Acharya">
-                                    </div>
+
+
+                                <div>
+                                    <input class="btn btn-primary" name="action" value="Cập Nhật" type="submit" >
+                                    <!--                                    <button class="btn btn-light">Cancel</button>-->
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" value="kiranacharya287@gmail.com">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Phone number</label>
-                                        <input type="text" class="form-control" value="+91 9876543215">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Company</label>
-                                        <input type="text" class="form-control" value="Kiran Workspace">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Designation</label>
-                                        <input type="text" class="form-control" value="UI Developer">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Bio</label>
-                                        <textarea class="form-control" rows="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vero enim error similique quia numquam ullam corporis officia odio repellendus aperiam consequatur laudantium porro voluptatibus, itaque laboriosam veritatis voluptatum distinctio!</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary">Update</button>
-                                <button class="btn btn-light">Cancel</button>
-                            </div>
+                            </form>
                         </div>
                         <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                             <h3 class="mb-4">Password Settings</h3>

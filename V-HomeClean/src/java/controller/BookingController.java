@@ -7,6 +7,7 @@ package controller;
 
 import DAO.BookingDAO;
 import DAO.ServiceDAO;
+import DTO.AccountDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,7 +35,7 @@ public class BookingController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private static final String ERROR = "SeviceDetails-GetAppointment.jsp";
-    private static final String SUCCESS = "404.jsp";
+    private static final String SUCCESS = "BookingDone.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -43,93 +45,101 @@ public class BookingController extends HttpServlet {
         BookingDAO dao = new BookingDAO();
         ServiceDAO sdao = new ServiceDAO();
         String url = ERROR;
-        try {
-            String accountID = request.getParameter("accountID");
-            String serviceID = request.getParameter("serviceID");
-            String fullName = request.getParameter("fullName");
-            String email = request.getParameter("email");
-            String phone = request.getParameter("phone");
-            String area = request.getParameter("area");
-            String vinHomesID = request.getParameter("vinHomesID");
-            String typeOfService = request.getParameter("typeService");
-            String date = request.getParameter("date");
-            String time = request.getParameter("time");
-            String message = request.getParameter("message");
-            String status = "Xác nhận";
-            String staffID = "";
-            
-            String bookingDate = date + " " + time + ":00";
-            String bookingAddress = vinHomesID + " || " + area;
+        HttpSession session = request.getSession();
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        if (a == null) {
+            response.sendRedirect("login.jsp");
+        } else {
+            try {
+                String accountID = request.getParameter("accountID");
+                String serviceID = request.getParameter("serviceID");
+                String fullName = request.getParameter("fullName");
+                String email = request.getParameter("email");
+                String phone = request.getParameter("phone");
+                String area = request.getParameter("area");
+                String vinHomesID = request.getParameter("vinHomesID");
+                String typeOfService = request.getParameter("typeService");
+                String date = request.getParameter("date");
+                String time = request.getParameter("time");
+                String message = request.getParameter("message");
+                String status = "Xác nhận";
+                String staffID = "";
 
-            if (vinHomesID == null) {
-                String vinHomeIDError = "Vui lòng nhập mã phòng chung cư của bạn";
-                request.setAttribute("vinHomeIDError", vinHomeIDError);
-                checkValidation = false;
-            }
+                String bookingDate = date + " " + time + ":00";
+                String bookingAddress = vinHomesID + " || " + area;
+
+                if (vinHomesID == null || vinHomesID.isEmpty()) {
+                    String vinHomeIDError = "Vui lòng nhập mã phòng chung cư của bạn";
+                    request.setAttribute("vinHomeIDError", vinHomeIDError);
+                    checkValidation = false;
+                }
                 // Kiểm tra hợp lệ của fullName
-            if (fullName == null || fullName.isEmpty()) {
-                String fullNameError = "Vui lòng nhập họ và tên";
-                request.setAttribute("fullNameError", fullNameError);
-                checkValidation = false;
-            }
+                if (fullName == null || fullName.isEmpty()) {
+                    String fullNameError = "Vui lòng nhập họ và tên";
+                    request.setAttribute("fullNameError", fullNameError);
+                    checkValidation = false;
+                }
 
                 // Kiểm tra hợp lệ của email
-            if (email == null || email.isEmpty()) {
-                String emailError = "Vui lòng nhập địa chỉ email";
-                request.setAttribute("emailError", emailError);
-                checkValidation = false;
-            }
+                if (email == null || email.isEmpty()) {
+                    String emailError = "Vui lòng nhập địa chỉ email";
+                    request.setAttribute("emailError", emailError);
+                    checkValidation = false;
+                }
 
                 // Kiểm tra hợp lệ của phone
-            if (phone == null || phone.isEmpty()) {
-                String phoneError = "Vui lòng nhập số điện thoại";
-                request.setAttribute("phoneError", phoneError);
-                checkValidation = false;
-            }
+                if (phone == null || phone.isEmpty()) {
+                    String phoneError = "Vui lòng nhập số điện thoại";
+                    request.setAttribute("phoneError", phoneError);
+                    checkValidation = false;
+                }
 
                 // Kiểm tra hợp lệ của typeOfService
-            if (typeOfService == null || typeOfService.isEmpty()) {
-                String typeOfServiceError = "Vui lòng chọn loại dịch vụ";
-                request.setAttribute("typeOfServiceError", typeOfServiceError);
-                checkValidation = false;
-            }
+                if (typeOfService == null || typeOfService.isEmpty()) {
+                    String typeOfServiceError = "Vui lòng chọn loại dịch vụ";
+                    request.setAttribute("typeOfServiceError", typeOfServiceError);
+                    checkValidation = false;
+                }
 
-            if (area == null || area.isEmpty()) {
-                String areaError = "Vui lòng nhập khu vực";
-                request.setAttribute("areaError", areaError);
-                checkValidation = false;
-            }
+                if (area == null || area.isEmpty()) {
+                    String areaError = "Vui lòng nhập khu vực";
+                    request.setAttribute("areaError", areaError);
+                    checkValidation = false;
+                }
 
                 // Kiểm tra hợp lệ của date
-            if (date == null || date.isEmpty()) {
-                String dateError = "Vui lòng chọn ngày";
-                request.setAttribute("dateError", dateError);
-                checkValidation = false;
-            }
+                if (date == null || date.isEmpty()) {
+                    String dateError = "Vui lòng chọn ngày";
+                    request.setAttribute("dateError", dateError);
+                    checkValidation = false;
+                }
 
                 // Kiểm tra hợp lệ của time
-            if (time == null || time.isEmpty()) {
-                String timeError = "Vui lòng chọn giờ";
-                request.setAttribute("timeError", timeError);
-                checkValidation = false;
-            }
+                if (time == null || time.isEmpty()) {
+                    String timeError = "Vui lòng chọn giờ";
+                    request.setAttribute("timeError", timeError);
+                    checkValidation = false;
+                }
 
-            if (checkValidation == true) {
-                ServiceDTO a = sdao.getServiceByID(serviceID);
-                int totalPrice = a.getPrice();
-                dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
-                url = SUCCESS;
-            } else {
-                List<ServiceDTO> list = sdao.getAllService();
-                ServiceDTO s = sdao.getServiceByID(serviceID);
-                request.setAttribute("listS", list);
-                request.setAttribute("ServiceDetail", s);
-                url = ERROR;
+                if (checkValidation == true) {
+                    ServiceDTO b = sdao.getServiceByID(serviceID);
+                    int totalPrice = b.getPrice();
+                    dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
+                    url = SUCCESS;
+                } else {
+                    List<ServiceDTO> list = sdao.getAllService();
+                    ServiceDTO s = sdao.getServiceByID(serviceID);
+                    request.setAttribute("listS", list);
+                    request.setAttribute("ServiceDetail", s);
+                    request.setAttribute("success", "false");
+                    url = ERROR;
+                }
+            } catch (Exception e) {
+            } finally {
+                request.getRequestDispatcher(url).forward(request, response);
             }
-        } catch (Exception e) {
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

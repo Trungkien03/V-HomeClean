@@ -26,7 +26,6 @@ public class AccountDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    
     //created by Kien
     public AccountDTO Login(String email, String pass) {
         String query = "SELECT * \n"
@@ -56,9 +55,9 @@ public class AccountDAO {
         }
         return null;
     }
-    
+
     //lấy accounts bằng roleID - created by Kien
-    public List<AccountDTO> GetAccountsByRoleID(int roleID){
+    public List<AccountDTO> GetAccountsByRoleID(int roleID) {
         List<AccountDTO> list = new ArrayList<>();
         String query = "SELECT * FROM Account WHERE RoleID = ?";
         try {
@@ -66,7 +65,7 @@ public class AccountDAO {
             ps = conn.prepareStatement(query);
             ps.setInt(1, roleID);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 list.add(new AccountDTO(rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -186,7 +185,7 @@ public class AccountDAO {
         } catch (Exception e) {
         }
     }
-    
+
     //CheckAccount để lấy thông tin từ reset pass - By Hieu
     public AccountDTO checkAccount(String email) throws ClassNotFoundException {
 
@@ -219,10 +218,7 @@ public class AccountDAO {
         return null;
     }
 
-
-
     //By Hieu
-
     private static final String UPDATE = "UPDATE Account SET Password = ? WHERE email=?";
 
     public boolean updateAccount(AccountDTO account) throws SQLException {
@@ -250,10 +246,43 @@ public class AccountDAO {
         }
         return checkUpdate;
     }
-    
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
         List<AccountDTO> list = dao.GetAccountsByRoleID(2);
         System.out.println(list.size());
+    }
+
+    public void UpdateAccountProfile(String email, String password, String fullName, String address, String phone, int roleID, String gender,String dateOfBirth, String Image, double salary, String accountID) {
+        String query = "UPDATE Account\n"
+                + "SET \n"
+                + "  Email = ?,\n" //1
+                + "  Password = ?,\n" //2
+                + "  FullName = ?,\n" //3
+                + "  Address = ?,\n" //4
+                + "  Phone = ?,\n" //5
+                + "  RoleID = ?,\n" //6
+                + "  Gender = ?,\n" //7  
+                + "  DateOfBirth = ?,\n" //8 
+                + "  Image = ?,\n" //9
+                + "  Salary = ?\n" //10 
+                + "WHERE AccountID = ?;"; //11 
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setNString(2, password);
+            ps.setNString(3, fullName);
+            ps.setNString(4, address);
+            ps.setString(5, phone);
+            ps.setInt(6, roleID);
+            ps.setString(7, gender);
+            ps.setString(8, dateOfBirth);
+            ps.setString(9, Image);
+            ps.setDouble(10, salary);
+            ps.setString(11, accountID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
     }
 }

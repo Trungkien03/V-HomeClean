@@ -4,6 +4,7 @@
     Author     : Trung Kien
 --%>
 
+<%@page import="DTO.AccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -28,7 +29,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -48,30 +49,35 @@
         <jsp:include page="navigation.jsp"></jsp:include>
 
 
-
-            <!-- Page Header Start -->
-            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-                <div class="container text-center py-5">
-                    <h1 class="display-4 text-white animated slideInDown mb-4">Booking Service</h1>
-                    <nav aria-label="breadcrumb animated slideInDown">
-                        <ol class="breadcrumb justify-content-center mb-0">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                            <li class="breadcrumb-item text-primary active" aria-current="page">Booking Service</li>
-                        </ol>
-                    </nav>
-                </div>
+        <%
+            AccountDTO user = (AccountDTO) session.getAttribute("acc");
+            if (user == null) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
+        <!-- Page Header Start -->
+        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container text-center py-5">
+                <h1 class="display-4 text-white animated slideInDown mb-4">Booking Service</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb justify-content-center mb-0">
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
+                        <li class="breadcrumb-item text-primary active" aria-current="page">Booking Service</li>
+                    </ol>
+                </nav>
             </div>
-            <!-- Page Header End -->
+        </div>
+        <!-- Page Header End -->
 
 
 
 
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="row g-5">
-                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px;">
-                                <img class="position-absolute w-100 h-100" src="${ServiceDetail.image}" alt="" style="object-fit: cover;">
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px;">
+                            <img class="position-absolute w-100 h-100" src="${ServiceDetail.image}" alt="" style="object-fit: cover;">
                             <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
                                 <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
                                     <h1 class="text-white">25</h1>
@@ -125,8 +131,8 @@
                         <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     </div>
                     <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        
-                        
+
+
                         <form action="MainController" method="post">
                             <input type="hidden" value="${sessionScope.acc.accountID}" name="accountID">
                             <div class="row g-3">
@@ -135,21 +141,21 @@
                                         <input value="${acc.fullName}" type="text" class="form-control bg-light border-0" id="gname" name="fullName" placeholder="Gurdian Name">
                                         <label for="fulName">Họ và Tên</label>
                                     </div>
-                                        <strong style="color: #e72734;" >${fullNameError}</strong>
+                                    <strong style="color: #e72734;" >${fullNameError}</strong>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input value="${acc.email}" type="email" class="form-control bg-light border-0" id="gmail" name="email" placeholder="Gurdian Email">
                                         <label for="gmail">Email</label>
                                     </div>
-                                        <strong style="color: #e72734;" >${emailError}</strong>
+                                    <strong style="color: #e72734;" >${emailError}</strong>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input value="${acc.phone}" type="text" class="form-control bg-light border-0" id="cname" name="phone" placeholder="Child Name">
                                         <label for="phone">Số điện thoại</label>
                                     </div>
-                                        <strong style="color: #e72734;" >${phoneError}</strong>
+                                    <strong style="color: #e72734;" >${phoneError}</strong>
                                 </div>
 
 
@@ -219,17 +225,18 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit" name="action" value="Booking">Booking Service</button>
+                                    <button class="btn btn-primary w-100 py-3 "  type="submit" name="action" value="Booking">Booking Service</button>
                                 </div>
                             </div>
                         </form>
-                                        
-                                        
+
+
                     </div>
                 </div>
             </div>
         </div>
         <!-- Appointment End -->
+
 
 
         <!-- Footer Start -->
@@ -248,7 +255,6 @@
         <script src="lib/easing/easing.min.js"></script>
         <script src="lib/waypoints/waypoints.min.js"></script>
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
     </body>
