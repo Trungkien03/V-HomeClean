@@ -176,3 +176,7 @@ h2 {
     margin-bottom: 200px;
     border-top: 5px solid #595959;
 }
+
+label{
+    font-weight: bold;
+}

@@ -114,7 +114,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
             }
         
       out.write("\r\n");
-      out.write("\r\n");
+      out.write("        <strong>\r\n");
       out.write("        <div class=\"d-lg-flex half\">\r\n");
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row align-items-center justify-content-center login-form\">\r\n");
@@ -283,7 +283,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
-      out.write("\r\n");
+      out.write("</strong>\r\n");
       out.write("\r\n");
       out.write("        <!-- Footer Start -->\r\n");
       out.write("        ");

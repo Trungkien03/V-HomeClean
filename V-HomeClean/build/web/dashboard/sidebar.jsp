@@ -18,23 +18,34 @@
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-users"></i> <span> Users</span>
+                       ><i class="fe fe-users"></i> <span> Accounts </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="users.jsp">Users</a></li>
-                        <li><a href="blocked-users.jsp">Blocked User</a></li>
-                        <li><a href="report-users.jsp">Report User</a></li>
+                        <li><a href="users.jsp">Users Management</a></li>
+                        <li><a href="staffs.jsp">Staff Management</a></li>
+                        <li><a href="blocked-users.jsp">Blocked Accounts</a></li>
+                        <li><a href="report-users.jsp">Report Accounts</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-sync"></i> <span> History </span>
+                       ><i class="fe fe-file-zip"></i> <span> Orders </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="call-history.jsp"> Call History </a></li>
-                        <li><a href="group-history.jsp"> Group History </a></li>
+                        <li><a href="orders-details.jsp"> Orders Details </a></li>
+                        <li><a href="orders-management.jsp"> Orders Management </a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"
+                       ><i class="fe fe-globe"></i> <span> Blogs </span>
+                        <span class="menu-arrow"></span
+                        ></a>
+                    <ul style="display: none">
+                        <li><a href="orders-details.jsp"> Blogs Details </a></li>
+                        <li><a href="orders-management.jsp"> Blogs Management </a></li>
                     </ul>
                 </li>
                 <li class="submenu">

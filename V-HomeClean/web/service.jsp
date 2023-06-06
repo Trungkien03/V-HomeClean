@@ -78,7 +78,6 @@
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
-
                     <c:forEach items="${listS}" var="o">
                         
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
