@@ -247,12 +247,6 @@ public class AccountDAO {
         return checkUpdate;
     }
 
-    public static void main(String[] args) {
-        AccountDAO dao = new AccountDAO();
-        List<AccountDTO> list = dao.GetAccountsByRoleID(2);
-        System.out.println(list.size());
-    }
-
     public void UpdateAccountProfile(String email, String password, String fullName, String address, String phone, int roleID, String gender,String dateOfBirth, String Image, double salary, String accountID) {
         String query = "UPDATE Account\n"
                 + "SET \n"

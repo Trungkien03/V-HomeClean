@@ -68,8 +68,8 @@
             }
             @media (max-width: 768px){
                 .profile-image-label{
-                     position: absolute;
-                bottom: 40px;
+                    position: absolute;
+                    bottom: 40px;
 
                 }
             }
@@ -87,10 +87,23 @@
                 response.sendRedirect("login.jsp");
             }
         %>
+
+
         <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container text-center py-5">
                 <h1 class="display-4 text-white animated slideInDown mb-4">Thông Tin Tài Khoản</h1>
             </div>
+        </div>
+        <style>
+            .message_Noti{
+                text-align: center;
+                font-size: larger;
+            }
+
+        </style>
+        <div class="message_Noti">
+            <strong style="color: red" >${ERROR}</strong>
+            <strong style="color: green;" >${message}</strong>
         </div>
         <section class="py-5 my-5">
             <div class="container">
@@ -113,11 +126,11 @@
                             </a>
                             <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
                                 <i class="fa fa-key text-center mr-1"></i> 
-                                Password
+                                Mật Khẩu
                             </a>
                             <a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
                                 <i class="fa fa-user text-center mr-1"></i> 
-                                Security
+                                Đơn Dịch Vụ
                             </a>
                             <a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
                                 <i class="fa fa-tv text-center mr-1"></i> 
@@ -166,162 +179,207 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Gender</label>
+                                            <label>Giới tính</label>
                                             <select name="gender" class="form-control">
-                                                <option value="Male">Nam</option>
-                                                <option value="Female">Nữ</option>
-                                                <option value="Other">Khác</option>
+                                                <c:choose>
+                                                    <c:when test="${acc.gender eq 'Male'}">
+                                                        <option value="Male" selected>Nam</option>
+                                                        <option value="Female">Nữ</option>
+                                                        <option value="Other">Khác</option>
+                                                    </c:when>
+                                                    <c:when test="${acc.gender eq 'Female'}">
+                                                        <option value="Male">Nam</option>
+                                                        <option value="Female" selected>Nữ</option>
+                                                        <option value="Other">Khác</option>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <option value="Male">Nam</option>
+                                                        <option value="Female">Nữ</option>
+                                                        <option value="Other" selected>Khác</option>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </select>
                                         </div>
                                     </div>
+
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Bio</label>
                                             <textarea class="form-control" rows="4"></textarea>
                                         </div>
+                                        <h3 class="mb-4"></h3>
+
+                                        <div>
+                                            <input class="btn btn-primary" name="action" value="Cập Nhật" type="submit" >
+                                        </div>
                                     </div>
-                                </div>
-
-
-                                <div>
-                                    <input class="btn btn-primary" name="action" value="Cập Nhật" type="submit" >
-                                    <!--                                    <button class="btn btn-light">Cancel</button>-->
-                                </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-                            <h3 class="mb-4">Password Settings</h3>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Old password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>New password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Confirm new password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary">Update</button>
-                                <button class="btn btn-light">Cancel</button>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-                            <h3 class="mb-4">Security Settings</h3>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Login</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Two-factor auth</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="recovery">
-                                            <label class="form-check-label" for="recovery">
-                                                Recovery
-                                            </label>
+                    </div>
+
+
+
+
+                    <!--                        PASSWORD CHANGE -->
+
+
+                    <%
+                        AccountDTO account = (AccountDTO) session.getAttribute("acc");
+                        if (account != null) {
+
+                    %>
+
+
+                    <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                        <h3 class="mb-4">Password Settings</h3>
+                        <div>
+
+                            <form action="ProfilePageController" method="POST">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+
+                                            <label>Old password</label>
+                                            <input type="password" name="password" class="form-control">
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary">Update</button>
-                                <button class="btn btn-light">Cancel</button>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
-                            <h3 class="mb-4">Application Settings</h3>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="app-check">
-                                            <label class="form-check-label" for="app-check">
-                                                App check
-                                            </label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>New password</label>
+                                            <input type="password" name="newPassword" class="form-control">
                                         </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
-                                            <label class="form-check-label" for="defaultCheck2">
-                                                Lorem ipsum dolor sit.
-                                            </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Confirm new password</label>
+                                            <input type="password" name="confirm" class="form-control">
                                         </div>
                                     </div>
                                 </div>
+
+                                <input class="btn btn-primary" type="submit" name="action" value="Thay Đổi Mật Khẩu"
+                                       class="btn btn-block btn-info">
+                                <!--                            <div>
+                                                                <button class="btn btn-primary">Update</button>
+                                                                <button class="btn btn-light">Cancel</button>
+                                                            </div>-->
+                            </form>
+                        </div>
+                    </div>
+
+                    
+                    
+                    <!-- đay là tab thông tin đơn hàng   -->
+                    <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                        <h3 class="mb-4">Đơn của bạn</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Login</label>
+                                    <input type="text" class="form-control">
+                                </div>
                             </div>
-                            <div>
-                                <button class="btn btn-primary">Update</button>
-                                <button class="btn btn-light">Cancel</button>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Two-factor auth</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="recovery">
+                                        <label class="form-check-label" for="recovery">
+                                            Recovery
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
-                            <h3 class="mb-4">Notification Settings</h3>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="notification1">
-                                    <label class="form-check-label" for="notification1">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum accusantium accusamus, neque cupiditate quis
-                                    </label>
+                        <div>
+                            <button class="btn btn-primary">Update</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
+                        <h3 class="mb-4">Application Settings</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="app-check">
+                                        <label class="form-check-label" for="app-check">
+                                            App check
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
+                                        <label class="form-check-label" for="defaultCheck2">
+                                            Lorem ipsum dolor sit.
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="notification2" >
-                                    <label class="form-check-label" for="notification2">
-                                        hic nesciunt repellat perferendis voluptatum totam porro eligendi.
-                                    </label>
-                                </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Update</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+                        <h3 class="mb-4">Notification Settings</h3>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="notification1">
+                                <label class="form-check-label" for="notification1">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum accusantium accusamus, neque cupiditate quis
+                                </label>
                             </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="notification3" >
-                                    <label class="form-check-label" for="notification3">
-                                        commodi fugiat molestiae tempora corporis. Sed dignissimos suscipit
-                                    </label>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="notification2" >
+                                <label class="form-check-label" for="notification2">
+                                    hic nesciunt repellat perferendis voluptatum totam porro eligendi.
+                                </label>
                             </div>
-                            <div>
-                                <button class="btn btn-primary">Update</button>
-                                <button class="btn btn-light">Cancel</button>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="notification3" >
+                                <label class="form-check-label" for="notification3">
+                                    commodi fugiat molestiae tempora corporis. Sed dignissimos suscipit
+                                </label>
                             </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Update</button>
+                            <button class="btn btn-light">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        </div>
+        <%            }
+        %>
+    </section>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
-    </body>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
 
 </html>

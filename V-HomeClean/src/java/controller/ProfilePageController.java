@@ -62,10 +62,36 @@ public class ProfilePageController extends HttpServlet {
                     aDao.UpdateAccountProfile(email, password, fullName, address, phone, roleID, gender, dateOfBirth, image, 0.0, accountID);
                     a = aDao.Login(email, password);
                     session.setAttribute("acc", a);
-                    url = "userProfile.jsp"; 
+                    request.setAttribute("message", "Cập nhật thông tin tài khoản thành công!");
+                    url = "userProfile.jsp";
                 }
-                if (action.equalsIgnoreCase("Cập nhật mật khẩu")) {
+                if (action.equalsIgnoreCase("Thay Đổi Mật Khẩu")) {
+                    String password = request.getParameter("password");
+                    String newPassword = request.getParameter("newPassword");
+                    String confirm = request.getParameter("confirm");
+                    AccountDAO dao = new AccountDAO();
+                    AccountDTO account = (AccountDTO) session.getAttribute("acc");
+                    if (password.equals(account.getPassword())) {
+                        if (newPassword.equals(confirm)) {
+                            account.setPassword(newPassword);
+                            session.setAttribute("acc", account);
+                            boolean checkUpdate = dao.updateAccount(account);
+                            if (checkUpdate) {
+                                request.setAttribute("message", "Cập nhật mật khẩu thành công!");
+                                url = "userProfile.jsp";
+                            }
+                        } else {
 
+                            request.setAttribute("ERROR", " Mật khẩu và xác nhận mật khẩu "
+                                    + "không trùng khớp! ");
+                            url = "userProfile.jsp";
+
+                        }
+                    } else {
+
+                        request.setAttribute("ERROR", " Mật khẩu cũ không trùng khớp! ");
+                        url = "userProfile.jsp";
+                    }
                 }
             } catch (Exception e) {
             } finally {

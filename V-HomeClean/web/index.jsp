@@ -77,11 +77,11 @@
                                             <h5 class="text-light text-uppercase mb-3 animated slideInDown">Chào mừng đến với <span style="color: #f8e43c">V-HomeClean</span></h5>
                                             <h1 class="display-2 text-light mb-3 animated slideInDown">Dịch vụ Vệ sinh & Sửa chữa Chuyên nghiệp</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
-                                                <li class="breadcrumb-item fs-5 text-light">Commercial</li>
-                                                <li class="breadcrumb-item fs-5 text-light">Residential</li>
-                                                <li class="breadcrumb-item fs-5 text-light">Industrial</li>
+                                               <li class="breadcrumb-item fs-5 text-light">Uy Tín</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Nhanh Chóng</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Tiện Lợi</li>
                                             </ol>
-                                            <a href="" class="btn btn-primary py-3 px-5">More Details</a>
+                                            <a href="" class="btn btn-primary py-3 px-5">Chi tiết về V-HomeClean</a>
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="h-100">
                                 <div class="border-start border-5 border-primary ps-4 mb-5">
-                                    <h6 class="text-body text-uppercase mb-2">About Us</h6>
+                                    <h6 class="text-body text-uppercase mb-2">Thông tin về chúng tôi</h6>
                                     <h1 class="display-6 mb-0">Dịch vụ chuyên về dọn dẹp và vệ sinh căn hộ!</h1>
                                 </div>
                                 <p> là đơn vị dịch vụ dọn dẹp và vệ sinh căn hộ chuyên nghiệp. Chúng tôi sẽ đảm bảo rằng căn hộ của bạn luôn sạch sẽ, gọn gàng và thoải mái. Đội ngũ nhân viên giàu kinh nghiệm và tận tâm của chúng tôi sẽ làm sạch từ trần nhà, lau kính, vệ sinh lỗ thông hơi, gầm tủ và các góc khuất khác. Hãy để V-HomeClean mang đến cho bạn không gian sống tươi mới và thoáng đãng trong căn hộ của mình.</p>
@@ -209,7 +209,7 @@
                     <div class="row g-5">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-body text-uppercase mb-2">Why Choose Us!</h6>
+                                <h6 class="text-body text-uppercase mb-2">Tại sao bạn nên chọn chúng tôi?</h6>
                                 <h1 class="display-6 mb-0">Chuyên môn hóa và các tính năng của công ty chúng tôi</h1>
                             </div>
                             <p class="mb-5">là một công ty chuyên môn hóa trong lĩnh vực dọn dẹp và vệ sinh. Chúng tôi tự hào cung cấp các tính năng và dịch vụ sau:</p>
@@ -269,7 +269,7 @@
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4">
                                 <h6 class="text-body text-uppercase mb-2">Dịch vụ của chúng tôi</h6>
-                                <h1 class="display-6 mb-0">Nâng cấp không gian sống cho bạn! </h1>
+                                <h1 class="display-6 mb-0">Nâng cấp không gian sống của bạn!</h1>
                             </div>
                         </div>
                         <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">

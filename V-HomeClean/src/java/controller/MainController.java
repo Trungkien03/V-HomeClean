@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MainController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
+    private static final String ERROR = "404.jsp";
     private static final String LOGIN = "Đăng Nhập";
     private static final String LOGIN_CONTROLLER = "LoginController";
     private static final String REGISTER = "Đăng Ký";
@@ -33,8 +33,8 @@ public class MainController extends HttpServlet {
     private static final String UPDATE_PASSWORD_CONTROLLER = "UpdatePasswordController";
     private static final String BOOKING = "Booking";
     private static final String BOOKING_CONTROLLER = "BookingController";
+    
    
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
@@ -57,7 +57,7 @@ public class MainController extends HttpServlet {
                 url = UPDATE_PASSWORD_CONTROLLER;
             } else if(BOOKING.equals(action)){
                 url = BOOKING_CONTROLLER;
-            }
+            } 
             else {
                 request.setAttribute("ERROR", "Your action is not supported!");
             }

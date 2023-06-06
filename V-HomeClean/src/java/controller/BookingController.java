@@ -125,19 +125,17 @@ public class BookingController extends HttpServlet {
                     ServiceDTO b = sdao.getServiceByID(serviceID);
                     int totalPrice = b.getPrice();
                     dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
-                    url = SUCCESS;
+                    response.sendRedirect(SUCCESS);
                 } else {
                     List<ServiceDTO> list = sdao.getAllService();
                     ServiceDTO s = sdao.getServiceByID(serviceID);
                     request.setAttribute("listS", list);
                     request.setAttribute("ServiceDetail", s);
                     request.setAttribute("success", "false");
-                    url = ERROR;
+                    request.getRequestDispatcher(ERROR).forward(request, response);
                 }
             } catch (Exception e) {
-            } finally {
-                request.getRequestDispatcher(url).forward(request, response);
-            }
+            } 
         }
 
     }
