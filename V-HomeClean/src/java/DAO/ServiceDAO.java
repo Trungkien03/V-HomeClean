@@ -68,8 +68,25 @@ public class ServiceDAO {
         }
         return null;
     }
+    
+    public int CountService(){
+        String query = "SELECT COUNT(*) AS total_count FROM Service;";
+        int totalServices = 0;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                totalServices = rs.getInt("total_count");
+            }
+        } catch (Exception e) {
+        }
+        return totalServices;
+    }
 
     public static void main(String[] args) {
-
+        ServiceDAO dao = new ServiceDAO();
+        int total = dao.CountService();
+        System.out.println(total);
     }
 }

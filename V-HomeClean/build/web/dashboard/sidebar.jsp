@@ -12,7 +12,7 @@
             <ul>
                 <li class="menu-title"></li>
                 <li class="active">
-                    <a href="index.jsp"
+                    <a href="DashboardController"
                        ><i class="fe fe-home"></i> <span>Dashboard</span></a
                     >
                 </li>
@@ -22,10 +22,10 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="users.jsp">Users Management</a></li>
-                        <li><a href="staffs.jsp">Staff Management</a></li>
-                        <li><a href="blocked-users.jsp">Blocked Accounts</a></li>
-                        <li><a href="report-users.jsp">Report Accounts</a></li>
+                        <li><a href="UsersManagementController">Users Management</a></li>
+                        <li><a href="dashboard/staffs.jsp">Staff Management</a></li>
+                        <li><a href="dashboard/blocked-users.jsp">Blocked Accounts</a></li>
+                        <li><a href="dashboard/report-users.jsp">Report Accounts</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -34,8 +34,8 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="orders-details.jsp"> Orders Details </a></li>
-                        <li><a href="orders-management.jsp"> Orders Management </a></li>
+                        <li><a href="dashboard/orders-details.jsp"> Orders Details </a></li>
+                        <li><a href="dashboard/orders-management.jsp"> Orders Management </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -44,8 +44,8 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="orders-details.jsp"> Blogs Details </a></li>
-                        <li><a href="orders-management.jsp"> Blogs Management </a></li>
+                        <li><a href="dashboard/orders-details.jsp"> Blogs Details </a></li>
+                        <li><a href="dashboard/orders-management.jsp"> Blogs Management </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -54,17 +54,17 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="general.jsp">General</a></li>
-                        <li><a href="admob.jsp">Admob </a></li>
+                        <li><a href="dashboard/general.jsp">General</a></li>
+                        <li><a href="dashboard/admob.jsp">Admob </a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="blank-page.jsp"
+                    <a href="dashboard/blank-page.jsp"
                        ><i class="fe fe-file"></i> <span>Blank Page</span></a
                     >
                 </li>
                 <li>
-                    <a href="components.jsp"
+                    <a href="dashboard/components.jsp"
                        ><i class="fe fe-vector"></i> <span>Components</span></a
                     >
                 </li>
@@ -74,9 +74,9 @@
                         <span> Forms <span class="menu-arrow"></span></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="form-input-groups.jsp">Input Groups</a></li>
-                        <li><a href="form-vertical.jsp">Vertical Form </a></li>
-                        <li><a href="form-validation.jsp">Form Validation </a></li>
+                        <li><a href="dashboard/form-input-groups.jsp">Input Groups</a></li>
+                        <li><a href="dashboard/form-vertical.jsp">Vertical Form </a></li>
+                        <li><a href="dashboard/form-validation.jsp">Form Validation </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -85,8 +85,8 @@
                         <span> Tables <span class="menu-arrow"></span></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="tables-basic.jsp">Basic Tables </a></li>
-                        <li><a href="data-tables.jsp">Data Table </a></li>
+                        <li><a href="dashboard/tables-basic.jsp">Basic Tables </a></li>
+                        <li><a href="dashboard/data-tables.jsp">Data Table </a></li>
                     </ul>
                 </li>
                 <li class="submenu">

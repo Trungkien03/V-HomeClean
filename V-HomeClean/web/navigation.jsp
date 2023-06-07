@@ -83,8 +83,8 @@
                     <c:if test="${sessionScope.acc == null}"><strong>Tài Khoản</strong></c:if>
                     <c:if test="${sessionScope.acc != null}">
                         <img></img>
-                        <img src="${sessionScope.acc.image}" style="width: 20px; height: 20px;" >
-                        ${sessionScope.acc.fullName}
+                        <img src="${sessionScope.acc.image}" style="width: 30px; height: 30px; border-radius: 20px;" >
+                        <strong> ${sessionScope.acc.fullName}</strong>  
                     </c:if>
                 </a>
                 <div class="dropdown-menu bg-light m-0">
@@ -95,18 +95,17 @@
                         <a href="login.jsp" class="dropdown-item">Đăng Ký</a>
                     </c:if>
                     <c:if test="${sessionScope.acc != null}">
-                        <a href="userProfile.jsp" class="dropdown-item">Thông Tin Tài Khoản</a>
+                        <a href="userProfile.jsp" class="dropdown-item">Thông Tin Tài Khoản (3)</a>
                     </c:if>    
                     <c:if test="${sessionScope.acc != null}">
                         <a href="LogoutController" class="dropdown-item">Đăng xuất</a>
                     </c:if>
                     <c:if test="${sessionScope.acc != null}">
-                        <a href="dashboard/index.jsp" class="dropdown-item">Dashboard</a>
+                        <a href="DashboardController" class="dropdown-item">Dashboard</a>
                     </c:if>
+
                 </div>
             </div>
-
-
         </div>
     </div>
 </nav>

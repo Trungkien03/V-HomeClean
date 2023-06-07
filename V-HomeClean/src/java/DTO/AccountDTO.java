@@ -5,6 +5,9 @@
  */
 package DTO;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 /**
  *
  * @author Asus
@@ -143,6 +146,12 @@ public class AccountDTO {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+    
+    public int getAge() {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate birthDate = LocalDate.parse(dateOfBirth);
+        return Period.between(birthDate, currentDate).getYears();
     }
 
     @Override

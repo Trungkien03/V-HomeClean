@@ -247,7 +247,7 @@ public class AccountDAO {
         return checkUpdate;
     }
 
-    public void UpdateAccountProfile(String email, String password, String fullName, String address, String phone, int roleID, String gender,String dateOfBirth, String Image, double salary, String accountID) {
+    public void UpdateAccountProfile(String email, String password, String fullName, String address, String phone, int roleID, String gender, String dateOfBirth, String Image, double salary, String accountID) {
         String query = "UPDATE Account\n"
                 + "SET \n"
                 + "  Email = ?,\n" //1
@@ -278,5 +278,52 @@ public class AccountDAO {
             ps.executeUpdate();
         } catch (Exception e) {
         }
+    }
+
+    public int CountAccountByRoleID(int RoleID) {
+        String query = "SELECT COUNT(AccountID) AS TotalCount FROM Account WHERE RoleID = ?;";
+        int totalCount = 0;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, RoleID);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                totalCount = rs.getInt("TotalCount");
+            }
+        } catch (Exception e) {
+        }
+        return totalCount;
+    }
+
+    public AccountDTO GetAccountByAccountID(String accountID) {
+        String query = "SELECT * FROM Account WHERE AccountID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, accountID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new AccountDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getNString(4),
+                        rs.getNString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getDouble(12));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public static void main(String[] args) {
+        AccountDAO dao = new AccountDAO();
+        AccountDTO a = dao.GetAccountByAccountID("AC0001");
+        System.out.println(a.toString());
     }
 }

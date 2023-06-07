@@ -18,18 +18,18 @@
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="assets/img/favicon.png"
+            href="css/assets/img/favicon.png"
             />
 
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
 
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/assets/css/font-awesome.min.css" />
 
-        <link rel="stylesheet" href="assets/css/feathericon.min.css" />
+        <link rel="stylesheet" href="css/assets/css/feathericon.min.css" />
 
-        <link rel="stylesheet" href="assets/plugins/morris/morris.css" />
+        <link rel="stylesheet" href="css/assets/plugins/morris/morris.css" />
 
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="css/assets/css/style.css" />
     </head>
     <body>
         <div class="main-wrapper">
@@ -40,12 +40,12 @@
                     <div class="page-header">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="page-title">General Settings</h3>
+                                <h3 class="page-title">Thông Tin Tài Khoản</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.jsp">Dashboard</a>
+                                        <a href="UsersManagementController">Quản lý Tài Khoản</a>
                                     </li>
-                                    <li class="breadcrumb-item active">General Settings</li>
+                                    <li class="breadcrumb-item active">Thông Tin Tài Khoản</li>
                                 </ul>
                             </div>
                         </div>
@@ -54,16 +54,16 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header all-center">
-                                    <a href="general.jsp" class="avatar avatar-sm me-2"
+                                    <a href="#" class="avatar avatar-sm me-2"
                                        ><img
                                             class="avatar-img rounded-circle"
-                                            src="assets/img/profiles/avatar-01.jpg"
+                                            src="${account.image}"
                                             alt="User Image"
                                             />
                                         <i class="fe fe-camera"></i>
                                     </a>
-                                    <h6>Seema Sisty</h6>
-                                    <p>Administrator</p>
+                                    <h6>${account.fullName}</h6>
+                                    <p>${account.roleID}</p>
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="profile-list">
@@ -143,13 +143,13 @@
             </div>
         </div>
 
-        <script src="assets/js/jquery-3.6.0.min.js"></script>
+        <script src="css/assets/js/jquery-3.6.0.min.js"></script>
 
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="css/assets/js/bootstrap.bundle.min.js"></script>
 
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="css/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-        <script src="assets/js/script.js"></script>
+        <script src="css/assets/js/script.js"></script>
     </body>
 </html>
 

@@ -71,6 +71,17 @@ CREATE TABLE Account
 );
 GO
 
+CREATE TABLE Notification
+(
+	NotificationID INT IDENTITY(1,1) PRIMARY KEY,
+	AccountID NVARCHAR(20) NOT NULL,
+	Detail NVARCHAR(MAX) NOT NULL,
+	Create_at DATETIME not null,
+	Status bit NOT NULL
+	FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
+)
+
+
 -- Tạo bảng BlogCate
 CREATE TABLE BlogCate
 (
@@ -236,6 +247,27 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0005', N'staff3@gmail.com', N'1', N'Micheal Diana', N'Quận 9, Thành phố Hồ Chí Minh', N'0987675321', 2, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner3.jpg', NULL)
 GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0006', N'user1@gmail.com', N'1', N'Nguyễn Hà Mai', N'Hà Nội', N'0987654321', 4, N'Female', CAST(N'1995-08-15' AS Date), 1, N'img/user1.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0007', N'user2@gmail.com', N'1', N'Trương Tuấn Anh', N'Hồ Chí Minh', N'0976543210', 4, N'Male', CAST(N'1990-03-20' AS Date), 0, N'img/user2.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0008', N'user3@gmail.com', N'1', N'Trần Nguyên Trân', N'Đà Nẵng', N'0965432109', 4, N'Female', CAST(N'1992-10-05' AS Date), 1, N'img/user3.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0009', N'user4@gmail.com', N'1', N'Lê Văn User 4', N'Hải Phòng', N'0954321098', 4, N'Male', CAST(N'1993-07-12' AS Date), 1, N'img/user4.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0010', N'user5@gmail.com', N'1', N'Phạm Thị User 5', N'Cần Thơ', N'0943210987', 4, N'Female', CAST(N'1996-05-30' AS Date), 1, N'img/user5.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0011', N'user6@gmail.com', N'1', N'Hoàng Văn User 6', N'Nghệ An', N'0932109876', 4, N'Male', CAST(N'1991-11-25' AS Date), 1, N'img/user6.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0012', N'user7@gmail.com', N'1', N'Đỗ Thị User 7', N'Bình Dương', N'0921098765', 4, N'Female', CAST(N'1994-09-10' AS Date), 0, N'img/user7.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0013', N'user8@gmail.com', N'1', N'Lý Văn User 8', N'Thanh Hóa', N'0910987654', 4, N'Male', CAST(N'1997-04-08' AS Date), 1, N'img/user8.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0014', N'user9@gmail.com', N'1', N'Ngô Thị User 9', N'Quảng Ninh', N'0909876543', 4, N'Female', CAST(N'1989-12-18' AS Date), 1, N'img/user9.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0015', N'user10@gmail.com', N'1', N'Huỳnh Văn User 10', N'Long An', N'0898765432', 4, N'Male', CAST(N'1998-02-05' AS Date), 0, N'img/user10.jpg', NULL)
+GO
+
 GO
 INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (1, N'Dịch vụ vệ sinh')
 INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (2, N'Dịch vụ sửa chữa')

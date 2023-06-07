@@ -21,15 +21,15 @@
             href="assets/img/favicon.png"
             />
 
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
 
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/assets/css/font-awesome.min.css" />
 
-        <link rel="stylesheet" href="assets/css/feathericon.min.css" />
+        <link rel="stylesheet" href="css/assets/css/feathericon.min.css" />
 
-        <link rel="stylesheet" href="assets/plugins/morris/morris.css" />
+        <link rel="stylesheet" href="css/assets/plugins/morris/morris.css" />
 
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="css/assets/css/style.css" />
     </head>
     <body>
         <div class="main-wrapper">
@@ -43,7 +43,7 @@
                                 <h3 class="page-title">Admob Settings</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.jsp">Dashboard</a>
+                                        <a href="dashboard/index.jsp">Dashboard</a>
                                     </li>
                                     <li class="breadcrumb-item active">Admob Settings</li>
                                 </ul>
@@ -140,13 +140,13 @@
             </div>
         </div>
 
-        <script src="assets/js/jquery-3.6.0.min.js"></script>
+        <script src="css/assets/js/jquery-3.6.0.min.js"></script>
 
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="css/assets/js/bootstrap.bundle.min.js"></script>
 
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="css/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-        <script src="assets/js/script.js"></script>
+        <script src="css/assets/js/script.js"></script>
     </body>
 </html>
 

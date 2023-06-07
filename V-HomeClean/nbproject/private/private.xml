@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/ProfilePageController.java</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/users.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/sidebar.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/admin/UserGeneralPageController.java</file>
             <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/DTO/AccountDTO.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/MainController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/BookingController.java</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/index.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/admin/DashboardController.java</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/general.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/staffs.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/admin/UsersManagementController.java</file>
         </group>
     </open-files>
 </project-private>

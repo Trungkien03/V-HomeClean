@@ -18,18 +18,18 @@
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="assets/img/favicon.png"
+            href="css/assets/img/favicon.png"
             />
 
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
 
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="css/assets/css/font-awesome.min.css" />
 
-        <link rel="stylesheet" href="assets/css/feathericon.min.css" />
+        <link rel="stylesheet" href="css/assets/css/feathericon.min.css" />
 
-        <link rel="stylesheet" href="assets/plugins/morris/morris.css" />
+        <link rel="stylesheet" href="css/assets/plugins/morris/morris.css" />
 
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="css/assets/css/style.css" />
     </head>
     <body>
         <div class="main-wrapper">
@@ -43,7 +43,7 @@
                                 <h3 class="page-title">Blocked User</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="index.jsp">Dashboard</a>
+                                        <a href="dashboard/index.jsp">Dashboard</a>
                                     </li>
                                     <li class="breadcrumb-item active">Blocked User</li>
                                 </ul>
@@ -72,14 +72,14 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a
-                                                                href="general.jsp"
+                                                                href="dashboard/general.jsp"
                                                                 class="avatar avatar-sm me-2"
                                                                 ><img
                                                                     class="avatar-img rounded-circle"
                                                                     src="assets/img/profiles/avatar-12.jpg"
                                                                     alt="User Image"
                                                                     /></a>
-                                                            <a href="general.jsp">Lee <span>#0010</span></a>
+                                                            <a href="dashboard/general.jsp">Lee <span>#0010</span></a>
                                                         </h2>
                                                     </td>
                                                     <td>10.00 AM</td>
@@ -102,14 +102,14 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a
-                                                                href="general.jsp"
+                                                                href="dashboard/general.jsp"
                                                                 class="avatar avatar-sm me-2"
                                                                 ><img
                                                                     class="avatar-img rounded-circle"
                                                                     src="assets/img/profiles/avatar-19.jpg"
                                                                     alt="User Image"
                                                                     /></a>
-                                                            <a href="general.jsp">Joe <span>#0010</span></a>
+                                                            <a href="dashboard/general.jsp">Joe <span>#0010</span></a>
                                                         </h2>
                                                     </td>
                                                     <td>09.15 AM</td>
@@ -132,14 +132,14 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a
-                                                                href="general.jsp"
+                                                                href="dashboard/general.jsp"
                                                                 class="avatar avatar-sm me-2"
                                                                 ><img
                                                                     class="avatar-img rounded-circle"
                                                                     src="assets/img/profiles/avatar-06.jpg"
                                                                     alt="User Image"
                                                                     /></a>
-                                                            <a href="general.jsp"
+                                                            <a href="dashboard/general.jsp"
                                                                >Mary Wiley <span>#0011</span></a
                                                             >
                                                         </h2>
@@ -164,14 +164,14 @@
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a
-                                                                href="general.jsp"
+                                                                href="dashboard/general.jsp"
                                                                 class="avatar avatar-sm me-2"
                                                                 ><img
                                                                     class="avatar-img rounded-circle"
                                                                     src="assets/img/profiles/avatar-15.jpg"
                                                                     alt="User Image"
                                                                     /></a>
-                                                            <a href="general.jsp"
+                                                            <a href="dashboard/general.jsp"
                                                                >Eric Knight <span>#0013</span></a
                                                             >
                                                         </h2>
@@ -207,13 +207,13 @@
             </div>
         </div>
 
-        <script src="assets/js/jquery-3.6.0.min.js"></script>
+        <script src="css/assets/js/jquery-3.6.0.min.js"></script>
 
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="css/assets/js/bootstrap.bundle.min.js"></script>
 
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="css/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-        <script src="assets/js/script.js"></script>
+        <script src="css/assets/js/script.js"></script>
     </body>
 </html>
 

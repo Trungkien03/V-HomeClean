@@ -37,11 +37,14 @@
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/ProfileStyle.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Bootstrap DataTable CSS -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <style>
             .profile-image-label {
                 display: block;
@@ -73,7 +76,6 @@
 
                 }
             }
-
         </style>
     </head>
 
@@ -113,7 +115,7 @@
                             <div class="img-circle text-center mb-3">
                                 <img src="${acc.image}" alt="Image" class="shadow">
                             </div>
-                            <input type="file" name="image" id="profile-image" accept="image/*" style="display: none;">
+                            
                             <label for="profile-image" class="profile-image-label">
                                 <i class="fas fa-camera"></i>
                             </label>
@@ -130,21 +132,22 @@
                             </a>
                             <a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
                                 <i class="fa fa-user text-center mr-1"></i> 
-                                Đơn Dịch Vụ
+                                Tình Trạng Đơn
                             </a>
                             <a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
                                 <i class="fa fa-tv text-center mr-1"></i> 
-                                Application
+                                Tổng Số Đơn
                             </a>
                             <a class="nav-link" id="notification-tab" data-toggle="pill" href="#notification" role="tab" aria-controls="notification" aria-selected="false">
                                 <i class="fa fa-bell text-center mr-1"></i> 
-                                Notification
+                                Thông Báo
                             </a>
                         </div>
                     </div>
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                             <form action="ProfilePageController" method="post">
+                                <input type="file" name="image" id="profile-image" accept="image/*" style="display: none;">
                                 <h3 class="mb-4">Thông Tin Tài Khoản</h3>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -201,165 +204,168 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Bio</label>
-                                            <textarea class="form-control" rows="4"></textarea>
-                                        </div>
-                                        <h3 class="mb-4"></h3>
-
-                                        <div>
-                                            <input class="btn btn-primary" name="action" value="Cập Nhật" type="submit" >
-                                        </div>
-                                    </div>
+                                    <input class="btn btn-primary" name="action" value="Cập Nhật" type="submit" >
+                                </div>
                             </form>
+
                         </div>
-                    </div>
 
 
+                        <!--                        PASSWORD CHANGE -->
 
 
-                    <!--                        PASSWORD CHANGE -->
+                        <%
+                            AccountDTO account = (AccountDTO) session.getAttribute("acc");
+                            if (account != null) {
+
+                        %>
 
 
-                    <%
-                        AccountDTO account = (AccountDTO) session.getAttribute("acc");
-                        if (account != null) {
+                        <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+                            <h3 class="mb-4">Password Settings</h3>
+                            <div>
 
-                    %>
+                                <form action="ProfilePageController" method="POST">
 
+                                    <div class="row">
+                                        <div class="col-md-6">
 
-                    <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-                        <h3 class="mb-4">Password Settings</h3>
-                        <div>
+                                            <div class="form-group">
 
-                            <form action="ProfilePageController" method="POST">
-
-                                <div class="row">
-                                    <div class="col-md-6">
-
-                                        <div class="form-group">
-
-                                            <label>Old password</label>
-                                            <input type="password" name="password" class="form-control">
+                                                <label>Mật khẩu cũ</label>
+                                                <input type="password" name="password" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>New password</label>
-                                            <input type="password" name="newPassword" class="form-control">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Mật khẩu mới</label>
+                                                <input type="password" name="newPassword" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Xác nhận mật khẩu mới</label>
+                                                <input type="password" name="confirm" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Confirm new password</label>
-                                            <input type="password" name="confirm" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <input class="btn btn-primary" type="submit" name="action" value="Thay Đổi Mật Khẩu"
-                                       class="btn btn-block btn-info">
-                                <!--                            <div>
-                                                                <button class="btn btn-primary">Update</button>
-                                                                <button class="btn btn-light">Cancel</button>
-                                                            </div>-->
-                            </form>
+                                    <input class="btn btn-primary" type="submit" name="action" value="Thay Đổi Mật Khẩu"
+                                           class="btn btn-block btn-info">
+                                    <!--                            <div>
+                                                                    <button class="btn btn-primary">Update</button>
+                                                                    <button class="btn btn-light">Cancel</button>
+                                                                </div>-->
+                                </form>
+                            </div>
                         </div>
-                    </div>
 
-                    
-                    
-                    <!-- đay là tab thông tin đơn hàng   -->
-                    <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-                        <h3 class="mb-4">Đơn của bạn</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Login</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Two-factor auth</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="recovery">
-                                        <label class="form-check-label" for="recovery">
-                                            Recovery
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary">Update</button>
-                            <button class="btn btn-light">Cancel</button>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
-                        <h3 class="mb-4">Application Settings</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="app-check">
-                                        <label class="form-check-label" for="app-check">
-                                            App check
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" >
-                                        <label class="form-check-label" for="defaultCheck2">
-                                            Lorem ipsum dolor sit.
-                                        </label>
-                                    </div>
-                                </div>
+
+
+                        <!-- đay là tab thông tin đơn hàng   -->
+                        <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                            <h3 class="mb-4">Tình Trạng Đơn Dịch Vụ</h3>
+                            <div class="row">
+                                <table id="example_table1" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>name</th>
+                                            <th>number</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div>
-                            <button class="btn btn-primary">Update</button>
-                            <button class="btn btn-light">Cancel</button>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
-                        <h3 class="mb-4">Notification Settings</h3>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="notification1">
-                                <label class="form-check-label" for="notification1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum accusantium accusamus, neque cupiditate quis
-                                </label>
+                        <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
+                            <h3 class="mb-4">Số Đơn Của Bạn</h3>
+                            <div class="row">
+                                <table id="example_table2" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>name</th>
+                                            <th>number</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="notification2" >
-                                <label class="form-check-label" for="notification2">
-                                    hic nesciunt repellat perferendis voluptatum totam porro eligendi.
-                                </label>
+                        <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+                            <h3 class="mb-4">Thông Tin Thông Báo</h3>
+                            <div class="form-group">
+
+                                <table id="example_table3" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Nội Dung</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Colt Adams</td>
+                                            <td>16740326 5320</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
+
                         </div>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="notification3" >
-                                <label class="form-check-label" for="notification3">
-                                    commodi fugiat molestiae tempora corporis. Sed dignissimos suscipit
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary">Update</button>
-                            <button class="btn btn-light">Cancel</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -373,11 +379,28 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- Bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- jQuery Datatable js -->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap Datatable js -->    
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
+    <script>
+        $(document).ready(function () {
+            $('#example_table1').DataTable();
+        });
+        $(document).ready(function () {
+            $('#example_table2').DataTable();
+        });
+        $(document).ready(function () {
+            $('#example_table3').DataTable();
+        });
+    </script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
