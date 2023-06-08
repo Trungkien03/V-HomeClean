@@ -44,8 +44,7 @@
         <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
         <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
 
-        <!-- Main Stylesheet -->
-        <!-- Template Stylesheet -->
+ 
         <link href="css/BlogStyles.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet">
     </head>
