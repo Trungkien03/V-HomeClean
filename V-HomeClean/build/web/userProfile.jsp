@@ -28,23 +28,20 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
-
+        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                 Bootstrap DataTable CSS -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <!-- Libraries Stylesheet -->
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <!-- Template Stylesheet -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
         <link rel="stylesheet" type="text/css" href="css/ProfileStyle.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- Bootstrap DataTable CSS -->
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <style>
             .profile-image-label {
                 display: block;
@@ -58,7 +55,8 @@
                 line-height: 40px;
                 cursor: pointer;
                 position: absolute;
-                bottom: 70px;
+                bottom: 200px;
+                left: 150px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
@@ -68,6 +66,10 @@
 
             .profile-image-label i {
                 margin-top: 10px;
+            }
+            .full-section {
+                width: 100%;
+                height: 100vh; /* vh stands for viewport height */
             }
             @media (max-width: 768px){
                 .profile-image-label{
@@ -90,32 +92,25 @@
             }
         %>
 
-
         <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center py-5">
-                <h1 class="display-4 text-white animated slideInDown mb-4">Thông Tin Tài Khoản</h1>
+            <div class="container text-center">
+                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #FE706C;"> ${ERROR}</strong></h1>
+                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #4f772d;" >${message}</strong></h1>
             </div>
         </div>
-        <style>
-            .message_Noti{
-                text-align: center;
-                font-size: larger;
-            }
 
-        </style>
-        <div class="message_Noti">
-            <strong style="color: red" >${ERROR}</strong>
-            <strong style="color: green;" >${message}</strong>
-        </div>
-        <section class="py-5 my-5">
-            <div class="container">
-                <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+        
+
+     
+        <section class=" my-5">
+            <div class="container-fluid">
+                <div class="bg-white shadow rounded-lg d-block d-sm-flex w-full ">
                     <div class="profile-tab-nav border-right">
                         <div class="p-4">
                             <div class="img-circle text-center mb-3">
                                 <img src="${acc.image}" alt="Image" class="shadow">
                             </div>
-                            
+
                             <label for="profile-image" class="profile-image-label">
                                 <i class="fas fa-camera"></i>
                             </label>
@@ -204,7 +199,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input class="btn btn-primary" name="action" value="Cập Nhật" type="submit" >
+                                        <input class="btn btn-primary" style="width: 20%" name="action" value="Cập Nhật" type="submit" >
                                 </div>
                             </form>
 
@@ -222,7 +217,7 @@
 
 
                         <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-                            <h3 class="mb-4">Password Settings</h3>
+                            <h3 class="mb-4">Cài đặt mật khẩu</h3>
                             <div>
 
                                 <form action="ProfilePageController" method="POST">
@@ -271,26 +266,24 @@
                                 <table id="example_table1" class="table">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
-                                            <th>name</th>
-                                            <th>number</th>
+                                            <th>Mã đơn</th>
+                                            <th>dịch vụ</th>
+                                            <th>Mã phòng</th>
+                                            <th>Khu vực</th>
+                                            <th>Nhân viên</th>
+                                            <th>Tổng chi phí</th>
+                                            <th>Tình Trạng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
+                                            <td>Mã đơn</td>
+                                            <td>Dịch vụ</td>
+                                            <td>Mã phòng</td>
+                                            <td>Khu vực</td>
+                                            <td>Nhân viên</td>
+                                            <td>Tổng chi phí</td>
+                                            <td>Tình trạng</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -302,33 +295,31 @@
                                 <table id="example_table2" class="table">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
-                                            <th>name</th>
-                                            <th>number</th>
+                                            <th>Mã đơn</th>
+                                            <th>dịch vụ</th>
+                                            <th>Mã phòng</th>
+                                            <th>Khu vực</th>
+                                            <th>Nhân viên</th>
+                                            <th>Tổng chi phí</th>
+                                            <th>Tình Trạng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
+                                            <td>Mã đơn</td>
+                                            <td>Dịch vụ</td>
+                                            <td>Mã phòng</td>
+                                            <td>Khu vực</td>
+                                            <td>Nhân viên</td>
+                                            <td>Tổng chi phí</td>
+                                            <td>Tình trạng</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
-                            <h3 class="mb-4">Thông Tin Thông Báo</h3>
+                            <h3 class="mb-4">Thông Tin</h3>
                             <div class="form-group">
 
                                 <table id="example_table3" class="table">
@@ -375,10 +366,10 @@
     </section>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>-->
+    <!--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <!-- Bootstrap js -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -21,8 +21,8 @@
             type="image/x-icon"
             href="css/assets/img/favicon.png"
             />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- Bootstrap DataTable CSS -->
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         Bootstrap DataTable CSS -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
 
@@ -104,21 +104,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 d-flex">
+                        <div class="col-md-6 d-flex">
                             <div class="card card-table flex-fill">
                                 <div class="card-header">
                                     <h4 class="card-title float-start">Danh Sách Người Dùng</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive m-1">
+                                    <div class="table-responsive p-3">
                                         <table id="example_table" class="table table-bordered text-center table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Họ và Tên</th>
-                                                    <th>Email</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Số điện thoại</th>
                                                     <th>Giới tính</th>
                                                     <th>Ngày sinh</th>
                                                     <th>Status</th>
@@ -129,9 +126,62 @@
                                                     <tr>
                                                         <td>${o.accountID}</td>
                                                         <td>${o.fullName}</td>
-                                                        <td>${o.email}</td>
-                                                        <td>${o.address}</td>
-                                                        <td>${o.phone}</td>
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${o.gender eq 'Male'}">
+                                                                    Nam
+                                                                </c:when>
+                                                                <c:when test="${o.gender eq 'Female'}">
+                                                                    Nữ
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    Khác
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </td>
+                                                        <td>
+                                                            ${o.dateOfBirth}
+                                                        </td>
+                                                        <td> <c:choose>
+                                                                <c:when test="${o.status == true}">
+                                                                    <button type="button" class="btn btn-rounded btn-success">Active</button>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <button type="button" class="btn btn-rounded btn-danger">Blocked</button>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 d-flex">
+                            <div class="card card-table flex-fill">
+                                <div class="card-header">
+                                    <h4 class="card-title float-start">Danh Sách Đơn</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive p-3">
+                                        <table id="example_table1" class="table table-bordered text-center table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Họ và Tên</th>
+                                                    <th>Giới tính</th>
+                                                    <th>Ngày sinh</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach items="${ListUsers}" var="o">
+                                                    <tr>
+                                                        <td>${o.accountID}</td>
+                                                        <td>${o.fullName}</td>
                                                         <td>
                                                             <c:choose>
                                                                 <c:when test="${o.gender eq 'Male'}">
@@ -179,14 +229,61 @@
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <!-- Bootstrap js -->
-<!--        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-         jQuery Datatable js -->
+        <!--        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                 jQuery Datatable js -->
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <!-- Bootstrap Datatable js -->    
         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
         <script>
             $(document).ready(function () {
-                $('#example_table').DataTable();
+                $('#example_table').DataTable({
+                    language: {
+                        "sProcessing": "Đang xử lý...",
+                        "sLengthMenu": "Hiển thị _MENU_ dòng",
+                        "sZeroRecords": "Không tìm thấy kết quả nào",
+                        "sInfo": "Đang hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                        "sInfoEmpty": "Đang hiển thị 0 đến 0 trong tổng số 0 mục",
+                        "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                        "sSearch": "Tìm kiếm:",
+                        "oPaginate": {
+                            "sFirst": "Đầu",
+                            "sPrevious": "Trước",
+                            "sNext": "Tiếp",
+                            "sLast": "Cuối"
+                        },
+                        "sEmptyTable": "Không có dữ liệu",
+                        "sLoadingRecords": "Đang tải...",
+                        "oAria": {
+                            "sSortAscending": ": Sắp xếp cột tăng dần",
+                            "sSortDescending": ": Sắp xếp cột giảm dần"
+                        }
+                    }
+                });
+                $('#example_table1').DataTable(
+                        {
+                            language: {
+                                "sProcessing": "Đang xử lý...",
+                                "sLengthMenu": "Hiển thị _MENU_ dòng",
+                                "sZeroRecords": "Không tìm thấy kết quả nào",
+                                "sInfo": "Đang hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                                "sInfoEmpty": "Đang hiển thị 0 đến 0 trong tổng số 0 mục",
+                                "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                                "sSearch": "Tìm kiếm:",
+                                "oPaginate": {
+                                    "sFirst": "Đầu",
+                                    "sPrevious": "Trước",
+                                    "sNext": "Tiếp",
+                                    "sLast": "Cuối"
+                                },
+                                "sEmptyTable": "Không có dữ liệu",
+                                "sLoadingRecords": "Đang tải...",
+                                "oAria": {
+                                    "sSortAscending": ": Sắp xếp cột tăng dần",
+                                    "sSortDescending": ": Sắp xếp cột giảm dần"
+                                }
+                            }
+                        });
+
             });
         </script>
     </body>

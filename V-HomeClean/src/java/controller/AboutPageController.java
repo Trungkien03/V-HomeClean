@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.admin;
+package controller;
 
 import DAO.AccountDAO;
 import DTO.AccountDTO;
@@ -15,14 +15,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Trung Kien
  */
-@WebServlet(name = "UsersManagementController", urlPatterns = {"/UsersManagementController"})
-public class UsersManagementController extends HttpServlet {
+@WebServlet(name = "AboutPageController", urlPatterns = {"/AboutPageController"})
+public class AboutPageController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,28 +36,11 @@ public class UsersManagementController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-        int roleID = 4;
-        String action = request.getParameter("action");
+        int StaffID = 2;
         AccountDAO aDao = new AccountDAO();
-        AccountDTO a = (AccountDTO) session.getAttribute("acc");
-        if (a == null) {
-            response.sendRedirect("dashboard/login.jsp");
-        } else {
-            try {
-                if (action.equalsIgnoreCase("Khóa")) {
-                    String accountID = request.getParameter("accountID");
-                    aDao.setStatusAccount(accountID, "false");
-                }
-            } catch (Exception e) {
-            } finally {
-                List<AccountDTO> listUsers = aDao.GetAccountByRoleIDAndStatus(roleID, "true" );
-                int totalActiveAccount = aDao.CountAccountByRoldIDandStatus(roleID, "true");
-                request.setAttribute("ListUsers", listUsers);
-                request.setAttribute("TotalAccountActive", totalActiveAccount);
-                request.getRequestDispatcher("/dashboard/users.jsp").forward(request, response);
-            }
-        }
+        List<AccountDTO> listAc = aDao.GetAccountsByRoleID(StaffID);
+        request.setAttribute("ListA", listAc);
+        request.getRequestDispatcher("about.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

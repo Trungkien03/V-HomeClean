@@ -73,9 +73,6 @@
                                 <h1 class="display-6 mb-0">Nâng cấp không gian sống của bạn!</h1>
                             </div>
                         </div>
-                        <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
-                            <a class="btn btn-primary py-3 px-5" href="">Xem Thêm Dịch Vụ</a>
-                        </div>
                     </div>
                     <div class="row g-4 justify-content-center">
                     <c:forEach items="${listS}" var="o">
@@ -107,8 +104,8 @@
                 <div class="row g-5">
                     <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="border-start border-5 border-primary ps-4 mb-5">
-                            <h6 class="text-body text-uppercase mb-2">Appointment</h6>
-                            <h1 class="display-6 mb-0">A Company Involved In Service And Maintenance</h1>
+                            <h6 class="text-body text-uppercase mb-2">Hỗ Trợ</h6>
+                            <h1 class="display-6 mb-0">Công ty cung cấp dịch vụ và bảo trì chung cư</h1>
                         </div>
                         <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     </div>

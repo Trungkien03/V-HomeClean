@@ -4,13 +4,21 @@
     Author     : Trung Kien
 --%>
 
+<%@page import="DTO.AccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%
+    AccountDTO user = (AccountDTO) session.getAttribute("acc");
+    if (user == null) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <div class="header">
     <div class="header-left">
         <a href="HomePageController" class="navbar-brand d-flex align-items-center">
             <h3 style="color: #f8e43c" class="logo"><i class="fa fa-building text-primary me-3"></i><strong>V-HomeClean</strong></h3>
-    </a>
+        </a>
     </div>
 
     <a href="javascript:void(0);" id="toggle_btn">
@@ -68,7 +76,7 @@
                                 </div>
                             </a>
                         </li>
-                        
+
                         <li class="notification-message">
                             <a href="#">
                                 <div class="media d-flex">
@@ -109,28 +117,27 @@
                 <span class="user-img"
                       ><img
                         class="rounded-circle"
-                        src="css/assets/img/profiles/avatar-01.jpg"
+                        src="${acc.image}"
                         width="31"
-                        alt="Seema Sisty"
+                        alt="${acc.fullName}"
                         /></span>
             </a>
             <div class="dropdown-menu">
                 <div class="user-header">
                     <div class="avatar avatar-sm">
                         <img
-                            src="css/assets/img/profiles/avatar-01.jpg"
+                            src="${acc.image}"
                             alt="User Image"
                             class="avatar-img rounded-circle"
                             />
                     </div>
                     <div class="user-text">
-                        <h6>Seema Sisty</h6>
+                        <h6>${acc.fullName}</h6>
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
-                <a class="dropdown-item" href="dashboard/general.jsp">My Profile</a>
-                <a class="dropdown-item" href="dashboard/general.jsp">Account Settings</a>
-                <a class="dropdown-item" href="dashboard/login.jsp">Logout</a>
+                <a class="dropdown-item" href="UserGeneralPageController?accountID=${acc.accountID}">Cài Đặt Tài Khoản</a>
+                <a class="dropdown-item" href="LogoutController">Đăng Xuất</a>
                 <a class="dropdown-item" href="HomePageController">Back to V-HomeClean</a>
             </div>
         </li>

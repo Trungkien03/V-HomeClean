@@ -253,19 +253,19 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0008', N'user3@gmail.com', N'1', N'Trần Nguyên Trân', N'Đà Nẵng', N'0965432109', 4, N'Female', CAST(N'1992-10-05' AS Date), 1, N'img/user3.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0009', N'user4@gmail.com', N'1', N'Lê Văn User 4', N'Hải Phòng', N'0954321098', 4, N'Male', CAST(N'1993-07-12' AS Date), 1, N'img/user4.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0009', N'user4@gmail.com', N'1', N'Lê Văn Nhật', N'Hải Phòng', N'0954321098', 4, N'Male', CAST(N'1993-07-12' AS Date), 1, N'img/user4.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0010', N'user5@gmail.com', N'1', N'Phạm Thị User 5', N'Cần Thơ', N'0943210987', 4, N'Female', CAST(N'1996-05-30' AS Date), 1, N'img/user5.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0010', N'user5@gmail.com', N'1', N'Phạm Ngọc Hoài', N'Cần Thơ', N'0943210987', 4, N'Female', CAST(N'1996-05-30' AS Date), 1, N'img/user5.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0011', N'user6@gmail.com', N'1', N'Hoàng Văn User 6', N'Nghệ An', N'0932109876', 4, N'Male', CAST(N'1991-11-25' AS Date), 1, N'img/user6.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0011', N'user6@gmail.com', N'1', N'Hoàng Văn Tuấn', N'Nghệ An', N'0932109876', 4, N'Male', CAST(N'1991-11-25' AS Date), 1, N'img/user6.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0012', N'user7@gmail.com', N'1', N'Đỗ Thị User 7', N'Bình Dương', N'0921098765', 4, N'Female', CAST(N'1994-09-10' AS Date), 0, N'img/user7.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0012', N'user7@gmail.com', N'1', N'Đỗ Thị Trang', N'Bình Dương', N'0921098765', 4, N'Female', CAST(N'1994-09-10' AS Date), 0, N'img/user7.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0013', N'user8@gmail.com', N'1', N'Lý Văn User 8', N'Thanh Hóa', N'0910987654', 4, N'Male', CAST(N'1997-04-08' AS Date), 1, N'img/user8.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0013', N'user8@gmail.com', N'1', N'Lý Văn Toàn', N'Thanh Hóa', N'0910987654', 4, N'Male', CAST(N'1997-04-08' AS Date), 1, N'img/user8.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0014', N'user9@gmail.com', N'1', N'Ngô Thị User 9', N'Quảng Ninh', N'0909876543', 4, N'Female', CAST(N'1989-12-18' AS Date), 1, N'img/user9.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0014', N'user9@gmail.com', N'1', N'Ngô Thị Duyên', N'Quảng Ninh', N'0909876543', 4, N'Female', CAST(N'1989-12-18' AS Date), 1, N'img/user9.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0015', N'user10@gmail.com', N'1', N'Huỳnh Văn User 10', N'Long An', N'0898765432', 4, N'Male', CAST(N'1998-02-05' AS Date), 0, N'img/user10.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0015', N'user10@gmail.com', N'1', N'Huỳnh Văn An', N'Long An', N'0898765432', 4, N'Male', CAST(N'1998-02-05' AS Date), 0, N'img/user10.jpg', NULL)
 GO
 
 GO

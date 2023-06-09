@@ -18,13 +18,13 @@
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-users"></i> <span> Accounts </span>
+                       ><i class="fe fe-users"></i> <span> Tài Khoản </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="UsersManagementController">Users Management</a></li>
-                        <li><a href="dashboard/staffs.jsp">Staff Management</a></li>
-                        <li><a href="dashboard/blocked-users.jsp">Blocked Accounts</a></li>
+                        <li><a href="UsersManagementController">Quản Lý Khách Hàng</a></li>
+                        <li><a href="dashboard/staffs.jsp">Quản Lý Nhân Viên</a></li>
+                        <li><a href="UsersBlockPageController">Tài Khoản Bị Khóa</a></li>
                         <li><a href="dashboard/report-users.jsp">Report Accounts</a></li>
                     </ul>
                 </li>

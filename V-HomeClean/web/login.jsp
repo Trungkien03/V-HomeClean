@@ -68,11 +68,16 @@
                 request.setAttribute("USER_ERROR", userError);
             }
         %>
-        <strong>
+
+        <div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+            <div class="container text-center py-5">
+                <h1 class="display-4 text-white animated slideInDown mb-4">Đăng Nhập và Đăng Ký</h1>
+            </div>
+        </div>
         <div class="d-lg-flex half">
             <div class="container">
-                <div class="row align-items-center justify-content-center login-form">
-                    <div  class="col-md-8 form">
+                <div class="row align-items-center justify-content-center">
+                    <div  class="col-md-8 form login-form">
                         <h3 class="m-2">Đăng Nhập</h3>
                         <strong style="color: green">${message}</strong>
                         <strong style="color: red">${ERROR}</strong>
@@ -106,7 +111,7 @@
 
             <div class="container">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-md-8 form">
+                    <div class="col-md-8 form register-form">
                         <h3 class="m-2">Đăng Ký</h3>
                         <form action="MainController" method="post">
                             <div class="form-group mb-3">
@@ -181,11 +186,6 @@
                 </div>
             </div>
         </div>
-</strong>
-
-        <!-- Footer Start -->
-        <jsp:include page="footer.jsp"></jsp:include>
-        <!-- Footer End -->
 
 
         <!-- Back to Top -->

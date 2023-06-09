@@ -54,7 +54,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-3 py-lg-0">
             <a href="HomePageController" class="nav-item nav-link active"><strong>Trang Chủ</strong></a>
-            <a href="about.jsp" class="nav-item nav-link"><strong>Giới Thiệu</strong></a>
+            <a href="AboutPageController" class="nav-item nav-link"><strong>Giới Thiệu</strong></a>
             <div class="nav-item dropdown">
                 <a href="ServicePageController" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Dịch Vụ</strong></a>
                 <div class="dropdown-menu bg-light m-0">

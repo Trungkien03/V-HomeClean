@@ -1,10 +1,10 @@
 body {
     font-family: "Roboto", sans-serif;
-/*    background-image: url("../img/background-login.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    padding-top: 10px;*/
+    /*    background-image: url("../img/background-login.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        padding-top: 10px;*/
 }
 
 p {
@@ -160,11 +160,8 @@ h2 {
     color:black;
 }
 
-.login-form{
-    border-right: 5px solid #182333;
-}
-
 .register-form{
+    margin-top: 10px;
     padding-bottom: 50px;
 }
 
@@ -172,11 +169,120 @@ h2 {
     color: black;
 }
 
-.half{
-    margin-bottom: 200px;
-    border-top: 5px solid #595959;
-}
-
 label{
     font-weight: bold;
+}
+
+.login-form {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.login-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form label {
+    font-weight: bold;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.login-form .form-group.d-flex {
+    align-items: center;
+}
+
+.login-form .form-group.d-flex label {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.login-form .form-group.d-flex input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.login-form .form-group .forgot-pass {
+    color: black;
+}
+
+.login-form .form-group .btn-primary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+}
+
+.register-form {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.register-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.register-form .form-group {
+    margin-bottom: 15px;
+}
+
+.register-form label {
+    font-weight: bold;
+}
+
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="text"],
+.register-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.register-form .form-group.mb-3 strong {
+    color: #e72734;
+}
+
+.register-form .form-group.mb-3 label {
+    margin-bottom: 0;
+}
+
+.register-form .form-group.mb-3 .btn-primary {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.register-form .form-group.mb-3 label {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.register-form .form-group.mb-3 input[type="radio"] {
+    margin-right: 5px;
+}
+
+.register-form .form-group.mb-3 strong {
+    color: #e72734;
 }

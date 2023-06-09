@@ -25,29 +25,31 @@
         <link rel="stylesheet" href="css/assets/css/style.css">
     </head>
     <body>
-
+        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container text-center py-5">
+                <h1 class="display-4 text-white animated slideInDown mb-4">Đăng Nhập và Đăng Ký</h1>
+            </div>
+        </div>
         <div class="main-wrapper login-body">
             <div class="login-wrapper">
                 <div class="container">
                     <div class="loginbox">
                         <div class="login-right">
                             <div class="login-right-wrap">
-                                <h1>Login</h1>
-                                <p class="account-subtitle">Access to our dashboard</p>
-
-                                <form action="dashboard/index.jsp">
+                                <h1>Đăng Nhập</h1>
+                                <p class="account-subtitle">Truy cập vào bảng điều khiển</p>
+                                <form action="/MainController" method="post">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Email">
+                                        <input name="email" class="form-control" type="text" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Password">
+                                        <input name="password" class="form-control" type="password" placeholder="Mật Khẩu">
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary btn-block" type="submit">Login</button>
+                                        <input type="submit" class="btn btn-primary btn-block" name="action" value="Đăng Nhập" />
                                     </div>
                                 </form>
-
-                                <div class="text-center forgotpass"><a href="dashboard/forgot-password.jsp">Forgot Password?</a></div>
+                                <div class="text-center forgotpass"><a href="#">Forgot Password?</a></div>
                             </div>
                         </div>
                     </div>

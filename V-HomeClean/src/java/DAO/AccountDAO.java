@@ -296,6 +296,24 @@ public class AccountDAO {
         return totalCount;
     }
 
+    //đếm Account hoạt động
+    public int CountAccountByRoldIDandStatus(int roleID, String status) {
+        String query = "SELECT COUNT(AccountID) AS TotalCount FROM Account WHERE RoleID = ? AND status = ?";
+        int totalCount = 0;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, roleID);
+            ps.setString(2, status);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                totalCount = rs.getInt("TotalCount");
+            }
+        } catch (Exception e) {
+        }
+        return totalCount;
+    }
+
     public AccountDTO GetAccountByAccountID(String accountID) {
         String query = "SELECT * FROM Account WHERE AccountID = ?";
         try {
@@ -321,6 +339,49 @@ public class AccountDAO {
         }
         return null;
     }
+
+    public List<AccountDTO> GetAccountByRoleIDAndStatus(int roleID, String status) {
+        List<AccountDTO> list = new ArrayList<>();
+        String query = "SELECT * FROM Account WHERE RoleID = ? and status = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, roleID);
+            ps.setString(2, status);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new AccountDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getNString(4),
+                        rs.getNString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getDouble(12)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public void setStatusAccount(String accountID, String status) {
+        String query = "UPDATE Account\n"
+                + "SET Status = ?\n"
+                + "WHERE AccountID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, status);
+            ps.setString(2, accountID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
         AccountDTO a = dao.GetAccountByAccountID("AC0001");

@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Trung Kien
  */
-@WebServlet(name = "UsersManagementController", urlPatterns = {"/UsersManagementController"})
-public class UsersManagementController extends HttpServlet {
+@WebServlet(name = "UsersBlockPageController", urlPatterns = {"/UsersBlockPageController"})
+public class UsersBlockPageController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,25 +38,25 @@ public class UsersManagementController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        int roleID = 4;
         String action = request.getParameter("action");
-        AccountDAO aDao = new AccountDAO();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        int roleID = 4;
+        AccountDAO aDao = new AccountDAO();
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
         } else {
             try {
-                if (action.equalsIgnoreCase("Khóa")) {
+                if (action.equalsIgnoreCase("Mở")) {
                     String accountID = request.getParameter("accountID");
-                    aDao.setStatusAccount(accountID, "false");
+                    aDao.setStatusAccount(accountID, "true");
                 }
             } catch (Exception e) {
             } finally {
-                List<AccountDTO> listUsers = aDao.GetAccountByRoleIDAndStatus(roleID, "true" );
-                int totalActiveAccount = aDao.CountAccountByRoldIDandStatus(roleID, "true");
+                List<AccountDTO> listUsers = aDao.GetAccountByRoleIDAndStatus(roleID, "false");
+                int totalBlockAccounts = aDao.CountAccountByRoldIDandStatus(roleID, "false");
                 request.setAttribute("ListUsers", listUsers);
-                request.setAttribute("TotalAccountActive", totalActiveAccount);
-                request.getRequestDispatcher("/dashboard/users.jsp").forward(request, response);
+                request.setAttribute("totalBlockAccounts", totalBlockAccounts);
+                request.getRequestDispatcher("/dashboard/blocked-users.jsp").forward(request, response);
             }
         }
     }
