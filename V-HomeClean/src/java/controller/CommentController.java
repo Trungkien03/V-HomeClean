@@ -5,11 +5,11 @@
  */
 package controller;
 
-import DAO.BlogDAO;
+import DAO.CommentDAO;
+import DTO.AccountDTO;
 import DTO.BlogDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,30 +21,29 @@ import javax.servlet.http.HttpSession;
  *
  * @author Hieu Doan
  */
-@WebServlet(name = "SingleBlogController", urlPatterns = {"/SingleBlogController"})
-public class SingleBlogController extends HttpServlet {
+@WebServlet(name = "CommentController", urlPatterns = {"/CommentController"})
+public class CommentController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        String blogID = request.getParameter("blogID");
-        BlogDAO dao = new BlogDAO();
-        List<BlogDTO> list = dao.getAllBlog();
-        BlogDTO b = dao.getBlogByID(blogID);
-        session.setAttribute("listB", list);
-        session.setAttribute("BlogDetail", b);
-        request.getRequestDispatcher("singleBlog.jsp").forward(request, response);
+
+        CommentDAO dao = new CommentDAO();
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        BlogDTO b = (BlogDTO) session.getAttribute("BlogDetail");
+        if (a == null) {
+            response.sendRedirect("login.jsp");
+        } else {
+
+            String message = request.getParameter("message");
+            String accountID = a.getAccountID();
+            String blogID = b.getBlogID();
+            dao.AddComment(message, accountID, blogID);
+
+            request.getRequestDispatcher("singleBlog.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

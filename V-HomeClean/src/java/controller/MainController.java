@@ -35,6 +35,8 @@ public class MainController extends HttpServlet {
     private static final String BOOKING_CONTROLLER = "BookingController";
     private static final String CHANGE_PASSWORD = "changePasswords";
     private static final String CHANGE_PASSWORD_CONTROLLER = "ChangePassword";
+    private static final String COMMENT = "Đăng Bình Luận";
+    private static final String COMMENT_CONTROLLER = "CommentController";
     
    
 
@@ -62,6 +64,8 @@ public class MainController extends HttpServlet {
                 url = BOOKING_CONTROLLER;
             } else if(CHANGE_PASSWORD.equals(action)){
                 url = CHANGE_PASSWORD_CONTROLLER;
+            } else if(COMMENT.equals(action)){
+                url = COMMENT_CONTROLLER;
             }
             else {
                 request.setAttribute("ERROR", "Your action is not supported!");
