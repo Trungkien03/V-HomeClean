@@ -6,7 +6,9 @@
 package controller;
 
 import DAO.BlogDAO;
+import DAO.CommentDAO;
 import DTO.BlogDTO;
+import DTO.CommentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -23,27 +25,26 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "SingleBlogController", urlPatterns = {"/SingleBlogController"})
 public class SingleBlogController extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
+
         String blogID = request.getParameter("blogID");
         BlogDAO dao = new BlogDAO();
         List<BlogDTO> list = dao.getAllBlog();
         BlogDTO b = dao.getBlogByID(blogID);
         session.setAttribute("listB", list);
         session.setAttribute("BlogDetail", b);
+        CommentDAO cdao = new CommentDAO();
+        List<CommentDTO> listC = cdao.getCommentV2(blogID);
+        
+                
+        session.setAttribute("listCmt", listC);
+        
+        
         request.getRequestDispatcher("singleBlog.jsp").forward(request, response);
     }
 

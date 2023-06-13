@@ -90,6 +90,7 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="row">
+                                
                             <c:forEach items="${listBlog}" var="o">
                                 <div class="col-lg-6 col-md-6 mb-5">
                                     <div class="blog-item">

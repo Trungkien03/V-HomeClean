@@ -195,6 +195,29 @@ BEGIN
 END;
 GO
 
+-- Tạo trigger AutoGenerateBlogID 
+CREATE TRIGGER AutoGenerateBlogID
+ON Blog
+INSTEAD OF INSERT
+AS
+BEGIN
+  DECLARE @Prefix NVARCHAR(2) = 'BL';
+
+  DECLARE @MaxID INT = ISNULL((SELECT MAX(CAST(RIGHT(BlogID, LEN(BlogID) - LEN(@Prefix)) AS INT)) FROM Blog), 0);
+
+  INSERT INTO Blog (BlogID, title, subTitle, content, accountID, BlogCateID, time, image)
+  SELECT @Prefix + RIGHT('0000' + CAST(@MaxID + ROW_NUMBER() OVER (ORDER BY (SELECT 1)) AS NVARCHAR(4)), 4),
+         title,
+         subTitle,
+         content,
+         accountID,
+		 BlogCateID,
+         time,
+         image        
+  FROM inserted;
+END;
+GO
+
 -- Tạo trigger AutoGenerateServiceID
 DROP TRIGGER IF EXISTS AutoGenerateServiceID;
 GO

@@ -11,7 +11,7 @@ package DTO;
  */
 public class CommentDTO {
 
-    private int comment;
+    private int commentID;
     private String message;
     private String time;
     private String accountID;
@@ -21,8 +21,8 @@ public class CommentDTO {
     public CommentDTO() {
     }
 
-    public CommentDTO(int comment, String message, String time, String accountID, String blogID, String fullName) {
-        this.comment = comment;
+    public CommentDTO(int commentID, String message, String time, String accountID, String blogID, String fullName) {
+        this.commentID = commentID;
         this.message = message;
         this.time = time;
         this.accountID = accountID;
@@ -31,11 +31,11 @@ public class CommentDTO {
     }
 
     public int getComment() {
-        return comment;
+        return commentID;
     }
 
-    public void setComment(int comment) {
-        this.comment = comment;
+    public void setComment(int commentID) {
+        this.commentID = commentID;
     }
 
     public String getMessage() {
@@ -80,7 +80,7 @@ public class CommentDTO {
 
     @Override
     public String toString() {
-        return "CommentDTO{" + "comment=" + comment + ", message=" + message + ", time=" + time + ", accountID=" + accountID + ", blogID=" + blogID + ", fullName=" + fullName + '}';
+        return "CommentDTO{" + "commentID=" + commentID + ", message=" + message + ", time=" + time + ", accountID=" + accountID + ", blogID=" + blogID + ", fullName=" + fullName + '}';
     }
 
 }
