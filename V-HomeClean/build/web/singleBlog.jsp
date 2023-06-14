@@ -226,8 +226,9 @@
                         </style>
                         <div class="col-lg-12">
 
-                            <form action="MainController" class="contact-form bg-white rounded p-5" id="comment-form">
+                            <form action="SingleBlogController" class="contact-form bg-white rounded p-5" id="comment-form">
                                 <h4 class="mb-4">Viết Bình Luận</h4>
+                                <input class="form-control" type="hidden" name="blogID" value="${BlogDetail.blogID}">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -250,7 +251,7 @@
                                 <!--                                <input  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."-->
                                 <textarea class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."></textarea>
 
-                                <input class="btn btn-primary" type="submit" name="action" id="submit_contact" value="Đăng Bình Luận">
+                                <input class="btn btn-primary" type="submit" name="action" id="submit_contact" value="Bình luận">
                             </form>
                         </div>
                     </div>
