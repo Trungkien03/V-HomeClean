@@ -64,7 +64,7 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">Tổng Số Lượng Người Dùng: ${TotalAccountActive}</h4>
+                                        <h4 class="card-title">Số lượng người dùng: ${TotalAccountActive}</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive custom-table-responsive">                                          

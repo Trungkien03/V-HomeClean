@@ -277,6 +277,7 @@ public class AccountDAO {
             ps.setString(11, accountID);
             ps.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -292,6 +293,7 @@ public class AccountDAO {
                 totalCount = rs.getInt("TotalCount");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return totalCount;
     }
@@ -310,6 +312,7 @@ public class AccountDAO {
                 totalCount = rs.getInt("TotalCount");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return totalCount;
     }
@@ -336,6 +339,7 @@ public class AccountDAO {
                         rs.getDouble(12));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -364,6 +368,7 @@ public class AccountDAO {
                         rs.getDouble(12)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -382,9 +387,40 @@ public class AccountDAO {
         }
     }
 
+    //lấy ra tất cả các accounts created by Kiên
+    public List<AccountDTO> getAllAccounts() {
+        String query = "SELECT * FROM Account";
+        List<AccountDTO> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new AccountDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getNString(4),
+                        rs.getNString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getDouble(12)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        AccountDTO a = dao.GetAccountByAccountID("AC0001");
-        System.out.println(a.toString());
+        List<AccountDTO> list = dao.getAllAccounts();
+        for (AccountDTO accountDTO : list) {
+            System.out.println(accountDTO.toString());
+        }
     }
+
 }

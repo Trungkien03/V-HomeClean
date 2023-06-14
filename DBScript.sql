@@ -71,16 +71,6 @@ CREATE TABLE Account
 );
 GO
 
-CREATE TABLE Notification
-(
-	NotificationID INT IDENTITY(1,1) PRIMARY KEY,
-	AccountID NVARCHAR(20) NOT NULL,
-	Detail NVARCHAR(MAX) NOT NULL,
-	Create_at DATETIME not null,
-	Status bit NOT NULL
-	FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
-)
-
 
 -- Tạo bảng BlogCate
 CREATE TABLE BlogCate
@@ -148,6 +138,19 @@ CREATE TABLE BookingDetail
 );
 GO
 
+CREATE TABLE Notification
+(
+	NotificationID INT IDENTITY(1,1) PRIMARY KEY,
+	AccountID NVARCHAR(20) NOT NULL,
+	BookingID INT NOT NULL,
+	Detail NVARCHAR(MAX) NOT NULL,
+	Create_at DATETIME not null,
+	Status bit NOT NULL,
+	FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
+	FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
+)
+GO
+
 -- Tạo bảng Feedback
 CREATE TABLE Feedback
 (
@@ -174,6 +177,16 @@ CREATE TABLE Comment
   PRIMARY KEY (CommentID),
   FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
   FOREIGN KEY (BlogID) REFERENCES Blog(BlogID)
+);
+GO
+
+--Tạo bảng message cho guest người mà có thắc mắc về dịch vụ
+CREATE TABLE Question (
+  id INT PRIMARY KEY IDENTITY(1,1),
+  name NVARCHAR(255) NOT NULL,
+  email NVARCHAR(255) NOT NULL,
+  subject NVARCHAR(255) NOT NULL,
+  message NVARCHAR(MAX) NOT NULL
 );
 GO
 
@@ -205,6 +218,7 @@ BEGIN
   FROM inserted;
 END;
 GO
+
 
 -- Tạo trigger AutoGenerateServiceID
 DROP TRIGGER IF EXISTS AutoGenerateServiceID;
@@ -281,4 +295,22 @@ INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [C
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE05', N'Sửa chữa đồ điện', 200000.0000, N'Dịch vụ sửa chữa đồ điện đảm bảo rằng các thiết bị điện trong căn hộ của bạn hoạt động ổn định và an toàn. Đội ngũ kỹ thuật viên sẽ kiểm tra và khắc phục các sự cố như mất điện, đứt dây, hỏng bộ nguồn và các vấn đề khác liên quan đến hệ thống điện. Họ sẽ thực hiện các biện pháp sửa chữa cần thiết để đảm bảo các thiết bị điện hoạt động trơn tru và đáng tin cậy. Dịch vụ này giúp bạn an tâm và tiết kiệm thời gian và công sức trong việc bảo trì và sửa chữa các thiết bị điện trong căn hộ của mình.', 2, N'img/serviceSuaChuaDoDien.jpg', 1)
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE06', N'Sửa chữa hệ thống nước', 100000.0000, N'Dịch vụ sửa chữa nước đảm bảo sự hoạt động ổn định của hệ thống nước trong căn hộ của bạn. Đội ngũ thợ sẽ khắc phục sự cố như rò rỉ đường ống nước, hỏng bồn nước, vòi nước hỏng, và các vấn đề khác. Họ sẽ thực hiện các biện pháp sửa chữa và thay thế linh kiện cần thiết để đảm bảo hệ thống nước hoạt động hiệu quả. Dịch vụ này giúp bạn có một nguồn nước sạch sẽ và ổn định trong căn hộ của mình.', 2, N'img/serviceSuaChuaHeThongNuoc.jpg', 1)
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE07', N'Sửa chữa thiết bị gia dụng', 100000.0000, N'Dịch vụ sửa chữa thiết bị gia dụng đảm bảo rằng các thiết bị trong gia đình của bạn hoạt động tốt và lâu bền. Đội ngũ kỹ thuật viên chuyên nghiệp sẽ tiến hành sửa chữa các thiết bị như máy giặt, tủ lạnh, lò vi sóng, máy lọc không khí và các thiết bị khác. Họ sẽ kiểm tra, chẩn đoán và khắc phục các sự cố như không hoạt động, hỏng linh kiện, mất hiệu suất và các vấn đề khác. Dịch vụ này giúp bạn tiết kiệm thời gian, tiền bạc và nỗ lực trong việc sửa chữa các thiết bị gia dụng, đồng thời đảm bảo rằng chúng hoạt động tốt và đáng tin cậy.', 2, N'img/serviceSuaChuaGiaDung.jpg', 1)
+GO
+
+
+SET IDENTITY_INSERT [dbo].[Booking] ON 
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (1, N'AC0002', N'Xác nhận', N'', N'SE01')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (2, N'AC0002', N'Xác nhận', N'', N'SE06')
+GO
+SET IDENTITY_INSERT [dbo].[Booking] OFF
+GO
+SET IDENTITY_INSERT [dbo].[BookingDetail] ON 
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 500000.0000, CAST(N'2023-06-13T10:14:00.000' AS DateTime), N'S1.01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Hãy cử nhiều người đến cho tôi!')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (2, 2, 100000.0000, CAST(N'2023-06-13T10:14:00.000' AS DateTime), N'S1.01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Hãy cử người có kinh nghiệm thật nhiều cho tôi !')
+GO
+SET IDENTITY_INSERT [dbo].[BookingDetail] OFF
 GO

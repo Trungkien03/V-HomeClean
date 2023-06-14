@@ -62,7 +62,7 @@
                             <div class="col-md-12 d-flex">
                                 <div class="card card-table flex-fill">
                                     <div class="card-header">
-                                        <h4 class="card-title">Tài Khoản Bị Khóa: ${totalBlockAccounts}</h4>
+                                        <h4 class="card-title">Tài khoản bị khóa: ${totalBlockAccounts}</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive custom-table-responsive p-3">                                          

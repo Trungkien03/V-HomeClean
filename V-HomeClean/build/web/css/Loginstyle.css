@@ -263,14 +263,16 @@ label{
 .register-form .form-group.mb-3 label {
     margin-bottom: 0;
 }
-
-.register-form .form-group.mb-3 .btn-primary {
+.register-form .form-group{
+    width: 100%;
+}
+.register-form .form-group .btn-primary {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     background-color: #007bff;
     border: none;
-    color: #fff;
+    color: #000;
     font-weight: bold;
 }
 

@@ -6,9 +6,12 @@
 package controller;
 
 import DAO.AccountDAO;
+import DAO.BookingDAO;
 import DTO.AccountDTO;
+import DTO.BookingDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,8 +42,9 @@ public class ProfilePageController extends HttpServlet {
         HttpSession session = request.getSession();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
         String action = request.getParameter("action");
-        String url = "404.jsp";
+        String url = "userProfile.jsp";
         if (a == null) {
             response.sendRedirect("login.jsp");
         } else {
@@ -94,7 +98,11 @@ public class ProfilePageController extends HttpServlet {
                     }
                 }
             } catch (Exception e) {
+                e.printStackTrace();
             } finally {
+                String accountID = a.getAccountID();
+                List<BookingDTO> BookingList = bDao.getBookingDetailByAccountID(accountID);
+                request.setAttribute("ListB", BookingList);
                 request.getRequestDispatcher(url).forward(request, response);
             }
 

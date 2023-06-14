@@ -25,11 +25,6 @@
         <link rel="stylesheet" href="css/assets/css/style.css">
     </head>
     <body>
-        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center py-5">
-                <h1 class="display-4 text-white animated slideInDown mb-4">Đăng Nhập và Đăng Ký</h1>
-            </div>
-        </div>
         <div class="main-wrapper login-body">
             <div class="login-wrapper">
                 <div class="container">
@@ -49,7 +44,7 @@
                                         <input type="submit" class="btn btn-primary btn-block" name="action" value="Đăng Nhập" />
                                     </div>
                                 </form>
-                                <div class="text-center forgotpass"><a href="#">Forgot Password?</a></div>
+                                <div class="text-center forgotpass"><a href="../HomePageController">Forgot Password?</a></div>
                             </div>
                         </div>
                     </div>

@@ -10,6 +10,7 @@ import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -112,6 +113,15 @@ public class BookingController extends HttpServlet {
                     String dateError = "Vui lòng chọn ngày";
                     request.setAttribute("dateError", dateError);
                     checkValidation = false;
+                } else {
+                    // Kiểm tra ngày không được để ngày quá khứ
+                    LocalDate currentDate = LocalDate.now();
+                    LocalDate selectedDate = LocalDate.parse(date);
+                    if (selectedDate.isBefore(currentDate)) {
+                        String dateError = "Không thể đặt dịch vụ trong quá khứ";
+                        request.setAttribute("dateError", dateError);
+                        checkValidation = false;
+                    }
                 }
 
                 // Kiểm tra hợp lệ của time
@@ -135,7 +145,7 @@ public class BookingController extends HttpServlet {
                     request.getRequestDispatcher(ERROR).forward(request, response);
                 }
             } catch (Exception e) {
-            } 
+            }
         }
 
     }

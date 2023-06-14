@@ -114,11 +114,16 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
             }
         
       out.write("\r\n");
-      out.write("        <strong>\r\n");
+      out.write("\r\n");
+      out.write("        <div class=\"container-fluid page-header wow fadeIn\" data-wow-delay=\"0.1s\">\r\n");
+      out.write("            <div class=\"container text-center py-5\">\r\n");
+      out.write("                <h1 class=\"display-4 text-white animated slideInDown mb-4\">Đăng Nhập và Đăng Ký</h1>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
       out.write("        <div class=\"d-lg-flex half\">\r\n");
       out.write("            <div class=\"container\">\r\n");
-      out.write("                <div class=\"row align-items-center justify-content-center login-form\">\r\n");
-      out.write("                    <div  class=\"col-md-8 form\">\r\n");
+      out.write("                <div class=\"row align-items-center justify-content-center\">\r\n");
+      out.write("                    <div  class=\"col-md-8 form login-form\">\r\n");
       out.write("                        <h3 class=\"m-2\">Đăng Nhập</h3>\r\n");
       out.write("                        <strong style=\"color: green\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${message}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -160,7 +165,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("            <div class=\"container\">\r\n");
       out.write("                <div class=\"row align-items-center justify-content-center\">\r\n");
-      out.write("                    <div class=\"col-md-8 form\">\r\n");
+      out.write("                    <div class=\"col-md-8 form register-form\">\r\n");
       out.write("                        <h3 class=\"m-2\">Đăng Ký</h3>\r\n");
       out.write("                        <form action=\"MainController\" method=\"post\">\r\n");
       out.write("                            <div class=\"form-group mb-3\">\r\n");
@@ -283,13 +288,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
-      out.write("</strong>\r\n");
-      out.write("\r\n");
-      out.write("        <!-- Footer Start -->\r\n");
-      out.write("        ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "footer.jsp", out, false);
-      out.write("\r\n");
-      out.write("        <!-- Footer End -->\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("        <!-- Back to Top -->\r\n");

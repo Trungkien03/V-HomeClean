@@ -50,9 +50,11 @@ public class UsersManagementController extends HttpServlet {
                     String accountID = request.getParameter("accountID");
                     aDao.setStatusAccount(accountID, "false");
                 }
+            
             } catch (Exception e) {
+                e.printStackTrace();
             } finally {
-                List<AccountDTO> listUsers = aDao.GetAccountByRoleIDAndStatus(roleID, "true" );
+                List<AccountDTO> listUsers = aDao.GetAccountByRoleIDAndStatus(roleID, "true");
                 int totalActiveAccount = aDao.CountAccountByRoldIDandStatus(roleID, "true");
                 request.setAttribute("ListUsers", listUsers);
                 request.setAttribute("TotalAccountActive", totalActiveAccount);

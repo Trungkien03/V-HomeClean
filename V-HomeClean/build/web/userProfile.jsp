@@ -4,10 +4,14 @@
     Author     : Trung Kien
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="DTO.BookingDTO"%>
 <%@page import="DTO.AccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,9 +103,9 @@
             </div>
         </div>
 
-        
 
-     
+
+
         <section class=" my-5">
             <div class="container-fluid">
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex w-full ">
@@ -142,7 +146,7 @@
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                             <form action="ProfilePageController" method="post">
-                                <input type="file" name="image" id="profile-image" accept="image/*" style="display: none;">
+                                <!--                                <input type="file" name="image" id="profile-image" accept="image/*" style="display: none;">-->
                                 <h3 class="mb-4">Thông Tin Tài Khoản</h3>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -199,7 +203,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                        <input class="btn btn-primary" style="width: 20%" name="action" value="Cập Nhật" type="submit" >
+                                    <input class="btn btn-primary" style="width: 20%" name="action" value="Cập Nhật" type="submit" >
                                 </div>
                             </form>
 
@@ -266,8 +270,8 @@
                                 <table id="example_table1" class="table">
                                     <thead>
                                         <tr>
-                                            <th>Mã đơn</th>
-                                            <th>dịch vụ</th>
+                                            <th>Dịch vụ</th>
+                                            <th>Định Kì</th>
                                             <th>Mã phòng</th>
                                             <th>Khu vực</th>
                                             <th>Nhân viên</th>
@@ -276,15 +280,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Mã đơn</td>
-                                            <td>Dịch vụ</td>
-                                            <td>Mã phòng</td>
-                                            <td>Khu vực</td>
-                                            <td>Nhân viên</td>
-                                            <td>Tổng chi phí</td>
-                                            <td>Tình trạng</td>
-                                        </tr>
+                                        <c:forEach var="booking" items="${ListB}">
+                                            <c:set var="addressParts" value="${fn:split(booking.bookingAddress, '||')}"/>
+                                            <tr>
+                                                <td>${booking.serviceName}</td>
+                                                <td>${booking.typeOfService}</td>
+                                                <td>${addressParts[0]}</td>
+                                                <td>${addressParts[1]}</td>
+                                                <td>${booking.staffID}</td>
+                                                <td>${booking.totalPrice}</td>
+                                                <td>
+                                                    <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
+                                                        <button class="btn btn-dark">Xác nhận</button>
+                                                    </c:if>
+                                                    <c:if test="${booking.bookingStatus eq 'Đang hoạt động'}">
+                                                        <button class="btn btn-primary">Đang làm</button>
+                                                    </c:if>
+                                                    <c:if test="${booking.bookingStatus eq 'Hoàn tất'}">
+                                                        <button class="btn btn-success">Hoàn tất</button>
+                                                    </c:if>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -383,13 +400,79 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#example_table1').DataTable();
+            $('#example_table1').DataTable({
+                language: {
+                    "sProcessing": "Đang xử lý...",
+                    "sLengthMenu": "Hiển thị _MENU_ dòng",
+                    "sZeroRecords": "Không tìm thấy kết quả nào",
+                    "sInfo": "Đang hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                    "sInfoEmpty": "Đang hiển thị 0 đến 0 trong tổng số 0 mục",
+                    "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                    "sSearch": "Tìm kiếm:",
+                    "oPaginate": {
+                        "sFirst": "Đầu",
+                        "sPrevious": "Trước",
+                        "sNext": "Tiếp",
+                        "sLast": "Cuối"
+                    },
+                    "sEmptyTable": "Không có dữ liệu",
+                    "sLoadingRecords": "Đang tải...",
+                    "oAria": {
+                        "sSortAscending": ": Sắp xếp cột tăng dần",
+                        "sSortDescending": ": Sắp xếp cột giảm dần"
+                    }
+                }
+            });
         });
         $(document).ready(function () {
-            $('#example_table2').DataTable();
+            $('#example_table2').DataTable({
+                language: {
+                    "sProcessing": "Đang xử lý...",
+                    "sLengthMenu": "Hiển thị _MENU_ dòng",
+                    "sZeroRecords": "Không tìm thấy kết quả nào",
+                    "sInfo": "Đang hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                    "sInfoEmpty": "Đang hiển thị 0 đến 0 trong tổng số 0 mục",
+                    "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                    "sSearch": "Tìm kiếm:",
+                    "oPaginate": {
+                        "sFirst": "Đầu",
+                        "sPrevious": "Trước",
+                        "sNext": "Tiếp",
+                        "sLast": "Cuối"
+                    },
+                    "sEmptyTable": "Không có dữ liệu",
+                    "sLoadingRecords": "Đang tải...",
+                    "oAria": {
+                        "sSortAscending": ": Sắp xếp cột tăng dần",
+                        "sSortDescending": ": Sắp xếp cột giảm dần"
+                    }
+                }
+            });
         });
         $(document).ready(function () {
-            $('#example_table3').DataTable();
+            $('#example_table3').DataTable({
+                language: {
+                    "sProcessing": "Đang xử lý...",
+                    "sLengthMenu": "Hiển thị _MENU_ dòng",
+                    "sZeroRecords": "Không tìm thấy kết quả nào",
+                    "sInfo": "Đang hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                    "sInfoEmpty": "Đang hiển thị 0 đến 0 trong tổng số 0 mục",
+                    "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                    "sSearch": "Tìm kiếm:",
+                    "oPaginate": {
+                        "sFirst": "Đầu",
+                        "sPrevious": "Trước",
+                        "sNext": "Tiếp",
+                        "sLast": "Cuối"
+                    },
+                    "sEmptyTable": "Không có dữ liệu",
+                    "sLoadingRecords": "Đang tải...",
+                    "oAria": {
+                        "sSortAscending": ": Sắp xếp cột tăng dần",
+                        "sSortDescending": ": Sắp xếp cột giảm dần"
+                    }
+                }
+            });
         });
     </script>
     <!-- Template Javascript -->

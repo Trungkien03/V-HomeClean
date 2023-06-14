@@ -6,19 +6,21 @@
 package DAO;
 
 import Context.DBContext;
+import DTO.BookingDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Trung Kien
  */
 public class BookingDAO {
-    
-    
+
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -88,8 +90,42 @@ public class BookingDAO {
         }
     }
 
+    //get all booking by id
+    public List<BookingDTO> getBookingDetailByAccountID(String accountID) {
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.TypeOfService, bd.Message\n"
+                + "FROM Booking b, BookingDetail bd , Service s\n"
+                + "WHERE b.BookingID = bd.BookingID AND b.ServiceID = s.ServiceID AND b.AccountID = ?";
+        List<BookingDTO> bookingList = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, accountID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                bookingList.add(new BookingDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getNString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getNString(6),
+                        rs.getString(7),
+                        rs.getInt(8),
+                        rs.getString(9),
+                        rs.getNString(10),
+                        rs.getNString(11),
+                        rs.getNString(12)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookingList;
+    }
+
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        dao.InsertBooking("AC0002", "pending", "", "SE02", 1000000, "2023-06-29 22:46:00", "S1.01 || Vinhomes Golden River - TP. Hồ Chí Minh", "Định Kì Theo Tuần", "");
+        List<BookingDTO> list = dao.getBookingDetailByAccountID("AC0002");
+        for (BookingDTO bookingDTO : list) {
+            System.out.println(bookingDTO.toString());
+        }
     }
 }

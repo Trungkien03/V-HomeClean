@@ -95,7 +95,7 @@
                         <a href="login.jsp" class="dropdown-item">Đăng Ký</a>
                     </c:if>
                     <c:if test="${sessionScope.acc != null}">
-                        <a href="userProfile.jsp" class="dropdown-item">Thông Tin Tài Khoản (3)</a>
+                        <a href="ProfilePageController" class="dropdown-item">Thông Tin Tài Khoản</a>
                     </c:if>    
                     <c:if test="${sessionScope.acc != null}">
                         <a href="LogoutController" class="dropdown-item">Đăng xuất</a>

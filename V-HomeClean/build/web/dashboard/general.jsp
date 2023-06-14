@@ -112,7 +112,7 @@
                                                 type="button"
                                                 class="btn btn-block btn-outline-light"
                                                 >
-                                                View History
+                                                Xem ....
                                             </button></a
                                         >
                                     </div>
@@ -123,6 +123,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Thông Tin</h4>
+                                    <h6>${message}</h6>
                                 </div>
                                 <div class="card-body">
                                     <ul class="nav nav-tabs nav-tabs-top nav-justified">
@@ -156,10 +157,11 @@
                                             class="tab-pane show active"
                                             id="top-justified-tab1"
                                             >
-                                            <form action="#">
+                                            <form action="UserGeneralPageController" method="post">
                                                 <div class="form-group">
                                                     <label>Họ và Tên</label>
                                                     <input
+                                                        name="fullName"
                                                         type="text"
                                                         class="form-control"
                                                         value="${account.fullName}"
@@ -168,6 +170,7 @@
                                                 <div class="form-group">
                                                     <label>Địa chỉ</label>
                                                     <input
+                                                        name="address"
                                                         type="text"
                                                         class="form-control"
                                                         value="${account.address}"
@@ -175,16 +178,33 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="email" class="form-control" value="${account.email}" />
+                                                    <input 
+                                                        name="email"
+                                                        type="email" 
+                                                        class="form-control" 
+                                                        value="${account.email}" 
+                                                        />
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Số Điện Thoại</label>
                                                     <input
+                                                        name="phone"
                                                         type="text"
                                                         class="form-control"
                                                         value="${account.phone}"
                                                         />
                                                 </div>
+                                                <c:if test="${acc.roleID == 1}">
+                                                    <div class="form-group">
+                                                        <label>Chức vụ</label>
+                                                        <select name="roleID" class="form-control">
+                                                            <option value="1" <c:if test="${account.roleID == 1}">selected</c:if>>Admin</option>
+                                                            <option value="2" <c:if test="${account.roleID == 2}">selected</c:if>>Nhân viên</option>
+                                                            <option value="3" <c:if test="${account.roleID == 3}">selected</c:if>>Quản lý</option>
+                                                            <option value="4" <c:if test="${account.roleID == 4}">selected</c:if>>Khách hàng</option>
+                                                            </select>
+                                                        </div>
+                                                </c:if>
                                                 <div class="text-end">
                                                     <input name="action" type="submit" value="Chỉnh Sửa" class="btn btn-primary" />
                                                 </div>
