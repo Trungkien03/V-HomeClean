@@ -15,12 +15,6 @@
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
         <title>V-HomeClean - Dashboard</title>
-
-        <link
-            rel="shortcut icon"
-            type="image/x-icon"
-            href="css/assets/img/favicon.png"
-            />
 <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
          Bootstrap DataTable CSS -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
@@ -49,7 +43,7 @@
                                                 <i class="fe fe-users"></i>
                                             </span>
                                             <div class="dash-count">
-                                                <a href="#" class="count-title">Số Lượng Người Dùng</a>
+                                                <a style="font-size: 15px; color: #00d747" href="#" class="count-title">Số Lượng Người Dùng</a>
                                                 <a href="#" class="count">${TotalUsers}</a>
                                         </div>
                                     </div>
@@ -64,7 +58,7 @@
                                             <i class="fe fe-document"></i>
                                         </span>
                                         <div class="dash-count">
-                                            <a href="#" class="count-title">Tổng số dịch vụ</a>
+                                            <a style="font-size: 15px; color: #007bff" href="#" class="count-title">Tổng số dịch vụ</a>
                                             <a href="#" class="count">${TotalServices}</a>
                                         </div>
                                     </div>
@@ -79,8 +73,8 @@
                                             <i class="fe fe-book"></i>
                                         </span>
                                         <div class="dash-count">
-                                            <a href="#" class="count-title">Tổng số đơn đã đặt</a>
-                                            <a href="#" class="count">0</a>
+                                            <a style="font-size: 15px; color: #f62d51" href="#" class="count-title">Tổng số đơn đã đặt</a>
+                                            <a href="#" class="count">${totalBookings}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -95,8 +89,8 @@
                                             <i class="fe fe-artboard"></i>
                                         </span>
                                         <div class="dash-count">
-                                            <a href="#" class="count-title">Tổng số Blog</a>
-                                            <a href="#" class="count">0</a>
+                                            <a style="font-size: 15px; color: #FDA12B" href="#" class="count-title">Tổng số Blog</a>
+                                            <a href="#" class="count">${totalBlogs}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -106,12 +100,12 @@
                     <div class="row">
                         <div class="col-md-6 d-flex">
                             <div class="card card-table flex-fill">
-                                <div class="card-header">
-                                    <h4 class="card-title float-start">Danh Sách Người Dùng</h4>
+                                <div class="card-header text-center">
+                                    <h4 class="card-title float-start font-weight-600">Danh Sách Người Dùng</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive p-3">
-                                        <table id="example_table" class="table table-bordered text-center table-striped">
+                                        <table id="example_table" class="table table-bordered text-center table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -163,18 +157,18 @@
                         <div class="col-md-6 d-flex">
                             <div class="card card-table flex-fill">
                                 <div class="card-header">
-                                    <h4 class="card-title float-start">Danh Sách Đơn</h4>
+                                    <h4 class="card-title float-start font-weight-600">Danh Sách Đơn</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive p-3">
-                                        <table id="example_table1" class="table table-bordered text-center table-striped">
+                                        <table id="example_table1" class="table table-bordered text-center table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Họ và Tên</th>
-                                                    <th>Giới tính</th>
-                                                    <th>Ngày sinh</th>
-                                                    <th>Status</th>
+                                                    <th>Dịch vụ</th>
+                                                    <th>Khu Vực</th>
+                                                    <th>Thời gian</th>
+                                                    <th>Tình Trạng</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

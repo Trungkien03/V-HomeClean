@@ -25,7 +25,7 @@
                         <li><a href="UsersManagementController">Quản Lý Khách Hàng</a></li>
                         <li><a href="dashboard/staffs.jsp">Quản Lý Nhân Viên</a></li>
                         <li><a href="UsersBlockPageController">Tài Khoản Bị Khóa</a></li>
-                        <li><a href="dashboard/report-users.jsp">Report Accounts</a></li>
+                        <li><a href="dashboard/create-account.jsp">Tạo Tài Khoản Mới</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -56,70 +56,6 @@
                     <ul style="display: none">
                         <li><a href="dashboard/general.jsp">General</a></li>
                         <li><a href="dashboard/admob.jsp">Admob </a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="dashboard/blank-page.jsp"
-                       ><i class="fe fe-file"></i> <span>Blank Page</span></a
-                    >
-                </li>
-                <li>
-                    <a href="dashboard/components.jsp"
-                       ><i class="fe fe-vector"></i> <span>Components</span></a
-                    >
-                </li>
-                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-layout"></i>
-                        <span> Forms <span class="menu-arrow"></span></span
-                        ></a>
-                    <ul style="display: none">
-                        <li><a href="dashboard/form-input-groups.jsp">Input Groups</a></li>
-                        <li><a href="dashboard/form-vertical.jsp">Vertical Form </a></li>
-                        <li><a href="dashboard/form-validation.jsp">Form Validation </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-table"></i>
-                        <span> Tables <span class="menu-arrow"></span></span
-                        ></a>
-                    <ul style="display: none">
-                        <li><a href="dashboard/tables-basic.jsp">Basic Tables </a></li>
-                        <li><a href="dashboard/data-tables.jsp">Data Table </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="javascript:void(0);"
-                       ><i class="fe fe-code"></i> <span>Multi Level</span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul style="display: none">
-                        <li class="submenu">
-                            <a href="javascript:void(0);">
-                                <span>Level 1</span> <span class="menu-arrow"></span
-                                ></a>
-                            <ul style="display: none">
-                                <li>
-                                    <a href="javascript:void(0);"><span>Level 2</span></a>
-                                </li>
-                                <li class="submenu">
-                                    <a href="javascript:void(0);">
-                                        <span> Level 2</span> <span class="menu-arrow"></span
-                                        ></a>
-                                    <ul style="display: none">
-                                        <li><a href="javascript:void(0);">Level 3</a></li>
-                                        <li><a href="javascript:void(0);">Level 3</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"> <span>Level 2</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);"> <span>Level 1</span></a>
-                        </li>
                     </ul>
                 </li>
             </ul>

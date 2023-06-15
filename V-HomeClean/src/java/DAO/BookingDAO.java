@@ -121,11 +121,25 @@ public class BookingDAO {
         return bookingList;
     }
 
+    //đếm số đơn dịch vụ
+    public int countTotalBooking() {
+        String query = "SELECT COUNT(*) AS TotalBookings FROM Booking";
+        int totalBookings = 0;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                totalBookings = rs.getInt("TotalBookings");
+            }
+        } catch (Exception e) {
+        }
+        return totalBookings;
+    }
+
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        List<BookingDTO> list = dao.getBookingDetailByAccountID("AC0002");
-        for (BookingDTO bookingDTO : list) {
-            System.out.println(bookingDTO.toString());
-        }
+        int totalBooking = dao.countTotalBooking();
+        System.out.println(totalBooking);
     }
 }

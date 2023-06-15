@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Write Blog</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -49,11 +49,11 @@
         <!-- Page Header Start -->
         <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container text-center py-5">
-                <h1 class="display-4 text-white animated slideInDown mb-4">Insert New Blog</h1>
+                <h1 class="display-4 text-white animated slideInDown mb-4">Viết Blog Mới</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb justify-content-center mb-0">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                        <li class="breadcrumb-item text-primary active" aria-current="page">Post a Blog</li>
+                        <li class="breadcrumb-item"><a class="text-white" href="#">Trang chủ</a></li>
+                        <li class="breadcrumb-item text-primary active" aria-current="page">Đăng bài blog</li>
                     </ol>
                 </nav>
             </div>

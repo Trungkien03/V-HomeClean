@@ -68,15 +68,15 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive custom-table-responsive">                                          
-                                        <table id="example_table" class="table table-center tab-content table-striped">
+                                        <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
                                             <thead>
                                                 <tr>
-                                                    <th>Tên</th>
-                                                    <th>Vai trò</th>
-                                                    <th>Số điện thoại</th>
-                                                    <th>Tuổi</th>
-                                                    <th>Thông tin</th>
-                                                    <th>Khóa tài khoản</th>
+                                                    <th class="text-center">Họ và Tên</th>
+                                                    <th class="text-center">Vai trò</th>
+                                                    <th class="text-center">Số điện thoại</th>
+                                                    <th class="text-center">Tuổi</th>
+                                                    <th class="text-center">Thông tin</th>
+                                                    <th class="text-center">Khóa tài khoản</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -97,7 +97,7 @@
                                                                 >
                                                             </h2>
                                                         </td>
-                                                        <td>
+                                                        <td class="text-center">
                                                             <c:choose>
                                                                 <c:when test="${o.roleID == 4}">
                                                                     Khách Hàng
@@ -107,20 +107,20 @@
                                                                 </c:otherwise>
                                                             </c:choose>
                                                         </td>
-                                                        <td>${o.phone}</td>
-                                                        <td>${o.age}</td>
-                                                        <td> 
+                                                        <td class="text-center">${o.phone}</td>
+                                                        <td class="text-center">${o.age}</td>
+                                                        <td class="text-center"> 
                                                             <div class="actions">
                                                                 <a
                                                                     href="UserGeneralPageController?accountID=${o.accountID}"
-                                                                    class="btn btn-sm bg-success-light "
+                                                                    class="btn btn-large bg-info-light "
                                                                     title="View Document"
                                                                     >
                                                                     <i class="fe fe-eye"></i>
                                                                 </a>
                                                             </div>
                                                         </td>
-                                                        <td>
+                                                        <td class="text-center">
                                                             <div class="actions">
                                                                 <a href="UsersManagementController?action=Khóa&accountID=${o.accountID}" class="btn btn-sm bg-danger-light">
                                                                     <i class="fe fe-lock"></i>

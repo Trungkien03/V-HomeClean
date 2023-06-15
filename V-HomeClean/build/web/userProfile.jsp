@@ -18,7 +18,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Thông Tin Tài Khoản</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -267,7 +267,7 @@
                         <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
                             <h3 class="mb-4">Tình Trạng Đơn Dịch Vụ</h3>
                             <div class="row">
-                                <table id="example_table1" class="table">
+                                <table id="example_table1" class="table table-hover text-center table-info">
                                     <thead>
                                         <tr>
                                             <th>Dịch vụ</th>
@@ -275,6 +275,7 @@
                                             <th>Mã phòng</th>
                                             <th>Khu vực</th>
                                             <th>Nhân viên</th>
+                                            <th>Thời gian</th>
                                             <th>Tổng chi phí</th>
                                             <th>Tình Trạng</th>
                                         </tr>
@@ -288,7 +289,8 @@
                                                 <td>${addressParts[0]}</td>
                                                 <td>${addressParts[1]}</td>
                                                 <td>${booking.staffID}</td>
-                                                <td>${booking.totalPrice}</td>
+                                                <td>${booking.bookingDate}</td>
+                                                <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>
                                                 <td>
                                                     <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
                                                         <button class="btn btn-dark">Xác nhận</button>

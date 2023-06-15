@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.admin;
+package controller;
 
-import DAO.AccountDAO;
 import DAO.BlogDAO;
-import DAO.BookingDAO;
-import DAO.ServiceDAO;
-import DTO.AccountDTO;
+import DTO.BlogDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,46 +15,48 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Trung Kien
+ * @author Hieu Doan
  */
-@WebServlet(name = "DashboardController", urlPatterns = {"/DashboardController"})
-public class DashboardController extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+@WebServlet(name = "BlogPageController", urlPatterns = {"/BlogPageController"})
+public class BlogPageController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int UserID = 4;
-        AccountDAO aDao = new AccountDAO();
-        ServiceDAO sDao = new ServiceDAO();
-        int TotalUsers = aDao.CountAccountByRoleID(UserID);
-        int TotalServices = sDao.CountService();
-        List<AccountDTO> listUsers =  aDao.GetAccountsByRoleID(UserID);
-        request.setAttribute("TotalUsers", TotalUsers);
-        request.setAttribute("TotalServices", TotalServices);
-        //tổng số đơn ở đây
-        BookingDAO bookingDao = new BookingDAO();
-        int totalBookings = bookingDao.countTotalBooking();
-        request.setAttribute("totalBookings", totalBookings);
-        //tổng số blog ở đây:
-        BlogDAO blogDao = new BlogDAO();
-        int totalBlogs = blogDao.countBlogs();
-        request.setAttribute("totalBlogs", totalBlogs);
+        HttpSession session = request.getSession();
+        String indexPage = request.getParameter("index");
         
-        request.setAttribute("ListUsers", listUsers);
-        request.getRequestDispatcher("/dashboard/index.jsp").forward(request, response);
+        if(indexPage == null){
+            indexPage = "1";
+        }
+         if(indexPage.equals("-1")){
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+       
+        BlogDAO dao = new BlogDAO();
+        //List<BlogDTO> list = dao.getAllBlog();
+        
+        int count = dao.getTotalBlog();
+        int endPage = count/6;
+        if(endPage % 6 != 0){
+            endPage++;
+        }
+        
+        
+        List<BlogDTO> list = dao.pagingBlog(index);
+        
+        
+        request.setAttribute("listBlog", list);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
+        request.getRequestDispatcher("blogWithSide.jsp").forward(request, response);
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
