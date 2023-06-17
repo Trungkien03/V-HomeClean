@@ -21,8 +21,8 @@
             type="image/x-icon"
             href="css/assets/img/favicon.png"
             />
-<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-         Bootstrap DataTable CSS -->
+        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                 Bootstrap DataTable CSS -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
 
@@ -65,6 +65,11 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title">Số lượng người dùng: ${TotalAccountActive}</h4>
+                                    <p class="card-text">
+                                        This is the most basic example of the datatables with zero
+                                        configuration. Use the <code>.datatable</code> class to
+                                        initialize datatables.
+                                    </p>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive custom-table-responsive">                                          

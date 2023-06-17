@@ -50,7 +50,7 @@ input:-webkit-autofill:focus {
     height: 40px;
 }
 .form-control:focus {
-    border-color: #680a83;
+    border-color: #00b4d8;
     box-shadow: none;
     outline: 0;
 }
@@ -4283,4 +4283,47 @@ li {
 
 .btn-block{
     background-color: #423B3F;
+}
+
+.wrapper .pass-field {
+  width: 100%;
+  position: relative;
+}
+.pass-field i {
+  right: 18px;
+  top: 50%;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+
+.requirement{
+    display: none;
+}
+
+.requirement-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.requirement-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #e72734;
+}
+
+.requirement-list i.fa-circle {
+  margin-right: 5px;
+}
+
+.requirement-list span {
+  font-size: 14px;
+}
+
+.requirement-list li.valid {
+    color: #00d747;
 }

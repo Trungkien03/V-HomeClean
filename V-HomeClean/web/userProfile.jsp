@@ -58,9 +58,9 @@
                 text-align: center;
                 line-height: 40px;
                 cursor: pointer;
-                position: absolute;
-                bottom: 200px;
-                left: 150px;
+                position: relative;
+                bottom: 50px;
+                left: 110px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
@@ -77,10 +77,25 @@
             }
             @media (max-width: 768px){
                 .profile-image-label{
-                    position: absolute;
-                    bottom: 40px;
-
+                    position: relative;
+                    bottom: 50px;
+                    left: 170px;
                 }
+            }
+            
+            .container-fluid.page-header {
+                position: relative;
+            }
+
+            .container-fluid.page-header:before {
+                content: "";
+                background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(https://wordpress.horje.com/s-custom-registration-form-builder-with-submission-manager/assets/banner-772x250.jpg?rev=2081490);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
             }
         </style>
     </head>
@@ -97,9 +112,9 @@
         %>
 
         <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center">
-                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #FE706C;"> ${ERROR}</strong></h1>
-                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #4f772d;" >${message}</strong></h1>
+            <div class="container text-center py-5">
+                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #f52626;"> ${ERROR}</strong></h1>
+                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h1>
             </div>
         </div>
 
@@ -203,7 +218,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input class="btn btn-primary" style="width: 20%" name="action" value="Cập Nhật" type="submit" >
+                                    <input class="btn btn-primary" style="width: 40%" name="action" value="Cập Nhật" type="submit" >
                                 </div>
                             </form>
 

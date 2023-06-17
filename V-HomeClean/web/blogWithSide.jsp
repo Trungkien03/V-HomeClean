@@ -57,11 +57,19 @@
                     height: 300px;
                 }
             }
+            .container-fluid.page-header {
+                position: relative;
+            }
 
-            a.active {
-                color: #009efb;
-                font-weight: bold;
-                font-size: large;
+            .container-fluid.page-header:before {
+                content: "";
+                background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://levica.vn/wp-content/uploads/2018/03/Blog-Become-a-Book-Banner.jpg);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
             }
         </style>
     </head>
@@ -71,14 +79,14 @@
 
 
             <!-- Page Header Start -->
-            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" style="back" data-wow-delay="0.1s">
                 <div class="container text-center py-5">
                     <h1 class="display-4 text-white animated slideInDown mb-4">Blogs</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb justify-content-center mb-0">
                             <li class="breadcrumb-item"><a class="text-white" href="index.jsp">Trang chủ</a></li>
                             <!--                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>-->
-                            <li class="breadcrumb-item text-primary active" aria-current="page">BLOG</li>
+                            <li class="breadcrumb-item text-primary active" aria-current="page">Blogs</li>
                         </ol>
                     </nav>
                 </div>
@@ -90,7 +98,7 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="row">
-                                
+
                             <c:forEach items="${listBlog}" var="o">
                                 <div class="col-lg-6 col-md-6 mb-5">
                                     <div class="blog-item">
@@ -98,9 +106,9 @@
                                         <input name="blogID" value="${o.blogID}" type="hidden">
                                         <img src="${o.image}" alt="" class="img-fluid rounded">    
                                         <div class="blog-item-content bg-white p-4">
-                                            <!--                                            <div class="blog-item-meta  py-1 px-2">                                                   
-                                                                                            <span class="text-muted text-capitalize mr-3"><i class="ti-pencil-alt mr-2"></i>Creativity</span>
-                                                                                            </div> -->
+                                            <div class="blog-item-meta  py-1 px-2">                                                   
+                                                <span class="text-muted text-capitalize mr-3"><i class="ti-pencil-alt mr-2"></i>${o.cateBlogName}</span>
+                                            </div> 
 
                                             <h3 class="mt-3 mb-3"><a href="SingleBlogController?blogID=${o.blogID}">${o.title}</a></h3>
                                             <!--                                            <p class="mb-4"></p>-->

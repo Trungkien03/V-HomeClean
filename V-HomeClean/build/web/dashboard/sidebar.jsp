@@ -11,7 +11,7 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="menu-title"></li>
-                <li class="active">
+                <li id="dashboard-link" class="active">
                     <a href="DashboardController"
                        ><i class="fe fe-home"></i> <span>Dashboard</span></a
                     >
@@ -22,20 +22,30 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="UsersManagementController">Quản Lý Khách Hàng</a></li>
-                        <li><a href="dashboard/staffs.jsp">Quản Lý Nhân Viên</a></li>
-                        <li><a href="UsersBlockPageController">Tài Khoản Bị Khóa</a></li>
-                        <li><a href="dashboard/create-account.jsp">Tạo Tài Khoản Mới</a></li>
+                        <li id="users-management-link"><a href="UsersManagementController">Quản Lý Khách Hàng</a></li>
+                        <li id="staff-management-link"><a href="StaffManagementController">Quản Lý Nhân Viên</a></li>
+                        <li id="users-block-link"><a href="UsersBlockPageController">Tài Khoản Bị Khóa</a></li>
+                        <li id="account-create-link"><a href="AccountCreateController">Tạo Tài Khoản Mới</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-file-zip"></i> <span> Orders </span>
+                       ><i class="fe fe-file-zip"></i> <span> Dịch Vụ </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="dashboard/orders-details.jsp"> Orders Details </a></li>
-                        <li><a href="dashboard/orders-management.jsp"> Orders Management </a></li>
+                        <li id="orders-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Dịch Vụ </a></li>
+                        <li id="orders-management-link"><a href="dashboard/orders-management.jsp"> Tạo Mới Dịch Vụ </a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"
+                       ><i class="fe fe-file-zip"></i> <span> Đơn Hẹn </span>
+                        <span class="menu-arrow"></span
+                        ></a>
+                    <ul style="display: none">
+                        <li id="appointment-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Đơn </a></li>
+                        <li id="appointment-management-link"><a href="dashboard/orders-management.jsp"> Tạo Mới Đơn Hẹn </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -44,21 +54,49 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="dashboard/orders-details.jsp"> Blogs Details </a></li>
-                        <li><a href="dashboard/orders-management.jsp"> Blogs Management </a></li>
+                        <li id="blog-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Blog </a></li>
+                        <li id="blog-management-link"><a href="dashboard/orders-management.jsp"> Tạo Mới Blog </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-gear"></i> <span> Settings </span>
+                       ><i class="fe fe-gear"></i> <span> Thông Báo </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="dashboard/general.jsp">General</a></li>
-                        <li><a href="dashboard/admob.jsp">Admob </a></li>
+                        <li id="notification-management-link"><a href="dashboard/general.jsp">Quản Lý Thông Báo</a></li>
+                        <li id="faq-management-link"><a href="dashboard/admob.jsp">Quản Lý Thắc Mắc</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"
+                       ><i class="fe fe-gear"></i> <span> Cài Đặt </span>
+                        <span class="menu-arrow"></span
+                        ></a>
+                    <ul style="display: none">
+                        <li id="general-settings-link"><a href="dashboard/general.jsp">Cài Đặt Chung</a></li>
+                        <li id="admob-settings-link"><a href="dashboard/admob.jsp">Admob</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+
+<script>
+    // Lấy danh sách tất cả các thẻ <li> trong submenu
+    var submenuItems = document.querySelectorAll('.submenu li');
+
+    // Lặp qua danh sách các thẻ <li> và gán sự kiện click cho mỗi thẻ
+    submenuItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            // Bỏ lớp "active" khỏi tất cả các thẻ <li>
+            submenuItems.forEach(function(submenuItem) {
+                submenuItem.classList.remove('active');
+            });
+
+            // Thêm lớp "active" cho thẻ <li> được click
+            this.classList.add('active');
+        });
+    });
+</script>

@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.admin;
 
-import DAO.BlogDAO;
-import DAO.CommentDAO;
+import DAO.AccountDAO;
 import DTO.AccountDTO;
-import DTO.BlogDTO;
-import DTO.CommentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -22,55 +19,48 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Hieu Doan
+ * @author Trung Kien
  */
-@WebServlet(name = "SingleBlogController", urlPatterns = {"/SingleBlogController"})
-public class SingleBlogController extends HttpServlet {
+@WebServlet(name = "StaffManagementController", urlPatterns = {"/StaffManagementController"})
+public class StaffManagementController extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        String blogID = request.getParameter("blogID");
-        BlogDAO dao = new BlogDAO();
-        List<BlogDTO> list = dao.getAllBlog();
+        int roleID = 2;
         String action = request.getParameter("action");
-        BlogDTO b = dao.getBlogByID(blogID);
-        CommentDAO cdao = new CommentDAO();
+        AccountDAO aDao = new AccountDAO();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
-        String url = "singleBlog.jsp";
-        try {
-            if (action == null || action.isEmpty()) {
-                request.setAttribute("listB", list);
-                session.setAttribute("BlogDetail", b);
-                List<CommentDTO> listC = cdao.getCommentV2(blogID);
-                request.setAttribute("listCmt", listC);
-            }
-
-            if (action.equalsIgnoreCase("Bình luận")) {
-                if (a == null) {
-                    url = "login.jsp";
-                    String error = "Bạn cần đăng nhập tài khoản để bình luận";
-                    request.setAttribute("ERROR", error);                   
-                } else {
-                    String message = request.getParameter("message");
-                    String accountID = a.getAccountID();
-                    String blogID1 = b.getBlogID();
-                    cdao.AddComment(message, accountID, blogID1);
-                    session.setAttribute("listB", list);
-                    session.setAttribute("BlogDetail", b);
-                    List<CommentDTO> listC = cdao.getCommentV2(blogID);
-                    session.setAttribute("listCmt", listC);
-                    response.sendRedirect("singleBlog.jsp#commentContainer");
+        if (a == null) {
+            response.sendRedirect("dashboard/login.jsp");
+        } else {
+            try {
+                if (action.equalsIgnoreCase("Khóa")) {
+                    String accountID = request.getParameter("accountID");
+                    aDao.setStatusAccount(accountID, "false");
                 }
+            
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                List<AccountDTO> ListStaffs = aDao.GetAccountByRoleIDAndStatus(roleID, "true");
+                int TotalStaffsActive = aDao.CountAccountByRoldIDandStatus(roleID, "true");
+                request.setAttribute("ListStaffs", ListStaffs);
+                request.setAttribute("TotalStaffsActive", TotalStaffsActive);
+                request.getRequestDispatcher("/dashboard/staffs.jsp").forward(request, response);
             }
-
-        } catch (Exception e) {
-        } finally{
-            request.getRequestDispatcher(url).forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

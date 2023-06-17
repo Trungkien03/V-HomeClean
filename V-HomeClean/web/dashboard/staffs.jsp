@@ -3,7 +3,8 @@
     Created on : May 28, 2023, 11:29:43 PM
     Author     : Trung Kien
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,10 +58,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Default Datatable</h4>
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Số lượng Nhân Viên: ${TotalStaffsActive}</h4>
                                     <p class="card-text">
                                         This is the most basic example of the datatables with zero
                                         configuration. Use the <code>.datatable</code> class to
@@ -68,27 +69,70 @@
                                     </p>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="datatable table table-stripped">
+                                    <div class="table-responsive custom-table-responsive">                                          
+                                        <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
                                             <thead>
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th>Salary</th>
+                                                    <th class="text-center">Họ và Tên</th>
+                                                    <th class="text-center">Vai trò</th>
+                                                    <th class="text-center">Số điện thoại</th>
+                                                    <th class="text-center">Tuổi</th>
+                                                    <th class="text-center">Tổng Lương</th>
+                                                    <th class="text-center">Thông tin</th>
+                                                    <th class="text-center">Khóa tài khoản</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>Edinburgh</td>
-                                                    <td>61</td>
-                                                    <td>2011/04/25</td>
-                                                    <td>$320,800</td>
-                                                </tr>
+                                                <c:forEach items="${ListStaffs}" var="o">
+                                                    <tr>
+                                                        <td>
+                                                            <h2 class="table-avatar">
+                                                                <a 
+                                                                    href="#"
+                                                                    class="avatar avatar-sm me-2"
+                                                                    ><img
+                                                                        class="avatar-img rounded-circle"
+                                                                        src="${o.image}"
+                                                                        alt="User Image"
+                                                                        /></a>
+                                                                <a href="#"
+                                                                   >${o.fullName} <span>#${o.accountID}</span></a
+                                                                >
+                                                            </h2>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <c:choose>
+                                                                <c:when test="${o.roleID == 2}">
+                                                                    Nhân Viên
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <!-- Hiển thị giá trị khác nếu roleID không bằng 4 -->
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </td>
+                                                        <td class="text-center">${o.phone}</td>
+                                                        <td class="text-center">${o.age}</td>
+                                                        <td class="text-center">${o.salary}</td>
+                                                        <td class="text-center"> 
+                                                            <div class="actions">
+                                                                <a
+                                                                    href="StaffGeneralPageController?accountID=${o.accountID}"
+                                                                    class="btn btn-large bg-info-light "
+                                                                    title="View Document"
+                                                                    >
+                                                                    <i class="fe fe-eye"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="actions">
+                                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                                    <i class="fe fe-lock"></i>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -110,6 +154,34 @@
         <script src="css/assets/plugins/datatables/datatables.min.js"></script>
 
         <script src="css/assets/js/script.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#example_table').DataTable({
+                    language: {
+                        "sProcessing": "Đang xử lý...",
+                        "sLengthMenu": "Hiển thị _MENU_ dòng",
+                        "sZeroRecords": "Không tìm thấy kết quả nào",
+                        "sInfo": "Đang hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                        "sInfoEmpty": "Đang hiển thị 0 đến 0 trong tổng số 0 mục",
+                        "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                        "sSearch": "Tìm kiếm:",
+                        "oPaginate": {
+                            "sFirst": "Đầu",
+                            "sPrevious": "Trước",
+                            "sNext": "Tiếp",
+                            "sLast": "Cuối"
+                        },
+                        "sEmptyTable": "Không có dữ liệu",
+                        "sLoadingRecords": "Đang tải...",
+                        "oAria": {
+                            "sSortAscending": ": Sắp xếp cột tăng dần",
+                            "sSortDescending": ": Sắp xếp cột giảm dần"
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
 
