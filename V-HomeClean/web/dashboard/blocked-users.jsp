@@ -63,21 +63,21 @@
                                 <div class="card card-table flex-fill">
                                     <div class="card-header">
                                         <h4 class="card-title">Tài khoản bị khóa: ${totalBlockAccounts}</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive custom-table-responsive p-3">                                          
-                                            <table id="example_table" class="table table-center tab-content table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Tên</th>
-                                                        <th>Vai trò</th>
-                                                        <th>Số điện thoại</th>
-                                                        <th>Tuổi</th>
-                                                        <th>Thông tin</th>
-                                                        <th>Mở Khóa</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive custom-table-responsive p-3">                                          
+                                        <table id="example_table" class="table table-center tab-content table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Họ và Tên</th>
+                                                    <th>Vai trò</th>
+                                                    <th>Số điện thoại</th>
+                                                    <th>Tuổi</th>
+                                                    <th>Thông tin</th>
+                                                    <th>Mở Khóa</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                                 <c:forEach items="${ListUsers}" var="o">
                                                     <tr>
                                                         <td>
@@ -100,10 +100,20 @@
                                                                 <c:when test="${o.roleID == 4}">
                                                                     Khách Hàng
                                                                 </c:when>
+                                                                <c:when test="${o.roleID == 2}">
+                                                                    Nhân viên
+                                                                </c:when>
+                                                                <c:when test="${o.roleID == 1}">
+                                                                    Admin
+                                                                </c:when>
+                                                                <c:when test="${o.roleID == 3}">
+                                                                    Quản lý
+                                                                </c:when>
                                                                 <c:otherwise>
-                                                                    <!-- Hiển thị giá trị khác nếu roleID không bằng 4 -->
+                                                                    Không rõ chức vụ
                                                                 </c:otherwise>
                                                             </c:choose>
+
                                                         </td>
                                                         <td>${o.phone}</td>
                                                         <td>${o.age}</td>

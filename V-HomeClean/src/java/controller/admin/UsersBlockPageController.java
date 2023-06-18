@@ -40,7 +40,7 @@ public class UsersBlockPageController extends HttpServlet {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
-        int roleID = 4;
+//        int roleID = 4;
         AccountDAO aDao = new AccountDAO();
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
@@ -52,8 +52,10 @@ public class UsersBlockPageController extends HttpServlet {
                 }
             } catch (Exception e) {
             } finally {
-                List<AccountDTO> listUsers = aDao.GetAccountByRoleIDAndStatus(roleID, "false");
-                int totalBlockAccounts = aDao.CountAccountByRoldIDandStatus(roleID, "false");
+//                List<AccountDTO> listUsers = aDao.GetAccountByRoleIDAndStatus(roleID, "false");
+                List<AccountDTO> listUsers = aDao.getAllAccountsByStatusExeptAdmin("false");
+//                int totalBlockAccounts = aDao.CountAccountByRoldIDandStatus(roleID, "false");
+                int totalBlockAccounts = aDao.CountAllAccountsByStatus("false");
                 request.setAttribute("ListUsers", listUsers);
                 request.setAttribute("totalBlockAccounts", totalBlockAccounts);
                 request.getRequestDispatcher("/dashboard/blocked-users.jsp").forward(request, response);

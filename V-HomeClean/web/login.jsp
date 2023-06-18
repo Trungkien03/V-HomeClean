@@ -100,11 +100,11 @@
                         <form action="MainController" method="post">
                             <div class="form-group first mb-3">
                                 <label for="username">Email</label>
-                                <input name="email" type="email" class="form-control" placeholder="Nhập email" id="username" value="<%=uname%>">
+                                <input required="" name="email" type="email" class="form-control" placeholder="Nhập email" id="username" value="<%=uname%>">
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password">Mật Khẩu</label>
-                                <input name="password" type="password" class="form-control" placeholder="Mật khẩu" id="password" value="<%=pass%>">
+                                <input required="" name="password" type="password" class="form-control" placeholder="Mật khẩu" id="password" value="<%=pass%>">
                             </div>
                             <div class="form-group d-flex mb-5 align-items-center">
                                 <label for="remember-me">Nhớ Mật Khẩu

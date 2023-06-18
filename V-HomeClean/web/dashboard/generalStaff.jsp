@@ -4,6 +4,7 @@
     Author     : Trung Kien
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +44,7 @@
                                     <h3 class="page-title">Thông Tin Nhân Viên</h3>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="UsersManagementController">Quản lý Tài Khoản</a>
+                                            <a href="StaffManagementController">Quản lý Nhân Viên</a>
                                         </li>
                                         <li class="breadcrumb-item active">Thông Tin Nhân Viên</li>
                                     </ul>
@@ -99,10 +100,10 @@
                                         <a href="#">Tình Trạng</a>
                                         <c:choose>
                                             <c:when test="${account.status eq true}">
-                                                <a href="#" class="float-end"><h5>Hoạt động</h5></a>
+                                                <a href="#" class="float-end"><h5 style="color: #00bf6f;">Hoạt động</h5></a>
                                             </c:when>
                                             <c:when test="${account.status eq false}">
-                                                <a href="#" class="float-end"><h5>Bị khóa</h5></a>
+                                                <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
                                             </c:when>
                                         </c:choose>
                                     </div>
@@ -121,9 +122,9 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Thông Tin</h4>
-                                    <h6>${message}</h6>
+                                <div class="card-header text-center">
+                                    <h4 class="card-title text-primary">Thông Tin</h4>
+                                    <h6 class="text-success">${message}</h6>
                                 </div>
                                 <div class="card-body">
                                     <ul class="nav nav-tabs nav-tabs-top nav-justified">
@@ -157,9 +158,9 @@
                                             class="tab-pane show active"
                                             id="top-justified-tab1"
                                             >
-                                            <form action="UserGeneralPageController" method="post">
-                                                <div class="form-group">
-                                                    <label>Họ và Tên</label>
+                                            <form action="StaffGeneralPageController" method="post">
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Họ và Tên:</label>
                                                     <input
                                                         name="fullName"
                                                         type="text"
@@ -167,8 +168,8 @@
                                                         value="${account.fullName}"
                                                         />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Địa chỉ</label>
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Địa chỉ:</label>
                                                     <input
                                                         name="address"
                                                         type="text"
@@ -176,8 +177,8 @@
                                                         value="${account.address}"
                                                         />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Email</label>
                                                     <input 
                                                         name="email"
                                                         type="email" 
@@ -185,8 +186,8 @@
                                                         value="${account.email}" 
                                                         />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Số Điện Thoại</label>
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Số Điện Thoại</label>
                                                     <input
                                                         name="phone"
                                                         type="text"
@@ -195,8 +196,8 @@
                                                         />
                                                 </div>
                                                 <c:if test="${acc.roleID == 1}">
-                                                    <div class="form-group">
-                                                        <label>Chức vụ</label>
+                                                    <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                        <label class="text-info font-weight-600 w-25">Chức vụ</label>
                                                         <select name="roleID" class="form-control">
                                                             <option value="1" <c:if test="${account.roleID == 1}">selected</c:if>>Admin</option>
                                                             <option value="2" <c:if test="${account.roleID == 2}">selected</c:if>>Nhân viên</option>
@@ -205,7 +206,21 @@
                                                             </select>
                                                         </div>
                                                 </c:if>
-                                                <div class="text-end">
+                                                <div class="form-group" style="display:flex; align-items: center;">
+                                                    <label class="text-info font-weight-600 w-25">Tổng Lương</label>
+                                                    <div class="w-100" style="display: flex; justify-content: center; align-items: center;">
+                                                        <fmt:formatNumber var="formattedSalary" value="${account.salary}" pattern="###,###" />
+
+                                                        <input
+                                                            name="salary"
+                                                            type="text"
+                                                            class="form-control"
+                                                            value="${formattedSalary}"
+                                                            />
+                                                        <span class="btn btn-success">VND</span>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end text-center">
                                                     <input name="action" type="submit" value="Chỉnh Sửa" class="btn btn-primary" />
                                                 </div>
                                             </form>

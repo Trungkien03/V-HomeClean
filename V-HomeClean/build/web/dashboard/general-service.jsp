@@ -4,6 +4,7 @@
     Author     : Trung Kien
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,55 +41,34 @@
                         <div class="page-header">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="page-title">Thông Tin Tài Khoản</h3>
+                                    <h3 class="page-title">Thông Tin Dịch Vụ</h3>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="UsersManagementController">Quản lý Tài Khoản</a>
+                                            <a href="ServicesManagementController">Quản lý Dịch Vụ</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Thông Tin Tài Khoản</li>
+                                        <li class="breadcrumb-item active">Thông Tin Dịch Vụ</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="row settings-tab">
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="card">
                                     <div class="card-header all-center">
-                                        <a href="#" class="avatar avatar-sm me-2"
+                                        <a href="#" class="avatar avatar-xxl" style="width: 400px; height: 300px;"
                                            ><img
                                                 class="avatar-img rounded-circle"
-                                                src="${account.image}"
+                                                src="${service.image}"
                                             alt="User Image"
                                             />
-                                        <i class="fe fe-camera"></i>
                                     </a>
                                     <h6>${account.fullName}</h6>
                                     <p>
-                                        <c:choose>
-                                            <c:when test="${account.roleID == 1}">
-                                                Admin
-                                            </c:when>
-                                            <c:when test="${account.roleID == 2}">
-                                                Nhân viên
-                                            </c:when>
-                                            <c:when test="${account.roleID == 3}">
-                                                Quản lý
-                                            </c:when>
-                                            <c:when test="${account.roleID == 4}">
-                                                Khách hàng
-                                            </c:when>
-                                            <c:otherwise>
-                                                Vai trò không xác định
-                                            </c:otherwise>
-                                        </c:choose>
+
                                     </p>
                                 </div>
                                 <div class="card-body p-0">
-                                    <div class="profile-list">
-                                        <a href="#"><i class="fe fe-user"></i></a>
-                                        <a href="#">Tuổi</a>
-                                        <a href="#" class="float-end"><h5>${account.age}</h5></a>
-                                    </div>
+
                                     <div class="profile-list">
                                         <a href="#"><i class="fe fe-document"></i></a>
                                         <a href="#">Tổng Đơn</a>
@@ -98,32 +78,23 @@
                                         <a href="#"><i class="fe fe-activity"></i></a>
                                         <a href="#">Tình Trạng</a>
                                         <c:choose>
-                                            <c:when test="${account.status eq true}">
+                                            <c:when test="${service.status eq true}">
                                                 <a href="#" class="float-end"><h5 style="color: #00bf6f;">Hoạt động</h5></a>
                                             </c:when>
-                                            <c:when test="${account.status eq false}">
+                                            <c:when test="${service.status eq false}">
                                                 <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
                                             </c:when>
                                         </c:choose>
                                     </div>
-                                    <div class="profile-list">
-                                        <a href="group-history.jsp"
-                                           ><button
-                                                type="button"
-                                                class="btn btn-block btn-outline-light"
-                                                >
-                                                Xem ....
-                                            </button></a
-                                        >
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8">
+
+                        <div class="col-md-7">
                             <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Thông Tin</h4>
-                                    <h6>${message}</h6>
+                                <div class="card-header text-center">
+                                    <h4 class="card-title text-primary">Thông Tin</h4>
+                                    <h6 class="text-success">${message}</h6>
                                 </div>
                                 <div class="card-body">
                                     <ul class="nav nav-tabs nav-tabs-top nav-justified">
@@ -140,7 +111,7 @@
                                                 class="nav-link"
                                                 href="#top-justified-tab2"
                                                 data-bs-toggle="tab"
-                                                >Đơn Dịch Vụ</a
+                                                >Mô Tả Dịch Vụ</a
                                             >
                                         </li>
                                         <li class="nav-item">
@@ -157,61 +128,65 @@
                                             class="tab-pane show active"
                                             id="top-justified-tab1"
                                             >
-                                            <form action="UserGeneralPageController" method="post">
-                                                <div class="form-group">
-                                                    <label>Họ và Tên</label>
+                                            <form action="ServiceGeneralController" method="post">
+                                                <input type="hidden" name="serviceID" value="${service.serviceID}">
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Tên dịch vụ:</label>
                                                     <input
-                                                        name="fullName"
+                                                        required=""
+                                                        name="serviceName"
                                                         type="text"
                                                         class="form-control"
-                                                        value="${account.fullName}"
+                                                        value="${service.serviceName}"
                                                         />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Địa chỉ</label>
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Thể loại dịch vụ:</label>
+                                                    <select required name="serviceType" class="form-control form-select">
+                                                        <option value="2" ${service.cateServiceName == 'Dịch vụ sửa chữa' ? 'selected' : ''}>Dịch vụ sửa chữa</option>
+                                                        <option value="1" ${service.cateServiceName == 'Dịch vụ vệ sinh' ? 'selected' : ''}>Dịch vụ vệ sinh</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group" style="display:flex; align-items: center;">
+                                                    <label class="text-info font-weight-600 w-25">Giá dịch vụ</label>
+                                                    <div class="w-100" style="display: flex; justify-content: center; align-items: center;">
+                                                        <fmt:formatNumber var="formattedSalary" value="${service.price}" pattern="###,###" />
+
+                                                        <input
+                                                            required=""
+                                                            name="price"
+                                                            type="text"
+                                                            class="form-control"
+                                                            value="${formattedSalary}"
+                                                            />
+                                                        <span class="btn btn-success">VND</span>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Cập nhật hình ảnh</label>
                                                     <input
-                                                        name="address"
-                                                        type="text"
+                                                        name="image"
+                                                        type="file"
                                                         class="form-control"
-                                                        value="${account.address}"
                                                         />
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input 
-                                                        name="email"
-                                                        type="email" 
-                                                        class="form-control" 
-                                                        value="${account.email}" 
-                                                        />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Số Điện Thoại</label>
-                                                    <input
-                                                        name="phone"
-                                                        type="text"
-                                                        class="form-control"
-                                                        value="${account.phone}"
-                                                        />
-                                                </div>
-                                                <c:if test="${acc.roleID == 1}">
-                                                    <div class="form-group">
-                                                        <label>Chức vụ</label>
-                                                        <select name="roleID" class="form-control">
-                                                            <option value="1" <c:if test="${account.roleID == 1}">selected</c:if>>Admin</option>
-                                                            <option value="2" <c:if test="${account.roleID == 2}">selected</c:if>>Nhân viên</option>
-                                                            <option value="3" <c:if test="${account.roleID == 3}">selected</c:if>>Quản lý</option>
-                                                            <option value="4" <c:if test="${account.roleID == 4}">selected</c:if>>Khách hàng</option>
-                                                            </select>
-                                                        </div>
-                                                </c:if>
-                                                <div class="text-end">
+
+                                                <div class="text-end text-center">
                                                     <input name="action" type="submit" value="Chỉnh Sửa" class="btn btn-primary" />
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="tab-pane" id="top-justified-tab2">
-                                            Tab content 2
+                                            <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                <label class="text-info font-weight-600 w-25">Chi tiết:</label>
+                                                <textarea class="form-control" name="serviceDetail" rows="10" cols="50">${service.serviceDetail}</textarea>
+                                            </div>
+                                            <div class="text-end text-center">
+                                                <input name="action" type="submit" value="Chỉnh Sửa" class="btn btn-primary" />
+                                            </div>
                                         </div>
                                         <div class="tab-pane" id="top-justified-tab3">
                                             Tab content 3
@@ -233,6 +208,25 @@
         <script src="css/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
         <script src="css/assets/js/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Kiểm tra khi người dùng nhập vào input
+                $("input[name='price']").on("input", function () {
+                    var value = $(this).val();
+
+                    // Kiểm tra nếu giá trị không phải là số
+                    if (!$.isNumeric(value)) {
+                        // Hiển thị thông báo cảnh báo
+                        $(this).next(".error-message").text("Vui lòng chỉ nhập số.");
+                    } else {
+                        // Xóa thông báo cảnh báo nếu giá trị hợp lệ
+                        $(this).next(".error-message").text("");
+                    }
+                });
+            });
+        </script>
+
     </body>
 </html>
 

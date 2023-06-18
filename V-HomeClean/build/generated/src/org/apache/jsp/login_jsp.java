@@ -150,13 +150,13 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <form action=\"MainController\" method=\"post\">\r\n");
       out.write("                            <div class=\"form-group first mb-3\">\r\n");
       out.write("                                <label for=\"username\">Email</label>\r\n");
-      out.write("                                <input name=\"email\" type=\"email\" class=\"form-control\" placeholder=\"Nhập email\" id=\"username\" value=\"");
+      out.write("                                <input required=\"\" name=\"email\" type=\"email\" class=\"form-control\" placeholder=\"Nhập email\" id=\"username\" value=\"");
       out.print(uname);
       out.write("\">\r\n");
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"form-group last mb-3\">\r\n");
       out.write("                                <label for=\"password\">Mật Khẩu</label>\r\n");
-      out.write("                                <input name=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Mật khẩu\" id=\"password\" value=\"");
+      out.write("                                <input required=\"\" name=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Mật khẩu\" id=\"password\" value=\"");
       out.print(pass);
       out.write("\">\r\n");
       out.write("                            </div>\r\n");

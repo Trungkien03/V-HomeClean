@@ -95,14 +95,14 @@
                                         <a href="#" class="float-end"><h5>403</h5></a>
                                     </div>
                                     <div class="profile-list">
-                                        <a href="#"><i class="fe fe-disabled"></i></a>
+                                        <a href="#"><i class="fe fe-activity"></i></a>
                                         <a href="#">Tình Trạng</a>
                                         <c:choose>
                                             <c:when test="${account.status eq true}">
-                                                <a href="#" class="float-end"><h5>Hoạt động</h5></a>
+                                                <a href="#" class="float-end"><h5 style="color: #00bf6f;">Hoạt động</h5></a>
                                             </c:when>
                                             <c:when test="${account.status eq false}">
-                                                <a href="#" class="float-end"><h5>Bị khóa</h5></a>
+                                                <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
                                             </c:when>
                                         </c:choose>
                                     </div>

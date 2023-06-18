@@ -1,12 +1,13 @@
+package controller.admin;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.admin;
-
-import DAO.AccountDAO;
+import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Trung Kien
  */
-@WebServlet(name = "StaffGeneralPageController", urlPatterns = {"/StaffGeneralPageController"})
-public class StaffGeneralPageController extends HttpServlet {
+@WebServlet(urlPatterns = {"/ServiceGeneralController"})
+public class ServiceGeneralController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,46 +38,44 @@ public class StaffGeneralPageController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        String accountID = request.getParameter("accountID"); // dùng để tìm ra user profile người lần đầu
-        AccountDAO aDao = new AccountDAO();
+        ServiceDAO sDao = new ServiceDAO();
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
         String action = request.getParameter("action");
-        AccountDTO a = (AccountDTO) session.getAttribute("acc"); // account này dùng để lấy ra người đang sử dụng cái trang này
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
         } else {
             try {
                 if (action == null || action.isEmpty()) {
-                    //account này dùng để thể hiện ra user profile
-                    AccountDTO b = aDao.GetAccountByAccountID(accountID);
-                    session.setAttribute("account", b);
+                    String serviceID = request.getParameter("serviceID");
+                    ServiceDTO service = sDao.getServiceByID(serviceID);
+                    session.setAttribute("service", service);
                 }
-                if (action.equalsIgnoreCase("Chỉnh Sửa")) {
-                    AccountDTO c = (AccountDTO) session.getAttribute("account"); // account này dùng để lấy lại thông tin của user profile để cập nhật
-                    String fullName = request.getParameter("fullName");
-                    String address = request.getParameter("address");
-                    String email = request.getParameter("email");
-                    String phone = request.getParameter("phone");
-                    String roleID_1 = request.getParameter("roleID");
-                    String salaryString =  request.getParameter("salary");
-                    salaryString = salaryString.replaceAll("[^0-9]", "");
+                if (action.equalsIgnoreCase("Chỉnh sửa")) {
+                    String serviceID = request.getParameter("serviceID");
+                    ServiceDTO b = sDao.getServiceByID(serviceID);
+                    String serviceName = request.getParameter("serviceName");
+                    String cateIDString = request.getParameter("serviceType");
+                    int cateID = Integer.parseInt(cateIDString);
+                    String priceString = request.getParameter("price");
+                    // Loại bỏ ký tự đặc biệt từ chuỗi
+                    priceString = priceString.replaceAll("[^0-9]", "");
                     // Chuyển đổi thành số
-                    int salary = Integer.parseInt(salaryString);
-                    int roleID_2 = Integer.parseInt(roleID_1);
-                    String password = c.getPassword();
-                    String gender = c.getGender();
-                    String dateOfBirth = c.getDateOfBirth();
-                    String image = c.getImage();
-                    String accountID_2 = c.getAccountID(); //account này dùng để lấy lại user profile đó để chỉnh sửa update lại
-                    aDao.UpdateAccountProfile(email, password, fullName, address, phone, roleID_2, gender, dateOfBirth, image, salary, accountID_2);
-                    AccountDTO updatedAccount = aDao.GetAccountByAccountID(accountID_2);
+                    int price = Integer.parseInt(priceString);
+                    String image = request.getParameter("image");
+                    if (image == null || image.isEmpty() || image == "") {
+                        image = b.getImage();
+                    }
+                    String serviceDetail = b.getServiceDetail();
+                    sDao.UpdateServiceByID(serviceName, price, serviceDetail, cateID, image, serviceID);
                     String message = "Chỉnh sửa thông tin thành công!";
-                    request.setAttribute("account", updatedAccount);
+                    ServiceDTO service = sDao.getServiceByID(serviceID);
                     request.setAttribute("message", message);
+                    session.setAttribute("service", service);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                request.getRequestDispatcher("/dashboard/generalStaff.jsp").forward(request, response);
+                request.getRequestDispatcher("/dashboard/general-service.jsp").forward(request, response);
             }
         }
     }

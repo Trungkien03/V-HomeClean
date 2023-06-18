@@ -67,9 +67,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Bài Báo</strong></a>
                 <div class="dropdown-menu bg-light m-0">
                     <a href="BlogPageController" class="dropdown-item">Blogs</a>
-                    <a href="singleBlog.jsp" class="dropdown-item">Single Blog</a>
                     <a href="postBlog.jsp" class="dropdown-item">Post Blog</a>
-                    <a href="feature.jsp" class="dropdown-item">Features</a>
                     <a href="appointment.jsp" class="dropdown-item">Appointment</a>
                     <a href="team.jsp" class="dropdown-item">Our Team</a>
                     <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>

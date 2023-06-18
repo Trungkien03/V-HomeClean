@@ -41,81 +41,57 @@
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>
-            <div class="page-wrapper">
-                <div class="content container-fluid">
-                    <div class="page-header">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h3 class="page-title">Staffs Management</h3>
-                                <ul class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="dashboard/index.jsp">Dashboard</a>
-                                    </li>
-                                    <li class="breadcrumb-item active">Staffs Management</li>
-                                </ul>
+                <div class="page-wrapper">
+                    <div class="content container-fluid">
+                        <div class="page-header">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3 class="page-title">Quản lý dịch vụ</h3>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="dashboard/index.jsp">Bảng Điều Khiển</a>
+                                        </li>
+                                        <li class="breadcrumb-item active">Quản lý dịch vụ</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
+                        <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">Số lượng Nhân Viên: ${TotalStaffsActive}</h4>
-                                    <p class="card-text">
-                                        Đây là bảng thể hiện danh sách những nhân viên đang còn đang hoạt động
-                                    </p>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive custom-table-responsive">                                          
-                                        <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center">Họ và Tên</th>
-                                                    <th class="text-center">Vai trò</th>
-                                                    <th class="text-center">Số điện thoại</th>
-                                                    <th class="text-center">Tuổi</th>
-                                                    <th class="text-center">Tổng Lương</th>
-                                                    <th class="text-center">Thông tin</th>
-                                                    <th class="text-center">Khóa tài khoản</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <c:forEach items="${ListStaffs}" var="o">
+                                        <h4 class="card-title">Số lượng dịch vụ: ${TotalActiveService}</h4>
+                                        <p class="card-text">
+                                            Đây là bảng thể hiện danh sách những dịch vụ của công ty
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive custom-table-responsive">                                          
+                                            <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
+                                                <thead>
                                                     <tr>
-                                                        <td>
-                                                            <h2 class="table-avatar">
-                                                                <a 
-                                                                    href="#"
-                                                                    class="avatar avatar-sm me-2"
-                                                                    ><img
-                                                                        class="avatar-img rounded-circle"
-                                                                        src="${o.image}"
-                                                                        alt="User Image"
-                                                                        /></a>
-                                                                <a href="#"
-                                                                   >${o.fullName} <span>#${o.accountID}</span></a
-                                                                >
-                                                            </h2>
-                                                        </td>
+                                                        <th class="text-center">ID</th>
+                                                        <th class="text-center">Tên dịch vụ</th>
+                                                        <th class="text-center">Thể loại</th>
+                                                        <th class="text-center">Giá cả</th>
+                                                        <th class="text-center">Chi tiết</th>
+                                                        <th class="text-center">Ngưng hoạt động</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <c:forEach items="${ServiceList}" var="o">
+                                                    <tr>
+                                                        <td class="text-center">${o.serviceID}</td>
+                                                        <td class="text-center">${o.serviceName}</td>
+                                                        <td class="text-center">${o.cateServiceName}</td>
+                                                        <fmt:formatNumber var="formattedPrice" value="${o.price}" pattern="###,### VND" />
+                                                        <td class="text-center">${formattedPrice}</td>
+
                                                         <td class="text-center">
-                                                            <c:choose>
-                                                                <c:when test="${o.roleID == 2}">
-                                                                    Nhân Viên
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <!-- Hiển thị giá trị khác nếu roleID không bằng 4 -->
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </td>
-                                                        <td class="text-center">${o.phone}</td>
-                                                        <td class="text-center">${o.age}</td>
-                                                        <fmt:formatNumber var="formattedSalary" value="${o.salary}" pattern="###,### VND" />
-                                                        <td class="text-center">${formattedSalary}</td>
-                                                        <td class="text-center"> 
                                                             <div class="actions">
                                                                 <a
-                                                                    href="StaffGeneralPageController?accountID=${o.accountID}"
+                                                                    href="ServiceGeneralController?serviceID=${o.serviceID}"
                                                                     class="btn btn-large bg-info-light "
                                                                     title="View Document"
                                                                     >
@@ -125,7 +101,7 @@
                                                         </td>
                                                         <td class="text-center">
                                                             <div class="actions">
-                                                                <a href="StaffManagementController?action=Khóa&accountID=${o.accountID}" class="btn btn-sm bg-danger-light">
+                                                                <a href="ServicesManagementController?action=Khóa&serviceID=${o.serviceID}" class="btn btn-sm bg-danger-light">
                                                                     <i class="fe fe-lock"></i>
                                                                 </a>
                                                             </div>

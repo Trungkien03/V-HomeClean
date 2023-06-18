@@ -6,9 +6,12 @@
 package controller.admin;
 
 import DAO.AccountDAO;
+import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +23,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Trung Kien
  */
-@WebServlet(name = "StaffGeneralPageController", urlPatterns = {"/StaffGeneralPageController"})
-public class StaffGeneralPageController extends HttpServlet {
+@WebServlet(name = "ServicesManagementController", urlPatterns = {"/ServicesManagementController"})
+public class ServicesManagementController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,46 +40,26 @@ public class StaffGeneralPageController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        String accountID = request.getParameter("accountID"); // dùng để tìm ra user profile người lần đầu
+        ServiceDAO sDao = new ServiceDAO();
         AccountDAO aDao = new AccountDAO();
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
         String action = request.getParameter("action");
-        AccountDTO a = (AccountDTO) session.getAttribute("acc"); // account này dùng để lấy ra người đang sử dụng cái trang này
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
-        } else {
+        }else{
             try {
-                if (action == null || action.isEmpty()) {
-                    //account này dùng để thể hiện ra user profile
-                    AccountDTO b = aDao.GetAccountByAccountID(accountID);
-                    session.setAttribute("account", b);
-                }
-                if (action.equalsIgnoreCase("Chỉnh Sửa")) {
-                    AccountDTO c = (AccountDTO) session.getAttribute("account"); // account này dùng để lấy lại thông tin của user profile để cập nhật
-                    String fullName = request.getParameter("fullName");
-                    String address = request.getParameter("address");
-                    String email = request.getParameter("email");
-                    String phone = request.getParameter("phone");
-                    String roleID_1 = request.getParameter("roleID");
-                    String salaryString =  request.getParameter("salary");
-                    salaryString = salaryString.replaceAll("[^0-9]", "");
-                    // Chuyển đổi thành số
-                    int salary = Integer.parseInt(salaryString);
-                    int roleID_2 = Integer.parseInt(roleID_1);
-                    String password = c.getPassword();
-                    String gender = c.getGender();
-                    String dateOfBirth = c.getDateOfBirth();
-                    String image = c.getImage();
-                    String accountID_2 = c.getAccountID(); //account này dùng để lấy lại user profile đó để chỉnh sửa update lại
-                    aDao.UpdateAccountProfile(email, password, fullName, address, phone, roleID_2, gender, dateOfBirth, image, salary, accountID_2);
-                    AccountDTO updatedAccount = aDao.GetAccountByAccountID(accountID_2);
-                    String message = "Chỉnh sửa thông tin thành công!";
-                    request.setAttribute("account", updatedAccount);
-                    request.setAttribute("message", message);
+                if (action.equalsIgnoreCase("Khóa")) {
+                    String serviceID = request.getParameter("serviceID");
+                    sDao.UpdateStatusServiceByID(serviceID, "false");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
-                request.getRequestDispatcher("/dashboard/generalStaff.jsp").forward(request, response);
+            } finally{
+                List<ServiceDTO> ServiceList = sDao.getAllServiceActive("true");
+                int totalActiveService = sDao.CountServiceByStatus("true");
+                request.setAttribute("ServiceList", ServiceList);
+                request.setAttribute("TotalActiveService", totalActiveService);
+                request.getRequestDispatcher("/dashboard/services.jsp").forward(request, response);
             }
         }
     }

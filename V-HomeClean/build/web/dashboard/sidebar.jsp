@@ -34,8 +34,9 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li id="orders-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Dịch Vụ </a></li>
-                        <li id="orders-management-link"><a href="dashboard/orders-management.jsp"> Tạo Mới Dịch Vụ </a></li>
+                        <li id="orders-details-link"><a href="ServicesManagementController"> Quản Lý Dịch Vụ </a></li>
+                        <li id="orders-details-link"><a href="ServicesBlockPageController"> Dịch Vụ Bị Khóa </a></li>
+                        <li id="orders-management-link"><a href="ServiceCreateController"> Tạo Mới Dịch Vụ </a></li>
                     </ul>
                 </li>
                 <li class="submenu">

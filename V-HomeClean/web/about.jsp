@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="row g-4">
-                     <c:forEach items="${ListA}" var="o">
+                <c:forEach items="${ListA}" var="o" begin="0" end="2">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="team-item position-relative">
                                 <img class="img-fluid" src="${o.image}" alt="">

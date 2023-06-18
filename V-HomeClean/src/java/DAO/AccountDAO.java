@@ -316,7 +316,7 @@ public class AccountDAO {
         }
         return totalCount;
     }
-    
+
     //lấy account bằng AccountID
     public AccountDTO GetAccountByAccountID(String accountID) {
         String query = "SELECT * FROM Account WHERE AccountID = ?";
@@ -345,16 +345,15 @@ public class AccountDAO {
         return null;
     }
 
-    
     //
-    public AccountDTO GetAccountByEmail(String email){
+    public AccountDTO GetAccountByEmail(String email) {
         String query = "SELECT * FROM Account WHERE Email = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, email);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 return new AccountDTO(rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -372,6 +371,7 @@ public class AccountDAO {
         }
         return null;
     }
+
     public List<AccountDTO> GetAccountByRoleIDAndStatus(int roleID, String status) {
         List<AccountDTO> list = new ArrayList<>();
         String query = "SELECT * FROM Account WHERE RoleID = ? and status = ?";
@@ -442,11 +442,63 @@ public class AccountDAO {
         }
         return list;
     }
-    
+
+    //lấy ra tất cả những accounts ngoại trừ account của admin
+    public List<AccountDTO> getAllAccountsByStatusExeptAdmin(String status) {
+        String query = "select * from Account where status = ? AND roleID <> 1";
+        List<AccountDTO> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, status);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new AccountDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getNString(4),
+                        rs.getNString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getDouble(12)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public int CountAllAccountsByStatus(String status) {
+        String query = "SELECT COUNT(*) AS count\n"
+                + "FROM Account\n"
+                + "WHERE status = ? AND roleID <> 1;";
+        int totalCount = 0;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, status);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                totalCount = rs.getInt("count");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return totalCount;
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        AccountDTO a = dao.GetAccountByEmail("trungkiennguyen0310@gmail.com");
-        System.out.println(a);
+        List<AccountDTO> list = dao.getAllAccountsByStatusExeptAdmin("true");
+        for (AccountDTO accountDTO : list) {
+            System.out.println(accountDTO.toString());
+        }
+        int total = dao.CountAllAccountsByStatus("true");
+        System.out.println(total);
     }
 
 }

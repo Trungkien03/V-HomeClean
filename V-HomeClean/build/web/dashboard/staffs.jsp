@@ -63,9 +63,7 @@
                                     <div class="card-header">
                                         <h4 class="card-title">Số lượng Nhân Viên: ${TotalStaffsActive}</h4>
                                     <p class="card-text">
-                                        This is the most basic example of the datatables with zero
-                                        configuration. Use the <code>.datatable</code> class to
-                                        initialize datatables.
+                                        Đây là bảng thể hiện danh sách những nhân viên đang còn đang hoạt động
                                     </p>
                                 </div>
                                 <div class="card-body">
@@ -112,7 +110,8 @@
                                                         </td>
                                                         <td class="text-center">${o.phone}</td>
                                                         <td class="text-center">${o.age}</td>
-                                                        <td class="text-center">${o.salary}</td>
+                                                        <fmt:formatNumber var="formattedSalary" value="${o.salary}" pattern="###,### VND" />
+                                                        <td class="text-center">${formattedSalary}</td>
                                                         <td class="text-center"> 
                                                             <div class="actions">
                                                                 <a
@@ -126,7 +125,7 @@
                                                         </td>
                                                         <td class="text-center">
                                                             <div class="actions">
-                                                                <a href="#" class="btn btn-sm bg-danger-light">
+                                                                <a href="StaffManagementController?action=Khóa&accountID=${o.accountID}" class="btn btn-sm bg-danger-light">
                                                                     <i class="fe fe-lock"></i>
                                                                 </a>
                                                             </div>
