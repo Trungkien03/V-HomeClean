@@ -22,7 +22,7 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!--        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"> -->
+        <!--        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"> -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
@@ -46,90 +46,104 @@
         <jsp:include page="navigation.jsp"></jsp:include>
 
 
-        <!-- Page Header Start -->
-        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center py-5">
-                <h1 class="display-4 text-white animated slideInDown mb-4">Viết Blog Mới</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb justify-content-center mb-0">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Trang chủ</a></li>
-                        <li class="breadcrumb-item text-primary active" aria-current="page">Đăng bài blog</li>
-                    </ol>
-                </nav>
+            <!-- Page Header Start -->
+            <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="container text-center py-5">
+                    <h1 class="display-4 text-white animated slideInDown mb-4">Viết Blog Mới</h1>
+                    <nav aria-label="breadcrumb animated slideInDown">
+                        <ol class="breadcrumb justify-content-center mb-0">
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item text-primary active" aria-current="page">Đăng bài blog</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-        </div>
-        <!-- Page Header End -->
+            <!-- Page Header End -->
 
 
-        <!-- Appointment Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-5">
-                    <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="border-start border-5 border-primary ps-4 mb-5">
-                            <h6 class="text-body text-uppercase mb-2">Post a Blog</h6>
-                            <h1 class="display-6 mb-0">A Company Involved In Service And Maintenance</h1>
-                        </div>
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    </div>
-                    <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">
-                                        <label for="gname">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">
-                                        <label for="gmail">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="file" class="form-control bg-light border-0" id="cname" placeholder="">
-                                        <label for="cname">Your Image</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control bg-light border-0" id="cage" placeholder="Blog Type">
-                                        <label for="cage">Your Blog Type</label>
-                                    </div>
-                                </div>
-                                <div  class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control bg-light border-0" placeholder="Your Title Blog" id="message" style="height: 80px"></textarea>
-                                        <label for="message">Your Title</label>
-                                    </div>
-                                </div>
-                                <div  class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control bg-light border-0" placeholder="Your Title Blog" id="message" style="height: 80px"></textarea>
-                                        <label for="message">Your subtitle Title</label>
-                                    </div>
-                                </div>
-                                <div  class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 500px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Post A Blog</button>
-                                </div>
+            <!-- Appointment Start -->
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="row g-5">
+                        <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="border-start border-5 border-primary ps-4 mb-5">
+                                <h6 class="text-body text-uppercase mb-2">Post a Blog</h6>
+                                <h1 class="display-6 mb-0">A Company Involved In Service And Maintenance</h1>
                             </div>
-                        </form>
+                            <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        </div>
+                        <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <form action="BlogPageController">
+                                <div class="row g-3">
+<!--                                    <div class="col-sm-6">
+
+
+
+
+                                        <div class="form-floating">
+                                            <input type="text"  class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">
+                                            <label for="gname">Tiêu đề</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">
+                                            <label for="gmail">Phụ đề</label>
+                                        </div>
+                                    </div>-->
+                                    
+                                    <input class="form-control" type="hidden" name="accountID" value="${acc.accountID}">
+                                    
+                                 
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="file" name="image" class="form-control bg-light border-0" id="cname" placeholder="">
+                                            <label for="cname">Hình ảnh</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="text" name="blogCateID" class="form-control bg-light border-0" id="cage" placeholder="Blog Type">
+                                            <label for="cage">Phân loại</label>
+                                        </div>
+                                    </div>
+                                    <div  class="col-12">
+                                        <div class="form-floating">
+                                            <textarea name="title" class="form-control bg-light border-0" placeholder="Your Title Blog" id="message" style="height: 80px"></textarea>
+                                            <label for="message">Tiêu đề</label>
+                                        </div>
+                                 
+                           
+                                
+                                    </div>
+                                    
+                                    <div  class="col-12">
+                                        <div class="form-floating">
+                                            <textarea  name="subTitle" class="form-control bg-light border-0" placeholder="Your Title Blog" id="message" style="height: 80px"></textarea>
+                                            <label for="message">Phụ đề</label>
+                                        </div>
+                                    </div>
+                                    <div  class="col-12">
+                                        <div class="form-floating">
+                                            <textarea name="content" class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 500px"></textarea>
+                                            <label for="message">Nội dung</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <!--                                    <button class="btn btn-primary w-100 py-3" type="submit">Post A Blog</button>-->
+                                        <input type="submit" class="btn btn-primary w-100 py-3" name="action" value="Xuất Bản"/>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Appointment End -->
+            <!-- Appointment End -->
 
 
-        <!-- Footer Start -->
+            <!-- Footer Start -->
         <jsp:include page="footer.jsp"></jsp:include>
         <!-- Footer End -->
 

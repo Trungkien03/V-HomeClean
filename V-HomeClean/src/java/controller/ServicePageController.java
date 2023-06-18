@@ -40,7 +40,24 @@ public class ServicePageController extends HttpServlet {
         HttpSession session = request.getSession();
         ServiceDAO dao = new ServiceDAO();
         List<ServiceDTO> list = dao.getAllService();
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
+        }
+        if (indexPage.equals("-1")) {
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+        int count = dao.CountService();
+        int endPage = count / 3;
+        if (endPage % 3 != 0) {
+            endPage++;
+        }
+
+        list = dao.pagingService(index);
         request.setAttribute("listS", list);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
         request.getRequestDispatcher("service.jsp").forward(request, response);
     }
 

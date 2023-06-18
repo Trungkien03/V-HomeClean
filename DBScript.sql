@@ -62,11 +62,7 @@ CREATE TABLE Account
   FOREIGN KEY (RoleID) REFERENCES RoleAccount(RoleID)
 );
 GO
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 417e64212cf2d09f44bd78e178bbd3265b994ca1
 -- Tạo bảng BlogCate
 CREATE TABLE BlogCate
 (
@@ -127,7 +123,6 @@ CREATE TABLE BookingDetail
   FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 );
 GO
-<<<<<<< HEAD
 
 CREATE TABLE Notification
 (
@@ -142,8 +137,6 @@ CREATE TABLE Notification
 )
 GO
 
-=======
->>>>>>> 417e64212cf2d09f44bd78e178bbd3265b994ca1
 -- Tạo bảng Feedback
 CREATE TABLE Feedback
 (
@@ -171,7 +164,6 @@ CREATE TABLE Comment
   FOREIGN KEY (BlogID) REFERENCES Blog(BlogID)
 );
 GO
-<<<<<<< HEAD
 
 --Tạo bảng message cho guest người mà có thắc mắc về dịch vụ
 CREATE TABLE Question (
@@ -183,8 +175,6 @@ CREATE TABLE Question (
 );
 GO
 
-=======
->>>>>>> 417e64212cf2d09f44bd78e178bbd3265b994ca1
 -- Tạo trigger AutoGenerateAccountID
 DROP TRIGGER IF EXISTS AutoGenerateAccountID;
 GO

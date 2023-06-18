@@ -3,22 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/users.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/login.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/admin/UserGeneralPageController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/DTO/AccountDTO.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/index.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/general.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/admin/UsersManagementController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/DAO/AccountDAO.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/blocked-users.jsp</file>
-=======
-            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/web/login.jsp</file>
-            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/controller/GetAppointmentController.java</file>
-            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/web/singleBlog.jsp</file>
-            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/controller/SingleBlogController.java</file>
->>>>>>> 417e64212cf2d09f44bd78e178bbd3265b994ca1
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/controller/ServicePageController.java</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/web/blogWithSide.jsp</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/controller/BlogPageController.java</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/DAO/BlogDAO.java</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/DAO/ServiceDAO.java</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/web/service.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -76,7 +76,7 @@
                     </div>
                     <div class="row g-4 justify-content-center">
                     <c:forEach items="${listS}" var="o">
-                        
+
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                             <input name="serviceID" value="${o.serviceID}" type="hidden">
                             <div class="service-item bg-light overflow-hidden h-100">
@@ -93,8 +93,44 @@
 
 
                 </div>
+
+
+                    <style>
+                        .paging{
+                            text-align: center;
+                            margin-top: 5%;
+                            margin-left: 45%;
+                        }
+                    </style>
+                <div class="paging" >
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <c:if test="${tag > 1}">
+                                    <a class="page-link" href="ServicePageController?index=${tag - 1}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </c:if>
+                                </a>
+                            </li>
+
+                            <c:forEach begin="1" end ="${endP}" var="i">
+                                <li class="page-item"><a class="page-link" href="ServicePageController?index=${i}">${i}</a></li>
+                                </c:forEach>
+                            <li class="page-item">
+                                <c:if test="${tag < endP}">
+                                    <a class="page-link" href="ServicePageController?index=${tag + 1}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </c:if>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
             </div>
         </div>
+
+
         <!-- Service End -->
 
 

@@ -19,11 +19,12 @@ public class BlogDTO {
     private String time;
     private String image;
     private String cateBlogName;
+    private int blogCateID;
 
     public BlogDTO() {
     }
 
-    public BlogDTO(String blogID, String title, String subTitle, String content, String accountID, String time, String image, String cateBlogName) {
+    public BlogDTO(String blogID, String title, String subTitle, String content, String accountID, String time, String image, String cateBlogName, int blogCateID) {
         this.blogID = blogID;
         this.title = title;
         this.subTitle = subTitle;
@@ -32,6 +33,7 @@ public class BlogDTO {
         this.time = time;
         this.image = image;
         this.cateBlogName = cateBlogName;
+        this.blogCateID = blogCateID;
     }
 
     public String getBlogID() {
@@ -98,10 +100,20 @@ public class BlogDTO {
         this.cateBlogName = cateBlogName;
     }
 
-    @Override
-    public String toString() {
-        return "BlogDTO{" + "blogID=" + blogID + ", title=" + title + ", subTitle=" + subTitle + ", content=" + content + ", accountID=" + accountID + ", time=" + time + ", image=" + image + ", cateBlogName=" + cateBlogName + '}';
+    public int getBlogCateID() {
+        return blogCateID;
     }
 
-   
+    public void setBlogCateID(int blogCateID) {
+        this.blogCateID = blogCateID;
+    }
+
+    @Override
+    public String toString() {
+        return "BlogDTO{" + "blogID=" + blogID + ", title=" + title + ", subTitle=" + subTitle + ", content=" + content + ", accountID=" + accountID + ", time=" + time + ", image=" + image + ", cateBlogName=" + cateBlogName + ", blogCateID=" + blogCateID + '}';
+    }
+
+
+
+    
 }

@@ -90,12 +90,13 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="row">
-                                
+
                             <c:forEach items="${listBlog}" var="o">
                                 <div class="col-lg-6 col-md-6 mb-5">
                                     <div class="blog-item">
 
                                         <input name="blogID" value="${o.blogID}" type="hidden">
+
                                         <img src="${o.image}" alt="" class="img-fluid rounded">    
                                         <div class="blog-item-content bg-white p-4">
                                             <!--                                            <div class="blog-item-meta  py-1 px-2">                                                   
