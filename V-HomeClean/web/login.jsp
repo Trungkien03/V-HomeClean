@@ -95,8 +95,10 @@
                 <div class="row align-items-center justify-content-center">
                     <div  class="col-md-8 form login-form">
                         <h3 class="m-2">Đăng Nhập</h3>
-                        <strong style="color: green">${message}</strong>
-                        <strong style="color: red">${ERROR}</strong>
+                        <div class="text-center">
+                            <strong style="color: green">${message}</strong>
+                            <strong style="color: red">${ERROR}</strong>
+                        </div>
                         <form action="MainController" method="post">
                             <div class="form-group first mb-3">
                                 <label for="username">Email</label>
@@ -200,7 +202,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <!--                                <label for="password">Địa Chỉ</label>-->
-                                <select class="form-select" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
+                                <select required="" class="form-select" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
                                     <option value="">-- Chọn khu vực Vinhomes --</option>
                                     <option value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - TP. Hồ Chí Minh</option>
                                     <option value="Vinhomes Golden River - TP. Hồ Chí Minh">Vinhomes Golden River - TP. Hồ Chí Minh</option>
@@ -213,7 +215,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <!--                          <label for="password">Số Điện Thoại</label> -->
-                                <input type="text" name="phone" class="form-control" placeholder="Số điện thoại" id="password">
+                                <input required="" type="text" name="phone" class="form-control" placeholder="Số điện thoại" id="password">
                                 <% if (userError.getPhone() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getPhone()%></strong>
                                 <% } %>
@@ -235,7 +237,7 @@
                             <% } %>
                             <div class="form-group mb-3">
                                 <label for="DateOfBirth">Ngày sinh</label>
-                                <input type="date" name="DateOfBirth" class="form-control" placeholder="Ngày sinh của bạn" id="password">
+                                <input required="" type="date" name="DateOfBirth" class="form-control" placeholder="Ngày sinh của bạn" id="password">
                                 <% if (userError.getDateOfBirth() != null) {%>
                                 <strong style="color: #e72734;" ><%= userError.getDateOfBirth()%></strong>
                                 <% }%>

@@ -101,8 +101,8 @@
 
                             <c:forEach items="${listBlog}" var="o">
                                 <div class="col-lg-6 col-md-6 mb-5">
-                                    <div class="blog-item">
-
+                                    <div class="blog-item wow fadeInUp" data-wow-delay="0.5s">
+                                       
                                         <input name="blogID" value="${o.blogID}" type="hidden">
                                         <img src="${o.image}" alt="" class="img-fluid rounded">    
                                         <div class="blog-item-content bg-white p-4">

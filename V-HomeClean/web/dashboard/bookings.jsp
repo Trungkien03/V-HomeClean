@@ -46,12 +46,12 @@
                         <div class="page-header">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h3 class="page-title">Quản lý dịch vụ</h3>
+                                    <h3 class="page-title">Quản lý lịch hẹn</h3>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item">
                                             <a href="dashboard/index.jsp">Bảng Điều Khiển</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Quản lý dịch vụ</li>
+                                        <li class="breadcrumb-item active">Quản lý lịch hẹn</li>
                                     </ul>
                                 </div>
                             </div>
@@ -61,9 +61,9 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4 class="card-title">Số lượng dịch vụ: ${TotalActiveService}</h4>
+                                        <h4 class="card-title">Số lượng lịch hẹn: ${totalActiveBookings}</h4>
                                     <p class="card-text">
-                                        Đây là bảng thể hiện danh sách những dịch vụ của công ty
+                                        Đây là bảng thể hiện danh sách những lịch hẹn gần nhất của khách hàng
                                     </p>
                                 </div>
                                 <div class="card-body">
@@ -71,27 +71,38 @@
                                         <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">ID</th>
+                                                    <th class="text-center">Booking ID</th>
+                                                    <th class="text-center">Tên khách hàng</th>
                                                     <th class="text-center">Tên dịch vụ</th>
-                                                    <th class="text-center">Thể loại</th>
-                                                    <th class="text-center">Giá cả</th>
-                                                    <th class="text-center">Chi tiết</th>
-                                                    <th class="text-center">Ngưng hoạt động</th>
+                                                    <th class="text-center">Tên nhân viên phụ trách</th>
+                                                    <th class="text-center">Trạng thái</th>
+                                                    <th class="text-center">Chi tiết lịch hẹn</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${ServiceList}" var="o">
+                                                <c:forEach items="${bookingsList}" var="o">
                                                     <tr>
-                                                        <td class="text-center">${o.serviceID}</td>
+                                                        <td class="text-center">${o.bookingID}</td>
+                                                        <c:forEach items="${AccountsList}" var="user">
+                                                            <c:if test="${user.accountID eq o.accountID}">
+                                                                <c:set var="accountName" value="${user.fullName}" />
+                                                            </c:if>
+                                                        </c:forEach>
+                                                        <td class="text-center">${accountName}</td>
                                                         <td class="text-center">${o.serviceName}</td>
-                                                        <td class="text-center">${o.cateServiceName}</td>
-                                                        <fmt:formatNumber var="formattedPrice" value="${o.price}" pattern="###,### VND" />
-                                                        <td class="text-center">${formattedPrice}</td>
 
+                                                        <c:set var="staffName" value="Chưa có nhân viên" /> <!-- Mặc định là "Chưa có nhân viên" -->
+                                                        <c:forEach items="${StaffList}" var="staff">
+                                                            <c:if test="${staff.accountID eq o.staffID}">
+                                                                <c:set var="staffName" value="${staff.fullName}" />
+                                                            </c:if>
+                                                        </c:forEach>
+                                                        <td class="text-center">${staffName}</td>
+                                                        <td class="text-center">${o.bookingStatus}</td>
                                                         <td class="text-center">
                                                             <div class="actions">
                                                                 <a
-                                                                    href="ServiceGeneralController?serviceID=${o.serviceID}"
+                                                                    href="BookingGeneralController?bookingID=${o.bookingID}"
                                                                     class="btn btn-large bg-info-light "
                                                                     title="View Document"
                                                                     >
@@ -99,32 +110,7 @@
                                                                 </a>
                                                             </div>
                                                         </td>
-                                                        <td class="text-center">
-                                                            <div class="text-end text-center">
-                                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#${o.serviceID}">
-                                                                    <i class="fe fe-lock"></i>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal fade" id="${o.serviceID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title" id="exampleModalLabel">Ngưng dịch vụ ${o.serviceName}</h5>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            Bạn có chắc chắn là muốn khóa dịch vụ này chứ ?
-                                                                        </div>
-                                                                            <div class="modal-footer" style="display: flex; justify-content: space-between">
-                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><a>Không</a></button>
-                                                                            <button type="button" class="btn btn-outline-primary"><a href="ServicesManagementController?action=Khóa&serviceID=${o.serviceID}">
-                                                                                    Có
-                                                                                </a></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
+
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -172,9 +158,14 @@
                             "sSortAscending": ": Sắp xếp cột tăng dần",
                             "sSortDescending": ": Sắp xếp cột giảm dần"
                         }
-                    }
+                    },
+                    columnDefs: [
+                        {"orderable": false, "targets": 0} // Tắt tính năng tự động sắp xếp cho cột đầu tiên
+                    ],
+                    order: [] // Không sắp xếp ban đầu
                 });
             });
+
         </script>
     </body>
 </html>

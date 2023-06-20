@@ -62,7 +62,7 @@
                                             alt="User Image"
                                             />
                                     </a>
-                                    <h6>${account.fullName}</h6>
+                                    <h6></h6>
                                     <p>
 
                                     </p>

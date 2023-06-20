@@ -43,6 +43,7 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+
     </head>
 
     <body>
@@ -226,8 +227,41 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3 "  type="submit" name="action" value="Booking">Booking Service</button>
+                                <button type="button" class="btn btn-primary w-100 py-3" data-toggle="modal" data-target="#modalPush">Đặt lịch</button>
                             </div>
+
+                            <!--Modal: modalPush-->
+                            <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-notify modal-info" role="document">
+                                    <!--Content-->
+                                    <div class="modal-content text-center">
+                                        <!--Header-->
+                                        <div class="modal-header d-flex justify-content-center">
+                                            <p class="heading">Be always up to date</p>
+                                        </div>
+
+                                        <!--Body-->
+                                        <div class="modal-body">
+
+                                            <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+
+                                            <p>Bạn có chắc chắn với thông tin mình đã điền chưa ạ ?</p>
+
+                                        </div>
+
+                                        <!--Footer-->
+                                        <div class="modal-footer flex-center">
+                                            <button name="action" class="btn btn-outline-info waves-effect" value="Booking" type="submit">Chắc chắn</button>
+                                            <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Không</a>
+                                        </div>
+                                    </div>
+                                    <!--/.Content-->
+                                </div>
+                            </div>
+                            <!--Modal: modalPush-->
+
+
                         </div>
                     </form>
 
@@ -300,6 +334,7 @@
 
 
     </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

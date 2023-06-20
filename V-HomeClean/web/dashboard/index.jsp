@@ -107,14 +107,14 @@
 
                         <div class="col-md-12 d-flex">
 
-                            <div class="col-md-4 flex-column mt-5" style="display: flex; align-items: center;">
+                            <div class="col-md-5 flex-column mt-5" style="display: flex; align-items: center;">
                                 <div class="title">
                                     <h4>Số lượng đặt lịch trong tuần</h4>
                                 </div>
                                 <div id="chart"></div>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-7">
                                 <canvas id="myChart"></canvas>
                             </div>
 
@@ -336,7 +336,7 @@
                     labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'], // Nhãn trục x
                     datasets: [{
                             label: 'Thông Số Trong Năm', // Nhãn của dữ liệu
-                            data: [12, 19, totalBlogs, 5, 2, 3, 5, 6, 1, 2, 6, 8], // Dữ liệu
+                            data: [12, 19, totalBlogs, ${TotalServices}, 2, 3, 5, 6, 1, 2, 6, 8], // Dữ liệu
                             backgroundColor: 'rgba(0, 123, 255, 0.6)' // Màu nền của cột
                         }]
                 },
@@ -354,7 +354,7 @@
 
         <script>
             var options = {
-                series: [44, 55, 13, 43, 22, 12,23],
+                series: [${totalBlogs}, 55, 13, 43, 22, 12,23],
                 chart: {
                     width: 380,
                     type: 'pie',

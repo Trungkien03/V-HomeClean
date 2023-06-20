@@ -62,24 +62,24 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title">Số lượng dịch vụ: ${TotalActiveService}</h4>
-                                        <p class="card-text">
-                                            Đây là bảng thể hiện danh sách những dịch vụ của công ty
-                                        </p>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive custom-table-responsive">                                          
-                                            <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-center">ID</th>
-                                                        <th class="text-center">Tên dịch vụ</th>
-                                                        <th class="text-center">Thể loại</th>
-                                                        <th class="text-center">Giá cả</th>
-                                                        <th class="text-center">Chi tiết</th>
-                                                        <th class="text-center">Ngưng hoạt động</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
+                                    <p class="card-text">
+                                        Đây là bảng thể hiện danh sách những dịch vụ của công ty
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive custom-table-responsive">                                          
+                                        <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">ID</th>
+                                                    <th class="text-center">Tên dịch vụ</th>
+                                                    <th class="text-center">Thể loại</th>
+                                                    <th class="text-center">Giá cả</th>
+                                                    <th class="text-center">Chi tiết</th>
+                                                    <th class="text-center">Ngưng hoạt động</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
                                                 <c:forEach items="${ServiceList}" var="o">
                                                     <tr>
                                                         <td class="text-center">${o.serviceID}</td>
@@ -100,10 +100,29 @@
                                                             </div>
                                                         </td>
                                                         <td class="text-center">
-                                                            <div class="actions">
-                                                                <a href="ServicesManagementController?action=Khóa&serviceID=${o.serviceID}" class="btn btn-sm bg-danger-light">
+                                                            <div class="text-end text-center">
+                                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#${o.serviceID}">
                                                                     <i class="fe fe-lock"></i>
-                                                                </a>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal fade" id="${o.serviceID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Ngưng dịch vụ ${o.serviceName}</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            Bạn có chắc chắn là muốn khóa dịch vụ này chứ ?
+                                                                        </div>
+                                                                            <div class="modal-footer" style="display: flex; justify-content: space-between">
+                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><a>Không</a></button>
+                                                                            <button type="button" class="btn btn-outline-primary"><a href="ServicesManagementController?action=Khóa&serviceID=${o.serviceID}">
+                                                                                    Có
+                                                                                </a></button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </td>
                                                     </tr>

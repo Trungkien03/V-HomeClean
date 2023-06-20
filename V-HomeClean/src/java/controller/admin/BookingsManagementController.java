@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.admin;
 
-import DAO.ServiceDAO;
+import DAO.AccountDAO;
+import DAO.BookingDAO;
 import DTO.AccountDTO;
-import DTO.ServiceDTO;
+import DTO.BookingDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,10 +21,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Asus
+ * @author Trung Kien
  */
-@WebServlet(name = "GetAppointmentController", urlPatterns = {"/GetAppointmentController"})
-public class GetAppointmentController extends HttpServlet {
+@WebServlet(name = "BookingsManagementController", urlPatterns = {"/BookingsManagementController"})
+public class BookingsManagementController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,18 +41,28 @@ public class GetAppointmentController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
-        if (a == null) {
-            request.setAttribute("ERROR", "Bạn cần đăng nhập tài khoản để đặt lịch!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        String action = request.getParameter("action");
+        BookingDAO bDao = new BookingDAO();
+        AccountDAO aDao = new AccountDAO();
+         if (a == null) {
+            response.sendRedirect("dashboard/login.jsp");
         } else {
-            String serviceID = request.getParameter("serviceID");
-            ServiceDAO dao = new ServiceDAO();
-            List<ServiceDTO> list = dao.getAllService();
-            ServiceDTO s = dao.getServiceByID(serviceID);
-            request.setAttribute("listS", list);
-            request.setAttribute("ServiceDetail", s);
-            request.getRequestDispatcher("SeviceDetails-GetAppointment.jsp").forward(request, response);
-        }
+             try {
+                 // action here
+             } catch (Exception e) {
+                 e.printStackTrace();
+             } finally {
+                 List<AccountDTO> AccountsList = aDao.getAllAccounts();
+                 List<AccountDTO> StaffList = aDao.GetAccountsByRoleID(2);
+                 List<BookingDTO> bookingsList = bDao.getAllLatestBookings();
+                 int totalActiveBookings = bDao.CountTotalBookingExceptStatus("hủy"); // count tất cả những booking đang trong thời gian hoạt động hoặc chờ được xử lý
+                 request.setAttribute("AccountsList", AccountsList);
+                 request.setAttribute("bookingsList", bookingsList);
+                 request.setAttribute("StaffList", StaffList);
+                 request.setAttribute("totalActiveBookings", totalActiveBookings);
+                 request.getRequestDispatcher("/dashboard/bookings.jsp").forward(request, response);
+             }
+         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

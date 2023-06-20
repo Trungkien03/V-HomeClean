@@ -45,7 +45,7 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li id="appointment-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Đơn </a></li>
+                        <li id="appointment-details-link"><a href="BookingsManagementController"> Quản Lý Đơn </a></li>
                         <li id="appointment-management-link"><a href="dashboard/orders-management.jsp"> Tạo Mới Đơn Hẹn </a></li>
                     </ul>
                 </li>
@@ -56,7 +56,7 @@
                         ></a>
                     <ul style="display: none">
                         <li id="blog-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Blog </a></li>
-                        <li id="blog-management-link"><a href="dashboard/orders-management.jsp"> Tạo Mới Blog </a></li>
+                        <li id="blog-management-link"><a href="dashboard/create-blog.jsp"> Tạo Mới Blog </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
