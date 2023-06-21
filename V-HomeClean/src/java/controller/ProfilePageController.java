@@ -76,19 +76,20 @@ public class ProfilePageController extends HttpServlet {
                             session.setAttribute("acc", account);
                             boolean checkUpdate = dao.updateAccount(account);
                             if (checkUpdate) {
-                                request.setAttribute("message", "Cập nhật mật khẩu thành công!");
+                                request.setAttribute("messagePass", "Cập nhật mật khẩu thành công!");
+                                request.setAttribute("status", "change-password");
                                 url = "userProfile.jsp";
                             }
                         } else {
-
-                            request.setAttribute("ERROR", " Mật khẩu và xác nhận mật khẩu "
+                            request.setAttribute("ERRORPass", " Mật khẩu và xác nhận mật khẩu "
                                     + "không trùng khớp! ");
+                            request.setAttribute("status", "change-password");
                             url = "userProfile.jsp";
-
                         }
                     } else {
 
                         request.setAttribute("ERROR", " Mật khẩu cũ không trùng khớp! ");
+                        request.setAttribute("status", "change-password");
                         url = "userProfile.jsp";
                     }
                 }

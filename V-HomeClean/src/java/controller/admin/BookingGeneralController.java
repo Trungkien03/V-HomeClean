@@ -13,6 +13,7 @@ import DTO.BookingDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,22 +49,45 @@ public class BookingGeneralController extends HttpServlet {
         AccountDAO aDao = new AccountDAO();
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
-        } else{
+        } else {
             try {
-                if(action == null || action.isEmpty()){
+                if (action == null || action.isEmpty()) {
                     String bookingID = request.getParameter("bookingID");
                     BookingDTO booking = bDao.getBookingByID(bookingID);
                     ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
                     AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
                     AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
-                    session.setAttribute("booking", booking);
-                    session.setAttribute("service", service);
-                    session.setAttribute("account", account);
-                    session.setAttribute("staff", staff);
+                    List<AccountDTO> listStaff = aDao.getAvailableStaff();
+                    List<AccountDTO> listAccounts = aDao.getAllAccounts();
+                    request.setAttribute("listAccounts", listAccounts);
+                    request.setAttribute("listStaff", listStaff);
+                    request.setAttribute("booking", booking);
+                    request.setAttribute("service", service);
+                    request.setAttribute("account", account);
+                    request.setAttribute("staff", staff);
+                }
+
+                if (action.equalsIgnoreCase("Cập Nhật")) {
+                    String bookingIDString = request.getParameter("bookingID");
+                    int bookingID = Integer.parseInt(bookingIDString);
+                    String staffID = request.getParameter("staffID");
+                    bDao.updateBookingWithStaffIDandStatus(staffID, "Xác nhận", bookingID);
+                    BookingDTO booking = bDao.getBookingByID(bookingIDString);
+                    ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
+                    AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
+                    AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
+                    List<AccountDTO> listStaff = aDao.getAvailableStaff();
+                    List<AccountDTO> listAccounts = aDao.getAllAccounts();
+                    request.setAttribute("listAccounts", listAccounts);
+                    request.setAttribute("listStaff", listStaff);
+                    request.setAttribute("booking", booking);
+                    request.setAttribute("service", service);
+                    request.setAttribute("account", account);
+                    request.setAttribute("staff", staff);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally{
+            } finally {
                 request.getRequestDispatcher("/dashboard/general-booking.jsp").forward(request, response);
             }
         }

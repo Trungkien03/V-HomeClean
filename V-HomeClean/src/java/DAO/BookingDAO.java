@@ -195,7 +195,7 @@ public class BookingDAO {
                 + "JOIN BookingDetail bd ON b.BookingID = bd.BookingID\n"
                 + "JOIN Service s ON b.ServiceID = s.ServiceID\n"
                 + "WHERE b.BookingStatus != 'hủy'\n"
-                + "ORDER BY bd.BookingDate DESC";
+                + "ORDER BY ABS(DATEDIFF(day, bd.BookingDate, GETDATE()))";
         List<BookingDTO> bookingList = new ArrayList<>();
         try {
             conn = new DBContext().getConnection();
@@ -221,11 +221,28 @@ public class BookingDAO {
         return bookingList;
     }
 
+    // cập nhật đơn
+    public void updateBookingWithStaffIDandStatus(String staffID, String status, int bookingID) {
+        String query = "UPDATE Booking\n"
+                + "SET StaffID = ?, BookingStatus = ?\n"
+                + "WHERE BookingID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, staffID);
+            ps.setNString(2, status);
+            ps.setInt(3, bookingID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        List<BookingDTO> list = dao.getAllLatestBookings();
-        for (BookingDTO bookingDTO : list) {
-            System.out.println(bookingDTO.toString());
-        }
+        String staffID = "AC0003";
+        String status = "Xác nhận";
+        int bookingID = 1;
+        dao.updateBookingWithStaffIDandStatus("", status, bookingID);
     }
 }

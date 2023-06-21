@@ -71,9 +71,9 @@
                                         <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">Booking ID</th>
                                                     <th class="text-center">Tên khách hàng</th>
                                                     <th class="text-center">Tên dịch vụ</th>
+                                                    <th class="text-center">Thời gian</th>
                                                     <th class="text-center">Tên nhân viên phụ trách</th>
                                                     <th class="text-center">Trạng thái</th>
                                                     <th class="text-center">Chi tiết lịch hẹn</th>
@@ -82,7 +82,6 @@
                                             <tbody>
                                                 <c:forEach items="${bookingsList}" var="o">
                                                     <tr>
-                                                        <td class="text-center">${o.bookingID}</td>
                                                         <c:forEach items="${AccountsList}" var="user">
                                                             <c:if test="${user.accountID eq o.accountID}">
                                                                 <c:set var="accountName" value="${user.fullName}" />
@@ -97,6 +96,7 @@
                                                                 <c:set var="staffName" value="${staff.fullName}" />
                                                             </c:if>
                                                         </c:forEach>
+                                                        <td class="text-center">${o.bookingDate}</td>
                                                         <td class="text-center">${staffName}</td>
                                                         <td class="text-center">${o.bookingStatus}</td>
                                                         <td class="text-center">

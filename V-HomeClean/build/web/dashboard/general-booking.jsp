@@ -70,6 +70,7 @@
                                                 data-bs-toggle="tab"
                                                 >Đơn Hẹn</a
                                             >
+                                            <p style="color: #00bf6f">${message}</p>
                                         </li>
                                         <li class="nav-item">
                                             <a
@@ -93,8 +94,8 @@
                                             class="tab-pane show active"
                                             id="top-justified-tab1"
                                             >
-                                            <form action="#" method="post">
-                                                <input type="hidden" name="serviceID" value="${service.serviceID}">
+                                            <form action="BookingGeneralController" method="post">
+                                                <input type="hidden" name="bookingID" value="${booking.bookingID}">
                                                 <div class="form-group" style="display:flex; justify-content: center; align-items: center">
                                                     <label class="text-info font-weight-600 w-25">Tên dịch vụ:</label>
                                                     <input readonly=""
@@ -159,13 +160,20 @@
                                                 </div>                                                       
 
                                                 <div class="form-group" style="display:flex; justify-content: center; align-items: center">
-                                                    <label class="text-info font-weight-600 w-25">Nhân viên phụ trách:</label>
-                                                    <select required name="staffID" class="form-control form-select">
-                                                        <option>-- Chọn nhân viên --</option>
-                                                        <option value="2">Tên nhân viên 1</option>
-                                                        <option value="1">Tên nhân viên 2</option>
-                                                    </select>
+                                                    <label class="text-info font-weight-600 w-25">Tên Nhân viên phụ trách:</label>
+                                                    <c:forEach items="${listAccounts}" var="o">
+                                                        <c:if test="${o.accountID == booking.staffID}">
+                                                            <c:set var="staffName" value="${o.fullName}" />
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <input readonly=""
+                                                           name="accountName"
+                                                           type="text"
+                                                           class="form-control"
+                                                           value="${staffName}">
                                                 </div>
+
+
                                                 <div class="form-group" style="display:flex; align-items: center;">
                                                     <label class="text-info font-weight-600 w-25">Giá dịch vụ</label>
                                                     <div class="w-100" style="display: flex; justify-content: center; align-items: center;">
@@ -193,9 +201,18 @@
                                                            />
                                                 </div>
 
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Cập nhật nhân viên cho đơn:</label>
+                                                    <select id="staffSelect" required name="staffID" class="form-control form-select">
+                                                        <option selected="" disabled="">-- Chọn nhân viên --</option>
+                                                        <c:forEach items="${listStaff}" var="staff">
+                                                            <option value="${staff.accountID}">${staff.fullName}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
                                                 <div class="mt-5" style="display: flex; justify-content: space-between; align-content: center;">
                                                     <div class="text-end text-center">
-                                                        <input name="action" type="submit" value="Cập nhật" class="btn btn-primary" />
+                                                        <input id="update-button" name="action" type="submit" value="Cập nhật" class="btn btn-primary" />
                                                     </div>
                                                     <div class="text-end text-center">
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
@@ -207,7 +224,7 @@
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Hủy Lịch Hẹn</h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
@@ -528,27 +545,45 @@
         <script src="css/assets/js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            $(document).ready(function () {
-                // Kiểm tra khi người dùng nhập vào input
-                $("input[name='price']").on("input", function () {
-                    var value = $(this).val();
+                                                                $(document).ready(function () {
+                                                                    // Kiểm tra khi người dùng nhập vào input
+                                                                    $("input[name='price']").on("input", function () {
+                                                                        var value = $(this).val();
 
-                    // Kiểm tra nếu giá trị không phải là số
-                    if (!$.isNumeric(value)) {
-                        // Hiển thị thông báo cảnh báo
-                        $(this).next(".error-message").text("Vui lòng chỉ nhập số.");
-                    } else {
-                        // Xóa thông báo cảnh báo nếu giá trị hợp lệ
-                        $(this).next(".error-message").text("");
-                    }
-                });
-            });
+                                                                        // Kiểm tra nếu giá trị không phải là số
+                                                                        if (!$.isNumeric(value)) {
+                                                                            // Hiển thị thông báo cảnh báo
+                                                                            $(this).next(".error-message").text("Vui lòng chỉ nhập số.");
+                                                                        } else {
+                                                                            // Xóa thông báo cảnh báo nếu giá trị hợp lệ
+                                                                            $(this).next(".error-message").text("");
+                                                                        }
+                                                                    });
+                                                                });
 
         </script>
         <script>
             $(document).ready(function () {
                 $('#myModal').on('shown.bs.modal', function () {
                     $('#myInput').trigger('focus');
+                });
+            });
+
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var staffSelect = document.getElementById("staffSelect");
+                var submitButton = document.getElementById("update-button");
+
+                // Mặc định nút là bị vô hiệu hóa
+                submitButton.disabled = true;
+
+                // Kiểm tra lại giá trị khi tùy chọn thay đổi
+                staffSelect.addEventListener("change", function () {
+                    if (this.value === "") {
+                        submitButton.disabled = true;
+                    } else {
+                        submitButton.disabled = false;
+                    }
                 });
             });
         </script>

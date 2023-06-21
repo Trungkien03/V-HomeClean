@@ -8,6 +8,7 @@ package controller;
 import DAO.BookingDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.BookingDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -135,7 +136,12 @@ public class BookingController extends HttpServlet {
                     ServiceDTO b = sdao.getServiceByID(serviceID);
                     int totalPrice = b.getPrice();
                     dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
-                    response.sendRedirect(SUCCESS);
+                    request.setAttribute("serviceName", b.getServiceName());
+                    request.setAttribute("vinhomesID", vinHomesID);
+                    request.setAttribute("area", area);
+                    request.setAttribute("bookingDate", bookingDate);
+                    request.setAttribute("totalPrice", totalPrice);
+                    request.getRequestDispatcher(SUCCESS).forward(request, response);
                 } else {
                     List<ServiceDTO> list = sdao.getAllService();
                     ServiceDTO s = sdao.getServiceByID(serviceID);
