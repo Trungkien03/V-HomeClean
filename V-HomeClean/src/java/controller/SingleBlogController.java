@@ -53,23 +53,7 @@ public class SingleBlogController extends HttpServlet {
                     cdao.AddComment(message, accountID, blogID1);
                 }
 
-            } 
-//            else if (action.equalsIgnoreCase("Xuất Bản")) {
-//                if (a == null) {
-//                    url = "login.jsp";
-//                    String error = "Bạn cần đăng nhập tài khoản để đăng bài blog.";
-//                    request.setAttribute("ERROR", error);
-//                } else {
-//                    String accountID = a.getAccountID();
-//                    String image = request.getParameter("image");
-//                    int blogCateID = Integer.parseInt(request.getParameter("blogCateID"));
-//                    String title = request.getParameter("title");
-//                    String subTitle = request.getParameter("subTitle");
-//                    String content = request.getParameter("content");
-//                    dao.InsertBlog(title, subTitle, content, accountID, blogCateID, image);
-//                    url = "blogWithSide.jsp";
-//                }
-//            }
+            }
 
         } catch (Exception e) {
         }

@@ -10,18 +10,24 @@ import DTO.AccountDTO;
 import DTO.BlogDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Hieu Doan
  */
+@MultipartConfig
 @WebServlet(name = "BlogPageController", urlPatterns = {"/BlogPageController"})
 public class BlogPageController extends HttpServlet {
 
@@ -31,8 +37,8 @@ public class BlogPageController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         String url = "blogWithSide.jsp";
-         String action = request.getParameter("action");
-            AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        String action = request.getParameter("action");
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
         String indexPage = request.getParameter("index");
         if (indexPage == null) {
             indexPage = "1";
@@ -53,7 +59,7 @@ public class BlogPageController extends HttpServlet {
 
         List<BlogDTO> list = dao.pagingBlog(index);
         try {
-           
+
             if (action.equalsIgnoreCase("Xuất Bản")) {
                 if (a == null) {
                     url = "login.jsp";
@@ -61,13 +67,25 @@ public class BlogPageController extends HttpServlet {
                     request.setAttribute("ERROR", error);
                 } else {
                     String accountID = a.getAccountID();
-                    String image = request.getParameter("image");
+                    Part part = request.getPart("image");
+                    String realPath = request.getServletContext().getRealPath("/img/");
+                    realPath = realPath.replace("\\build\\web", "\\web");
+                    String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                    String imagePath = "img/" + filename; // Đường dẫn tới ảnh
+
+                    if (!Files.exists(Paths.get(realPath))) {
+                        Files.createDirectories(Paths.get(realPath));
+                    }
+
+                    part.write(Paths.get(realPath, filename).toString());
+
                     int blogCateID = Integer.parseInt(request.getParameter("blogCateID"));
                     String title = request.getParameter("title");
                     String subTitle = request.getParameter("subTitle");
                     String content = request.getParameter("content");
-                    dao.InsertBlog(title, subTitle, content, accountID, blogCateID, image);
+                    dao.InsertBlog(title, subTitle, content, accountID, blogCateID, imagePath);
                     url = "blogWithSide.jsp";
+
                 }
             }
         } catch (Exception e) {

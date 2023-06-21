@@ -116,7 +116,7 @@ public class BlogDAO {
 
     }
 
-    public void InsertBlog( String title, String subTitle, String content, String accountID,int blogCateID, String image) {
+    public void InsertBlog(String title, String subTitle, String content, String accountID, int blogCateID, String image) {
         String query = "INSERT INTO Blog ( Title, SubTitle, Content, AccountID, BlogCateID, Time, Image)\n"
                 + "VALUES ( ?, ?, ?, ?, ?, GETDATE(), ?);";
         try {
@@ -133,6 +133,8 @@ public class BlogDAO {
         } catch (Exception e) {
         }
     }
+    
+    
 
     public static void main(String[] args) {
 
