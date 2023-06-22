@@ -9,6 +9,7 @@ import DAO.AccountDAO;
 import DTO.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,10 +37,18 @@ public class AboutPageController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int StaffID = 2;
+        int roleIDFixElec = 2;
+        int roleIDFixWater = 5;
+        int roleIDClean = 6;
         AccountDAO aDao = new AccountDAO();
-        List<AccountDTO> listAc = aDao.GetAccountsByRoleID(StaffID);
-        request.setAttribute("ListA", listAc);
+        List<AccountDTO> ListStaffsFixEletric = aDao.GetAccountByRoleIDAndStatus(roleIDFixElec, "true");
+        List<AccountDTO> ListStaffsFixWater = aDao.GetAccountByRoleIDAndStatus(roleIDFixWater, "true");
+        List<AccountDTO> ListstaffsClean = aDao.GetAccountByRoleIDAndStatus(roleIDClean, "true");
+        List<AccountDTO> ListStaffs = new ArrayList<>();
+        ListStaffs.addAll(ListStaffsFixEletric);
+        ListStaffs.addAll(ListStaffsFixWater);
+        ListStaffs.addAll(ListstaffsClean);
+        request.setAttribute("ListA", ListstaffsClean);
         request.getRequestDispatcher("about.jsp").forward(request, response);
     }
 

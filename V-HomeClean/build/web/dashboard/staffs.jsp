@@ -41,23 +41,23 @@
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>
-            <div class="page-wrapper">
-                <div class="content container-fluid">
-                    <div class="page-header">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h3 class="page-title">Staffs Management</h3>
-                                <ul class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="dashboard/index.jsp">Dashboard</a>
-                                    </li>
-                                    <li class="breadcrumb-item active">Staffs Management</li>
-                                </ul>
+                <div class="page-wrapper">
+                    <div class="content container-fluid">
+                        <div class="page-header">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h3 class="page-title">Staffs Management</h3>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                            <a href="dashboard/index.jsp">Dashboard</a>
+                                        </li>
+                                        <li class="breadcrumb-item active">Staffs Management</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
+                        <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -101,7 +101,13 @@
                                                         <td class="text-center">
                                                             <c:choose>
                                                                 <c:when test="${o.roleID == 2}">
-                                                                    Nhân Viên
+                                                                    Nhân viên sửa chữa điện
+                                                                </c:when>
+                                                                <c:when test="${o.roleID == 5}">
+                                                                    Nhân Viên sửa chữa nước
+                                                                </c:when>
+                                                                <c:when test="${o.roleID == 6}">
+                                                                    Nhân viên vệ sinh
                                                                 </c:when>
                                                                 <c:otherwise>
                                                                     <!-- Hiển thị giá trị khác nếu roleID không bằng 4 -->

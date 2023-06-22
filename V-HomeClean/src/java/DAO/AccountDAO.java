@@ -528,9 +528,46 @@ public class AccountDAO {
         return list;
     }
 
+    public List<AccountDTO> getAvailableStaffByRoleID(int roleID) {
+        String query = "SELECT *\n"
+                + "FROM Account\n"
+                + "WHERE RoleID = (SELECT RoleID FROM RoleAccount WHERE RoleID = ?)\n"
+                + "AND (\n"
+                + "    AccountID NOT IN (SELECT StaffID FROM Booking)\n"
+                + "    OR (\n"
+                + "        AccountID IN (SELECT StaffID FROM Booking WHERE BookingStatus = 'Hoàn thành')\n"
+                + "        AND AccountID NOT IN (SELECT StaffID FROM Booking WHERE BookingStatus != 'Hoàn thành')\n"
+                + "    )\n"
+                + ");";
+        List<AccountDTO> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, roleID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new AccountDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getNString(4),
+                        rs.getNString(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getDouble(12)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        List<AccountDTO> list = dao.getAvailableStaff();
+        List<AccountDTO> list = dao.getAvailableStaffByRoleID(6);
         for (AccountDTO accountDTO : list) {
             System.out.println(accountDTO.toString());
         }

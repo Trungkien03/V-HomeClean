@@ -205,11 +205,26 @@
                                                     <label class="text-info font-weight-600 w-25">Cập nhật nhân viên cho đơn:</label>
                                                     <select id="staffSelect" required name="staffID" class="form-control form-select">
                                                         <option selected="" disabled="">-- Chọn nhân viên --</option>
-                                                        <c:forEach items="${listStaff}" var="staff">
-                                                            <option value="${staff.accountID}">${staff.fullName}</option>
-                                                        </c:forEach>
+                                                        <c:choose>
+                                                            <c:when test="${service.cateServiceName.equalsIgnoreCase('Dịch vụ vệ sinh')}">
+                                                                <c:forEach items="${ListstaffsClean}" var="staff">
+                                                                    <option value="${staff.accountID}">${staff.fullName}</option>
+                                                                </c:forEach>
+                                                            </c:when>
+                                                            <c:when test="${service.cateServiceName.equalsIgnoreCase('Dịch vụ sửa chữa điện')}">
+                                                                <c:forEach items="${ListStaffsFixEletric}" var="staff">
+                                                                    <option value="${staff.accountID}">${staff.fullName}</option>
+                                                                </c:forEach>
+                                                            </c:when>
+                                                            <c:when test="${service.cateServiceName.equalsIgnoreCase('Dịch vụ sửa chữa nước')}">
+                                                                <c:forEach items="${ListStaffsFixWater}" var="staff">
+                                                                    <option value="${staff.accountID}">${staff.fullName}</option>
+                                                                </c:forEach>
+                                                            </c:when>
+                                                        </c:choose>
                                                     </select>
                                                 </div>
+
                                                 <div class="mt-5" style="display: flex; justify-content: space-between; align-content: center;">
                                                     <div class="text-end text-center">
                                                         <input id="update-button" name="action" type="submit" value="Cập nhật" class="btn btn-primary" />
@@ -261,13 +276,19 @@
                                                                         Admin
                                                                     </c:when>
                                                                     <c:when test="${account.roleID == 2}">
-                                                                        Nhân viên
+                                                                        Nhân viên sửa chữa điện
                                                                     </c:when>
                                                                     <c:when test="${account.roleID == 3}">
                                                                         Quản lý
                                                                     </c:when>
                                                                     <c:when test="${account.roleID == 4}">
                                                                         Khách hàng
+                                                                    </c:when>
+                                                                    <c:when test="${account.roleID == 5}">
+                                                                        Nhân viên sửa chữa nước
+                                                                    </c:when>
+                                                                    <c:when test="${account.roleID == 6}">
+                                                                        Nhân viên vệ sinh
                                                                     </c:when>
                                                                     <c:otherwise>
                                                                         Vai trò không xác định
@@ -401,13 +422,19 @@
                                                                                 Admin
                                                                             </c:when>
                                                                             <c:when test="${staff.roleID == 2}">
-                                                                                Nhân viên
+                                                                                Nhân viên sửa chữa điện
                                                                             </c:when>
                                                                             <c:when test="${staff.roleID == 3}">
                                                                                 Quản lý
                                                                             </c:when>
                                                                             <c:when test="${staff.roleID == 4}">
                                                                                 Khách hàng
+                                                                            </c:when>
+                                                                            <c:when test="${staff.roleID == 5}">
+                                                                                Nhân viên sửa chữa nước
+                                                                            </c:when>
+                                                                            <c:when test="${staff.roleID == 6}">
+                                                                                Nhân viên vệ sinh
                                                                             </c:when>
                                                                             <c:otherwise>
                                                                                 Vai trò không xác định
@@ -545,21 +572,21 @@
         <script src="css/assets/js/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-                                                                $(document).ready(function () {
-                                                                    // Kiểm tra khi người dùng nhập vào input
-                                                                    $("input[name='price']").on("input", function () {
-                                                                        var value = $(this).val();
+            $(document).ready(function () {
+                // Kiểm tra khi người dùng nhập vào input
+                $("input[name='price']").on("input", function () {
+                    var value = $(this).val();
 
-                                                                        // Kiểm tra nếu giá trị không phải là số
-                                                                        if (!$.isNumeric(value)) {
-                                                                            // Hiển thị thông báo cảnh báo
-                                                                            $(this).next(".error-message").text("Vui lòng chỉ nhập số.");
-                                                                        } else {
-                                                                            // Xóa thông báo cảnh báo nếu giá trị hợp lệ
-                                                                            $(this).next(".error-message").text("");
-                                                                        }
-                                                                    });
-                                                                });
+                    // Kiểm tra nếu giá trị không phải là số
+                    if (!$.isNumeric(value)) {
+                        // Hiển thị thông báo cảnh báo
+                        $(this).next(".error-message").text("Vui lòng chỉ nhập số.");
+                    } else {
+                        // Xóa thông báo cảnh báo nếu giá trị hợp lệ
+                        $(this).next(".error-message").text("");
+                    }
+                });
+            });
 
         </script>
         <script>

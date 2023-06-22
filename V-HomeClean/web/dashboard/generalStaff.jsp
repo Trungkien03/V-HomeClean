@@ -70,13 +70,19 @@
                                                 Admin
                                             </c:when>
                                             <c:when test="${account.roleID == 2}">
-                                                Nhân viên
+                                                Nhân viên sửa chữa điện
                                             </c:when>
                                             <c:when test="${account.roleID == 3}">
                                                 Quản lý
                                             </c:when>
                                             <c:when test="${account.roleID == 4}">
                                                 Khách hàng
+                                            </c:when>
+                                            <c:when test="${account.roleID == 5}">
+                                                Nhân viên sửa chữa nước
+                                            </c:when>
+                                            <c:when test="${account.roleID == 6}">
+                                                Nhân viên vệ sinh
                                             </c:when>
                                             <c:otherwise>
                                                 Vai trò không xác định
@@ -200,9 +206,11 @@
                                                         <label class="text-info font-weight-600 w-25">Chức vụ</label>
                                                         <select name="roleID" class="form-control">
                                                             <option value="1" <c:if test="${account.roleID == 1}">selected</c:if>>Admin</option>
-                                                            <option value="2" <c:if test="${account.roleID == 2}">selected</c:if>>Nhân viên</option>
+                                                            <option value="2" <c:if test="${account.roleID == 2}">selected</c:if>>Nhân viên sửa chữa điện</option>
                                                             <option value="3" <c:if test="${account.roleID == 3}">selected</c:if>>Quản lý</option>
                                                             <option value="4" <c:if test="${account.roleID == 4}">selected</c:if>>Khách hàng</option>
+                                                            <option value="5" <c:if test="${account.roleID == 5}">selected</c:if>>Nhân viên sửa chữa nước</option>
+                                                            <option value="6" <c:if test="${account.roleID == 6}">selected</c:if>>Nhân viên vệ sinh</option>
                                                             </select>
                                                         </div>
                                                 </c:if>

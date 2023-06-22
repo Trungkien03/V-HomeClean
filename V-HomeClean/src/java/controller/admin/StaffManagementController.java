@@ -9,6 +9,7 @@ import DAO.AccountDAO;
 import DTO.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +39,9 @@ public class StaffManagementController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        int roleID = 2;
+        int roleIDFixElec = 2;
+        int roleIDFixWater = 5;
+        int roleIDClean = 6;
         String action = request.getParameter("action");
         AccountDAO aDao = new AccountDAO();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
@@ -50,12 +53,21 @@ public class StaffManagementController extends HttpServlet {
                     String accountID = request.getParameter("accountID");
                     aDao.setStatusAccount(accountID, "false");
                 }
-            
+
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                List<AccountDTO> ListStaffs = aDao.GetAccountByRoleIDAndStatus(roleID, "true");
-                int TotalStaffsActive = aDao.CountAccountByRoldIDandStatus(roleID, "true");
+                List<AccountDTO> ListStaffsFixEletric = aDao.GetAccountByRoleIDAndStatus(roleIDFixElec, "true");
+                List<AccountDTO> ListStaffsFixWater = aDao.GetAccountByRoleIDAndStatus(roleIDFixWater, "true");
+                List<AccountDTO> ListstaffsClean = aDao.GetAccountByRoleIDAndStatus(roleIDClean, "true");
+                List<AccountDTO> ListStaffs = new ArrayList<>();
+                ListStaffs.addAll(ListStaffsFixEletric);
+                ListStaffs.addAll(ListStaffsFixWater);
+                ListStaffs.addAll(ListstaffsClean);
+                int TotalStaffsFixElectric = aDao.CountAccountByRoldIDandStatus(roleIDFixElec, "true");
+                int TotalStaffsFixWater = aDao.CountAccountByRoldIDandStatus(roleIDFixWater, "true");
+                int TotalStaffsClean = aDao.CountAccountByRoldIDandStatus(roleIDClean, "true");
+                int TotalStaffsActive = TotalStaffsFixElectric + TotalStaffsFixWater + TotalStaffsClean;
                 request.setAttribute("ListStaffs", ListStaffs);
                 request.setAttribute("TotalStaffsActive", TotalStaffsActive);
                 request.getRequestDispatcher("/dashboard/staffs.jsp").forward(request, response);

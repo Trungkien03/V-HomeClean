@@ -52,15 +52,23 @@ public class BookingGeneralController extends HttpServlet {
         } else {
             try {
                 if (action == null || action.isEmpty()) {
+
                     String bookingID = request.getParameter("bookingID");
                     BookingDTO booking = bDao.getBookingByID(bookingID);
                     ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
                     AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
                     AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
-                    List<AccountDTO> listStaff = aDao.getAvailableStaff();
                     List<AccountDTO> listAccounts = aDao.getAllAccounts();
+                    int roleIDFixElec = 2;
+                    int roleIDFixWater = 5;
+                    int roleIDClean = 6;
+                    List<AccountDTO> ListStaffsFixEletric = aDao.getAvailableStaffByRoleID(roleIDFixElec);
+                    List<AccountDTO> ListStaffsFixWater = aDao.getAvailableStaffByRoleID(roleIDFixWater);
+                    List<AccountDTO> ListstaffsClean = aDao.getAvailableStaffByRoleID(roleIDClean);
                     request.setAttribute("listAccounts", listAccounts);
-                    request.setAttribute("listStaff", listStaff);
+                    request.setAttribute("ListStaffsFixEletric", ListStaffsFixEletric);
+                    request.setAttribute("ListStaffsFixWater", ListStaffsFixWater);
+                    request.setAttribute("ListstaffsClean", ListstaffsClean);
                     request.setAttribute("booking", booking);
                     request.setAttribute("service", service);
                     request.setAttribute("account", account);
@@ -68,22 +76,35 @@ public class BookingGeneralController extends HttpServlet {
                 }
 
                 if (action.equalsIgnoreCase("Cập Nhật")) {
-                    String bookingIDString = request.getParameter("bookingID");
-                    int bookingID = Integer.parseInt(bookingIDString);
-                    String staffID = request.getParameter("staffID");
-                    bDao.updateBookingWithStaffIDandStatus(staffID, "Xác nhận", bookingID);
-                    BookingDTO booking = bDao.getBookingByID(bookingIDString);
-                    ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
-                    AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
-                    AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
-                    List<AccountDTO> listStaff = aDao.getAvailableStaff();
-                    List<AccountDTO> listAccounts = aDao.getAllAccounts();
-                    request.setAttribute("listAccounts", listAccounts);
-                    request.setAttribute("listStaff", listStaff);
-                    request.setAttribute("booking", booking);
-                    request.setAttribute("service", service);
-                    request.setAttribute("account", account);
-                    request.setAttribute("staff", staff);
+                    try {
+
+                        String bookingIDString = request.getParameter("bookingID");
+                        int bookingID = Integer.parseInt(bookingIDString);
+                        String staffID = request.getParameter("staffID");
+                        bDao.updateBookingWithStaffIDandStatus(staffID, "Xác nhận", bookingID);
+                        BookingDTO booking = bDao.getBookingByID(bookingIDString);
+                        ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
+                        AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
+                        AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
+                        int roleIDFixElec = 2;
+                        int roleIDFixWater = 5;
+                        int roleIDClean = 6;
+                        List<AccountDTO> ListStaffsFixEletric = aDao.getAvailableStaffByRoleID(roleIDFixElec);
+                        List<AccountDTO> ListStaffsFixWater = aDao.getAvailableStaffByRoleID(roleIDFixWater);
+                        List<AccountDTO> ListstaffsClean = aDao.getAvailableStaffByRoleID(roleIDClean);
+                        List<AccountDTO> listAccounts = aDao.getAllAccounts();
+                        request.setAttribute("listAccounts", listAccounts);
+                        request.setAttribute("ListStaffsFixEletric", ListStaffsFixEletric);
+                        request.setAttribute("ListStaffsFixWater", ListStaffsFixWater);
+                        request.setAttribute("ListstaffsClean", ListstaffsClean);
+                        request.setAttribute("booking", booking);
+                        request.setAttribute("service", service);
+                        request.setAttribute("account", account);
+                        request.setAttribute("staff", staff);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();

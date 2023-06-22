@@ -164,8 +164,9 @@
                                                     <option>-- Chọn --</option>
                                                     <option value="1">Admin</option>
                                                     <option value="3">Quản lý</option>
-                                                    <option value="2">Nhân viên</option>
-                                                    <option value="4">Người dùng</option>
+                                                    <option value="6">Nhân viên vệ sinh</option>
+                                                    <option value="2">Nhân viên sửa chữa điện</option>
+                                                    <option value="5">Nhân viên sửa chữa nước</option>
                                                 </select>
                                                 <% if (userError.getRoleID() != null) {%>
                                                 <strong style="color: #e72734;" ><%= userError.getRoleID()%></strong>
