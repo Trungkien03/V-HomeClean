@@ -253,23 +253,32 @@ GO
 ----------------------------------------------------------------------------------------------------------------------------------
 GO
 INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (1, N'ADMIN')
-INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (2, N'STAFF')
+GO
+INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (2, N'STAFF sửa chữa điện')
+GO
 INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (3, N'MANAGER')
+GO
 INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (4, N'CUSTOMER')
+GO
+INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (5, N'STAFF sửa chữa nước')
+GO
+INSERT [dbo].[RoleAccount] ([RoleID], [RoleName]) VALUES (6, N'STAFF vệ sinh')
+GO
+
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0001', N'hieublockchain2002@gmail.com', N'1', N'Đoàn Thanh Hiếu', N'Bình Dương', N'0987654321', 1, N'Male', CAST(N'2000-02-12' AS Date), 1, N'img/adminHieu.jpg', 6000888.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'1', N'Nguyễn Trung Kiên', N'32/3, Gia Tân 1, Thống Nhất, Đồng Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 0.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiên', N'32/3, Gia Tân 1, Thống Nhất, Đồng Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 0.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0003', N'staff1@gmail.com', N'1', N'Adela JohnSon', N'Lê Văn Việt', N'0987654321', 2, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner1.jpg', 22000000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0003', N'staff1@gmail.com', N'1', N'Adela JohnSon', N'Lê Văn Việt', N'0987654321', 6, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner1.jpg', 25000000.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0004', N'staff2@gmail.com', N'1', N'Johnson Micheal', N'Tân Bình', N'0897654321', 2, N'Male', CAST(N'2002-10-10' AS Date), 1, N'img/cleanner2.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0004', N'staff2@gmail.com', N'1', N'Johnson Micheal', N'Tân Bình', N'0897654321', 6, N'Male', CAST(N'2002-10-10' AS Date), 1, N'img/cleanner2.jpg', 25000000.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0005', N'staff3@gmail.com', N'1', N'Micheal Diana', N'Quận 9, Thành phố Hồ Chí Minh', N'0987675321', 2, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner3.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0005', N'staff3@gmail.com', N'1', N'Micheal Diana', N'Quận 9, Thành phố Hồ Chí Minh', N'0987675321', 6, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner3.jpg', NULL)
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0006', N'user1@gmail.com', N'1', N'Nguyễn Hà Mai', N'Hà Nội', N'0987654321', 4, N'Female', CAST(N'1995-08-15' AS Date), 1, N'img/user1.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0007', N'user2@gmail.com', N'1', N'Trương Tuấn Anh', N'Hồ Chí Minh', N'0976543210', 4, N'Male', CAST(N'1990-03-20' AS Date), 0, N'img/user2.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0007', N'user2@gmail.com', N'1', N'Trương Tuấn Anh', N'Hồ Chí Minh', N'0976543210', 4, N'Male', CAST(N'1990-03-20' AS Date), 1, N'img/user2.jpg', NULL)
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0008', N'user3@gmail.com', N'1', N'Trần Nguyên Trân', N'Đà Nẵng', N'0965432109', 4, N'Female', CAST(N'1992-10-05' AS Date), 1, N'img/user3.jpg', NULL)
 GO
@@ -277,7 +286,7 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0010', N'user5@gmail.com', N'1', N'Phạm Ngọc Hoài', N'Cần Thơ', N'0943210987', 4, N'Female', CAST(N'1996-05-30' AS Date), 1, N'img/user5.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0011', N'user6@gmail.com', N'1', N'Hoàng Văn Tuấn', N'Nghệ An', N'0932109876', 4, N'Male', CAST(N'1991-11-25' AS Date), 1, N'img/user6.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0011', N'user6@gmail.com', N'1', N'Hoàng Văn Tuấn Anh', N'Xuân Lộc, Đồng Nai', N'0932109876', 4, N'Male', CAST(N'1991-11-25' AS Date), 1, N'img/user6.jpg', 0.0000)
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0012', N'user7@gmail.com', N'1', N'Đỗ Thị Trang', N'Bình Dương', N'0921098765', 4, N'Female', CAST(N'1994-09-10' AS Date), 0, N'img/user7.jpg', NULL)
 GO
@@ -285,23 +294,37 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0014', N'user9@gmail.com', N'1', N'Ngô Thị Duyên', N'Quảng Ninh', N'0909876543', 4, N'Female', CAST(N'1989-12-18' AS Date), 1, N'img/user9.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0015', N'user10@gmail.com', N'1', N'Huỳnh Văn An', N'Long An', N'0898765432', 4, N'Male', CAST(N'1998-02-05' AS Date), 0, N'img/user10.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0015', N'user10@gmail.com', N'1', N'Huỳnh Văn An', N'Long An', N'0898765432', 4, N'Male', CAST(N'1998-02-05' AS Date), 1, N'img/user10.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0016', N'Test01@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Hiếu', N'An Tây, Bên Cát, T.Bình Dương', N'0972131292', 2, N'Male', CAST(N'2002-12-12' AS Date), 1, N'img/user.jpg', 12000000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0016', N'Test01@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Hiếu', N'An Tây, Bên Cát, T.Bình Dương', N'0972131292', 5, N'Male', CAST(N'2002-12-12' AS Date), 1, N'img/user.jpg', 12000000.0000)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0017', N'MinhTQ01@gmail.com', N'Kienmundo1!', N'Trần Quang Minh', N'An Tây, Bên Cát, T.Bình Dương', N'0972131295', 2, N'Male', CAST(N'2002-10-01' AS Date), 1, N'img/user.jpg', 20000000.0000)
 GO
 
 GO
 INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (1, N'Dịch vụ vệ sinh')
-INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (2, N'Dịch vụ sửa chữa')
 GO
+INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (2, N'Dịch vụ sửa chữa điện')
+GO
+INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (3, N'Dịch vụ sửa chữa nước')
+GO
+
 GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE01', N'Tổng vệ sinh', 500000.0000, N'Dịch vụ tổng vệ sinh cho căn hộ chung cư mang đến sự sạch sẽ và thoáng mát cho không gian sống của bạn. Đội ngũ người giúp việc sẽ dọn dẹp và vệ sinh sàn nhà, lau kính, vệ sinh cửa, cửa sổ và màn cửa, vệ sinh lỗ thông hơi, gầm tủ và các góc khuất khác trong căn hộ. Ngoài ra, nội thất như ghế sofa, bàn, giường và tủ cũng sẽ được làm sạch kỹ lưỡng. Dịch vụ này đảm bảo không gian sống của bạn trở nên sạch sẽ và thoải mái để bạn có thể tận hưởng cuộc sống hàng ngày một cách thoải mái.', 1, N'img/serviceTongVeSinh.jpg', 1)
+GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE02', N'Vệ sinh phòng', 100000.0000, N'Dịch vụ vệ sinh phòng cho chung cư đảm bảo sự sạch sẽ và thoáng mát cho không gian sống của bạn. Đội ngũ người giúp việc sẽ làm sạch và vệ sinh phòng ngủ, phòng khách, phòng ăn, phòng tắm và nhà vệ sinh. Công việc bao gồm lau chùi các bề mặt, thay ga, áo gối và trải giường, vệ sinh bồn cầu, lavabo, vòi sen, và làm sạch kính cửa sổ và ban công. Dịch vụ này giúp bạn có một môi trường sống sạch sẽ và thoải mái để thưởng thức cuộc sống hàng ngày.', 1, N'img/serviceVeSinhPhong.jpg', 1)
+GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE03', N'Vệ sinh sofa, rèm, nệm, kính', 300000.0000, N'Dịch vụ vệ sinh sofa, rèm cửa, nệm và kính đảm bảo sự sạch sẽ và tươi mới cho các bề mặt và vật liệu trong không gian sống của bạn. Đội ngũ người giúp việc sẽ làm sạch sofa, làm sạch và làm mới rèm cửa, làm sạch nệm và làm sáng kính. Qua đó, bạn sẽ có các bề mặt sạch sẽ, không bám bụi, vết bẩn và mùi không mong muốn, tạo nên môi trường sống trong lành và thoải mái.', 1, N'img/serviceVeSinhSofa.jpg', 1)
+GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE04', N'Vệ sinh máy lạnh', 200000.0000, N'Dịch vụ vệ sinh máy lạnh trong chung cư đảm bảo rằng máy lạnh của bạn được làm sạch và bảo trì tốt. Đội ngũ người giúp việc sẽ làm sạch bên ngoài máy lạnh, loại bỏ bụi và vết bẩn. Họ cũng sẽ làm sạch và vệ sinh các bộ lọc và ống dẫn của máy lạnh để đảm bảo luồng không khí sạch và hiệu suất làm lạnh tốt nhất. Việc vệ sinh máy lạnh định kỳ giúp duy trì chất lượng không khí trong căn hộ và đảm bảo hoạt động hiệu quả của máy lạnh.', 1, N'img/serviceVeSinhMayLanh.jpg', 1)
+GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE05', N'Sửa chữa đồ điện', 200000.0000, N'Dịch vụ sửa chữa đồ điện đảm bảo rằng các thiết bị điện trong căn hộ của bạn hoạt động ổn định và an toàn. Đội ngũ kỹ thuật viên sẽ kiểm tra và khắc phục các sự cố như mất điện, đứt dây, hỏng bộ nguồn và các vấn đề khác liên quan đến hệ thống điện. Họ sẽ thực hiện các biện pháp sửa chữa cần thiết để đảm bảo các thiết bị điện hoạt động trơn tru và đáng tin cậy. Dịch vụ này giúp bạn an tâm và tiết kiệm thời gian và công sức trong việc bảo trì và sửa chữa các thiết bị điện trong căn hộ của mình.', 2, N'img/serviceSuaChuaDoDien.jpg', 1)
-INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE06', N'Sửa chữa hệ thống nước', 100000.0000, N'Dịch vụ sửa chữa nước đảm bảo sự hoạt động ổn định của hệ thống nước trong căn hộ của bạn. Đội ngũ thợ sẽ khắc phục sự cố như rò rỉ đường ống nước, hỏng bồn nước, vòi nước hỏng, và các vấn đề khác. Họ sẽ thực hiện các biện pháp sửa chữa và thay thế linh kiện cần thiết để đảm bảo hệ thống nước hoạt động hiệu quả. Dịch vụ này giúp bạn có một nguồn nước sạch sẽ và ổn định trong căn hộ của mình.', 2, N'img/serviceSuaChuaHeThongNuoc.jpg', 1)
+GO
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE06', N'Sửa chữa hệ thống nước', 250000.0000, N'Dịch vụ sửa chữa nước đảm bảo sự hoạt động ổn định của hệ thống nước trong căn hộ của bạn. Đội ngũ thợ sẽ khắc phục sự cố như rò rỉ đường ống nước, hỏng bồn nước, vòi nước hỏng, và các vấn đề khác. Họ sẽ thực hiện các biện pháp sửa chữa và thay thế linh kiện cần thiết để đảm bảo hệ thống nước hoạt động hiệu quả. Dịch vụ này giúp bạn có một nguồn nước sạch sẽ và ổn định trong căn hộ của mình.', 2, N'img/serviceSuaChuaHeThongNuoc.jpg', 1)
+GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE07', N'Sửa chữa thiết bị gia dụng', 100000.0000, N'Dịch vụ sửa chữa thiết bị gia dụng đảm bảo rằng các thiết bị trong gia đình của bạn hoạt động tốt và lâu bền. Đội ngũ kỹ thuật viên chuyên nghiệp sẽ tiến hành sửa chữa các thiết bị như máy giặt, tủ lạnh, lò vi sóng, máy lọc không khí và các thiết bị khác. Họ sẽ kiểm tra, chẩn đoán và khắc phục các sự cố như không hoạt động, hỏng linh kiện, mất hiệu suất và các vấn đề khác. Dịch vụ này giúp bạn tiết kiệm thời gian, tiền bạc và nỗ lực trong việc sửa chữa các thiết bị gia dụng, đồng thời đảm bảo rằng chúng hoạt động tốt và đáng tin cậy.', 2, N'img/serviceSuaChuaGiaDung.jpg', 1)
+GO
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE08', N'Tẩy bóng sàn nhà cũ, đánh bóng sàn nhà', 550000.0000, N'Sàn nhà, sàn trung tâm thương mại, tòa nhà, công ty, … là nơi bị tác động nhiều do nhiều người qua lại. Chính vì vậy mà việc vệ sinh, đánh bóng sàn cũng là một trong những việc vô cùng quan trọng nhằm mang lại môi trường sạch, đẹp và kéo dài tuổi thọ của sàn', 1, N'img/serviceTayBongSanNha.jpg', 1)
 GO
 
 SET IDENTITY_INSERT [dbo].[Booking] ON 
