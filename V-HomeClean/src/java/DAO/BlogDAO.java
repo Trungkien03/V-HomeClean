@@ -41,7 +41,8 @@ public class BlogDAO {
                         rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
-                        rs.getNString(8)));
+                        rs.getNString(8),
+                        rs.getInt(9)));
             }
         } catch (Exception e) {
         }
@@ -49,7 +50,7 @@ public class BlogDAO {
     }
 
     public BlogDTO getBlogByID(String blogID) {
-        String query = "SELECT BlogID, Title, SubTitle, Content, AccountID, Time, Image, cateName FROM Blog b, BlogCate bc WHERE b.BlogCateID = bc.BlogCateID and blogID = ?";
+        String query = "SELECT BlogID, Title, SubTitle, Content, AccountID, Time, Image, cateName, b.BlogCateID FROM Blog b, BlogCate bc WHERE b.BlogCateID = bc.BlogCateID and blogID = ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -63,7 +64,8 @@ public class BlogDAO {
                         rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
-                        rs.getNString(8));
+                        rs.getNString(8),
+                        rs.getInt(9));
             }
         } catch (Exception e) {
         }
@@ -88,9 +90,9 @@ public class BlogDAO {
     public List<BlogDTO> pagingBlog(int index) {
         List<BlogDTO> list = new ArrayList<>();
 
-        String query = "SELECT BlogID, Title, Subtitle, Content, AccountID, Time, Image, CateName FROM Blog b, BlogCate bc WHERE b.BlogCateID = bc.BlogCateID\n"
-                + "ORDER BY BlogID\n"
-                + "OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+        String query = "SELECT BlogID, Title, Subtitle, Content, AccountID, Time, Image, CateName, b.BlogCateID \n"
+                + "FROM Blog b, BlogCate bc \n"
+                + "WHERE b.BlogCateID = bc.BlogCateID ORDER BY BlogID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -104,7 +106,8 @@ public class BlogDAO {
                         rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
-                        rs.getNString(8)));
+                        rs.getNString(8),
+                        rs.getInt(9)));
             }
         } catch (Exception e) {
         }
@@ -144,6 +147,26 @@ public class BlogDAO {
     return total;
 }
 
+    
+    
+
+    public void InsertBlog(String title, String subTitle, String content, String accountID, int blogCateID, String image) {
+        String query = "INSERT INTO Blog ( Title, SubTitle, Content, AccountID, BlogCateID, Time, Image)\n"
+                + "VALUES ( ?, ?, ?, ?, ?, GETDATE(), ?);";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, title);
+            ps.setNString(2, subTitle);
+            ps.setNString(3, content);
+            ps.setString(4, accountID);
+            ps.setInt(5, blogCateID);
+            ps.setString(6, image);
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
     
     
 

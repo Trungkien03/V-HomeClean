@@ -126,6 +126,32 @@ public class ServiceDAO {
         return list;
     }
 
+    public List<ServiceDTO> pagingService(int index) {
+        List<ServiceDTO> list = new ArrayList<>();
+
+        String query = "SELECT ServiceID, ServiceName, Price, ServiceDetail, Image, Status, CateName \n"
+                + "FROM Service s,CateService c\n"
+                + "WHERE  s.CateID = c.CateID ORDER BY ServiceID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, (index - 1) * 6);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ServiceDTO(rs.getString(1),
+                        rs.getNString(2),
+                        rs.getInt(3),
+                        rs.getNString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getNString(7)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     //update status service
     public void UpdateStatusServiceByID(String serviceID, String status) {
         String query = "UPDATE Service\n"
@@ -194,7 +220,7 @@ public class ServiceDAO {
             ps = conn.prepareStatement(query);
             ps.setNString(1, serviceName);
             rs = ps.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return new ServiceDTO(rs.getString(1),
                         rs.getNString(2),
                         rs.getInt(3),

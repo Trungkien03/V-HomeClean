@@ -137,7 +137,10 @@ CREATE TABLE Notification
 )
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b08d9dd8cc7b9ce453d92e9def4ae634f3dce012
 -- Tạo bảng Feedback
 CREATE TABLE Feedback
 (
@@ -176,7 +179,10 @@ CREATE TABLE Question (
 );
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b08d9dd8cc7b9ce453d92e9def4ae634f3dce012
 -- Tạo trigger AutoGenerateAccountID
 DROP TRIGGER IF EXISTS AutoGenerateAccountID;
 GO
@@ -324,8 +330,11 @@ INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [C
 GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE07', N'Sửa chữa thiết bị gia dụng', 100000.0000, N'Dịch vụ sửa chữa thiết bị gia dụng đảm bảo rằng các thiết bị trong gia đình của bạn hoạt động tốt và lâu bền. Đội ngũ kỹ thuật viên chuyên nghiệp sẽ tiến hành sửa chữa các thiết bị như máy giặt, tủ lạnh, lò vi sóng, máy lọc không khí và các thiết bị khác. Họ sẽ kiểm tra, chẩn đoán và khắc phục các sự cố như không hoạt động, hỏng linh kiện, mất hiệu suất và các vấn đề khác. Dịch vụ này giúp bạn tiết kiệm thời gian, tiền bạc và nỗ lực trong việc sửa chữa các thiết bị gia dụng, đồng thời đảm bảo rằng chúng hoạt động tốt và đáng tin cậy.', 2, N'img/serviceSuaChuaGiaDung.jpg', 1)
 GO
+<<<<<<< HEAD
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE08', N'Tẩy bóng sàn nhà cũ, đánh bóng sàn nhà', 550000.0000, N'Sàn nhà, sàn trung tâm thương mại, tòa nhà, công ty, … là nơi bị tác động nhiều do nhiều người qua lại. Chính vì vậy mà việc vệ sinh, đánh bóng sàn cũng là một trong những việc vô cùng quan trọng nhằm mang lại môi trường sạch, đẹp và kéo dài tuổi thọ của sàn', 1, N'img/serviceTayBongSanNha.jpg', 1)
 GO
+=======
+>>>>>>> b08d9dd8cc7b9ce453d92e9def4ae634f3dce012
 
 SET IDENTITY_INSERT [dbo].[Booking] ON 
 GO
@@ -403,4 +412,7 @@ Tạo tâm lý thoải mái cho những người trong gia đình Có rất nhi�
 INSERT [dbo].[Blog] ([BlogID], [CommentID], [Title], [SubTitle], [Content], [AccountID], [BlogCateID], [Time], [Image]) VALUES (N'Bl0017', NULL, N'Kiem Tra', N'ok', N'Khi sử sụng Dịch vụ vệ sinh nhà cửa theo giờ sẽ có các lợi ích sau:\n\n1.\nTạo tâm lý thoải mái cho những người trong gia đình Có rất nhiều người ái ngại khi có sự xuất hiện của người lạ trong gia đình mình thì việc lựa chọn hình thức Dịch vụ vệ sinh nhà cửa theo giờ sẽ là giải pháp giải quyết vấn đề này.', N'AC0001', 1, CAST(N'2023-03-11T00:00:00.000' AS DateTime), N'https://www.thespruce.com/thmb/c3znkzZgMeuvzBy4wH13jVllfUo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/plants-with-big-flowers-4138211-hero-b10becb169064cc4b3c7967adc1b22e1.jpg')
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b08d9dd8cc7b9ce453d92e9def4ae634f3dce012

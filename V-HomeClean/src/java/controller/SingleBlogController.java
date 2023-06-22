@@ -52,7 +52,7 @@ public class SingleBlogController extends HttpServlet {
             if (action.equalsIgnoreCase("Bình luận")) {
                 if (a == null) {
                     url = "login.jsp";
-                    String error = "Bạn cần đăng nhập tài khoản để bình luận";
+                    String error = "Bạn cần đăng nhập tài khoản để bình luận.";
                     request.setAttribute("ERROR", error);
                     request.getRequestDispatcher(url).forward(request, response);
                 } else {
