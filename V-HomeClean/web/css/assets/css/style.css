@@ -50,7 +50,7 @@ input:-webkit-autofill:focus {
     height: 40px;
 }
 .form-control:focus {
-    border-color: #680a83;
+    border-color: #00b4d8;
     box-shadow: none;
     outline: 0;
 }
@@ -478,16 +478,16 @@ button.bg-danger:hover {
     color: #757575 !important;
 }
 .btn-primary {
-    background-color: #680a83;
-    border: 1px solid #680a83;
+    background-color: #03045e;
+    border: 1px solid #03045e;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.active,
 .btn-primary:active,
 .open > .dropdown-toggle.btn-primary {
-    background-color: #57086d;
-    border: 1px solid #57086d;
+    background-color: #00b4d8;
+    border: 1px solid #00b4d8;
 }
 .btn-primary.active.focus,
 .btn-primary.active:focus,
@@ -1150,7 +1150,7 @@ b {
 .nav-tabs.nav-tabs-top > li > a.active,
 .nav-tabs.nav-tabs-top > li > a.active:hover,
 .nav-tabs.nav-tabs-top > li > a.active:focus {
-    border-top-color: #680a83;
+    border-top-color: #00b4d8;
 }
 .nav-tabs.nav-tabs-bottom > li {
     margin-bottom: -1px;
@@ -3512,7 +3512,7 @@ li {
     margin: 0;
 }
 .settings-tab .card-header .fe-camera {
-    background-color: #420ba1;
+    background-color: #457b9d;
     padding: 4px 5px;
     font-size: 12px;
     border: 2px solid #fff;
@@ -3531,7 +3531,7 @@ li {
     font-size: 16px;
 }
 .profile-list i {
-    color: #680a83;
+    color: #219ebc;
     padding-right: 5px;
 }
 .product-content {
@@ -4283,4 +4283,47 @@ li {
 
 .btn-block{
     background-color: #423B3F;
+}
+
+.wrapper .pass-field {
+  width: 100%;
+  position: relative;
+}
+.pass-field i {
+  right: 18px;
+  top: 50%;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+
+.requirement{
+    display: none;
+}
+
+.requirement-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.requirement-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #e72734;
+}
+
+.requirement-list i.fa-circle {
+  margin-right: 5px;
+}
+
+.requirement-list span {
+  font-size: 14px;
+}
+
+.requirement-list li.valid {
+    color: #00d747;
 }

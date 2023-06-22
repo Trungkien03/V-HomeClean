@@ -86,6 +86,8 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "navigation.jsp", out, false);
       out.write("\n");
       out.write("            <!-- 404 Start -->\n");
+      out.write("            \n");
+      out.write("            \n");
       out.write("            <div class=\"container-xxl py-5 wow fadeInUp\" data-wow-delay=\"0.1s\">\n");
       out.write("                <div class=\"container text-center\">\n");
       out.write("                    <div class=\"row justify-content-center\">\n");

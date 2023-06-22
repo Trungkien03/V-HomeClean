@@ -21,8 +21,8 @@
             type="image/x-icon"
             href="css/assets/img/favicon.png"
             />
-<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-         Bootstrap DataTable CSS -->
+        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                 Bootstrap DataTable CSS -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
 
@@ -65,18 +65,21 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title">Số lượng người dùng: ${TotalAccountActive}</h4>
+                                    <p class="card-text">
+                                        Đây là bảng danh sách số người dùng còn hoạt động
+                                    </p>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive custom-table-responsive">                                          
-                                        <table id="example_table" class="table table-center tab-content table-striped">
+                                        <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
                                             <thead>
                                                 <tr>
-                                                    <th>Tên</th>
-                                                    <th>Vai trò</th>
-                                                    <th>Số điện thoại</th>
-                                                    <th>Tuổi</th>
-                                                    <th>Thông tin</th>
-                                                    <th>Khóa tài khoản</th>
+                                                    <th class="text-center">Họ và Tên</th>
+                                                    <th class="text-center">Vai trò</th>
+                                                    <th class="text-center">Số điện thoại</th>
+                                                    <th class="text-center">Tuổi</th>
+                                                    <th class="text-center">Thông tin</th>
+                                                    <th class="text-center">Khóa tài khoản</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -97,7 +100,7 @@
                                                                 >
                                                             </h2>
                                                         </td>
-                                                        <td>
+                                                        <td class="text-center">
                                                             <c:choose>
                                                                 <c:when test="${o.roleID == 4}">
                                                                     Khách Hàng
@@ -107,28 +110,48 @@
                                                                 </c:otherwise>
                                                             </c:choose>
                                                         </td>
-                                                        <td>${o.phone}</td>
-                                                        <td>${o.age}</td>
-                                                        <td> 
+                                                        <td class="text-center">${o.phone}</td>
+                                                        <td class="text-center">${o.age}</td>
+                                                        <td class="text-center"> 
                                                             <div class="actions">
                                                                 <a
                                                                     href="UserGeneralPageController?accountID=${o.accountID}"
-                                                                    class="btn btn-sm bg-success-light "
+                                                                    class="btn btn-large bg-info-light "
                                                                     title="View Document"
                                                                     >
                                                                     <i class="fe fe-eye"></i>
                                                                 </a>
                                                             </div>
                                                         </td>
-                                                        <td>
-                                                            <div class="actions">
-                                                                <a href="UsersManagementController?action=Khóa&accountID=${o.accountID}" class="btn btn-sm bg-danger-light">
+                                                        <td class="text-center">
+                                                            <div class="text-end text-center">
+                                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#${o.accountID}">
                                                                     <i class="fe fe-lock"></i>
-                                                                </a>
+                                                                </button>
                                                             </div>
                                                         </td>
-                                                    </tr>
-                                                </c:forEach>
+
+                                                <div class="modal fade" id="${o.accountID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Khóa người dùng ${o.fullName}</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Bạn có chắc chắn là muốn khóa người dùng này chứ ?
+                                                            </div>
+                                                                <div class="modal-footer" style="display: flex; justify-content: space-between">
+                                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><a>Không</a></button>
+                                                                <button type="button" class="btn btn-outline-primary"><a href="UsersManagementController?action=Khóa&accountID=${o.accountID}">
+                                                                        Có
+                                                                    </a></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

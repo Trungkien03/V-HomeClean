@@ -31,3 +31,6 @@ const hasTemp=localStorage.getItem('skin-color');if(!!hasTemp){$('head').append(
 $('body').find('.skin-colors a').each(function(){const name=$(this).attr('data-color');if(name===hasTemp){$(this).addClass('active');}else{$(this).removeClass('active');}})}else{$('body').find('.skin-colors a').each(function(){const name=$(this).attr('data-color');if(name==='default'){$(this).addClass('active');}});}
 $(document).on('click','.skin-colors a',function(e){e.preventDefault();$(this).parent().siblings().find('a').removeClass('active');$(this).addClass('active');var skin=$(this).attr('data-color');if(skin==='default'){localStorage.removeItem('skin-color');$('#tempSkin').remove();}else{if($('#tempSkin').length===0){$('head').append('<link id="tempSkin" rel="stylesheet" href="assets/css/style-'+skin+'.css">')}else{$('#tempSkin').attr('href','assets/css/style-'+skin+'.css');}
 localStorage.setItem('skin-color',skin);}})})(jQuery);
+
+
+

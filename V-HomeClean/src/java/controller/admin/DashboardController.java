@@ -6,6 +6,8 @@
 package controller.admin;
 
 import DAO.AccountDAO;
+import DAO.BlogDAO;
+import DAO.BookingDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import java.io.IOException;
@@ -46,11 +48,13 @@ public class DashboardController extends HttpServlet {
         request.setAttribute("TotalUsers", TotalUsers);
         request.setAttribute("TotalServices", TotalServices);
         //tổng số đơn ở đây
-        
-        
+        BookingDAO bookingDao = new BookingDAO();
+        int totalBookings = bookingDao.countTotalBooking();
+        request.setAttribute("totalBookings", totalBookings);
         //tổng số blog ở đây:
-        
-        
+        BlogDAO blogDao = new BlogDAO();
+        int totalBlogs = blogDao.countBlogs();
+        request.setAttribute("totalBlogs", totalBlogs);
         
         request.setAttribute("ListUsers", listUsers);
         request.getRequestDispatcher("/dashboard/index.jsp").forward(request, response);

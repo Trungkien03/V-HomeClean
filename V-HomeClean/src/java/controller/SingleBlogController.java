@@ -41,31 +41,43 @@ public class SingleBlogController extends HttpServlet {
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         String url = "singleBlog.jsp";
         try {
+            if (action == null || action.isEmpty()) {
+                request.setAttribute("listB", list);
+                session.setAttribute("BlogDetail", b);
+                List<CommentDTO> listC = cdao.getCommentV2(blogID);
+                request.setAttribute("listCmt", listC);
+                request.getRequestDispatcher(url).forward(request, response);
+            }
+
             if (action.equalsIgnoreCase("Bình luận")) {
                 if (a == null) {
                     url = "login.jsp";
                     String error = "Bạn cần đăng nhập tài khoản để bình luận.";
                     request.setAttribute("ERROR", error);
+                    request.getRequestDispatcher(url).forward(request, response);
                 } else {
-                    String message = request.getParameter("message");
-                    String accountID = a.getAccountID();
-                    String blogID1 = b.getBlogID();
-                    cdao.AddComment(message, accountID, blogID1);
+                    try {
+                        String message = request.getParameter("message");
+                        String accountID = a.getAccountID();
+                        String blogID1 = b.getBlogID();
+                        cdao.AddComment(message, accountID, blogID1);
+                        session.setAttribute("listB", list);
+                        session.setAttribute("BlogDetail", b);
+                        List<CommentDTO> listC = cdao.getCommentV2(blogID);
+                        session.setAttribute("listCmt", listC);
+                        response.sendRedirect("singleBlog.jsp#commentContainer");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-
             }
-
         } catch (Exception e) {
+            e.printStackTrace();
         }
-        request.setAttribute("listB", list);
-        session.setAttribute("BlogDetail", b);
-        List<CommentDTO> listC = cdao.getCommentV2(blogID);
-        request.setAttribute("listCmt", listC);
-        request.getRequestDispatcher(url).forward(request, response);
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

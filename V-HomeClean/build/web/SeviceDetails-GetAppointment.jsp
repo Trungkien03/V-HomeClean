@@ -43,6 +43,7 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+
     </head>
 
     <body>
@@ -198,10 +199,10 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="date" class="form-control bg-light border-0" name="date">
+                                    <input type="date" class="form-control bg-light border-0" name="date" id="dateInput">
                                     <label for="date">Ngày tháng năm:</label>
                                 </div>
-                                <strong style="color: #e72734;" >${dateError}</strong>
+                                <strong style="color: #e72734;" id="dateError" >${dateError} </strong>
                             </div>
 
                             <div class="col-sm-6">
@@ -209,7 +210,7 @@
                                     <input type="time" class="form-control bg-light border-0" name="time">
                                     <label for="time">Giờ cụ thể:</label>
                                 </div>
-                                <strong style="color: #e72734;" >${timeError}</strong>
+                                <strong style="color: #e72734;"id="timeError" >${timeError}</strong>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
@@ -226,8 +227,41 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3 "  type="submit" name="action" value="Booking">Booking Service</button>
+                                <button type="button" class="btn btn-primary w-100 py-3" data-toggle="modal" data-target="#modalPush">Đặt lịch</button>
                             </div>
+
+                            <!--Modal: modalPush-->
+                            <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-notify modal-info" role="document">
+                                    <!--Content-->
+                                    <div class="modal-content text-center">
+                                        <!--Header-->
+                                        <div class="modal-header d-flex justify-content-center">
+                                            <p class="heading">Be always up to date</p>
+                                        </div>
+
+                                        <!--Body-->
+                                        <div class="modal-body">
+
+                                            <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+
+                                            <p>Bạn có chắc chắn với thông tin mình đã điền chưa ạ ?</p>
+
+                                        </div>
+
+                                        <!--Footer-->
+                                        <div class="modal-footer flex-center">
+                                            <button name="action" class="btn btn-outline-info waves-effect" value="Booking" type="submit">Chắc chắn</button>
+                                            <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Không</a>
+                                        </div>
+                                    </div>
+                                    <!--/.Content-->
+                                </div>
+                            </div>
+                            <!--Modal: modalPush-->
+
+
                         </div>
                     </form>
 
@@ -242,23 +276,65 @@
 
     <!-- Footer Start -->
     <jsp:include page="footer.jsp"></jsp:include>
-    <!-- Footer End -->
+        <!-- Footer End -->
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <script>
+            // Date and time validation
+            const dateInput = document.getElementById('dateInput');
+            const timeInput = document.querySelector('input[name="time"]');
+            const dateError = document.getElementById('dateError');
+            const timeError = document.getElementById('timeError');
 
+            dateInput.addEventListener('input', validateDateTime);
+            timeInput.addEventListener('input', validateDateTime);
+
+            function validateDateTime() {
+                const selectedDate = new Date(dateInput.value);
+                const selectedTime = new Date(`2000-01-01T${timeInput.value}`);
+                const currentDateTime = new Date();
+                const twoHoursLater = new Date(currentDateTime.getTime() + (2 * 60 * 60 * 1000));
+
+                const isToday = selectedDate.toDateString() === currentDateTime.toDateString();
+                const isValidDate = selectedDate >= currentDateTime;
+                const isValidTime = isToday ? selectedTime > twoHoursLater : true;
+
+                if (isValidDate && isValidTime) {
+                    dateError.textContent = '';
+                    timeError.textContent = '';
+                } else {
+                    if (!isValidDate) {
+                        dateError.textContent = 'Vui lòng chọn ngày hợp lý!';
+                    } else {
+                        dateError.textContent = '';
+                    }
+
+                    if (isToday && !isValidTime) {
+                        timeError.textContent = 'vui lòng chọn thời gian hợp lý!';
+                    } else {
+                        timeError.textContent = '';
+                    }
+                }
+            }
+
+
+
+
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

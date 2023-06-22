@@ -40,7 +40,8 @@ public class GetAppointmentController extends HttpServlet {
         HttpSession session = request.getSession();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         if (a == null) {
-            response.sendRedirect("login.jsp");
+            request.setAttribute("ERROR", "Bạn cần đăng nhập tài khoản để đặt lịch!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             String serviceID = request.getParameter("serviceID");
             ServiceDAO dao = new ServiceDAO();

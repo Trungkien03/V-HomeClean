@@ -90,7 +90,7 @@
                     <div class="row">
                         <div class="col-lg-12 mb-5">
                             <div class="single-blog-item">
-                                <img class="img-single-blog" src="${BlogDetail.image}" alt="" >
+                                <img style="height: 600px;" class="img-single-blog" src="${BlogDetail.image}" alt="" >
 
                                 <div class="blog-item-content bg-white p-5">
                                     <!--                                        <div class="blog-item-meta bg-gray py-1 px-2">
@@ -158,7 +158,7 @@
 
 
                         <!--==========================================HIEN THI COMMENT=================================================-->
-                        <div class="col-lg-12 mb-5">
+                        <div id="commentContainer" style="border: #000 solid 2px" class="col-lg-12 mb-5">
                             <div class="comment-area card border-0 p-5">
 
                                 <h3 class="mb-4">Bình Luận</h3>
@@ -166,12 +166,12 @@
 
                                     <li class="mb-5">
 
-                                        <div class="comment-area-box">
-                                        
+                                        <div style="margin-left: 20px;" class="comment-area-box">
+
                                             <c:forEach items="${listCmt}" var="o">
 
                                                 <img alt="" src="images/blog/test1.jpg" class="img-fluid float-left mr-3 mt-2">
-                                                
+
                                                 <h5 class="mb-1">${o.fullName}</h5>
                                                 <!--                                                <span>United Kingdom</span>-->
 
@@ -214,15 +214,9 @@
                         </div>
                         <!--==========================================INSERT COMMENT=================================================-->
                         <style>
-
                             .infoCMT {
                                 display: flex;
-
-
-
                             }
-
-
                         </style>
                         <div class="col-lg-12">
 
@@ -251,7 +245,7 @@
                                 <!--                                <input  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."-->
                                 <textarea class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."></textarea>
 
-                                <input class="btn btn-primary" type="submit" name="action" id="submit_contact" value="Bình luận">
+                                <input type="submit" class="btn btn-primary" name="action" id="submit_contact" value="Bình luận">
                             </form>
                         </div>
                     </div>
@@ -389,8 +383,6 @@
     <!-- Counterup -->
     <script src="plugins/counterup/jquery.waypoints.min.js"></script>
     <script src="plugins/counterup/jquery.counterup.min.js"></script>
-
-
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>

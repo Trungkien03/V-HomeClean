@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import DAO.AccountDAO;
@@ -10,7 +6,6 @@ import DAO.BookingDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -81,19 +76,20 @@ public class ProfilePageController extends HttpServlet {
                             session.setAttribute("acc", account);
                             boolean checkUpdate = dao.updateAccount(account);
                             if (checkUpdate) {
-                                request.setAttribute("message", "Cập nhật mật khẩu thành công!");
+                                request.setAttribute("messagePass", "Cập nhật mật khẩu thành công!");
+                                request.setAttribute("status", "change-password");
                                 url = "userProfile.jsp";
                             }
                         } else {
-
-                            request.setAttribute("ERROR", " Mật khẩu và xác nhận mật khẩu "
+                            request.setAttribute("ERRORPass", " Mật khẩu và xác nhận mật khẩu "
                                     + "không trùng khớp! ");
+                            request.setAttribute("status", "change-password");
                             url = "userProfile.jsp";
-
                         }
                     } else {
 
                         request.setAttribute("ERROR", " Mật khẩu cũ không trùng khớp! ");
+                        request.setAttribute("status", "change-password");
                         url = "userProfile.jsp";
                     }
                 }

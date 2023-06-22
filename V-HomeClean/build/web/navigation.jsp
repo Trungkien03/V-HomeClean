@@ -64,12 +64,11 @@
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Blog</strong></a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Bài Báo</strong></a>
                 <div class="dropdown-menu bg-light m-0">
                     <a href="BlogPageController" class="dropdown-item">Blogs</a>
-<!--                    <a href="singleBlog.jsp" class="dropdown-item">Single Blog</a>-->
+
                     <a href="postBlog.jsp" class="dropdown-item">Post Blog</a>
-                    <a href="feature.jsp" class="dropdown-item">Features</a>
                     <a href="appointment.jsp" class="dropdown-item">Appointment</a>
                     <a href="team.jsp" class="dropdown-item">Our Team</a>
                     <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>
@@ -95,14 +94,17 @@
                         <a href="login.jsp" class="dropdown-item">Đăng Ký</a>
                     </c:if>
                     <c:if test="${sessionScope.acc != null}">
+                        <c:if test="${sessionScope.acc.roleID == 1}">
+                            <a href="DashboardController" class="dropdown-item">Bảng Điều Khiển</a>
+                        </c:if>
+                    </c:if>
+                    <c:if test="${sessionScope.acc != null}">
                         <a href="ProfilePageController" class="dropdown-item">Thông Tin Tài Khoản</a>
                     </c:if>    
                     <c:if test="${sessionScope.acc != null}">
                         <a href="LogoutController" class="dropdown-item">Đăng xuất</a>
                     </c:if>
-                    <c:if test="${sessionScope.acc != null}">
-                        <a href="DashboardController" class="dropdown-item">Dashboard</a>
-                    </c:if>
+
 
                 </div>
             </div>

@@ -288,3 +288,54 @@ label{
 .register-form .form-group.mb-3 strong {
     color: #e72734;
 }
+
+.wrapper .pass-field {
+  width: 100%;
+  position: relative;
+}
+.pass-field input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 0 17px;
+  border-radius: 5px;
+  border: 1px solid #999;
+}
+.pass-field i {
+  right: 18px;
+  top: 50%;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+
+.requirement{
+    display: none;
+}
+
+.requirement-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.requirement-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #e72734;
+}
+
+.requirement-list i.fa-circle {
+  margin-right: 5px;
+}
+
+.requirement-list span {
+  font-size: 14px;
+}
+
+.requirement-list li.valid {
+    color: #00d747;
+}

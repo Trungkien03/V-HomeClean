@@ -49,8 +49,8 @@ public class ServicePageController extends HttpServlet {
         }
         int index = Integer.parseInt(indexPage);
         int count = dao.CountService();
-        int endPage = count / 3;
-        if (endPage % 3 != 0) {
+        int endPage = count / 6;
+        if (endPage % 6 != 0) {
             endPage++;
         }
 

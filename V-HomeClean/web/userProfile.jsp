@@ -18,7 +18,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Thông Tin Tài Khoản</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -42,6 +42,8 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
         <link rel="stylesheet" type="text/css" href="css/ProfileStyle.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -58,9 +60,9 @@
                 text-align: center;
                 line-height: 40px;
                 cursor: pointer;
-                position: absolute;
-                bottom: 200px;
-                left: 150px;
+                position: relative;
+                bottom: 50px;
+                left: 110px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
@@ -77,10 +79,25 @@
             }
             @media (max-width: 768px){
                 .profile-image-label{
-                    position: absolute;
-                    bottom: 40px;
-
+                    position: relative;
+                    bottom: 50px;
+                    left: 170px;
                 }
+            }
+
+            .container-fluid.page-header {
+                position: relative;
+            }
+
+            .container-fluid.page-header:before {
+                content: "";
+                background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(https://wordpress.horje.com/s-custom-registration-form-builder-with-submission-manager/assets/banner-772x250.jpg?rev=2081490);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
             }
         </style>
     </head>
@@ -97,9 +114,10 @@
         %>
 
         <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center">
-                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #FE706C;"> ${ERROR}</strong></h1>
-                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #4f772d;" >${message}</strong></h1>
+            <div class="container text-center py-5">
+<!--                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #f52626;"> ${ERROR}</strong></h1>
+                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h1>-->
+                <h1 class="display-4 text-white animated slideInDown mb-4">Thông Tin Tài Khoản</h1>
             </div>
         </div>
 
@@ -148,6 +166,7 @@
                             <form action="ProfilePageController" method="post">
                                 <!--                                <input type="file" name="image" id="profile-image" accept="image/*" style="display: none;">-->
                                 <h3 class="mb-4">Thông Tin Tài Khoản</h3>
+                                 <h6 class="text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h6>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -203,7 +222,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input class="btn btn-primary" style="width: 20%" name="action" value="Cập Nhật" type="submit" >
+                                    <input class="btn btn-primary" style="width: 40%" name="action" value="Cập Nhật" type="submit" >
                                 </div>
                             </form>
 
@@ -223,16 +242,17 @@
                         <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
                             <h3 class="mb-4">Cài đặt mật khẩu</h3>
                             <div>
-
+                                <p class="text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${messagePass}</strong></p>
+                                <p class="text-white animated slideInDown mb-4"><strong style="color: #f52626;"> ${ERRORPass}</strong></p>
                                 <form action="ProfilePageController" method="POST">
-
                                     <div class="row">
                                         <div class="col-md-6">
 
                                             <div class="form-group">
 
                                                 <label>Mật khẩu cũ</label>
-                                                <input type="password" name="password" class="form-control">
+                                                <input required="" type="password" name="password" class="form-control">
+                                                <div class="old-pass"> <i class="fa-solid fa-warning"></i> Xác nhận mật khẩu cũ</div>
                                             </div>
                                         </div>
                                     </div>
@@ -240,18 +260,30 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mật khẩu mới</label>
-                                                <input type="password" name="newPassword" class="form-control">
+                                                <input required="" type="password" name="newPassword" class="form-control">
+                                                <div class="requirement mt-3">
+                                                    <p>Mật khẩu mới phải chứa:</p>
+                                                    <ul class="requirement-list" style="list-style-type: none;">
+                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 8 ký tự</span></li>
+                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 1 số tự nhiên (0...9)</span></li>
+                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 1 ký tự thường (a...z)</span></li>
+                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 1 ký tự đặc biệt (!...$) </span></li>
+                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 1 ký tự in hoa (A...Z)</span></li>
+                                                        <li><i class="fa-solid fa-warning"></i><span>Không được giống mật khẩu cũ</span></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Xác nhận mật khẩu mới</label>
-                                                <input type="password" name="confirm" class="form-control">
+                                                <input required="" type="password" name="confirm" class="form-control">
+                                                <p class="confirm-new-pass"> <i class="fa-solid fa-warning"></i>Xác nhận đúng mật khẩu mới!</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <input class="btn btn-primary" type="submit" name="action" value="Thay Đổi Mật Khẩu"
+                                    <input class="btn btn-primary change-pass-button" type="submit" name="action" value="Thay Đổi Mật Khẩu"
                                            class="btn btn-block btn-info">
                                     <!--                            <div>
                                                                     <button class="btn btn-primary">Update</button>
@@ -267,7 +299,7 @@
                         <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
                             <h3 class="mb-4">Tình Trạng Đơn Dịch Vụ</h3>
                             <div class="row">
-                                <table id="example_table1" class="table">
+                                <table id="example_table1" class="table table-hover text-center table-info">
                                     <thead>
                                         <tr>
                                             <th>Dịch vụ</th>
@@ -275,6 +307,7 @@
                                             <th>Mã phòng</th>
                                             <th>Khu vực</th>
                                             <th>Nhân viên</th>
+                                            <th>Thời gian</th>
                                             <th>Tổng chi phí</th>
                                             <th>Tình Trạng</th>
                                         </tr>
@@ -288,7 +321,8 @@
                                                 <td>${addressParts[0]}</td>
                                                 <td>${addressParts[1]}</td>
                                                 <td>${booking.staffID}</td>
-                                                <td>${booking.totalPrice}</td>
+                                                <td>${booking.bookingDate}</td>
+                                                <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>
                                                 <td>
                                                     <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
                                                         <button class="btn btn-dark">Xác nhận</button>
@@ -477,6 +511,171 @@
     </script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        var status = "${status}";
+
+        // Auto-click vào tab "password" nếu giá trị của biến status là "change-password"
+        if (status === "change-password") {
+            window.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('password-tab').click();
+                status = "";
+            });
+        }
+
+        // Khởi tạo biến để lưu trạng thái của mỗi điều kiện
+        let isOldPasswordValid = false;
+        let isNewPasswordValid = false;
+        let isConfirmationValid = false;
+
+// Check nhập mật khẩu cũ
+        const passwordConfirmation = document.querySelector('.old-pass');
+        passwordConfirmation.style.display = 'none';
+        const oldPasswordInput = document.querySelector('input[name="password"]');
+        oldPasswordInput.addEventListener('input', checkOldPassword);
+
+        function checkOldPassword(event) {
+            const oldPassword = event.target.value;
+
+            // Kiểm tra mật khẩu cũ có khớp với giá trị từ biến `acc.password` hay không
+            if (oldPassword === '${acc.password}') {
+                passwordConfirmation.innerHTML = '<i class="fas fa-check"></i> Xác nhận mật khẩu cũ';
+                passwordConfirmation.style.color = '#00d747';
+                isOldPasswordValid = true; // Đánh dấu mật khẩu cũ là hợp lệ
+            } else {
+                passwordConfirmation.innerHTML = '<i class="fa-solid fa-warning"></i> Xác nhận mật khẩu cũ';
+                passwordConfirmation.style.color = 'red';
+                isOldPasswordValid = false; // Đánh dấu mật khẩu cũ không hợp lệ
+            }
+
+            if (oldPassword !== '') {
+                passwordConfirmation.style.display = 'block';
+            } else {
+                passwordConfirmation.style.display = 'none';
+            }
+
+            // Kiểm tra trạng thái tổng hợp và kích hoạt/disabled nút
+            updateButtonState();
+        }
+
+// Check nhập mật khẩu mới
+        const newPasswordInput = document.querySelector('input[name="newPassword"]');
+        const requirementList = document.querySelector('.requirement-list');
+        const requirementItems = requirementList.querySelectorAll('li');
+        requirementList.style.display = 'none';
+        newPasswordInput.addEventListener('input', checkNewPassword);
+        newPasswordInput.addEventListener('focus', showRequirementList);
+
+        function checkNewPassword(event) {
+            const newPassword = event.target.value;
+
+            // Kiểm tra các yêu cầu cho mật khẩu mới
+            const lengthRequirement = newPassword.length >= 8;
+            const numberRequirement = /\d/.test(newPassword);
+            const lowercaseRequirement = /[a-z]/.test(newPassword);
+            const specialCharRequirement = /[!@#$%^&*]/.test(newPassword);
+            const uppercaseRequirement = /[A-Z]/.test(newPassword);
+            const notEqualRequirement = newPassword !== '${acc.password}';
+
+            // Hiển thị requirementList cho các yêu cầu thỏa mãn
+            requirementItems.forEach((item, index) => {
+                const icon = item.querySelector('i');
+
+                if (index === 0 && lengthRequirement) {
+                    icon.classList.remove('fa-warning');
+                    icon.classList.add('fa-check');
+                    item.style.color = '#00d747';
+                } else if (index === 1 && numberRequirement) {
+                    icon.classList.remove('fa-warning');
+                    icon.classList.add('fa-check');
+                    item.style.color = '#00d747';
+                } else if (index === 2 && lowercaseRequirement) {
+                    icon.classList.remove('fa-warning');
+                    icon.classList.add('fa-check');
+                    item.style.color = '#00d747';
+                } else if (index === 3 && specialCharRequirement) {
+                    icon.classList.remove('fa-warning');
+                    icon.classList.add('fa-check');
+                    item.style.color = '#00d747';
+                } else if (index === 4 && uppercaseRequirement) {
+                    icon.classList.remove('fa-warning');
+                    icon.classList.add('fa-check');
+                    item.style.color = '#00d747';
+                } else if (index === 5 && notEqualRequirement) {
+                    icon.classList.remove('fa-warning');
+                    icon.classList.add('fa-check');
+                    item.style.color = '#00d747';
+                } else {
+                    icon.classList.remove('fa-check');
+                    icon.classList.add('fa-warning');
+                    item.style.color = 'red';
+                }
+            });
+
+            if (newPassword !== '') {
+                requirementList.style.display = 'block';
+                isNewPasswordValid = lengthRequirement && numberRequirement && lowercaseRequirement && specialCharRequirement && uppercaseRequirement && notEqualRequirement;
+            } else {
+                requirementList.style.display = 'none';
+                isNewPasswordValid = false;
+            }
+
+            // Kiểm tra trạng thái tổng hợp và kích hoạt/disabled nút
+            updateButtonState();
+        }
+
+        function showRequirementList() {
+            if (newPasswordInput.value !== '') {
+                requirementList.style.display = 'block';
+            } else {
+                requirementList.style.display = 'none';
+            }
+        }
+
+// Confirm pass
+        const confirmInput = document.querySelector('input[name="confirm"]');
+        const confirmMessage = document.querySelector('.confirm-new-pass');
+
+        confirmMessage.style.display = 'none';
+
+        confirmInput.addEventListener('input', checkConfirmation);
+
+        function checkConfirmation(event) {
+            const newPassword = document.querySelector('input[name="newPassword"]').value;
+            const confirmation = event.target.value;
+
+            if (confirmation === newPassword) {
+                confirmMessage.innerHTML = '<i class="fa-solid fa-check"></i> Xác nhận đúng mật khẩu mới!';
+                confirmMessage.style.color = '#00d747';
+                isConfirmationValid = true; // Đánh dấu xác nhận mật khẩu mới là hợp lệ
+            } else {
+                confirmMessage.innerHTML = '<i class="fa-solid fa-warning"></i> Xác nhận đúng mật khẩu mới!';
+                confirmMessage.style.color = 'red';
+                isConfirmationValid = false; // Đánh dấu xác nhận mật khẩu mới không hợp lệ
+            }
+
+            if (confirmation !== '') {
+                confirmMessage.style.display = 'block';
+            } else {
+                confirmMessage.style.display = 'none';
+            }
+
+            // Kiểm tra trạng thái tổng hợp và kích hoạt/disabled nút
+            updateButtonState();
+        }
+
+// Cập nhật trạng thái của nút dựa trên kết quả kiểm tra
+        function updateButtonState() {
+            const button = document.querySelector('.change-pass-button');
+            const isButtonDisabled = !(isOldPasswordValid && isNewPasswordValid && isConfirmationValid);
+
+            button.disabled = isButtonDisabled;
+        }
+
+
+
+
+    </script>
+
 </body>
 
 </html>

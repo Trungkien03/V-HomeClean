@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Giới Thiệu</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="row g-4">
-                     <c:forEach items="${ListA}" var="o">
+                <c:forEach items="${ListA}" var="o" begin="0" end="2">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="team-item position-relative">
                                 <img class="img-fluid" src="${o.image}" alt="">

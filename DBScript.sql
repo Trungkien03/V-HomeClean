@@ -137,6 +137,10 @@ CREATE TABLE Notification
 )
 GO
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53fc07c415e363bdc89a437b2d4f96e253a33b62
 -- Tạo bảng Feedback
 CREATE TABLE Feedback
 (
@@ -175,6 +179,10 @@ CREATE TABLE Question (
 );
 GO
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53fc07c415e363bdc89a437b2d4f96e253a33b62
 -- Tạo trigger AutoGenerateAccountID
 DROP TRIGGER IF EXISTS AutoGenerateAccountID;
 GO
@@ -259,7 +267,7 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'1', N'Nguyễn Trung Kiên', N'32/3, Gia Tân 1, Thống Nhất, Đồng Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 0.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0003', N'staff1@gmail.com', N'1', N'Adela JohnSon', N'Lê Văn Việt', N'0987654321', 2, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner1.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0003', N'staff1@gmail.com', N'1', N'Adela JohnSon', N'Lê Văn Việt', N'0987654321', 2, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner1.jpg', 22000000.0000)
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0004', N'staff2@gmail.com', N'1', N'Johnson Micheal', N'Tân Bình', N'0897654321', 2, N'Male', CAST(N'2002-10-10' AS Date), 1, N'img/cleanner2.jpg', NULL)
 GO
@@ -284,6 +292,8 @@ GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0014', N'user9@gmail.com', N'1', N'Ngô Thị Duyên', N'Quảng Ninh', N'0909876543', 4, N'Female', CAST(N'1989-12-18' AS Date), 1, N'img/user9.jpg', NULL)
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0015', N'user10@gmail.com', N'1', N'Huỳnh Văn An', N'Long An', N'0898765432', 4, N'Male', CAST(N'1998-02-05' AS Date), 0, N'img/user10.jpg', NULL)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0016', N'Test01@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Hiếu', N'An Tây, Bên Cát, T.Bình Dương', N'0972131292', 2, N'Male', CAST(N'2002-12-12' AS Date), 1, N'img/user.jpg', 12000000.0000)
 GO
 
 GO
@@ -376,3 +386,7 @@ Tạo tâm lý thoải mái cho những người trong gia đình Có rất nhi�
 INSERT [dbo].[Blog] ([BlogID], [CommentID], [Title], [SubTitle], [Content], [AccountID], [BlogCateID], [Time], [Image]) VALUES (N'Bl0017', NULL, N'Kiem Tra', N'ok', N'Khi sử sụng Dịch vụ vệ sinh nhà cửa theo giờ sẽ có các lợi ích sau:\n\n1.\nTạo tâm lý thoải mái cho những người trong gia đình Có rất nhiều người ái ngại khi có sự xuất hiện của người lạ trong gia đình mình thì việc lựa chọn hình thức Dịch vụ vệ sinh nhà cửa theo giờ sẽ là giải pháp giải quyết vấn đề này.', N'AC0001', 1, CAST(N'2023-03-11T00:00:00.000' AS DateTime), N'https://www.thespruce.com/thmb/c3znkzZgMeuvzBy4wH13jVllfUo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/plants-with-big-flowers-4138211-hero-b10becb169064cc4b3c7967adc1b22e1.jpg')
 GO
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 53fc07c415e363bdc89a437b2d4f96e253a33b62

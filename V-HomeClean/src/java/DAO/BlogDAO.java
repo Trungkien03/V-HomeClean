@@ -115,6 +115,40 @@ public class BlogDAO {
         return list;
 
     }
+    
+    //dem so blog
+    public int countBlogs() {
+    String query = "SELECT COUNT(*) AS TotalBlogs FROM Blog";
+    int total = 0;
+    try {
+        conn = new DBContext().getConnection();
+        ps = conn.prepareStatement(query);
+        rs = ps.executeQuery();
+        if (rs.next()) {
+            total = rs.getInt("TotalBlogs");
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (Exception e) {
+            // Handle exception appropriately
+        }
+    }
+    return total;
+}
+
+    
+    
 
     public void InsertBlog(String title, String subTitle, String content, String accountID, int blogCateID, String image) {
         String query = "INSERT INTO Blog ( Title, SubTitle, Content, AccountID, BlogCateID, Time, Image)\n"
@@ -139,11 +173,8 @@ public class BlogDAO {
     public static void main(String[] args) {
 
         BlogDAO dao = new BlogDAO();
-        List<BlogDTO> list = dao.pagingBlog(3);
-
-        for (BlogDTO o : list) {
-            System.out.println(o);
-        }
+        int total = dao.countBlogs();
+        System.out.println(total);
 
     }
 

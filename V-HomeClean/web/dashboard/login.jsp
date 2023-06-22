@@ -33,7 +33,7 @@
                             <div class="login-right-wrap">
                                 <h1>Đăng Nhập</h1>
                                 <p class="account-subtitle">Truy cập vào bảng điều khiển</p>
-                                <form action="/MainController" method="post">
+                                <form action="../DashboardLoginController" method="post">
                                     <div class="form-group">
                                         <input name="email" class="form-control" type="text" placeholder="Email">
                                     </div>
