@@ -113,10 +113,22 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
+                                        <!--                                        <div class="form-floating">
+                                                                                    <input type="file" name="image" class="form-control bg-light border-0" id="image" placeholder="Select Image">
+                                                                                    <label for="image">Hình ảnh</label>
+                                                                                </div>-->
+                                 
                                         <div class="form-floating">
-                                            <input type="file" name="image" class="form-control bg-light border-0" id="image" placeholder="Select Image">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" name="image" class="custom-file-input" id="image" aria-describedby="inputGroupFileAddon">
+                                                    <label class="custom-file-label" for="image">Chọn ảnh</label>
+                                                </div>
+                                            </div>
                                             <label for="image">Hình ảnh</label>
                                         </div>
+
+
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">

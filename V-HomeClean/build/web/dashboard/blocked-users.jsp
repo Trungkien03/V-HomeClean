@@ -128,15 +128,36 @@
                                                                 </a>
                                                             </div>
                                                         </td>
-                                                        <td>
-                                                            <div class="actions">
-                                                                <a href="UsersBlockPageController?action=Mở&accountID=${o.accountID}" class="btn btn-sm bg-danger-light">
+
+                                                        <td class="text-center">
+                                                            <div class="text-end text-center">
+                                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#${o.accountID}">
                                                                     <i class="fe fe-unlock"></i>
-                                                                </a>
+                                                                </button>
                                                             </div>
                                                         </td>
-                                                    </tr>
-                                                </c:forEach>
+
+                                                <div class="modal fade" id="${o.accountID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Mở khóa tài khoản</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Bạn có chắc chắn là muốn mở khóa tài khoản <strong>${o.fullName}</strong>không ?
+                                                            </div>
+                                                            <div class="modal-footer" style="display: flex; justify-content: space-between">
+                                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><a>Không</a></button>
+                                                                <button type="button" class="btn btn-outline-primary"><a href="UsersBlockPageController?action=Mở&accountID=${o.accountID}">
+                                                                        Có
+                                                                    </a></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

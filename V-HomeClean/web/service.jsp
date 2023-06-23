@@ -151,35 +151,35 @@
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">
-                                        <label for="gname">Your Name</label>
+                                        <label for="gname">Tên của bạn</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">
-                                        <label for="gmail">Your Email</label>
+                                        <label for="gmail">Địa chỉ email</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-light border-0" id="cname" placeholder="Child Name">
-                                        <label for="cname">Your Mobile</label>
+                                        <label for="cname">Số điện thoại</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-light border-0" id="cage" placeholder="Child Age">
-                                        <label for="cage">Service Type</label>
+                                        <label for="cage">Chủ đề</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                        <label for="message">Message</label>
+                                        <label for="message">Điền thắc mắc của bạn ở đây</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Gửi câu hỏi</button>
                                 </div>
                             </div>
                         </form>

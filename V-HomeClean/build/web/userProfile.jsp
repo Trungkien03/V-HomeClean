@@ -55,14 +55,14 @@
                 height: 40px;
                 border-radius: 50%;
                 background-color: #f5f5f5;
-                color: #999;
+                color: #009ce7;
                 font-size: 20px;
                 text-align: center;
                 line-height: 40px;
                 cursor: pointer;
                 position: relative;
                 bottom: 50px;
-                left: 110px;
+                left: 130px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
@@ -70,9 +70,7 @@
                 background-color: #CCC;
             }
 
-            .profile-image-label i {
-                margin-top: 10px;
-            }
+
             .full-section {
                 width: 100%;
                 height: 100vh; /* vh stands for viewport height */
@@ -81,7 +79,7 @@
                 .profile-image-label{
                     position: relative;
                     bottom: 50px;
-                    left: 170px;
+                    left: 130px;
                 }
             }
 
@@ -99,6 +97,20 @@
                 height: 100%;
                 z-index: -1;
             }
+            .avatar {
+                width: 150px; /* Định dạng kích thước hình ảnh */
+                height: 150px;
+                border-radius: 50%; /* Định dạng góc cong tạo hiệu ứng tròn */
+                overflow: hidden; /* Ẩn phần vượt ra khỏi hình tròn */
+                margin-left: 30px;
+            }
+
+            .avatar img {
+                width: 100%; /* Định dạng kích thước hình ảnh bên trong */
+                height: 100%;
+                object-fit: cover; /* Căn chỉnh hình ảnh để lấp đầy không gian */
+            }
+
         </style>
     </head>
 
@@ -126,16 +138,17 @@
 
         <section class=" my-5">
             <div class="container-fluid">
-                <div class="bg-white shadow rounded-lg d-block d-sm-flex w-full ">
+                <div class="bg-white shadow rounded-lg d-block d-sm-flex w-full m-5">
                     <div class="profile-tab-nav border-right">
                         <div class="p-4">
-                            <div class="img-circle text-center mb-3">
-                                <img src="${acc.image}" alt="Image" class="shadow">
+                            <div class=" avatar img-circle">
+                                <img id="profileImage" src="${acc.image}" alt="Image" class="shadow">
                             </div>
-
                             <label for="profile-image" class="profile-image-label">
+                                <input type="file" id="profile-image" name="image" style="display: none;">
                                 <i class="fas fa-camera"></i>
                             </label>
+
                             <h4 class="text-center">${acc.fullName}</h4>
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -164,9 +177,8 @@
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                             <form action="ProfilePageController" method="post">
-                                <!--                                <input type="file" name="image" id="profile-image" accept="image/*" style="display: none;">-->
                                 <h3 class="mb-4">Thông Tin Tài Khoản</h3>
-                                 <h6 class="text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h6>
+                                <h6 class="text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h6>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -417,10 +429,7 @@
     </section>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>-->
-    <!--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <!-- Bootstrap js -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -432,6 +441,8 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    
+    <!-- cho data table -->
     <script>
         $(document).ready(function () {
             $('#example_table1').DataTable({
@@ -511,6 +522,7 @@
     </script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <!--phan nay danh cho thay doi mat khau-->
     <script>
         var status = "${status}";
 
@@ -670,11 +682,41 @@
 
             button.disabled = isButtonDisabled;
         }
-
-
-
-
     </script>
+    <!--    //----------------------------------------------------------------------------------
+    //cập nhật hình ảnh Real Time-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Bắt sự kiện khi người dùng thay đổi trường input file
+            $('#profile-image').change(function () {
+                var fileInput = $('#profile-image')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+
+                    $.ajax({
+                        url: 'UpdateImageProfileController',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            // Cập nhật hình ảnh mới trên trang web
+                            $('#profileImage').attr('src', response);
+                            $('#profile-image-2').attr('src', response);
+                        },
+                        error: function (xhr, status, error) {
+                            // Xử lý lỗi (nếu có)
+                            console.log(error);
+                        }
+                    });
+                }
+
+            });
+        });
+    </script>
+
 
 </body>
 

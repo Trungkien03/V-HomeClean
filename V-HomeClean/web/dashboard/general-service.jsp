@@ -31,6 +31,13 @@
         <link rel="stylesheet" href="css/assets/plugins/morris/morris.css" />
 
         <link rel="stylesheet" href="css/assets/css/style.css" />
+
+        <!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+
+        Thư viện JavaScript Bootstrap (bao gồm jQuery) 
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="main-wrapper">
@@ -42,6 +49,38 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <h3 class="page-title">Thông Tin Dịch Vụ</h3>
+
+
+                                    <!-- Button trigger modal -->
+                                    <button style="display: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="openModalBtn">
+                                        Launch demo modal
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <div class="col-md-12">
+                                                        <i class="fe fe-check-circle text-primary display-1" style="font-size: 80px;"></i>
+                                                        <h1>Congratulations</h1>
+                                                        <p class="mb-4">Tạo mới dịch vụ thành công</p>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer flex">
+                                                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Đóng</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item">
                                             <a href="ServicesManagementController">Quản lý Dịch Vụ</a>
@@ -128,7 +167,7 @@
                                             class="tab-pane show active"
                                             id="top-justified-tab1"
                                             >
-                                            <form action="ServiceGeneralController" method="post">
+                                            <form action="ServiceGeneralController" method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="serviceID" value="${service.serviceID}">
                                                 <div class="form-group" style="display:flex; justify-content: center; align-items: center">
                                                     <label class="text-info font-weight-600 w-25">Tên dịch vụ:</label>
@@ -225,6 +264,20 @@
                     }
                 });
             });
+        </script>
+
+        <script>
+            window.onload = function () {
+                var isModalDisplayed = false;
+                var status = "${status}";
+
+                if (status === "create-service" && !isModalDisplayed) {
+                    var openModalBtn = document.getElementById('openModalBtn');
+                    openModalBtn.style.display = "block";
+                    openModalBtn.click();
+                    isModalDisplayed = true;
+                }
+            };
         </script>
 
     </body>

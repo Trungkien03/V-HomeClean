@@ -69,13 +69,19 @@
                                                 Admin
                                             </c:when>
                                             <c:when test="${account.roleID == 2}">
-                                                Nhân viên
+                                                Nhân viên sửa chữa điện
                                             </c:when>
                                             <c:when test="${account.roleID == 3}">
                                                 Quản lý
                                             </c:when>
                                             <c:when test="${account.roleID == 4}">
                                                 Khách hàng
+                                            </c:when>
+                                            <c:when test="${account.roleID == 5}">
+                                                Nhân viên sửa chữa nước
+                                            </c:when>
+                                            <c:when test="${account.roleID == 6}">
+                                                Nhân viên vệ sinh
                                             </c:when>
                                             <c:otherwise>
                                                 Vai trò không xác định

@@ -60,7 +60,7 @@
                                 <div class="card-body">
 
 
-                                    <form action="ServiceCreateController" method="post">
+                                    <form action="ServiceCreateController" method="post" enctype="multipart/form-data">
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2 text-info">Tên Dịch Vụ</label>
                                             <div class="col-md-10">

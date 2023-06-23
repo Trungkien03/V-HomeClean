@@ -1,19 +1,16 @@
-package controller.admin;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import DAO.ServiceDAO;
+package controller;
+
+import DAO.AccountDAO;
 import DTO.AccountDTO;
-import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -27,11 +24,12 @@ import javax.servlet.http.Part;
  *
  * @author Trung Kien
  */
-@WebServlet(urlPatterns = {"/ServiceGeneralController"})
+@WebServlet(name = "UpdateImageProfileController", urlPatterns = {"/UpdateImageProfileController"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50) // 50MB
-public class ServiceGeneralController extends HttpServlet {
+
+public class UpdateImageProfileController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,57 +45,35 @@ public class ServiceGeneralController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        ServiceDAO sDao = new ServiceDAO();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
-        String action = request.getParameter("action");
+        AccountDAO aDao = new AccountDAO();
         if (a == null) {
-            response.sendRedirect("dashboard/login.jsp");
+            response.sendRedirect("login.jsp");
         } else {
             try {
-                if (action == null || action.isEmpty()) {
-                    String serviceID = request.getParameter("serviceID");
-                    ServiceDTO service = sDao.getServiceByID(serviceID);
-                    session.setAttribute("service", service);
+                Part part = request.getPart("image");
+                String realPath = request.getServletContext().getRealPath("/img/");
+                realPath = realPath.replace("\\build\\web", "\\web");
+                String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                String imagePath = "img/" + filename; // Đường dẫn tới ảnh
+
+                if (!Files.exists(Paths.get(realPath))) {
+                    Files.createDirectories(Paths.get(realPath));
                 }
-                if (action.equalsIgnoreCase("Chỉnh sửa")) {
-                    String serviceID = request.getParameter("serviceID");
-                    ServiceDTO b = sDao.getServiceByID(serviceID);
-                    String serviceName = request.getParameter("serviceName");
-                    String cateIDString = request.getParameter("serviceType");
-                    int cateID = Integer.parseInt(cateIDString);
-                    String priceString = request.getParameter("price");
-                    // Loại bỏ ký tự đặc biệt từ chuỗi
-                    priceString = priceString.replaceAll("[^0-9]", "");
-                    // Chuyển đổi thành số
-                    int price = Integer.parseInt(priceString);
 
-                    Part part = request.getPart("image");
-                    String realPath = request.getServletContext().getRealPath("/img/");
-                    realPath = realPath.replace("\\build\\web", "\\web");
-                    String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-                    String imagePath = "img/" + filename; // Đường dẫn tới ảnh
+                part.write(Paths.get(realPath, filename).toString());
+                aDao.updateImageAccountWithID(imagePath, a.getAccountID());
+                // Cập nhật hình ảnh trong session
+                a.setImage(imagePath);
+                session.setAttribute("acc", a);
 
-                    if (!Files.exists(Paths.get(realPath))) {
-                        Files.createDirectories(Paths.get(realPath));
-                    }
-
-                    part.write(Paths.get(realPath, filename).toString());
-                    if (filename == null || filename.isEmpty() || filename == "") {
-                        imagePath = b.getImage();
-                    }
-
-                    String serviceDetail = b.getServiceDetail();
-                    sDao.UpdateServiceByID(serviceName, price, serviceDetail, cateID, imagePath, serviceID);
-                    String message = "Chỉnh sửa thông tin thành công!";
-                    ServiceDTO service = sDao.getServiceByID(serviceID);
-                    request.setAttribute("message", message);
-                    session.setAttribute("service", service);
-                }
+                // Trả về URL mới của hình ảnh đã cập nhật
+                String imageURL = request.getContextPath() + "/" + imagePath;
+                response.getWriter().write(imageURL);
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
-                request.getRequestDispatcher("/dashboard/general-service.jsp").forward(request, response);
             }
+
         }
     }
 

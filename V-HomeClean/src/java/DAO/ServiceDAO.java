@@ -84,6 +84,37 @@ public class ServiceDAO {
         return totalServices;
     }
 
+
+
+    public List<ServiceDTO> pagingService(int index) {
+        List<ServiceDTO> list = new ArrayList<>();
+
+        String query = "SELECT ServiceID, ServiceName, Price, ServiceDetail, Image, Status, CateName \n"
+                + "FROM Service s,CateService c\n"
+                + "WHERE  s.CateID = c.CateID ORDER BY ServiceID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, (index - 1) * 6);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new ServiceDTO(rs.getString(1),
+                        rs.getNString(2),
+                        rs.getInt(3),
+                        rs.getNString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getNString(7)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+
     public int CountServiceByStatus(String status) {
         String query = "SELECT COUNT(*) AS total_count FROM Service WHERE Status = ?";
         int total = 0;
@@ -110,32 +141,6 @@ public class ServiceDAO {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, status);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                list.add(new ServiceDTO(rs.getString(1),
-                        rs.getNString(2),
-                        rs.getInt(3),
-                        rs.getNString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getNString(7)));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    public List<ServiceDTO> pagingService(int index) {
-        List<ServiceDTO> list = new ArrayList<>();
-
-        String query = "SELECT ServiceID, ServiceName, Price, ServiceDetail, Image, Status, CateName \n"
-                + "FROM Service s,CateService c\n"
-                + "WHERE  s.CateID = c.CateID ORDER BY ServiceID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY;";
-        try {
-            conn = new DBContext().getConnection();
-            ps = conn.prepareStatement(query);
-            ps.setInt(1, (index - 1) * 6);
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new ServiceDTO(rs.getString(1),

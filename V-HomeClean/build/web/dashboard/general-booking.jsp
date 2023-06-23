@@ -45,7 +45,7 @@
                                     <h3 class="page-title">Thông Tin Đơn Hẹn</h3>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="ServicesManagementController">Quản lý Đơn</a>
+                                            <a href="BookingsManagementController">Quản lý Đơn</a>
                                         </li>
                                         <li class="breadcrumb-item active">Thông Tin Đơn Hẹn</li>
                                     </ul>

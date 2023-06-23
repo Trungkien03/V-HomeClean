@@ -140,21 +140,21 @@
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input value="${acc.fullName}" type="text" class="form-control bg-light border-0" id="gname" name="fullName" placeholder="Gurdian Name">
+                                    <input required="" value="${acc.fullName}" type="text" class="form-control bg-light border-0" id="gname" name="fullName" placeholder="Gurdian Name">
                                     <label for="fulName">Họ và Tên</label>
                                 </div>
                                 <strong style="color: #e72734;" >${fullNameError}</strong>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input value="${acc.email}" type="email" class="form-control bg-light border-0" id="gmail" name="email" placeholder="Gurdian Email">
+                                    <input required="" value="${acc.email}" type="email" class="form-control bg-light border-0" id="gmail" name="email" placeholder="Gurdian Email">
                                     <label for="gmail">Email</label>
                                 </div>
                                 <strong style="color: #e72734;" >${emailError}</strong>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input value="${acc.phone}" type="text" class="form-control bg-light border-0" id="cname" name="phone" placeholder="Child Name">
+                                    <input required="" value="${acc.phone}" type="text" class="form-control bg-light border-0" id="cname" name="phone" placeholder="Child Name">
                                     <label for="phone">Số điện thoại</label>
                                 </div>
                                 <strong style="color: #e72734;" >${phoneError}</strong>
@@ -163,7 +163,7 @@
 
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <select class="form-select bg-light border-0" name="serviceID" aria-label="Guardian Relationship">
+                                    <select required="" class="form-select bg-light border-0" name="serviceID" aria-label="Guardian Relationship">
                                         <c:forEach items="${listS}" var="s">
                                             <option value="${s.serviceID}" <c:if test="${s.serviceID eq ServiceDetail.serviceID}">selected</c:if>>${s.serviceName}</option>
                                         </c:forEach>
@@ -173,7 +173,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <select class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
+                                    <select required="Vui lòng chọn khu vực" class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
                                         <option value="">-- Chọn Vinhomes --</option>
                                         <option value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - TP. Hồ Chí Minh</option>
                                         <option value="Vinhomes Golden River - TP. Hồ Chí Minh">Vinhomes Golden River - TP. Hồ Chí Minh</option>
@@ -188,7 +188,7 @@
 
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <select class="form-select bg-light border-0" name="typeService" aria-label="Guardian Relationship">
+                                    <select required="" class="form-select bg-light border-0" name="typeService" aria-label="Guardian Relationship">
                                         <option value="Dịch vụ 1 lần" selected="">Dịch vụ 1 lần</option>
                                         <option value="Định kì theo tuần">Định kì theo tuần</option>
                                         <option value="Định kì theo tháng">Định kì theo tháng</option>
@@ -199,7 +199,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="date" class="form-control bg-light border-0" name="date" id="dateInput">
+                                    <input required="" type="date" class="form-control bg-light border-0" name="date" id="dateInput">
                                     <label for="date">Ngày tháng năm:</label>
                                 </div>
                                 <strong style="color: #e72734;" id="dateError" >${dateError} </strong>
@@ -207,14 +207,14 @@
 
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="time" class="form-control bg-light border-0" name="time">
+                                    <input required="" type="time" class="form-control bg-light border-0" name="time">
                                     <label for="time">Giờ cụ thể:</label>
                                 </div>
                                 <strong style="color: #e72734;"id="timeError" >${timeError}</strong>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control bg-light border-0" name="vinHomesID" placeholder="Gurdian Email">
+                                    <input required="" type="text" class="form-control bg-light border-0" name="vinHomesID" placeholder="Gurdian Email">
                                     <label for="gmail">Mã Phòng:</label>
                                 </div>
                                 <strong style="color: #e72734;" >${vinHomeIDError}</strong>
@@ -238,7 +238,7 @@
                                     <div class="modal-content text-center">
                                         <!--Header-->
                                         <div class="modal-header d-flex justify-content-center">
-                                            <p class="heading">Be always up to date</p>
+                                            <p class="heading">Hãy chắc chắn rằng bạn đã điền đầy đủ thông tin</p>
                                         </div>
 
                                         <!--Body-->

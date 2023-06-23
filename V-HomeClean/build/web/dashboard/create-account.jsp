@@ -67,7 +67,7 @@
 
 
 
-                                        <form action="AccountCreateController" method="post">
+                                        <form action="AccountCreateController" method="post" enctype="multipart/form-data">
                                             <div class="form-group row">
                                                 <label for="fullName" class="col-form-label col-md-2 text-info">Họ và Tên</label>
                                                 <div class="col-md-10">
@@ -202,7 +202,7 @@
                                             <div class="col-md-10">
                                                 <div class="input-group">
                                                     <span class="input-group-text">VND</span>
-                                                    <input name="salary" class="form-control" type="number">
+                                                    <input required="" name="salary" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>

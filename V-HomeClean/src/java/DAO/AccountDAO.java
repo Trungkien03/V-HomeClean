@@ -565,12 +565,27 @@ public class AccountDAO {
         return list;
     }
 
+    //cập nhật hình ảnh profile
+    public void updateImageAccountWithID(String image, String accountID) {
+        String query = "UPDATE Account\n"
+                + "SET Image = ?\n"
+                + "WHERE AccountID = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, image);
+            ps.setString(2, accountID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void main(String[] args) {
         AccountDAO dao = new AccountDAO();
-        List<AccountDTO> list = dao.getAvailableStaffByRoleID(6);
-        for (AccountDTO accountDTO : list) {
-            System.out.println(accountDTO.toString());
-        }
+        dao.updateImageAccountWithID("img/Kien-Profile-2.jpg", "AC0002");
+        
 
     }
 

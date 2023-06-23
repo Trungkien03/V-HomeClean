@@ -6,6 +6,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+
+
+<style>
+    .avatar-nav {
+        width: 30px; /* Định dạng kích thước hình ảnh */
+        height: 30px;
+        border-radius: 50%; /* Định dạng góc cong tạo hiệu ứng tròn */
+        overflow: hidden; /* Ẩn phần vượt ra khỏi hình tròn */
+        object-fit: cover;
+    }
+</style>
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" role="status"></div>
@@ -81,11 +93,12 @@
                     <c:if test="${sessionScope.acc == null}"><strong>Tài Khoản</strong></c:if>
                     <c:if test="${sessionScope.acc != null}">
                         <img></img>
-                        <img src="${sessionScope.acc.image}" style="width: 30px; height: 30px; border-radius: 20px;" >
-                        <strong> ${sessionScope.acc.fullName}</strong>  
+                        <img id="profile-image-2" class="avatar-nav"  src="${sessionScope.acc.image}" >
+                        <strong>${sessionScope.acc.fullName}</strong>
                     </c:if>
                 </a>
                 <div class="dropdown-menu bg-light m-0">
+
                     <c:if test="${sessionScope.acc == null}">
                         <a href="login.jsp" class="dropdown-item">Đăng Nhập</a>
                     </c:if>

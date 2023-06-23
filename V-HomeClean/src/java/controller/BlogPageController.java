@@ -89,6 +89,7 @@ public class BlogPageController extends HttpServlet {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         request.setAttribute("listBlog", list);
