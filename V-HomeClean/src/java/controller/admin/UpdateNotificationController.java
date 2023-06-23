@@ -6,23 +6,26 @@
 package controller.admin;
 
 import DAO.AccountDAO;
+import DAO.NotificationDAO;
+import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.NotificationDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Trung Kien
  */
-@WebServlet(name = "DashboardLoginController", urlPatterns = {"/DashboardLoginController"})
-public class DashboardLoginController extends HttpServlet {
+@WebServlet(name = "UpdateNotificationController", urlPatterns = {"/UpdateNotificationController"})
+public class UpdateNotificationController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,21 +39,28 @@ public class DashboardLoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        AccountDAO ACdao = new AccountDAO();
-        AccountDTO a = ACdao.Login(email, pass);
-        
-        
-        if(a==null){
-            request.setAttribute("ERROR", "Tài khoản hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!");
-            request.getRequestDispatcher("dashboard/login.jsp").forward(request, response);
-        }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            request.getRequestDispatcher("DashboardController").forward(request, response);
-        }
+//        request.setCharacterEncoding("UTF-8");
+//        AccountDAO aDao = new AccountDAO();
+//        ServiceDAO sDao = new ServiceDAO();
+//        NotificationDAO nDao = new NotificationDAO();
+//        List<NotificationDTO> listNotifications = nDao.getAllNotification();
+//        List<AccountDTO> listAllAccounts = aDao.getAllAccounts();
+//        int totalUnreadNoti = nDao.CountUnreadNotification("false");
+//
+//        // Create a map to hold the notification data
+//        Map<String, Object> jsonData = new HashMap<>();
+//        jsonData.put("listNotifications", listNotifications);
+//        jsonData.put("listAllAccounts", listAllAccounts);
+//        jsonData.put("totalUnreadNoti", totalUnreadNoti);
+//
+//        // Convert the map to a JSON string
+//        String json = new Gson().toJson(jsonData);
+//
+//        // Set the content type of the response
+//        response.setContentType("application/json");
+//
+//        // Write the JSON data to the response
+//        response.getWriter().write(json);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

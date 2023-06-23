@@ -6,6 +6,7 @@
 package controller;
 
 import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
@@ -46,6 +47,7 @@ public class BookingController extends HttpServlet {
         boolean checkValidation = true;
         BookingDAO dao = new BookingDAO();
         ServiceDAO sdao = new ServiceDAO();
+        NotificationDAO nDao = new NotificationDAO();
         String url = ERROR;
         HttpSession session = request.getSession();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
@@ -136,6 +138,8 @@ public class BookingController extends HttpServlet {
                     ServiceDTO b = sdao.getServiceByID(serviceID);
                     int totalPrice = b.getPrice();
                     dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
+                    String detailNotification = a.getFullName() + " mới đặt lịch dịch vụ mới cho căn hộ " + vinHomesID + " ở khu vực "+ area + " vào ngày " + date;
+                    nDao.InsertNotification(accountID, detailNotification, "false");
                     request.setAttribute("serviceName", b.getServiceName());
                     request.setAttribute("vinhomesID", vinHomesID);
                     request.setAttribute("area", area);

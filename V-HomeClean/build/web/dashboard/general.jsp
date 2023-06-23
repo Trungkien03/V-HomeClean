@@ -4,6 +4,8 @@
     Author     : Trung Kien
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +32,14 @@
         <link rel="stylesheet" href="css/assets/plugins/morris/morris.css" />
 
         <link rel="stylesheet" href="css/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+        <!--        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">-->
+
+        <!-- Liên kết đến thư viện jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Liên kết đến tệp JavaScript của DataTables -->
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     </head>
     <body>
         <div class="main-wrapper">
@@ -165,7 +175,7 @@
                                             >
                                             <form action="UserGeneralPageController" method="post">
                                                 <div class="form-group">
-                                                    <label>Họ và Tên</label>
+                                                    <label class="text-primary font-weight-600">Họ và Tên</label>
                                                     <input
                                                         name="fullName"
                                                         type="text"
@@ -174,7 +184,7 @@
                                                         />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Địa chỉ</label>
+                                                    <label class="text-primary font-weight-600">Địa chỉ</label>
                                                     <input
                                                         name="address"
                                                         type="text"
@@ -183,7 +193,7 @@
                                                         />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Email</label>
+                                                    <label class="text-primary font-weight-600">Email</label>
                                                     <input 
                                                         name="email"
                                                         type="email" 
@@ -192,7 +202,7 @@
                                                         />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Số Điện Thoại</label>
+                                                    <label class="text-primary font-weight-600">Số Điện Thoại</label>
                                                     <input
                                                         name="phone"
                                                         type="text"
@@ -202,7 +212,7 @@
                                                 </div>
                                                 <c:if test="${acc.roleID == 1}">
                                                     <div class="form-group">
-                                                        <label>Chức vụ</label>
+                                                        <label class="text-primary font-weight-600">Chức vụ</label>
                                                         <select name="roleID" class="form-control">
                                                             <option value="1" <c:if test="${account.roleID == 1}">selected</c:if>>Admin</option>
                                                             <option value="2" <c:if test="${account.roleID == 2}">selected</c:if>>Nhân viên</option>
@@ -217,7 +227,117 @@
                                             </form>
                                         </div>
                                         <div class="tab-pane" id="top-justified-tab2">
-                                            Tab content 2
+                                            <div class="card-body">
+                                                <div class="table-responsive custom-table-responsive">                                          
+                                                    <table style="border-width: medium" id="example_table" class="table table-center tab-content table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center">Dịch vụ</th>
+                                                                <th class="text-center">Nhân viên</th>
+                                                                <th class="text-center">Thông tin</th>
+                                                                <th class="text-center">Tình Trạng</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <c:forEach items="${listBookingAccount}" var="b">
+                                                                <tr>
+                                                                    <td class="text-center">
+                                                                        ${b.serviceName}
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <c:set var="staffName" value="Hiện chưa có" />
+                                                                        <c:forEach items="${ListAllAccounts}" var="o">
+                                                                            <c:if test="${o.accountID == b.staffID}">
+                                                                                <c:set var="staffName" value="${o.fullName}" />
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        ${staffName}
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <div class="text-end text-center">
+                                                                            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#booking${b.bookingID}">
+                                                                                <i class="fe fe-eye"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <button type="button" class="btn btn-info" disabled="">
+                                                                            ${b.bookingStatus}
+                                                                        </button>
+                                                                    </td>
+
+
+                                                            <div class="modal fade" id="booking${b.bookingID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header text-center">
+                                                                            <h5 class="modal-title text-primary" id="exampleModalLabel">Thông tin chi tiết đơn</h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="col-md-12">
+                                                                                <div class="card">
+                                                                                    <div class="card-body">
+                                                                                        <form action="#">
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-info">Thời gian</label>
+                                                                                                <input readonly="" value="${fn:substring(b.bookingDate, 11, 16)}" type="text" class="form-control">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-info">Ngày (yyyy-mm-dd)</label>
+                                                                                                <input readonly="" value="${fn:substring(b.bookingDate, 0, 10)}" type="text" class="form-control">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <c:set var="addressArray" value="${fn:split(b.bookingAddress, '||')}" />
+                                                                                                <label class="text-info">Số phòng</label>
+                                                                                                <input readonly="" value="${fn:trim(addressArray[0])}" type="text" class="form-control">
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-info">Khu vực</label>
+                                                                                                <input readonly="" value="${fn:trim(addressArray[1])}" type="text" class="form-control">
+                                                                                            </div>
+
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-info">Định kì</label>
+                                                                                                <input readonly="" value="${b.typeOfService}" type="text" class="form-control">
+                                                                                            </div>
+
+                                                                                            <div class="form-group">
+                                                                                                <fmt:formatNumber var="formattedPrice" value="${b.totalPrice}" pattern="###,###" />
+                                                                                                <label class="text-info">Tổng chi phí</label>
+                                                                                                <div style="display: flex" class="col-md-12">
+                                                                                                    <input readonly=""
+                                                                                                           required=""
+                                                                                                           name="bookingPrice"
+                                                                                                           type="text"
+                                                                                                           class="form-control"
+                                                                                                           value="${formattedPrice}"
+                                                                                                           />
+                                                                                                    <span class="btn btn-success">VND</span>     
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer" style="display: flex; justify-content: space-between">
+                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Không</button>
+                                                                            <button type="button" class="btn btn-outline-primary">
+                                                                                <a href="#">Có</a>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            </tr>
+                                                        </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="tab-pane" id="top-justified-tab3">
                                             Tab content 3
@@ -237,8 +357,38 @@
         <script src="css/assets/js/bootstrap.bundle.min.js"></script>
 
         <script src="css/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="css/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 
         <script src="css/assets/js/script.js"></script>
+        <!-- Bootstrap Datatable js -->    
+        <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#example_table').DataTable({
+                    language: {
+                        "sProcessing": "Đang xử lý...",
+                        "sLengthMenu": "Hiển thị _MENU_ dòng",
+                        "sZeroRecords": "Không tìm thấy kết quả nào",
+                        "sInfo": "Đang hiển thị _START_ đến _END_ trong tổng số _TOTAL_ mục",
+                        "sInfoEmpty": "Đang hiển thị 0 đến 0 trong tổng số 0 mục",
+                        "sInfoFiltered": "(được lọc từ _MAX_ mục)",
+                        "sSearch": "Tìm kiếm:",
+                        "oPaginate": {
+                            "sFirst": "Đầu",
+                            "sPrevious": "Trước",
+                            "sNext": "Tiếp",
+                            "sLast": "Cuối"
+                        },
+                        "sEmptyTable": "Không có dữ liệu",
+                        "sLoadingRecords": "Đang tải...",
+                        "oAria": {
+                            "sSortAscending": ": Sắp xếp cột tăng dần",
+                            "sSortDescending": ": Sắp xếp cột giảm dần"
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
 

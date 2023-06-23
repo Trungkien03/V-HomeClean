@@ -128,12 +128,10 @@ CREATE TABLE Notification
 (
 	NotificationID INT IDENTITY(1,1) PRIMARY KEY,
 	AccountID NVARCHAR(20) NOT NULL,
-	BookingID INT NOT NULL,
 	Detail NVARCHAR(MAX) NOT NULL,
-	Create_at DATETIME not null,
+	Create_at DATETIME DEFAULT GETDATE() NOT NULL,
 	Status bit NOT NULL,
-	FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
-	FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
+	FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
 )
 GO
 
@@ -318,8 +316,6 @@ GO
 GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE01', N'Tổng vệ sinh', 500000.0000, N'Dịch vụ tổng vệ sinh cho căn hộ chung cư mang đến sự sạch sẽ và thoáng mát cho không gian sống của bạn. Đội ngũ người giúp việc sẽ dọn dẹp và vệ sinh sàn nhà, lau kính, vệ sinh cửa, cửa sổ và màn cửa, vệ sinh lỗ thông hơi, gầm tủ và các góc khuất khác trong căn hộ. Ngoài ra, nội thất như ghế sofa, bàn, giường và tủ cũng sẽ được làm sạch kỹ lưỡng. Dịch vụ này đảm bảo không gian sống của bạn trở nên sạch sẽ và thoải mái để bạn có thể tận hưởng cuộc sống hàng ngày một cách thoải mái.', 1, N'img/serviceTongVeSinh.jpg', 1)
 GO
-INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE01', N'Tổng vệ sinh', 500000.0000, N'Dịch vụ tổng vệ sinh cho căn hộ chung cư mang đến sự sạch sẽ và thoáng mát cho không gian sống của bạn. Đội ngũ người giúp việc sẽ dọn dẹp và vệ sinh sàn nhà, lau kính, vệ sinh cửa, cửa sổ và màn cửa, vệ sinh lỗ thông hơi, gầm tủ và các góc khuất khác trong căn hộ. Ngoài ra, nội thất như ghế sofa, bàn, giường và tủ cũng sẽ được làm sạch kỹ lưỡng. Dịch vụ này đảm bảo không gian sống của bạn trở nên sạch sẽ và thoải mái để bạn có thể tận hưởng cuộc sống hàng ngày một cách thoải mái.', 1, N'img/serviceTongVeSinh.jpg', 1)
-GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE02', N'Vệ sinh phòng', 100000.0000, N'Dịch vụ vệ sinh phòng cho chung cư đảm bảo sự sạch sẽ và thoáng mát cho không gian sống của bạn. Đội ngũ người giúp việc sẽ làm sạch và vệ sinh phòng ngủ, phòng khách, phòng ăn, phòng tắm và nhà vệ sinh. Công việc bao gồm lau chùi các bề mặt, thay ga, áo gối và trải giường, vệ sinh bồn cầu, lavabo, vòi sen, và làm sạch kính cửa sổ và ban công. Dịch vụ này giúp bạn có một môi trường sống sạch sẽ và thoải mái để thưởng thức cuộc sống hàng ngày.', 1, N'img/serviceVeSinhPhong.jpg', 1)
 GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE03', N'Vệ sinh sofa, rèm, nệm, kính', 300000.0000, N'Dịch vụ vệ sinh sofa, rèm cửa, nệm và kính đảm bảo sự sạch sẽ và tươi mới cho các bề mặt và vật liệu trong không gian sống của bạn. Đội ngũ người giúp việc sẽ làm sạch sofa, làm sạch và làm mới rèm cửa, làm sạch nệm và làm sáng kính. Qua đó, bạn sẽ có các bề mặt sạch sẽ, không bám bụi, vết bẩn và mùi không mong muốn, tạo nên môi trường sống trong lành và thoải mái.', 1, N'img/serviceVeSinhSofa.jpg', 1)
@@ -337,24 +333,6 @@ GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE09', N'Dịch vụ lau kính', 150000.0000, N'Dịch vụ lau kính của chúng tôi được thực hiện bởi đội ngũ nhân viên kỹ thuật tận tâm và giàu kinh nghiệm. Chúng tôi sử dụng các phương pháp và công nghệ tiên tiến để đảm bảo kết quả tối ưu và sự hài lòng của khách hàng.
 
 Đội ngũ chuyên gia của chúng tôi sẽ làm sạch kính của bạn một cách kỹ lưỡng và tỉ mỉ, loại bỏ các vết bẩn, dấu vân tay, bụi bẩn và các tạp chất khác mà không để lại vết trầy xước hay vết nhòe trên bề mặt kính. Chúng tôi đảm bảo kính của bạn sẽ trở nên sáng bóng, trong suốt và đẹp mắt như mới.', 1, N'img/glass-cleaning1630751581.png', 1)
-GO
-
-
-SET IDENTITY_INSERT [dbo].[Booking] ON 
-GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (1, N'AC0002', N'Xác nhận', N'', N'SE01')
-GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (2, N'AC0002', N'Xác nhận', N'', N'SE06')
-GO
-SET IDENTITY_INSERT [dbo].[Booking] OFF
-GO
-SET IDENTITY_INSERT [dbo].[BookingDetail] ON 
-GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 500000.0000, CAST(N'2023-06-13T10:14:00.000' AS DateTime), N'S1.01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Hãy cử nhiều người đến cho tôi!')
-GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (2, 2, 100000.0000, CAST(N'2023-06-13T10:14:00.000' AS DateTime), N'S1.01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Hãy cử người có kinh nghiệm thật nhiều cho tôi !')
-GO
-SET IDENTITY_INSERT [dbo].[BookingDetail] OFF
 GO
 
 INSERT [dbo].[BlogCate] ([BlogCateID], [CateName]) VALUES (1, N'Mẹo dọn dẹp')

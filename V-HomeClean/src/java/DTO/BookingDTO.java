@@ -12,13 +12,13 @@ public class BookingDTO {
     private int totalPrice;
     private String bookingDate;
     private String bookingAddress;
-    private String TypeOfService;
+    private String typeOfService;
     private String message;
 
     public BookingDTO() {
     }
 
-    public BookingDTO(String bookingID, String accountID, String bookingStatus, String staffID, String serviceID, String serviceName, String bookingDetailID, int totalPrice, String bookingDate, String bookingAddress, String TypeOfService, String message) {
+    public BookingDTO(String bookingID, String accountID, String bookingStatus, String staffID, String serviceID, String serviceName, String bookingDetailID, int totalPrice, String bookingDate, String bookingAddress, String typeOfService, String message) {
         this.bookingID = bookingID;
         this.accountID = accountID;
         this.bookingStatus = bookingStatus;
@@ -29,7 +29,7 @@ public class BookingDTO {
         this.totalPrice = totalPrice;
         this.bookingDate = bookingDate;
         this.bookingAddress = bookingAddress;
-        this.TypeOfService = TypeOfService;
+        this.typeOfService = typeOfService;
         this.message = message;
     }
 
@@ -114,11 +114,11 @@ public class BookingDTO {
     }
 
     public String getTypeOfService() {
-        return TypeOfService;
+        return typeOfService;
     }
 
-    public void setTypeOfService(String TypeOfService) {
-        this.TypeOfService = TypeOfService;
+    public void setTypeOfService(String typeOfService) {
+        this.typeOfService = typeOfService;
     }
 
     public String getMessage() {
@@ -131,7 +131,7 @@ public class BookingDTO {
 
     @Override
     public String toString() {
-        return "BookingDTO{" + "bookingID=" + bookingID + ", accountID=" + accountID + ", bookingStatus=" + bookingStatus + ", staffID=" + staffID + ", serviceID=" + serviceID + ", serviceName=" + serviceName + ", bookingDetailID=" + bookingDetailID + ", totalPrice=" + totalPrice + ", bookingDate=" + bookingDate + ", bookingAddress=" + bookingAddress + ", TypeOfService=" + TypeOfService + ", message=" + message + '}';
+        return "BookingDTO{" + "bookingID=" + bookingID + ", accountID=" + accountID + ", bookingStatus=" + bookingStatus + ", staffID=" + staffID + ", serviceID=" + serviceID + ", serviceName=" + serviceName + ", bookingDetailID=" + bookingDetailID + ", totalPrice=" + totalPrice + ", bookingDate=" + bookingDate + ", bookingAddress=" + bookingAddress + ", TypeOfService=" + typeOfService + ", message=" + message + '}';
     }
 
     

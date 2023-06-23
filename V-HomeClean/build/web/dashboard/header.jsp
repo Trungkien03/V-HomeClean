@@ -6,6 +6,9 @@
 
 <%@page import="DTO.AccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html>
 
 <%
@@ -44,7 +47,11 @@
                 class="dropdown-toggle nav-link"
                 data-bs-toggle="dropdown"
                 >
-                <i class="fa fa-bell"></i> <span class="badge badge-pill">3</span>
+                <i class="fa fa-bell"></i>
+                <c:if test="${totalUnreadNoti > 1}">
+                    <span class="badge badge-pill">${totalUnreadNoti}</span>
+                </c:if>
+
             </a>
             <div class="dropdown-menu notifications">
                 <div class="topnav-dropdown-header">
@@ -53,53 +60,52 @@
                 </div>
                 <div class="noti-content">
                     <ul class="notification-list">
-                        <li class="notification-message">
-                            <a href="#">
-                                <div class="media d-flex">
-                                    <span class="avatar avatar-sm flex-shrink-0">
-                                        <img
-                                            class="avatar-img rounded-circle"
-                                            alt="User Image"
-                                            src="css/assets/img/profiles/avatar-02.jpg"
-                                            />
-                                    </span>
-                                    <div class="media-body flex-grow-1">
-                                        <p class="noti-details">
-                                            <span class="noti-title">Carlson Tech</span> has
-                                            approved
-                                            <span class="noti-title">your estimate</span>
-                                        </p>
-                                        <p class="noti-time">
-                                            <span class="notification-time">4 mins ago</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                        <c:forEach items="${listNotifications}" var="o">
+                            <li class="notification-message">
+                                <a href="#">
+                                    <div class="media d-flex">
+                                        <span class="avatar avatar-sm flex-shrink-0">
+                                            <c:forEach items="${listAllAccounts}" var="b">
+                                                <c:if test="${b.accountID == o.accountID}">
+                                                    <c:set var="image" value="${b.image}" />
+                                                </c:if>
+                                            </c:forEach>
+                                            <img
+                                                class="avatar-img rounded-circle"
+                                                alt="User Image"
+                                                src="${image}"
+                                                />
+                                        </span>
+                                        <div class="media-body flex-grow-1">
+                                            <p class="noti-details text-black">
+                                                ${o.detail}
+                                            </p>
+                                            <c:set var="minutes" value="${o.calculateMinutesFromNow()}" />
+                                            <p class="noti-time">
+                                                <span class="notification-time">
+                                                    <c:choose>
+                                                        <c:when test="${minutes < 60}">
+                                                            ${minutes} phút trước
+                                                        </c:when>
+                                                        <c:when test="${minutes < 1440}">
+                                                            <c:set var="hours" value="${fn:substringBefore((minutes / 60), '.')}"/>
+                                                            ${hours} giờ trước
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <c:set var="days" value="${fn:substringBefore((minutes / 1440), '.')}"/>
+                                                            ${days} ngày trước
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </span>
+                                            </p>
 
-                        <li class="notification-message">
-                            <a href="#">
-                                <div class="media d-flex">
-                                    <span class="avatar avatar-sm flex-shrink-0">
-                                        <img
-                                            class="avatar-img rounded-circle"
-                                            alt="User Image"
-                                            src="css/assets/img/profiles/avatar-13.jpg"
-                                            />
-                                    </span>
-                                    <div class="media-body flex-grow-1">
-                                        <p class="noti-details">
-                                            <span class="noti-title">Mercury Software Inc</span>
-                                            added a new product
-                                            <span class="noti-title">Apple MacBook Pro</span>
-                                        </p>
-                                        <p class="noti-time">
-                                            <span class="notification-time">12 mins ago</span>
-                                        </p>
+
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
+                        </c:forEach>
+
                     </ul>
                 </div>
                 <div class="topnav-dropdown-footer">

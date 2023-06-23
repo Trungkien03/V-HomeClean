@@ -240,9 +240,9 @@ public class BookingDAO {
 
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        String staffID = "AC0003";
-        String status = "Xác nhận";
-        int bookingID = 1;
-        dao.updateBookingWithStaffIDandStatus("", status, bookingID);
+        List<BookingDTO> list = dao.getBookingDetailByAccountID("AC0007");
+        for (BookingDTO bookingDTO : list) {
+            System.out.println(bookingDTO.toString());
+        }
     }
 }

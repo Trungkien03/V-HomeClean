@@ -67,7 +67,7 @@
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <p class="mb-0">Họ và Tên</p>
+                                                            <p class="mb-0">Họ và Tên:</p>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${acc.fullName}</p>
@@ -76,7 +76,7 @@
                                                     <hr>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <p class="mb-0">Tên dịch vụ</p>
+                                                            <p class="mb-0">Tên dịch vụ:</p>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${serviceName}</p>
@@ -85,7 +85,7 @@
                                                     <hr>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <p class="mb-0">Địa chỉ email</p>
+                                                            <p class="mb-0">Địa chỉ email:</p>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${acc.email}</p>
@@ -94,7 +94,7 @@
                                                     <hr>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <p class="mb-0">Số điện thoại</p>
+                                                            <p class="mb-0">Số điện thoại:</p>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${acc.phone}</p>
@@ -103,7 +103,7 @@
                                                     <hr>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <p class="mb-0">Mã phòng</p>
+                                                            <p class="mb-0">Mã phòng:</p>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${vinhomesID}</p>
@@ -112,7 +112,7 @@
                                                     <hr>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <p class="mb-0">Khu vực</p>
+                                                            <p class="mb-0">Khu vực:</p>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${area}</p>
@@ -121,7 +121,7 @@
                                                      <hr>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <p class="mb-0">Thời gian</p>
+                                                            <p class="mb-0">Thời gian:</p>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${bookingDate}</p>
@@ -130,7 +130,7 @@
                                                      <hr>
                                                      <div class="row">
                                                         <div class="col-md-3">
-                                                            <p class="mb-0">Giá ước lượng</p>
+                                                            <p class="mb-0">Giá ước lượng:</p>
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${totalPrice}</p>
