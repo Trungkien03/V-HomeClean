@@ -29,25 +29,23 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
-        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-                 Bootstrap DataTable CSS -->
+
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--                <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">         -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
         <link rel="stylesheet" type="text/css" href="css/ProfileStyle.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+                <link href="lib/animate/animate.min.css" rel="stylesheet">
+                <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
         <style>
             .profile-image-label {
                 display: block;
@@ -97,7 +95,7 @@
                 height: 100%;
                 z-index: -1;
             }
-            .avatar {
+            .avatar1 {
                 width: 150px; /* Định dạng kích thước hình ảnh */
                 height: 150px;
                 border-radius: 50%; /* Định dạng góc cong tạo hiệu ứng tròn */
@@ -105,13 +103,15 @@
                 margin-left: 30px;
             }
 
-            .avatar img {
+            .avatar1 img {
                 width: 100%; /* Định dạng kích thước hình ảnh bên trong */
                 height: 100%;
                 object-fit: cover; /* Căn chỉnh hình ảnh để lấp đầy không gian */
             }
 
         </style>
+
+
     </head>
 
     <body>
@@ -125,14 +125,6 @@
             }
         %>
 
-        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center py-5">
-<!--                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #f52626;"> ${ERROR}</strong></h1>
-                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h1>-->
-                <h1 class="display-4 text-white animated slideInDown mb-4">Thông Tin Tài Khoản</h1>
-            </div>
-        </div>
-
 
 
 
@@ -141,7 +133,7 @@
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex w-full m-5">
                     <div class="profile-tab-nav border-right">
                         <div class="p-4">
-                            <div class=" avatar img-circle">
+                            <div class=" avatar1 img-circle">
                                 <img id="profileImage" src="${acc.image}" alt="Image" class="shadow">
                             </div>
                             <label for="profile-image" class="profile-image-label">
@@ -178,42 +170,42 @@
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                             <form action="ProfilePageController" method="post">
                                 <h3 class="mb-4">Thông Tin Tài Khoản</h3>
-                                <h6 class="text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h6>
+                                <p><strong style="font-family: sans-serif;color: #00d747;" >${message}</strong></p>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Họ và Tên</label>
-                                            <input name="fullName" type="text" class="form-control" value="${acc.fullName}">
+                                            <label style="color: black">Họ và Tên</label>
+                                            <input name="fullName" type="text" class="text-info form-control" value="${acc.fullName}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Ngày Sinh</label>
-                                            <input name="dateOfBirth" type="date" class="form-control" value="${acc.dateOfBirth}">
+                                            <label style="color: black">Ngày Sinh</label>
+                                            <input name="dateOfBirth" type="date" class=" text-info form-control" value="${acc.dateOfBirth}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Email</label>
-                                            <input name="email" type="email" class="form-control" value="${acc.email}">
+                                            <label style="color: black">Email</label>
+                                            <input name="email" type="email" class="text-info form-control" value="${acc.email}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Số Điện Thoại</label>
-                                            <input name="phone" type="text" class="form-control" value="${acc.phone}">
+                                            <label style="color: black">Số Điện Thoại</label>
+                                            <input name="phone" type="text" class="text-info form-control" value="${acc.phone}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Địa chỉ</label>
-                                            <input name="address" type="text" class="form-control" value="${acc.address}">
+                                            <label style="color: black">Địa chỉ</label>
+                                            <input name="address" type="text" class="text-info form-control" value="${acc.address}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Giới tính</label>
-                                            <select name="gender" class="form-control">
+                                            <label style="color: black">Giới tính</label>
+                                            <select name="gender" class="text-info form-control">
                                                 <c:choose>
                                                     <c:when test="${acc.gender eq 'Male'}">
                                                         <option value="Male" selected>Nam</option>
@@ -234,7 +226,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input class="btn btn-primary" style="width: 40%" name="action" value="Cập Nhật" type="submit" >
+                                    <input class="btn btn-outline-primary" style="width: 40%" name="action" value="Cập Nhật" type="submit" >
                                 </div>
                             </form>
 
@@ -262,7 +254,7 @@
 
                                             <div class="form-group">
 
-                                                <label>Mật khẩu cũ</label>
+                                                <label style="color: black" >Mật khẩu cũ</label>
                                                 <input required="" type="password" name="password" class="form-control">
                                                 <div class="old-pass"> <i class="fa-solid fa-warning"></i> Xác nhận mật khẩu cũ</div>
                                             </div>
@@ -271,7 +263,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Mật khẩu mới</label>
+                                                <label style="color: black" >Mật khẩu mới</label>
                                                 <input required="" type="password" name="newPassword" class="form-control">
                                                 <div class="requirement mt-3">
                                                     <p>Mật khẩu mới phải chứa:</p>
@@ -288,14 +280,14 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Xác nhận mật khẩu mới</label>
+                                                <label style="color: black">Xác nhận mật khẩu mới</label>
                                                 <input required="" type="password" name="confirm" class="form-control">
                                                 <p class="confirm-new-pass"> <i class="fa-solid fa-warning"></i>Xác nhận đúng mật khẩu mới!</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <input class="btn btn-primary change-pass-button" type="submit" name="action" value="Thay Đổi Mật Khẩu"
+                                    <input class="btn btn-outline-primary change-pass-button" type="submit" name="action" value="Thay Đổi Mật Khẩu"
                                            class="btn btn-block btn-info">
                                     <!--                            <div>
                                                                     <button class="btn btn-primary">Update</button>
@@ -311,7 +303,7 @@
                         <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
                             <h3 class="mb-4">Tình Trạng Đơn Dịch Vụ</h3>
                             <div class="row">
-                                <table id="example_table1" class="table table-hover text-center table-info">
+                                <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-info">
                                     <thead>
                                         <tr>
                                             <th>Dịch vụ</th>
@@ -337,7 +329,7 @@
                                                 <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>
                                                 <td>
                                                     <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
-                                                        <button class="btn btn-outline-primary">Xác nhận</button>
+                                                        <button disabled="" class="btn btn-success">Xác nhận</button>
                                                     </c:if>
                                                     <c:if test="${booking.bookingStatus eq 'Đang hoạt động'}">
                                                         <button class="btn btn-primary">Đang làm</button>
@@ -355,7 +347,7 @@
                         <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
                             <h3 class="mb-4">Số Đơn Của Bạn</h3>
                             <div class="row">
-                                <table id="example_table2" class="table">
+                                <table style="border: #004085 solid medium" id="example_table2" class="table table-hover text-center table-info">
                                     <thead>
                                         <tr>
                                             <th>Mã đơn</th>
@@ -385,7 +377,7 @@
                             <h3 class="mb-4">Thông Tin</h3>
                             <div class="form-group">
 
-                                <table id="example_table3" class="table">
+                                <table style="border: #004085 solid medium" id="example_table3" class="table table-hover text-center table-info">
                                     <thead>
                                         <tr>
                                             <th></th>
@@ -427,6 +419,7 @@
         <%            }
         %>
     </section>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -441,8 +434,44 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    
+    <!--    //----------------------------------------------------------------------------------
+    //cập nhật hình ảnh Real Time-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Bắt sự kiện khi người dùng thay đổi trường input file
+            $('#profile-image').change(function () {
+                var fileInput = $('#profile-image')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+
+                    $.ajax({
+                        url: 'UpdateImageProfileController',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            // Cập nhật hình ảnh mới trên trang web
+                            $('#profileImage').attr('src', response);
+                            $('#profile-image-2').attr('src', response);
+                        },
+                        error: function (xhr, status, error) {
+                            // Xử lý lỗi (nếu có)
+                            console.log(error);
+                        }
+                    });
+                }
+
+            });
+        });
+    </script>
     <!-- cho data table -->
+    <!-- jQuery Datatable js -->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap Datatable js -->    
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#example_table1').DataTable({
@@ -469,6 +498,7 @@
                 }
             });
         });
+
         $(document).ready(function () {
             $('#example_table2').DataTable({
                 language: {
@@ -494,6 +524,7 @@
                 }
             });
         });
+
         $(document).ready(function () {
             $('#example_table3').DataTable({
                 language: {
@@ -683,39 +714,7 @@
             button.disabled = isButtonDisabled;
         }
     </script>
-    <!--    //----------------------------------------------------------------------------------
-    //cập nhật hình ảnh Real Time-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Bắt sự kiện khi người dùng thay đổi trường input file
-            $('#profile-image').change(function () {
-                var fileInput = $('#profile-image')[0].files[0];
-                if (fileInput) {
-                    var formData = new FormData();
-                    formData.append('image', fileInput);
 
-                    $.ajax({
-                        url: 'UpdateImageProfileController',
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (response) {
-                            // Cập nhật hình ảnh mới trên trang web
-                            $('#profileImage').attr('src', response);
-                            $('#profile-image-2').attr('src', response);
-                        },
-                        error: function (xhr, status, error) {
-                            // Xử lý lỗi (nếu có)
-                            console.log(error);
-                        }
-                    });
-                }
-
-            });
-        });
-    </script>
 
 
 </body>

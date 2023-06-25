@@ -122,6 +122,38 @@ public class BookingDAO {
         }
         return bookingList;
     }
+    
+    
+     //get all booking by id
+    public List<BookingDTO> getBookingDetailByStaffID(String StaffID) {
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.TypeOfService, bd.Message\n"
+                + "FROM Booking b, BookingDetail bd , Service s\n"
+                + "WHERE b.BookingID = bd.BookingID AND b.ServiceID = s.ServiceID AND b.StaffID = ?";
+        List<BookingDTO> bookingList = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, StaffID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                bookingList.add(new BookingDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getNString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getNString(6),
+                        rs.getString(7),
+                        rs.getInt(8),
+                        rs.getString(9),
+                        rs.getNString(10),
+                        rs.getNString(11),
+                        rs.getNString(12)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookingList;
+    }
 
     //lấy Booking bằng booking id
     public BookingDTO getBookingByID(String bookingID) {
@@ -242,7 +274,7 @@ public class BookingDAO {
 
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        List<BookingDTO> list = dao.getBookingDetailByAccountID("AC0007");
+        List<BookingDTO> list = dao.getBookingDetailByStaffID("AC0005");
         for (BookingDTO bookingDTO : list) {
             System.out.println(bookingDTO.toString());
         }

@@ -87,7 +87,6 @@
                 </div>
             </div>
             <a href="ContactPageController" class="nav-item nav-link"><strong>Liên Hệ</strong></a>
-
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                     <c:if test="${sessionScope.acc == null}"><strong>Tài Khoản</strong></c:if>
@@ -95,7 +94,7 @@
                         <img></img>
                         <img id="profile-image-2" class="avatar-nav"  src="${sessionScope.acc.image}" >
                         <strong>${sessionScope.acc.fullName}</strong>
-                    </c:if>
+                        </c:if>
                 </a>
                 <div class="dropdown-menu bg-light m-0">
 
@@ -114,12 +113,146 @@
                         <a href="ProfilePageController" class="dropdown-item">Thông Tin Tài Khoản</a>
                     </c:if>    
                     <c:if test="${sessionScope.acc != null}">
+                        <c:if test="${acc.roleID != 1 && acc.roleID != 3 && acc.roleID != 4}">
+                            <a href="StaffTaskPageController" class="dropdown-item">Công việc</a>
+                        </c:if>  
+                    </c:if>
+                    <c:if test="${sessionScope.acc != null}">
                         <a href="LogoutController" class="dropdown-item">Đăng xuất</a>
                     </c:if>
 
 
                 </div>
             </div>
+
+            <c:if test="${sessionScope.acc != null}">
+
+
+                <style>
+                    .dropdown-menu.notifications {
+                        width: 350px;
+                        padding: 10px;
+                        max-height: 400px;
+                        overflow-y: auto;
+                    }
+
+                    .notification-title {
+                        font-weight: bold;
+                        margin-right: 10px;
+                    }
+
+                    .clear-noti {
+                        font-size: 12px;
+                        color: #999;
+                        text-decoration: none;
+                        float: right;
+                        margin-top: 5px;
+                    }
+
+                    .notification-list {
+                        list-style-type: none;
+                        padding-left: 0;
+                        margin-top: 10px;
+                    }
+
+                    .notification-message {
+                        padding: 10px 0;
+                        border-bottom: 1px solid #eee;
+                    }
+
+                    .notification-message:last-child {
+                        border-bottom: none;
+                    }
+
+                    .avatar {
+                        margin-right: 10px;
+                    }
+
+                    .avatar-img {
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .noti-details {
+                        margin-bottom: 5px;
+                    }
+
+                    .noti-time {
+                        font-size: 12px;
+                        color: #999;
+                    }
+
+                    .topnav-dropdown-footer a {
+                        display: block;
+                        padding: 8px 10px;
+                        font-size: 12px;
+                        text-align: center;
+                        text-decoration: none;
+                        color: #333;
+                        background-color: #f9f9f9;
+                    }
+
+                    .topnav-dropdown-footer a:hover {
+                        background-color: #e9e9e9;
+                    }
+                    .noti-details {
+                        word-wrap: break-word;
+                        max-width: 250px;
+                    }
+
+                </style>
+
+                <div class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="dropdown-toggle nav-link"
+                        data-bs-toggle="dropdown"
+                        >
+                        <i class="fa fa-bell"></i>
+
+
+                    </a>
+                    <div class="dropdown-menu notifications">
+                        <div class="topnav-dropdown-header">
+                            <span class="notification-title">Thông báo</span>
+                            <a href="javascript:void(0)" class="clear-noti"> Xóa tất cả </a>
+                        </div>
+                        <div class="noti-content">
+                            <ul id="notificationList" class="notification-list">
+                                <li class="notification-message">
+                                    <a href="#">
+                                        <div class="media d-flex">
+                                            <span class="avatar avatar-sm flex-shrink-0">
+
+                                                <img
+                                                    class="avatar-img rounded-circle"
+                                                    alt="User Image"
+                                                    src="${acc.image}"
+                                                    />
+                                            </span>
+                                            <div class="media-body ">
+                                                <p class="noti-details" style="color: black">
+                                                    zckzmxckzmxkcnzxkcnzxkcnzkcnzkcnkaenfiabgjdngdknfaknfa
+                                                </p>
+                                                <p class="noti-time">
+                                                    <span class="notification-time">
+                                                        25 phút trước
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer">
+                            <a href="#">View all Notifications</a>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
         </div>
     </div>
 </nav>

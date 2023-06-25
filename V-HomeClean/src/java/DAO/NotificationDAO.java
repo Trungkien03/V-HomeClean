@@ -39,6 +39,32 @@ public class NotificationDAO {
         }
     }
 
+    //lấy ra những notification dựa trên accountId
+    public List<NotificationDTO> getAllNotiByAccountID(String accountID) {
+        String query = "SELECT *\n"
+                + "FROM Notification\n"
+                + "WHERE AccountID = ?\n"
+                + "ORDER BY ABS(DATEDIFF(minute, Create_at, GETDATE()))";
+        List<NotificationDTO> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, accountID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new NotificationDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getNString(4),
+                        rs.getString(5),
+                        rs.getString(6)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     public List<NotificationDTO> getAllNotification() {
         String query = "SELECT *\n"
                 + "FROM Notification\n"
@@ -83,7 +109,7 @@ public class NotificationDAO {
 
     public static void main(String[] args) {
         NotificationDAO dao = new NotificationDAO();
-        List<NotificationDTO> list = dao.getAllNotification();
+        List<NotificationDTO> list = dao.getAllNotiByAccountID("AC0013");
         for (NotificationDTO notificationDTO : list) {
             System.out.println(notificationDTO.toString());
         }
