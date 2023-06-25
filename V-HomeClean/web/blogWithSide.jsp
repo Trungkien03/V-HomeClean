@@ -71,6 +71,9 @@
                 height: 100%;
                 z-index: -1;
             }
+
+
+
         </style>
     </head>
 
@@ -96,22 +99,24 @@
             <section class="section blog-wrap bg-gray">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-8">
+                        <div class="col-lg-12">
                             <div class="row">
 
                             <c:forEach items="${listBlog}" var="o">
-                                <div class="col-lg-6 col-md-6 mb-5">
+                                <div class="col-lg-4 col-md-4 mb-5">
                                     <div class="blog-item wow fadeInUp" data-wow-delay="0.5s">
-                                       
+
                                         <input name="blogID" value="${o.blogID}" type="hidden">
 
-                                        <img src="${o.image}" alt="" class="img-fluid rounded">    
+                                        <img src="${o.image}" alt="" class="img-fluid rounded"> 
+
+
                                         <div class="blog-item-content bg-white p-4">
                                             <div class="blog-item-meta  py-1 px-2">                                                   
-                                                <span class="text-muted text-capitalize mr-3"><i class="ti-pencil-alt mr-2"></i>${o.cateBlogName}</span>
+                                                <span style="color: #999" class="text-muted text-capitalize mr-3"><i class="ti-pencil-alt mr-2"></i>${o.cateBlogName}</span>
                                             </div> 
 
-                                            <h3 class="mt-3 mb-3"><a href="SingleBlogController?blogID=${o.blogID}">${o.title}</a></h3>
+                                            <h3 class="mt-3 mb-3"><a href="SingleBlogController?blogID=${o.blogID}" style="color: rgb(37, 150, 190); font-size: 24px; font-weight: bold;">${o.title}</a></h3>
                                             <!--                                            <p class="mb-4"></p>-->
 
                                             <!--                                            <a href="SingleBlogController?blogID=" class="btn btn-small btn-main btn-round-full">Learn More</a>-->
@@ -119,86 +124,100 @@
                                     </div>
                                 </div>                            
                             </c:forEach>
+
                         </div>
                     </div>
 
-
-                    <div class="col-lg-4">
+<!-- BAI VIET HAY CAC THU CON LAI TAM THOI AN -->
+<!--                    <div class="col-lg-4">
                         <div class="sidebar-wrap">
                             <div class="sidebar-widget search card p-4 mb-3 border-0">
-                                <input type="text" class="form-control" placeholder="Tìm Kiếm">
-                                <a href="#" class="btn btn-mian btn-small d-block mt-2">Tìm Kiếm</a>
-                            </div>
 
-                            <div class="sidebar-widget card border-0 mb-3">
-                                <img src="images/blog/blog-author.jpg" alt="" class="img-fluid">
-                                <div class="card-body p-4 text-center">
-                                    <h5 class="mb-0 mt-4">Arther Conal</h5>
-                                    <p>Digital Marketer</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, dolore.</p>
-
-                                    <ul class="list-inline author-socials">
-                                        <li class="list-inline-item mr-3">
-                                            <a href="#"><i class="fab fa-facebook-f text-muted"></i></a>
-                                        </li>
-                                        <li class="list-inline-item mr-3">
-                                            <a href="#"><i class="fab fa-twitter text-muted"></i></a>
-                                        </li>
-                                        <li class="list-inline-item mr-3">
-                                            <a href="#"><i class="fab fa-linkedin-in text-muted"></i></a>
-                                        </li>
-                                        <li class="list-inline-item mr-3">
-                                            <a href="#"><i class="fab fa-pinterest text-muted"></i></a>
-                                        </li>
-                                        <li class="list-inline-item mr-3">
-                                            <a href="#"><i class="fab fa-behance text-muted"></i></a>
-                                        </li>
-                                    </ul>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm bài blog" aria-label="Tìm kiếm" aria-describedby="search-button">
+                                    <button class="btn btn-primary" type="button" id="search-button">Tìm</button>
                                 </div>
+
                             </div>
+                                                        <form action="MainController" method="post">
+                                                            <div>
+                                                                <input value="${txtS}" name="txt" type="text" placeholder="Search...">
+                                                                <input type="submit" name="action" value="Search">
+                                                            </div>
+                                                        </form>
+
+
 
                             <div class="sidebar-widget latest-post card border-0 p-4 mb-3">
                                 <h5>Bài viết mới nhất</h5>
 
                                 <div class="media border-bottom py-3">
-                                    <a href="#"><img class="mr-4" src="images/blog/bt-3.jpg" alt=""></a>
-                                    <div class="media-body">
-                                        <h6 class="my-2"><a href="#">Thoughtful living in los Angeles</a></h6>
-                                        <span class="text-sm text-muted">03 Mar 2018</span>
-                                    </div>
-                                </div>
+                    <c:forEach items="${listBlog}" var="o">
+                    <a href="#"><img class="mr-4" src="${o.image}" alt=""></a>
+                    <div class="media-body">
+                        <h6 class="my-2"><a href="#">${o.title}</a></h6>
+                        <span class="text-sm text-muted">${o.time}</span>
+                    </div>
+                    </c:forEach>
+                </div>
 
-                                <!--                                <div class="media border-bottom py-3">
-                                                                    <a href="#"><img class="mr-4" src="images/blog/bt-2.jpg" alt=""></a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="my-2"><a href="#">Vivamus molestie gravida turpis.</a></h6>
-                                                                        <span class="text-sm text-muted">03 Mar 2018</span>
-                                                                    </div>
-                                                                </div>
-                                
-                                                                <div class="media py-3">
-                                                                    <a href="#"><img class="mr-4" src="images/blog/bt-1.jpg" alt=""></a>
-                                                                    <div class="media-body">
-                                                                        <h6 class="my-2"><a href="#">Fusce lobortis lorem at ipsum semper sagittis</a></h6>
-                                                                        <span class="text-sm text-muted">03 Mar 2018</span>
-                                                                    </div>
-                                                                </div>-->
-                            </div>
+                                                <div class="media border-bottom py-3">
+                                                    <a href="#"><img class="mr-4" src="images/blog/bt-2.jpg" alt=""></a>
+                                                    <div class="media-body">
+                                                        <h6 class="my-2"><a href="#">Vivamus molestie gravida turpis.</a></h6>
+                                                        <span class="text-sm text-muted">03 Mar 2018</span>
+                                                    </div>
+                                                </div>
+                
+                                                <div class="media py-3">
+                                                    <a href="#"><img class="mr-4" src="images/blog/bt-1.jpg" alt=""></a>
+                                                    <div class="media-body">
+                                                        <h6 class="my-2"><a href="#">Fusce lobortis lorem at ipsum semper sagittis</a></h6>
+                                                        <span class="text-sm text-muted">03 Mar 2018</span>
+                                                    </div>
+                                                </div>
+            </div>
+            <div class="sidebar-widget card border-0 mb-3">
 
-                            <div class="sidebar-widget bg-white rounded tags p-4 mb-3">
-                                <h5 class="mb-4">Tags</h5>
+                <div class="card-body p-4 text-center">
+                    <h5 class="mb-0 mt-4">Arther Conal</h5>
+                    <p>Digital Marketer</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, dolore.</p>
 
-                                <a href="#">Web</a>
-                                <a href="#">agency</a>
-                                <a href="#">company</a>
-                                <a href="#">creative</a>
-                                <a href="#">html</a>
-                                <a href="#">Marketing</a>
-                                <a href="#">Social Media</a>
-                                <a href="#">Branding</a>
-                            </div>
-                        </div>
-                    </div>   
+                    <ul class="list-inline author-socials">
+                        <li class="list-inline-item mr-3">
+                            <a href="#"><i class="fab fa-facebook-f text-muted"></i></a>
+                        </li>
+                        <li class="list-inline-item mr-3">
+                            <a href="#"><i class="fab fa-twitter text-muted"></i></a>
+                        </li>
+                        <li class="list-inline-item mr-3">
+                            <a href="#"><i class="fab fa-linkedin-in text-muted"></i></a>
+                        </li>
+                        <li class="list-inline-item mr-3">
+                            <a href="#"><i class="fab fa-pinterest text-muted"></i></a>
+                        </li>
+                        <li class="list-inline-item mr-3">
+                            <a href="#"><i class="fab fa-behance text-muted"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-widget bg-white rounded tags p-4 mb-3">
+                <h5 class="mb-4">Tags</h5>
+
+                <a href="#">Web</a>
+                <a href="#">agency</a>
+                <a href="#">company</a>
+                <a href="#">creative</a>
+                <a href="#">html</a>
+                <a href="#">Marketing</a>
+                <a href="#">Social Media</a>
+                <a href="#">Branding</a>
+            </div>
+        </div>
+    </div>   -->
                 </div>
 
                 <div class="row mt-5">

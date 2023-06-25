@@ -59,8 +59,10 @@ public class SingleBlogController extends HttpServlet {
                     try {
                         String message = request.getParameter("message");
                         String accountID = a.getAccountID();
+                        String imageAcc = a.getImage();
                         String blogID1 = b.getBlogID();
-                        cdao.AddComment(message, accountID, blogID1);
+                        cdao.AddComment(message, accountID, blogID1, imageAcc);
+                        
                         session.setAttribute("listB", list);
                         session.setAttribute("BlogDetail", b);
                         List<CommentDTO> listC = cdao.getCommentV2(blogID);

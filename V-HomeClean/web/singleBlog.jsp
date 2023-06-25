@@ -75,8 +75,8 @@
                     <h1 class="display-4 text-white animated slideInDown mb-4">${BlogDetail.title}</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb justify-content-center mb-0">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="index.jsp">Trang chủ</a></li>
+<!--                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>-->
                         <li class="breadcrumb-item text-primary active" aria-current="page">BLOG</li>
                     </ol>
                 </nav>
@@ -90,7 +90,7 @@
                     <div class="row">
                         <div class="col-lg-12 mb-5">
                             <div class="single-blog-item">
-                                <img style="height: 600px;" class="img-single-blog" src="${BlogDetail.image}" alt="" >
+                                <img style="margin-left: 43px; width: 80%; height: auto; max-height: 650px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: center" class="img-single-blog" src="${BlogDetail.image}" alt="" >
 
                                 <div class="blog-item-content bg-white p-5">
                                     <!--                                        <div class="blog-item-meta bg-gray py-1 px-2">
@@ -158,58 +158,64 @@
 
 
                         <!--==========================================HIEN THI COMMENT=================================================-->
-                        <div id="commentContainer" style="border: #000 solid 2px" class="col-lg-12 mb-5">
-                            <div class="comment-area card border-0 p-5">
+                        <h3 style="margin-left: 40px" class="mb-4">Bình Luận</h3>
+                        <div id="commentContainer" style="margin-left: 55px; border: #999 solid 1px; width: 100%; max-width: 770px; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);" class="col-lg-12 mb-5">
 
-                                <h3 class="mb-4">Bình Luận</h3>
-                                <ul class="comment-tree list-unstyled">
+                            <div>
 
-                                    <li class="mb-5">
+                                <div class="comment-area card border-0 p-5">
+                                    <ul class="comment-tree list-unstyled">
 
-                                        <div style="margin-left: 20px;" class="comment-area-box">
+                                        <li class="mb-5">
+                                            <div style="margin-left: 20px;" class="comment-area-box">
 
-                                            <c:forEach items="${listCmt}" var="o">
+                                                <c:forEach items="${listCmt}" var="o">
+                                                    <div style="display: flex; ">
+                                                        <div style="margin-left: -11px">
+                                                            <img src="${o.imageAcc}" style="width: 30px; height: 30px; border-radius: 0px;" >
+                                                        </div>
+                                                        <div style="border-bottom: 1px solid #999; width: 100%; margin-bottom: 2%; margin-left: 12px">
 
-                                                <img alt="" src="images/blog/test1.jpg" class="img-fluid float-left mr-3 mt-2">
 
-                                                <h5 class="mb-1">${o.fullName}</h5>
-                                                <!--                                                <span>United Kingdom</span>-->
+                                                            <!--                                                        <img alt="" src="images/blog/test1.jpg" class="img-fluid float-left mr-3 mt-2">-->
+                                                            <h6 class="mb-1">${o.fullName}</h6>
+                                                            <div class="comment-meta mt-4 mt-lg-0 mt-md-0 float-lg-right float-md-right">
+                                                                <!--                                                        <a href="#"><i class="icofont-reply mr-2 text-muted"></i>Reply |</a>-->
+                                                                <span style="font-size: x-small; color: #999;" class="date-comm">${o.time}</span>
+                                                            </div>
 
-                                                <div class="comment-meta mt-4 mt-lg-0 mt-md-0 float-lg-right float-md-right">
-                                                    <!--                                                    <a href="#"><i class="icofont-reply mr-2 text-muted"></i>Reply |</a>-->
-                                                    <span style="font-size: x-small; color: #999;" class="date-comm">${o.time}</span>
-                                                </div>
+                                                            <div class="comment-content mt-3">
+                                                                <p>${o.message}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                            </div>
 
-                                                <div class="comment-content mt-3">
-                                                    <p>${o.message}</p>
-                                                </div>
-                                            </c:forEach>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div style="margin-left: 1.9%; margin-top: -13%">
+                                    <form action="SingleBlogController" class="contact-form bg-white rounded p-5" id="comment-form">
+
+                                        <h5 class="mb-4">Viết Bình Luận</h5>
+                                        <div style="display: flex;">
+                                            <div>
+                                                <img src="${sessionScope.acc.image}" style="width: 30px; height: 30px; border-radius: 0px;" >
+                                            </div>  
+                                            <div style="margin-left: 2%; width: 100%">
+                                                <input class="form-control" type="hidden" name="blogID" value="${BlogDetail.blogID}">
+
+
+
+                                                <!--                                <input  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."-->
+                                                <textarea  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."></textarea>
+
+                                                <input type="submit" class="btn btn-primary" name="action" id="submit_contact" value="Bình luận">
+                                            </div>
                                         </div>
-
-                                    </li>
-
-
-
-
-                                    <!--                                    <li>
-                                                                            <div class="comment-area-box">
-                                                                                <img alt="" src="images/blog/test2.jpg" class="mt-2 img-fluid float-left mr-3">
-                                    
-                                                                                <h5 class="mb-1">Philip W</h5>
-                                                                                <span>United Kingdom</span>
-                                    
-                                                                                <div class="comment-meta mt-4 mt-lg-0 mt-md-0 float-lg-right float-md-right">
-                                                                                    <a href="#"><i class="icofont-reply mr-2 text-muted"></i>Reply |</a>
-                                                                                    <span class="date-comm">Posted October 7, 2018</span>
-                                                                                </div>
-                                    
-                                                                                <div class="comment-content mt-3">
-                                                                                    <p>Some consultants are employed indirectly by the client via a consultancy staffing company, a company that provides consultants on an agency basis. </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>-->
-                                </ul>
-
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <!--==========================================INSERT COMMENT=================================================-->
@@ -218,38 +224,40 @@
                                 display: flex;
                             }
                         </style>
-                        <div class="col-lg-12">
-
-                            <form action="SingleBlogController" class="contact-form bg-white rounded p-5" id="comment-form">
-                                <h4 class="mb-4">Viết Bình Luận</h4>
-                                <input class="form-control" type="hidden" name="blogID" value="${BlogDetail.blogID}">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <!-- 
-                                            <input class="form-control" type="text" name="accountID" placeholder="Name:">-->
-                                            <div class="infoCMT">
-
-                                            </div>
-                                        </div>
-                                        <br>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <!--                                        <div class="form-group">
-                                                                                    <input class="form-control" type="hidden" name="accountID">
-                                                                                </div>-->
-                                    </div>
-                                </div>
-
-
-                                <!--                                <input  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."-->
-                                <textarea class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."></textarea>
-
-                                <input type="submit" class="btn btn-primary" name="action" id="submit_contact" value="Bình luận">
-                            </form>
-                        </div>
+                        <!--                        <div class="col-lg-12">
+                        
+                                                    <form action="SingleBlogController" class="contact-form bg-white rounded p-5" id="comment-form">
+                                                        <h4 class="mb-4">Viết Bình Luận</h4>
+                                                        <input class="form-control" type="hidden" name="blogID" value="${BlogDetail.blogID}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                     
+                                                                    <input class="form-control" type="text" name="accountID" placeholder="Name:">
+                                                                    <div class="infoCMT">
+                        
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                                                        <div class="form-group">
+                                                                                                            <input class="form-control" type="hidden" name="accountID">
+                                                                                                        </div>
+                                                            </div>
+                                                        </div>
+                        
+                        
+                                                                                        <input  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."
+                                                        <textarea class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."></textarea>
+                        
+                                                        <input type="submit" class="btn btn-primary" name="action" id="submit_contact" value="Bình luận">
+                                                    </form>
+                                                </div>-->
                     </div>
                 </div>
+
+                <!-- tam thoi an -->
                 <div class="col-lg-4">
                     <div class="sidebar-wrap">
                         <div class="sidebar-widget search card p-4 mb-3 border-0">
@@ -257,32 +265,32 @@
                             <a href="#" class="btn btn-mian btn-small d-block mt-2">search</a>
                         </div>
 
-                        <!--                        <div class="sidebar-widget card border-0 mb-3">
-                                                    <img src="images/blog/blog-author.jpg" alt="" class="img-fluid">
-                                                    <div class="card-body p-4 text-center">
-                                                        <h5 class="mb-0 mt-4">Arther Conal</h5>
-                                                        <p>Digital Marketer</p>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, dolore.</p>
-                        
-                                                        <ul class="list-inline author-socials">
-                                                            <li class="list-inline-item mr-3">
-                                                                <a href="#"><i class="fab fa-facebook-f text-muted"></i></a>
-                                                            </li>
-                                                            <li class="list-inline-item mr-3">
-                                                                <a href="#"><i class="fab fa-twitter text-muted"></i></a>
-                                                            </li>
-                                                            <li class="list-inline-item mr-3">
-                                                                <a href="#"><i class="fab fa-linkedin-in text-muted"></i></a>
-                                                            </li>
-                                                            <li class="list-inline-item mr-3">
-                                                                <a href="#"><i class="fab fa-pinterest text-muted"></i></a>
-                                                            </li>
-                                                            <li class="list-inline-item mr-3">
-                                                                <a href="#"><i class="fab fa-behance text-muted"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>-->
+                        <div class="sidebar-widget card border-0 mb-3">
+                            <img src="images/blog/blog-author.jpg" alt="" class="img-fluid">
+                            <div class="card-body p-4 text-center">
+                                <h5 class="mb-0 mt-4">Arther Conal</h5>
+                                <p>Digital Marketer</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, dolore.</p>
+
+                                <ul class="list-inline author-socials">
+                                    <li class="list-inline-item mr-3">
+                                        <a href="#"><i class="fab fa-facebook-f text-muted"></i></a>
+                                    </li>
+                                    <li class="list-inline-item mr-3">
+                                        <a href="#"><i class="fab fa-twitter text-muted"></i></a>
+                                    </li>
+                                    <li class="list-inline-item mr-3">
+                                        <a href="#"><i class="fab fa-linkedin-in text-muted"></i></a>
+                                    </li>
+                                    <li class="list-inline-item mr-3">
+                                        <a href="#"><i class="fab fa-pinterest text-muted"></i></a>
+                                    </li>
+                                    <li class="list-inline-item mr-3">
+                                        <a href="#"><i class="fab fa-behance text-muted"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
                         <div class="sidebar-widget latest-post card border-0 p-4 mb-3">
                             <h5>Bài viết liên quan!</h5>
@@ -295,21 +303,21 @@
                                 </div>
                             </div>
 
-                            <!--                            <div class="media border-bottom py-3">
-                                                            <a href="#"><img class="mr-4" src="images/blog/bt-2.jpg" alt=""></a>
-                                                            <div class="media-body">
-                                                                <h6 class="my-2"><a href="#">Vivamus molestie gravida turpis.</a></h6>
-                                                                <span class="text-sm text-muted">03 Mar 2018</span>
-                                                            </div>
-                                                        </div>
-                            
-                                                        <div class="media py-3">
-                                                            <a href="#"><img class="mr-4" src="images/blog/bt-1.jpg" alt=""></a>
-                                                            <div class="media-body">
-                                                                <h6 class="my-2"><a href="#">Fusce lobortis lorem at ipsum semper sagittis</a></h6>
-                                                                <span class="text-sm text-muted">03 Mar 2018</span>
-                                                            </div>
-                                                        </div>-->
+                            <div class="media border-bottom py-3">
+                                <a href="#"><img class="mr-4" src="images/blog/bt-2.jpg" alt=""></a>
+                                <div class="media-body">
+                                    <h6 class="my-2"><a href="#">Vivamus molestie gravida turpis.</a></h6>
+                                    <span class="text-sm text-muted">03 Mar 2018</span>
+                                </div>
+                            </div>
+
+                            <div class="media py-3">
+                                <a href="#"><img class="mr-4" src="images/blog/bt-1.jpg" alt=""></a>
+                                <div class="media-body">
+                                    <h6 class="my-2"><a href="#">Fusce lobortis lorem at ipsum semper sagittis</a></h6>
+                                    <span class="text-sm text-muted">03 Mar 2018</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="sidebar-widget card border-0 mb-3">
