@@ -102,23 +102,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
 
-
-                        <div class="col-md-12 d-flex">
-
-                            <div class="col-md-5 flex-column mt-5" style="display: flex; align-items: center;">
-                                <div class="title">
-                                    <h4>Số lượng đặt lịch trong tuần</h4>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 mt-5">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <h4>Số lượng đặt lịch trong tuần</h4>
+                                    </div>
+                                    <div id="chart"></div>
                                 </div>
-                                <div id="chart"></div>
                             </div>
-
-                            <div class="col-md-7">
+                            <div class="col-md-8 mt-5">
                                 <canvas id="myChart"></canvas>
                             </div>
-
                         </div>
+                    </div>
+
+
+                    <div class="row">
 
                         <div class="col-md-6 d-flex mt-5">
                             <div class="card card-table flex-fill" style="border: #007bff solid medium">
@@ -127,7 +129,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive p-3">
-                                        <table id="example_table" class="table table-bordered text-center table-hover">
+                                        <table id="example_table" class="table table-responsive table-bordered text-center table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
@@ -354,7 +356,7 @@
 
         <script>
             var options = {
-                series: [${totalBlogs}, 55, 13, 43, 22, 12,23],
+                series: [${totalBlogs}, 55, 13, 43, 22, 12, 23],
                 chart: {
                     width: 380,
                     type: 'pie',
@@ -378,6 +380,30 @@
 
         </script>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Hàm để gửi yêu cầu Ajax để cập nhật session
+                function updateSession() {
+                    $.ajax({
+                        url: "DashboardController", // Đường dẫn đến servlet xử lý yêu cầu Ajax
+                        type: "POST",
+                        success: function (data) {
+                            console.log("Session updated successfully.");
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log("Error updating session:", errorThrown);
+                        }
+                    });
+                }
+
+                // Khi trang được tải, gọi hàm cập nhật session
+                updateSession();
+
+                // Thiết lập định thời để cập nhật session sau mỗi 5 giây
+                setInterval(updateSession, 5000);
+            });
+        </script>
     </body>
 </html>
 

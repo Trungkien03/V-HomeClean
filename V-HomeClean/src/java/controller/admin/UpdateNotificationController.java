@@ -7,18 +7,19 @@ package controller.admin;
 
 import DAO.AccountDAO;
 import DAO.NotificationDAO;
-import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.NotificationDTO;
+import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,28 +40,18 @@ public class UpdateNotificationController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-//        request.setCharacterEncoding("UTF-8");
-//        AccountDAO aDao = new AccountDAO();
-//        ServiceDAO sDao = new ServiceDAO();
-//        NotificationDAO nDao = new NotificationDAO();
-//        List<NotificationDTO> listNotifications = nDao.getAllNotification();
-//        List<AccountDTO> listAllAccounts = aDao.getAllAccounts();
-//        int totalUnreadNoti = nDao.CountUnreadNotification("false");
-//
-//        // Create a map to hold the notification data
-//        Map<String, Object> jsonData = new HashMap<>();
-//        jsonData.put("listNotifications", listNotifications);
-//        jsonData.put("listAllAccounts", listAllAccounts);
-//        jsonData.put("totalUnreadNoti", totalUnreadNoti);
-//
-//        // Convert the map to a JSON string
-//        String json = new Gson().toJson(jsonData);
-//
-//        // Set the content type of the response
-//        response.setContentType("application/json");
-//
-//        // Write the JSON data to the response
-//        response.getWriter().write(json);
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        AccountDAO aDao = new AccountDAO();
+        NotificationDAO nDao = new NotificationDAO();
+        //lấy ra những thằng Notification
+        List<NotificationDTO> listNotifications = nDao.getAllNotification();
+        session.setAttribute("listNotifications", listNotifications);
+        List<AccountDTO> listAllAccounts = aDao.getAllAccounts();
+        session.setAttribute("listAllAccounts", listAllAccounts);
+        int totalUnreadNoti = nDao.CountUnreadNotification("false");
+        session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

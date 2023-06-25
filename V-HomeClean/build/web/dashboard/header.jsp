@@ -11,13 +11,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html>
 
-<%
-    AccountDTO user = (AccountDTO) session.getAttribute("acc");
-    if (user == null) {
-        response.sendRedirect("login.jsp");
-    }
-%>
-<div class="header">
+
+
+<div id="header-content" class="header">
     <div class="header-left">
         <a href="HomePageController" class="navbar-brand d-flex align-items-center">
             <h3 style="color: #f8e43c" class="logo"><i class="fa fa-building text-primary me-3"></i><strong>V-HomeClean</strong></h3>
@@ -48,8 +44,8 @@
                 data-bs-toggle="dropdown"
                 >
                 <i class="fa fa-bell"></i>
-                <c:if test="${totalUnreadNoti > 1}">
-                    <span class="badge badge-pill">${totalUnreadNoti}</span>
+                <c:if test="${totalUnreadNoti > 0}">
+                    <span id="totalNotification" class="badge badge-pill" >${sessionScope.totalUnreadNoti}</span>
                 </c:if>
 
             </a>
@@ -59,8 +55,8 @@
                     <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
                 </div>
                 <div class="noti-content">
-                    <ul class="notification-list">
-                        <c:forEach items="${listNotifications}" var="o">
+                    <ul id="notificationList" class="notification-list">
+                        <c:forEach items="${sessionScope.listNotifications}" var="o">
                             <li class="notification-message">
                                 <a href="#">
                                     <div class="media d-flex">
@@ -149,3 +145,9 @@
         </li>
     </ul>
 </div>
+
+
+
+
+
+

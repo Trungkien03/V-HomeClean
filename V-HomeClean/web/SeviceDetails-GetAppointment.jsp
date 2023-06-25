@@ -180,7 +180,7 @@
                                         <option value="Vinhomes Metropolis - Hà Nội">Vinhomes Metropolis - Hà Nội</option>
 
                                     </select>
-                                    <label for="relationship">Chọn khu vực VinHomes của bạn</label>
+                                    <label for="relationship">Chọn khu vực</label>
                                 </div>
                                 <strong style="color: #e72734;" >${areaError}</strong>
                             </div>

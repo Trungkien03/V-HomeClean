@@ -23,15 +23,16 @@ public class NotificationDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public void InsertNotification(String accountID, String detail, String status) {
-        String query = "INSERT INTO Notification (AccountID, Detail, Status)\n"
-                + "VALUES (?, ?, ?);";
+    public void InsertNotification(String accountID, String bookingID, String detail, String status) {
+        String query = "INSERT INTO Notification (AccountID, BookingID, Detail, Create_at, Status)\n"
+                + "VALUES ( ?, ?, ?, GETDATE(), ?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, accountID);
-            ps.setNString(2, detail);
-            ps.setString(3, status);
+            ps.setString(2, bookingID);
+            ps.setNString(3, detail);
+            ps.setString(4, status);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,9 +51,10 @@ public class NotificationDAO {
             while (rs.next()) {
                 list.add(new NotificationDTO(rs.getString(1),
                         rs.getString(2),
-                        rs.getNString(3),
-                        rs.getString(4),
-                        rs.getString(5)));
+                        rs.getString(3),
+                        rs.getNString(4),
+                        rs.getString(5),
+                        rs.getString(6)));
             }
         } catch (Exception e) {
             e.printStackTrace();

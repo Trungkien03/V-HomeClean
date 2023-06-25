@@ -25,7 +25,8 @@ public class BookingDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public void InsertBooking(String accountID, String status, String staffID, String serviceID, int totalPrice, String bookingDate, String bookingAddress, String typeOfService, String message) {
+    public int InsertBooking(String accountID, String status, String staffID, String serviceID, int totalPrice, String bookingDate, String bookingAddress, String typeOfService, String message) {
+        int bookingID = -1;
         try {
             conn = new DBContext().getConnection();
             conn.setAutoCommit(false); // Disable auto-commit
@@ -40,7 +41,7 @@ public class BookingDAO {
             ps.executeUpdate();
 
             // Retrieve the generated BookingID
-            int bookingID;
+            
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     bookingID = generatedKeys.getInt(1);
@@ -88,6 +89,7 @@ public class BookingDAO {
                 }
             }
         }
+        return bookingID;
     }
 
     //get all booking by id

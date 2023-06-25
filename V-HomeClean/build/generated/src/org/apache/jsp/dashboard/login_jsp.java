@@ -64,7 +64,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" href=\"css/assets/css/style.css\">\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("\n");
       out.write("        <div class=\"main-wrapper login-body\">\n");
       out.write("            <div class=\"login-wrapper\">\n");
       out.write("                <div class=\"container\">\n");
@@ -73,7 +72,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <div class=\"login-right-wrap\">\n");
       out.write("                                <h1>Đăng Nhập</h1>\n");
       out.write("                                <p class=\"account-subtitle\">Truy cập vào bảng điều khiển</p>\n");
-      out.write("                                <form action=\"MainController\" method=\"post\">\n");
+      out.write("                                <form action=\"../DashboardLoginController\" method=\"post\">\n");
       out.write("                                    <div class=\"form-group\">\n");
       out.write("                                        <input name=\"email\" class=\"form-control\" type=\"text\" placeholder=\"Email\">\n");
       out.write("                                    </div>\n");
@@ -84,7 +83,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                        <input type=\"submit\" class=\"btn btn-primary btn-block\" name=\"action\" value=\"Đăng Nhập\" />\n");
       out.write("                                    </div>\n");
       out.write("                                </form>\n");
-      out.write("                                <div class=\"text-center forgotpass\"><a href=\"#\">Forgot Password?</a></div>\n");
+      out.write("                                <div class=\"text-center forgotpass\"><a href=\"../HomePageController\">Forgot Password?</a></div>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");

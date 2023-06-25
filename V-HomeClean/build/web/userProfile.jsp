@@ -337,7 +337,7 @@
                                                 <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>
                                                 <td>
                                                     <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
-                                                        <button class="btn btn-dark">Xác nhận</button>
+                                                        <button class="btn btn-outline-primary">Xác nhận</button>
                                                     </c:if>
                                                     <c:if test="${booking.bookingStatus eq 'Đang hoạt động'}">
                                                         <button class="btn btn-primary">Đang làm</button>

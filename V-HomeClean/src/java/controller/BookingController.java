@@ -137,9 +137,10 @@ public class BookingController extends HttpServlet {
                 if (checkValidation == true) {
                     ServiceDTO b = sdao.getServiceByID(serviceID);
                     int totalPrice = b.getPrice();
-                    dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
+                    int bookingIDNumber = dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
+                    String bookingID = String.valueOf(bookingIDNumber);
                     String detailNotification = a.getFullName() + " mới đặt lịch dịch vụ mới cho căn hộ " + vinHomesID + " ở khu vực "+ area + " vào ngày " + date;
-                    nDao.InsertNotification(accountID, detailNotification, "false");
+                    nDao.InsertNotification(accountID, bookingID ,detailNotification, "false");
                     request.setAttribute("serviceName", b.getServiceName());
                     request.setAttribute("vinhomesID", vinHomesID);
                     request.setAttribute("area", area);

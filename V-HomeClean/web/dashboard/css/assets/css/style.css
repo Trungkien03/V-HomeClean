@@ -478,16 +478,16 @@ button.bg-danger:hover {
     color: #757575 !important;
 }
 .btn-primary {
-    background-color: #680a83;
-    border: 1px solid #680a83;
+    background-color: #03045e;
+    border: 1px solid #03045e;
 }
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.active,
 .btn-primary:active,
 .open > .dropdown-toggle.btn-primary {
-    background-color: #57086d;
-    border: 1px solid #57086d;
+    background-color: #00b4d8;
+    border: 1px solid #00b4d8;
 }
 .btn-primary.active.focus,
 .btn-primary.active:focus,
@@ -1150,7 +1150,7 @@ b {
 .nav-tabs.nav-tabs-top > li > a.active,
 .nav-tabs.nav-tabs-top > li > a.active:hover,
 .nav-tabs.nav-tabs-top > li > a.active:focus {
-    border-top-color: #680a83;
+    border-top-color: #00b4d8;
 }
 .nav-tabs.nav-tabs-bottom > li {
     margin-bottom: -1px;
@@ -1906,10 +1906,10 @@ html.menu-opened body {
     margin-bottom: 5px;
 }
 .login-body {
+    background-color: #212529;
     display: table;
     height: 100vh;
     min-height: 100vh;
-    background-image: url(../img/log-bg.png);
     position: relative;
     width: 100%;
     background-position: center;
@@ -3512,7 +3512,7 @@ li {
     margin: 0;
 }
 .settings-tab .card-header .fe-camera {
-    background-color: #420ba1;
+    background-color: #457b9d;
     padding: 4px 5px;
     font-size: 12px;
     border: 2px solid #fff;
@@ -3531,7 +3531,7 @@ li {
     font-size: 16px;
 }
 .profile-list i {
-    color: #680a83;
+    color: #219ebc;
     padding-right: 5px;
 }
 .product-content {

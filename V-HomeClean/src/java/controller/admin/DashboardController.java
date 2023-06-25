@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,6 +42,7 @@ public class DashboardController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
         int UserID = 4;
         AccountDAO aDao = new AccountDAO();
         ServiceDAO sDao = new ServiceDAO();
@@ -61,11 +63,11 @@ public class DashboardController extends HttpServlet {
         
         //lấy ra những thằng Notification
         List<NotificationDTO> listNotifications = nDao.getAllNotification();
-        request.setAttribute("listNotifications", listNotifications);
+        session.setAttribute("listNotifications", listNotifications);
         List<AccountDTO> listAllAccounts = aDao.getAllAccounts();
-        request.setAttribute("listAllAccounts", listAllAccounts);
+        session.setAttribute("listAllAccounts", listAllAccounts);
         int totalUnreadNoti = nDao.CountUnreadNotification("false");
-        request.setAttribute("totalUnreadNoti", totalUnreadNoti);
+        session.setAttribute("totalUnreadNoti", totalUnreadNoti);
         
         request.setAttribute("ListUsers", listUsers);
         request.getRequestDispatcher("/dashboard/index.jsp").forward(request, response);

@@ -128,10 +128,12 @@ CREATE TABLE Notification
 (
 	NotificationID INT IDENTITY(1,1) PRIMARY KEY,
 	AccountID NVARCHAR(20) NOT NULL,
+	BookingID INT NOT NULL,
 	Detail NVARCHAR(MAX) NOT NULL,
 	Create_at DATETIME DEFAULT GETDATE() NOT NULL,
 	Status bit NOT NULL,
-	FOREIGN KEY (AccountID) REFERENCES Account(AccountID)
+	FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
+	FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 )
 GO
 

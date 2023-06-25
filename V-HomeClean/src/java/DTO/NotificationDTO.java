@@ -13,6 +13,7 @@ public class NotificationDTO {
 
     private String notificationID;
     private String accountID;
+    private String bookingID;
     private String detail;
     private String createAt;
     private String status;
@@ -20,9 +21,10 @@ public class NotificationDTO {
     public NotificationDTO() {
     }
 
-    public NotificationDTO(String notificationID, String accountID, String detail, String createAt, String status) {
+    public NotificationDTO(String notificationID, String accountID, String bookingID, String detail, String createAt, String status) {
         this.notificationID = notificationID;
         this.accountID = accountID;
+        this.bookingID = bookingID;
         this.detail = detail;
         this.createAt = createAt;
         this.status = status;
@@ -42,6 +44,14 @@ public class NotificationDTO {
 
     public void setAccountID(String accountID) {
         this.accountID = accountID;
+    }
+
+    public String getBookingID() {
+        return bookingID;
+    }
+
+    public void setBookingID(String bookingID) {
+        this.bookingID = bookingID;
     }
 
     public String getDetail() {
@@ -82,7 +92,7 @@ public class NotificationDTO {
 
     @Override
     public String toString() {
-        return "NotificationDTO{" + "notificationID=" + notificationID + ", accountID=" + accountID + ", Detail=" + detail + ", createAt=" + createAt + ", status=" + status + '}';
+        return "NotificationDTO{" + "notificationID=" + notificationID + ", accountID=" + accountID + ", bookingID=" + bookingID + ", detail=" + detail + ", createAt=" + createAt + ", status=" + status + '}';
     }
 
 }
