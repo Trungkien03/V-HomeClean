@@ -208,6 +208,28 @@
                         overflow: hidden; /* Ẩn phần vượt ra khỏi hình tròn */
                         object-fit: cover;
                     } 
+                    .dropdown-menu.notifications {
+                        position: absolute;
+                        top: 100%; /* Hiển thị dưới icon bell */
+                        left: auto;
+                        right: auto;
+                        z-index: 9999; /* Đảm bảo hiển thị trên các phần tử khác */
+                    }
+                    .notification-link {
+                        /* Các thuộc tính CSS mặc định */
+                        /* Ví dụ: */
+                        background-color: #f8f8f8;
+                        color: #555;
+                        transition: background-color 0.3s ease, color 0.3s ease; /* Thêm transition cho background-color và color */
+                    }
+
+                    .notification-link:hover {
+                        /* Các thuộc tính CSS khi hover */
+                        /* Ví dụ: */
+                        background-color: #ebebeb;
+                        color: #333;
+                    }
+
                 </style>
 
                 <div class="nav-item">
@@ -221,38 +243,36 @@
                         </i>
                     </a>
 
-                    <div class="dropdown-menu notifications">
+                    <div id="notificationDropdown" class="dropdown-menu notifications">
                         <div class="topnav-dropdown-header">
                             <span class="notification-title">Thông báo</span>
                             <a href="javascript:void(0)" class="clear-noti"> Xóa tất cả </a>
                         </div>
                         <div class="noti-content">
                             <ul id="notificationList" class="notification-list">
-                                <c:forEach items="${sessionScope.listNotiUnread}" var="o">
-                                    <li class="notification-message">
+                                <c:forEach items="${sessionScope.listNotiUnread}" var="notification">
+                                    <li class="notification-link notification-message">
                                         <a href="#">
                                             <div class="media d-flex">
                                                 <span style="width: 50px; text-align: center;" class="avatar avatar-sm flex-shrink-0">
                                                     <c:set var="image" value="img/user.jpg" />
                                                     <c:forEach items="${ListBookingAccounts}" var="booking">
-                                                        <c:forEach items="${listAllAccounts}" var="b">
-                                                            <c:if test="${b.accountID eq booking.staffID}">
-                                                                <c:set var="image" value="${b.image}" />
-                                                            </c:if>
-                                                        </c:forEach>
+                                                        <c:if test="${notification.bookingID eq booking.bookingID}">
+                                                            <c:forEach items="${listAllAccounts}" var="account">
+                                                                <c:if test="${account.accountID eq booking.staffID}">
+                                                                    <c:set var="image" value="${account.image}" />
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </c:if>
                                                     </c:forEach>
 
-                                                    <img
-                                                        class="avatar-img rounded-circle"
-                                                        alt="User Image"
-                                                        src="${image}"
-                                                        />
+                                                    <img class="avatar-img rounded-circle" alt="User Image" src="${image}" />
                                                 </span>
-                                                <div class="media-body ">
+                                                <div class="media-body">
                                                     <p class="noti-details" style="color: black">
-                                                        ${o.detail}
+                                                        ${notification.detail}
                                                     </p>
-                                                    <c:set var="minutes" value="${o.calculateMinutesFromNow()}" />
+                                                    <c:set var="minutes" value="${notification.calculateMinutesFromNow()}" />
                                                     <p class="noti-time">
                                                         <span class="notification-time">
                                                             <c:choose>
@@ -275,6 +295,8 @@
                                         </a>
                                     </li>
                                 </c:forEach>
+
+
 
                             </ul>
                         </div>
