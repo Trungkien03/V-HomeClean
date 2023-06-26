@@ -17,18 +17,22 @@ public class NotificationDTO {
     private String detail;
     private String createAt;
     private String status;
+    private String typeNoti;
 
     public NotificationDTO() {
     }
 
-    public NotificationDTO(String notificationID, String accountID, String bookingID, String detail, String createAt, String status) {
+    public NotificationDTO(String notificationID, String accountID, String bookingID, String detail, String createAt, String status, String typeNoti) {
         this.notificationID = notificationID;
         this.accountID = accountID;
         this.bookingID = bookingID;
         this.detail = detail;
         this.createAt = createAt;
         this.status = status;
+        this.typeNoti = typeNoti;
     }
+
+    
 
     public String getNotificationID() {
         return notificationID;
@@ -90,6 +94,16 @@ public class NotificationDTO {
         return (int) (diffInMillis / (1000 * 60)); // Chuyển đổi milliseconds thành phút
     }
 
+    public String getTypeNoti() {
+        return typeNoti;
+    }
+
+    public void setTypeNoti(String typeNoti) {
+        this.typeNoti = typeNoti;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "NotificationDTO{" + "notificationID=" + notificationID + ", accountID=" + accountID + ", bookingID=" + bookingID + ", detail=" + detail + ", createAt=" + createAt + ", status=" + status + '}';

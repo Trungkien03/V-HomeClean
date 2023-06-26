@@ -88,10 +88,14 @@ public class BookingGeneralController extends HttpServlet {
                         ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
                         AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
                         AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
+                        
                         String notiDetails = "Nhân viên " +  staff.getFullName() + " sẽ đảm nhận cho dịch vụ " + service.getServiceName() + " của bạn vào thời gian " + booking.getBookingDate();
-                        nDao.InsertNotification(account.getAccountID(), bookingIDString, notiDetails, "false");
-                        String notiDetailsStaff = "Bạn sẽ đảm nhận cho đơn hàng với mã số " + booking.getBookingID();
-                        nDao.InsertNotification(staff.getAccountID(), bookingIDString, notiDetailsStaff, "false");
+                        String typeNotiUser = "User"; //để định dạng thông báo này sẽ được gửi tới user
+                        nDao.InsertNotification(account.getAccountID(), bookingIDString, notiDetails, "false", typeNotiUser);
+                        
+                        String notiDetailsStaff = "Bạn vừa được giao một đơn dịch vụ mới từ Quản lý " + a.getFullName();
+                        String typeNotiStaff = "Staff";
+                        nDao.InsertNotification(staff.getAccountID(), bookingIDString, notiDetailsStaff, "false", typeNotiStaff);
                         int roleIDFixElec = 2;
                         int roleIDFixWater = 5;
                         int roleIDClean = 6;

@@ -23,9 +23,9 @@ public class NotificationDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public void InsertNotification(String accountID, String bookingID, String detail, String status) {
-        String query = "INSERT INTO Notification (AccountID, BookingID, Detail, Create_at, Status)\n"
-                + "VALUES ( ?, ?, ?, GETDATE(), ?)";
+    public void InsertNotification(String accountID, String bookingID, String detail, String status, String typeNoti) {
+        String query = "INSERT INTO Notification (AccountID, BookingID, Detail, Create_at, Status, TypeNoti)\n"
+                + "VALUES ( ?, ?, ?, GETDATE(), ?, ?)";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -33,6 +33,7 @@ public class NotificationDAO {
             ps.setString(2, bookingID);
             ps.setNString(3, detail);
             ps.setString(4, status);
+            ps.setString(5, typeNoti);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,7 +58,8 @@ public class NotificationDAO {
                         rs.getString(3),
                         rs.getNString(4),
                         rs.getString(5),
-                        rs.getString(6)));
+                        rs.getString(6),
+                        rs.getString(7)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,14 +67,16 @@ public class NotificationDAO {
         return list;
     }
 
-    public List<NotificationDTO> getAllNotification() {
+    public List<NotificationDTO> getAllNotificationByTypeNoti(String typeNoti) {
         String query = "SELECT *\n"
                 + "FROM Notification\n"
+                + "WHERE TypeNoti = ?\n"
                 + "ORDER BY ABS(DATEDIFF(minute, Create_at, GETDATE()))";
         List<NotificationDTO> list = new ArrayList<>();
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
+            ps.setString(1, typeNoti);
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new NotificationDTO(rs.getString(1),
@@ -80,7 +84,8 @@ public class NotificationDAO {
                         rs.getString(3),
                         rs.getNString(4),
                         rs.getString(5),
-                        rs.getString(6)));
+                        rs.getString(6),
+                        rs.getString(7)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,31 +94,31 @@ public class NotificationDAO {
     }
 
     //count notification mà chưa có đọc
-    public int CountUnreadNotification(String status) {
+    public int CountUnreadNotificationAndtypeNoti(String status, String typeNoti) {
         String query = "SELECT COUNT(*) AS CountByStatus\n"
                 + "FROM Notification\n"
-                + "WHERE Status = ?";
+                + "WHERE Status = ? AND TypeNoti = ?";
         int total = 0;
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, status);
+            ps.setString(2, typeNoti);
             rs = ps.executeQuery();
             if (rs.next()) {
                 total = rs.getInt("CountByStatus");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return total;
     }
 
     public static void main(String[] args) {
+        String typeAdmin = "Admin";
+        String typeUser = "User";
+        String typeStaff = "Staff";
         NotificationDAO dao = new NotificationDAO();
-        List<NotificationDTO> list = dao.getAllNotiByAccountID("AC0013");
-        for (NotificationDTO notificationDTO : list) {
-            System.out.println(notificationDTO.toString());
-        }
-        int total = dao.CountUnreadNotification("false");
-        System.out.println(total);
+        
     }
 }

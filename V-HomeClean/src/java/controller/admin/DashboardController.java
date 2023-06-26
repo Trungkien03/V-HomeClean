@@ -62,11 +62,12 @@ public class DashboardController extends HttpServlet {
         request.setAttribute("totalBlogs", totalBlogs);
         
         //lấy ra những thằng Notification
-        List<NotificationDTO> listNotifications = nDao.getAllNotification();
+        String typeNotiAdmin = "Admin"; //lấy ra những cái nào của thằng admin cần đọc thôi
+        List<NotificationDTO> listNotifications = nDao.getAllNotificationByTypeNoti(typeNotiAdmin); // lấy ra danh sách những thông báo của Admin
         session.setAttribute("listNotifications", listNotifications);
-        List<AccountDTO> listAllAccounts = aDao.getAllAccounts();
+        List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
         session.setAttribute("listAllAccounts", listAllAccounts);
-        int totalUnreadNoti = nDao.CountUnreadNotification("false");
+        int totalUnreadNoti = nDao.CountUnreadNotificationAndtypeNoti("false", typeNotiAdmin);
         session.setAttribute("totalUnreadNoti", totalUnreadNoti);
         
         request.setAttribute("ListUsers", listUsers);

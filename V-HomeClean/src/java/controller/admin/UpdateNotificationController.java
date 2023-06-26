@@ -45,13 +45,13 @@ public class UpdateNotificationController extends HttpServlet {
         AccountDAO aDao = new AccountDAO();
         NotificationDAO nDao = new NotificationDAO();
         //lấy ra những thằng Notification
-        List<NotificationDTO> listNotifications = nDao.getAllNotification();
+        String typeNoti = "Admin";
+        List<NotificationDTO> listNotifications = nDao.getAllNotificationByTypeNoti(typeNoti);
         session.setAttribute("listNotifications", listNotifications);
         List<AccountDTO> listAllAccounts = aDao.getAllAccounts();
         session.setAttribute("listAllAccounts", listAllAccounts);
-        int totalUnreadNoti = nDao.CountUnreadNotification("false");
+        int totalUnreadNoti = nDao.CountUnreadNotificationAndtypeNoti("false", typeNoti);
         session.setAttribute("totalUnreadNoti", totalUnreadNoti);
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
