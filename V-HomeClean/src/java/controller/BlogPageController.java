@@ -5,9 +5,14 @@
  */
 package controller;
 
+import DAO.AccountDAO;
 import DAO.BlogDAO;
+import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DTO.AccountDTO;
 import DTO.BlogDTO;
+import DTO.BookingDTO;
+import DTO.NotificationDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -40,6 +45,21 @@ public class BlogPageController extends HttpServlet {
         String action = request.getParameter("action");
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         String indexPage = request.getParameter("index");
+        NotificationDAO nDao = new NotificationDAO();
+        AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
+        if (a != null) {
+            String typeNotiUser = "User";
+            String typeNotiStaff = "Staff";
+            List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+            session.setAttribute("listAllAccounts", listAllAccounts);
+            List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("listNotiUnread", listNotiUnread);
+            int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+            List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+            session.setAttribute("ListBookingAccounts", ListBookingAccounts);
+        }
         if (indexPage == null) {
             indexPage = "1";
         }

@@ -1,4 +1,3 @@
-
 package controller;
 
 import DAO.AccountDAO;
@@ -44,6 +43,7 @@ public class ProfilePageController extends HttpServlet {
             response.sendRedirect("login.jsp");
         } else {
             try {
+                
                 if (action.equalsIgnoreCase("Cập nhật")) {
                     String fullName = request.getParameter("fullName");
                     String dateOfBirth = request.getParameter("dateOfBirth");
@@ -98,6 +98,8 @@ public class ProfilePageController extends HttpServlet {
             } finally {
                 String accountID = a.getAccountID();
                 List<BookingDTO> BookingList = bDao.getBookingDetailByAccountID(accountID);
+                List<AccountDTO> allAccounts = aDao.getAllAccounts();
+                request.setAttribute("allAccounts", allAccounts);
                 request.setAttribute("ListB", BookingList);
                 request.getRequestDispatcher(url).forward(request, response);
             }

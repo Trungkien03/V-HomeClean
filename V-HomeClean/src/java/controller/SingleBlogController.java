@@ -5,11 +5,16 @@
  */
 package controller;
 
+import DAO.AccountDAO;
 import DAO.BlogDAO;
+import DAO.BookingDAO;
 import DAO.CommentDAO;
+import DAO.NotificationDAO;
 import DTO.AccountDTO;
 import DTO.BlogDTO;
+import DTO.BookingDTO;
 import DTO.CommentDTO;
+import DTO.NotificationDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -34,6 +39,9 @@ public class SingleBlogController extends HttpServlet {
         HttpSession session = request.getSession();
         String blogID = request.getParameter("blogID");
         BlogDAO dao = new BlogDAO();
+        NotificationDAO nDao = new NotificationDAO();
+        AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
         List<BlogDTO> list = dao.getAllBlog();
         String action = request.getParameter("action");
         BlogDTO b = dao.getBlogByID(blogID);
@@ -47,6 +55,19 @@ public class SingleBlogController extends HttpServlet {
                 List<CommentDTO> listC = cdao.getCommentV2(blogID);
                 request.setAttribute("listCmt", listC);
                 request.getRequestDispatcher(url).forward(request, response);
+            }
+
+            if (a != null) {
+                String typeNotiUser = "User";
+                String typeNotiStaff = "Staff";
+                List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+                session.setAttribute("listAllAccounts", listAllAccounts);
+                List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("listNotiUnread", listNotiUnread);
+                int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+                List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+                session.setAttribute("ListBookingAccounts", ListBookingAccounts);
             }
 
             if (action.equalsIgnoreCase("Bình luận")) {

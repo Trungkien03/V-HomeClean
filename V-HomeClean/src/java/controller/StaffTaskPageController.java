@@ -51,12 +51,24 @@ public class StaffTaskPageController extends HttpServlet {
         if (a == null) {
             response.sendRedirect("login.jsp");
         } else {
+            if (a != null) {
+                String typeNotiUser = "User";
+                String typeNotiStaff = "Staff";
+                List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+                session.setAttribute("listAllAccounts", listAllAccounts);
+                List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("listNotiUnread", listNotiUnread);
+                int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+                List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+                session.setAttribute("ListBookingAccounts", ListBookingAccounts);
+            }
             try {
-                if(action.equalsIgnoreCase("Xác nhận")){
-                    
+                if (action.equalsIgnoreCase("Xác nhận")) {
+
                 }
-                if(action.equalsIgnoreCase("Hoàn thành")){
-                    
+                if (action.equalsIgnoreCase("Hoàn thành")) {
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();

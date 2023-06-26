@@ -6,7 +6,11 @@
 package controller;
 
 import DAO.AccountDAO;
+import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DTO.AccountDTO;
+import DTO.BookingDTO;
+import DTO.NotificationDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,8 +42,24 @@ public class ContactPageController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         int adminRole = 1;
-        AccountDAO dao = new AccountDAO();
-        List<AccountDTO> listAc = dao.GetAccountsByRoleID(adminRole);
+        HttpSession session = request.getSession();
+        NotificationDAO nDao = new NotificationDAO();
+        AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        if (a != null) {
+            String typeNotiUser = "User";
+            String typeNotiStaff = "Staff";
+            List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+            session.setAttribute("listAllAccounts", listAllAccounts);
+            List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("listNotiUnread", listNotiUnread);
+            int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+            List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+            session.setAttribute("ListBookingAccounts", ListBookingAccounts);
+        }
+        List<AccountDTO> listAc = aDao.GetAccountsByRoleID(adminRole);
         request.setAttribute("ListA", listAc);
         request.getRequestDispatcher("contact.jsp").forward(request, response);
     }

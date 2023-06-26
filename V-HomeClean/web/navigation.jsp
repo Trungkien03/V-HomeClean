@@ -4,6 +4,8 @@
     Author     : Trung Kien
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -94,7 +96,7 @@
                         <img></img>
                         <img id="profile-image-2" class="avatar-nav"  src="${sessionScope.acc.image}" >
                         <strong>${sessionScope.acc.fullName}</strong>
-                        </c:if>
+                    </c:if>
                 </a>
                 <div class="dropdown-menu bg-light m-0">
 
@@ -199,19 +201,26 @@
                         word-wrap: break-word;
                         max-width: 250px;
                     }
-
+                    .media img{
+                        width: 40px; /* Định dạng kích thước hình ảnh */
+                        height: 40px;
+                        border-radius: 50%; /* Định dạng góc cong tạo hiệu ứng tròn */
+                        overflow: hidden; /* Ẩn phần vượt ra khỏi hình tròn */
+                        object-fit: cover;
+                    } 
                 </style>
 
-                <div class="nav-item dropdown">
-                    <a
-                        href="#"
-                        class="dropdown-toggle nav-link"
-                        data-bs-toggle="dropdown"
-                        >
-                        <i class="fa fa-bell"></i>
-
-
+                <div class="nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <i class="fa fa-bell position-relative" style="font-size: 25px;">
+                            <c:if test="${totalUnreadNoti > 0}">
+                                <span style="background-color: #E41E3F; border-radius: 40px; width: 17px; height: 17px; font-size: 10px; color: white;" class=" badge badge-pill position-absolute top-0 start-0 ms-2">
+                                    ${totalUnreadNoti}
+                                </span>
+                            </c:if>
+                        </i>
                     </a>
+
                     <div class="dropdown-menu notifications">
                         <div class="topnav-dropdown-header">
                             <span class="notification-title">Thông báo</span>
@@ -219,31 +228,53 @@
                         </div>
                         <div class="noti-content">
                             <ul id="notificationList" class="notification-list">
-                                <li class="notification-message">
-                                    <a href="#">
-                                        <div class="media d-flex">
-                                            <span class="avatar avatar-sm flex-shrink-0">
+                                <c:forEach items="${sessionScope.listNotiUnread}" var="o">
+                                    <li class="notification-message">
+                                        <a href="#">
+                                            <div class="media d-flex">
+                                                <span style="width: 50px; text-align: center;" class="avatar avatar-sm flex-shrink-0">
+                                                    <c:set var="image" value="img/user.jpg" />
+                                                    <c:forEach items="${ListBookingAccounts}" var="booking">
+                                                        <c:forEach items="${listAllAccounts}" var="b">
+                                                            <c:if test="${b.accountID eq booking.staffID}">
+                                                                <c:set var="image" value="${b.image}" />
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </c:forEach>
 
-                                                <img
-                                                    class="avatar-img rounded-circle"
-                                                    alt="User Image"
-                                                    src="${acc.image}"
-                                                    />
-                                            </span>
-                                            <div class="media-body ">
-                                                <p class="noti-details" style="color: black">
-                                                    zckzmxckzmxkcnzxkcnzxkcnzkcnzkcnkaenfiabgjdngdknfaknfa
-                                                </p>
-                                                <p class="noti-time">
-                                                    <span class="notification-time">
-                                                        25 phút trước
-                                                    </span>
-                                                </p>
+                                                    <img
+                                                        class="avatar-img rounded-circle"
+                                                        alt="User Image"
+                                                        src="${image}"
+                                                        />
+                                                </span>
+                                                <div class="media-body ">
+                                                    <p class="noti-details" style="color: black">
+                                                        ${o.detail}
+                                                    </p>
+                                                    <c:set var="minutes" value="${o.calculateMinutesFromNow()}" />
+                                                    <p class="noti-time">
+                                                        <span class="notification-time">
+                                                            <c:choose>
+                                                                <c:when test="${minutes < 60}">
+                                                                    ${minutes} phút trước
+                                                                </c:when>
+                                                                <c:when test="${minutes < 1440}">
+                                                                    <c:set var="hours" value="${fn:substringBefore((minutes / 60), '.')}"/>
+                                                                    ${hours} giờ trước
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <c:set var="days" value="${fn:substringBefore((minutes / 1440), '.')}"/>
+                                                                    ${days} ngày trước
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </span>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </li>
-
+                                        </a>
+                                    </li>
+                                </c:forEach>
 
                             </ul>
                         </div>

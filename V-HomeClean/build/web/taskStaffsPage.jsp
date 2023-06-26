@@ -80,7 +80,7 @@
 
                             <!-- đay là tab thông tin đơn hàng   -->
                             <div class="tab-pane fade show active" id="task" role="tabpanel" aria-labelledby="security-tab">
-                                <h3 class="mb-4">Danh sách</h3>
+                                <h3 class="mb-4">Danh Sách</h3>
                                 <div class="row">
                                     <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-success">
                                         <thead>

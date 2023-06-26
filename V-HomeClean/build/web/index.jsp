@@ -293,10 +293,11 @@
                     <div class="row g-5">
                         <div class="col-lg-5 col-md-6 wow fadeIn" data-wow-delay="0.3s">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-white text-uppercase mb-2">Appointment</h6>
-                                <h1 class="display-6 text-white mb-0">A Company Involved In Service And Maintenance</h1>
+                                <h6 class="text-white text-uppercase mb-2">Bạn có thắc mắc gì không ?</h6>
+                                <h1 class="display-6 text-white mb-0">Chúng tôi sẽ giải đáp mọi thắc mắc của bạn</h1>
                             </div>
-                            <p class="text-white mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                            <p class="text-white mb-0">Công ty chúng tôi sẽ trợ giúp cho quý khách hàng hết sức, Chúng tôi luôn đặt ưu tiên trải nghiệm của khách
+                            hàng lên hàng đầu</p>
                         </div>
                         <div class="col-lg-7 col-md-6 wow fadeIn" data-wow-delay="0.5s">
                             <form>
@@ -304,35 +305,35 @@
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control bg-dark border-0" id="gname" placeholder="Gurdian Name">
-                                            <label for="gname">Your Name</label>
+                                            <label for="gname">Tên của bạn</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="email" class="form-control bg-dark border-0" id="gmail" placeholder="Gurdian Email">
-                                            <label for="gmail">Your Email</label>
+                                            <label for="gmail">Email của bạn</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control bg-dark border-0" id="cname" placeholder="Child Name">
-                                            <label for="cname">Your Mobile</label>
+                                            <label for="cname">Số điện thoại</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control bg-dark border-0" id="cage" placeholder="Child Age">
-                                            <label for="cage">Service Type</label>
+                                            <label for="cage">Chủ đề câu hỏi</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <textarea class="form-control bg-dark border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Message</label>
+                                            <label for="message">Hãy viết câu hỏi thắc mắc của bạn tại đây</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Đặt câu hỏi</button>
                                     </div>
                                 </div>
                             </form>
@@ -368,8 +369,7 @@
                                 </div>
                             </div>
                         </div>
-                       </c:forEach>
-                        
+                       </c:forEach>                        
                     </div>
                 </div>
             </div>
@@ -383,7 +383,7 @@
                         <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
                                 <h6 class="text-body text-uppercase mb-2">Feedbacks</h6>
-                                <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeCLeam</h1>
+                                <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeClean</h1>
                             </div>
                             <p class="mb-4">Đây là những phản hồi nổi bật của khách hàng đã trải nghiệm sử dụng dịch vụ của V-HomeClean. Giúp bạn có thể chọn sử dụng dịch vụ của chúng tôi một cách an tâm từ những trải nghiệm tốt, thực tế của những khách hàng trước.</p>
                             <div class="row g-4">

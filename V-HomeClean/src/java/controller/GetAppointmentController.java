@@ -5,8 +5,13 @@
  */
 package controller;
 
+import DAO.AccountDAO;
+import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.BookingDTO;
+import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.util.List;
@@ -43,6 +48,20 @@ public class GetAppointmentController extends HttpServlet {
             request.setAttribute("ERROR", "Bạn cần đăng nhập tài khoản để đặt lịch!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
+            NotificationDAO nDao = new NotificationDAO();
+            AccountDAO aDao = new AccountDAO();
+            BookingDAO bDao = new BookingDAO();
+            String typeNotiUser = "User";
+            String typeNotiStaff = "Staff";
+            List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+            session.setAttribute("listAllAccounts", listAllAccounts);
+            List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("listNotiUnread", listNotiUnread);
+            int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+            List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+            session.setAttribute("ListBookingAccounts", ListBookingAccounts);
+
             String serviceID = request.getParameter("serviceID");
             ServiceDAO dao = new ServiceDAO();
             List<ServiceDTO> list = dao.getAllService();
