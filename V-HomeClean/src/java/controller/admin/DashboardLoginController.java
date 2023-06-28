@@ -45,7 +45,7 @@ public class DashboardLoginController extends HttpServlet {
         
         if(a==null){
             request.setAttribute("ERROR", "Tài khoản hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("dashboard/login.jsp").forward(request, response);
         }else{
             HttpSession session = request.getSession();
             session.setAttribute("acc", a);

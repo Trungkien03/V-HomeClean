@@ -10,7 +10,10 @@ import DTO.AccountDTO;
 import DTO.UserError;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +26,9 @@ import javax.servlet.http.Part;
  * @author Trung Kien
  */
 @WebServlet(name = "AccountCreateController", urlPatterns = {"/AccountCreateController"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class AccountCreateController extends HttpServlet {
 
     /**
@@ -56,18 +62,35 @@ public class AccountCreateController extends HttpServlet {
                     try {
                         String email = request.getParameter("email");
                         String password = request.getParameter("password");
-                        String confirm = request.getParameter("confirmP");
                         String fullName = request.getParameter("fullName");
                         String phone = request.getParameter("phone");
                         String RoleString = request.getParameter("roleID");
                         String Gender = request.getParameter("gender");
                         String dateOfBirth = request.getParameter("dateOfBirth");
-                        String imageString = request.getParameter("image");
                         String address = request.getParameter("address");
                         String status = "1";
                         String salaryString = request.getParameter("salary");
-                        
+                        salaryString = salaryString.replaceAll("[^0-9]", "");
+                        String imagePath = "img/user.jpg"; 
+                        try {
+                            Part part = request.getPart("image");
+                            String realPath = request.getServletContext().getRealPath("/img/");
+                            realPath = realPath.replace("\\build\\web", "\\web");
+                            String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                            imagePath = "img/" + filename; // Đường dẫn tới ảnh
 
+                            if (!Files.exists(Paths.get(realPath))) {
+                                Files.createDirectories(Paths.get(realPath));
+                            }
+
+                            part.write(Paths.get(realPath, filename).toString());
+                            if (filename == null || filename.isEmpty()) {
+                                imagePath = "img/user.jpg";
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        
                         AccountDTO b = dao.CheckDuplicatedEmail(email);
                         if (b != null) {
                             error.setEmail("Email đã được đăng ký, vui lòng sử dụng email khác!");
@@ -109,13 +132,6 @@ public class AccountCreateController extends HttpServlet {
                             error.setDateOfBirth("Vui lòng nhập ngày sinh!");
                             checkValidation = false;
                         }
-                        
-                        String image = "";
-                        if(imageString == null || imageString.isEmpty()){
-                            image = "img/user.jpg";
-                        }else{
-                            image = "img/" + imageString;
-                        }
 
                         if (address == null || address.isEmpty()) {
                             error.setAddress("Vui lòng nhập địa chỉ");
@@ -127,9 +143,9 @@ public class AccountCreateController extends HttpServlet {
                         }
 
                         if (checkValidation == true) {
-                            int roleID = Integer.parseInt(RoleString);
                             int salary = Integer.parseInt(salaryString);
-                            dao.Register(email, password, fullName, address, phone, roleID, dateOfBirth, Gender, status, image, salary);
+                            int roleID = Integer.parseInt(RoleString);
+                            dao.Register(email, password, fullName, address, phone, roleID, dateOfBirth, Gender, status, imagePath, salary);
                             AccountDTO NewAccount = dao.GetAccountByEmail(email);
                             session.setAttribute("account", NewAccount);
                             request.getRequestDispatcher("/dashboard/general.jsp").forward(request, response);

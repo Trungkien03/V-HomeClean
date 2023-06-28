@@ -152,13 +152,42 @@ public class CommentDAO {
         return totalComments;
     }
 
+//    public List<CommentDTO> pagingComment(int index, String blogID) {
+//        List<CommentDTO> list = new ArrayList<>();
+//
+//        String query = "SELECT c.CommentID, c.Message, c.Time, c.AccountID, c.BlogID, a.FullName, c.Image \n"
+//                + "FROM Comment c, Account a\n"
+//                + "WHERE c.AccountID = a.AccountID AND c.BlogID = ? \n"
+//                + "ORDER BY c.CommentID OFFSET ? ROWS FETCH NEXT 5 ROWS ONLY";
+//        try {
+//            conn = new DBContext().getConnection();
+//            ps = conn.prepareStatement(query);
+//            ps.setString(1, blogID);
+//            ps.setInt(2, (index - 1) * 5);
+//            rs = ps.executeQuery();
+//            while (rs.next()) {
+//                list.add(new CommentDTO(rs.getInt(1),
+//                        rs.getNString(2),
+//                        rs.getString(3),
+//                        rs.getString(4),
+//                        rs.getString(5),
+//                        rs.getNString(6),
+//                        rs.getNString(7)));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return list;
+//    }
     public List<CommentDTO> pagingComment(int index, String blogID) {
         List<CommentDTO> list = new ArrayList<>();
 
         String query = "SELECT c.CommentID, c.Message, c.Time, c.AccountID, c.BlogID, a.FullName, c.Image \n"
                 + "FROM Comment c, Account a\n"
                 + "WHERE c.AccountID = a.AccountID AND c.BlogID = ? \n"
-                + "ORDER BY c.CommentID OFFSET ? ROWS FETCH NEXT 5 ROWS ONLY";
+                + "ORDER BY c.Time DESC\n"
+                + "OFFSET ? ROWS FETCH NEXT 5 ROWS ONLY";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);

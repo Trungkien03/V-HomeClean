@@ -107,11 +107,13 @@ public class ServiceDAO {
                         rs.getNString(7)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return list;
 
     }
+
 
     public int CountServiceByStatus(String status) {
         String query = "SELECT COUNT(*) AS total_count FROM Service WHERE Status = ?";
@@ -150,10 +152,9 @@ public class ServiceDAO {
                         rs.getNString(7)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
-
         return list;
-
     }
 
     //update status service
@@ -237,7 +238,6 @@ public class ServiceDAO {
             e.printStackTrace();
         }
         return null;
-
     }
 
     public static void main(String[] args) {

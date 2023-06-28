@@ -5,10 +5,13 @@
  */
 package controller;
 
+import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
+import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -46,6 +49,7 @@ public class BookingController extends HttpServlet {
         boolean checkValidation = true;
         BookingDAO dao = new BookingDAO();
         ServiceDAO sdao = new ServiceDAO();
+        NotificationDAO nDao = new NotificationDAO();
         String url = ERROR;
         HttpSession session = request.getSession();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
@@ -53,6 +57,19 @@ public class BookingController extends HttpServlet {
             response.sendRedirect("login.jsp");
         } else {
             try {
+                AccountDAO aDao = new AccountDAO();
+                BookingDAO bDao = new BookingDAO();
+                String typeNotiUser = "User";
+                String typeNotiStaff = "Staff";
+                List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+                session.setAttribute("listAllAccounts", listAllAccounts);
+                List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("listNotiUnread", listNotiUnread);
+                int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+                List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+                session.setAttribute("ListBookingAccounts", ListBookingAccounts);
+
                 String accountID = request.getParameter("accountID");
                 String serviceID = request.getParameter("serviceID");
                 String fullName = request.getParameter("fullName");
@@ -64,7 +81,7 @@ public class BookingController extends HttpServlet {
                 String date = request.getParameter("date");
                 String time = request.getParameter("time");
                 String message = request.getParameter("message");
-                String status = "Xác nhận";
+                String status = "Chờ xác nhận";
                 String staffID = "";
 
                 String bookingDate = date + " " + time + ":00";
@@ -135,7 +152,11 @@ public class BookingController extends HttpServlet {
                 if (checkValidation == true) {
                     ServiceDTO b = sdao.getServiceByID(serviceID);
                     int totalPrice = b.getPrice();
-                    dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
+                    int bookingIDNumber = dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
+                    String bookingID = String.valueOf(bookingIDNumber);
+                    String detailNotification = a.getFullName() + " mới đặt lịch dịch vụ mới cho căn hộ " + vinHomesID + " ở khu vực " + area + " vào ngày " + date;
+                    String typeNoti = "Admin";
+                    nDao.InsertNotification(accountID, bookingID, detailNotification, "false", typeNoti);
                     request.setAttribute("serviceName", b.getServiceName());
                     request.setAttribute("vinhomesID", vinHomesID);
                     request.setAttribute("area", area);

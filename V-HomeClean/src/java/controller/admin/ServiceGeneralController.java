@@ -10,18 +10,27 @@ import DTO.AccountDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Trung Kien
  */
 @WebServlet(urlPatterns = {"/ServiceGeneralController"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class ServiceGeneralController extends HttpServlet {
 
     /**
@@ -61,12 +70,24 @@ public class ServiceGeneralController extends HttpServlet {
                     priceString = priceString.replaceAll("[^0-9]", "");
                     // Chuyển đổi thành số
                     int price = Integer.parseInt(priceString);
-                    String image = request.getParameter("image");
-                    if (image == null || image.isEmpty() || image == "") {
-                        image = b.getImage();
+
+                    Part part = request.getPart("image");
+                    String realPath = request.getServletContext().getRealPath("/img/");
+                    realPath = realPath.replace("\\build\\web", "\\web");
+                    String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                    String imagePath = "img/" + filename; // Đường dẫn tới ảnh
+
+                    if (!Files.exists(Paths.get(realPath))) {
+                        Files.createDirectories(Paths.get(realPath));
                     }
+
+                    part.write(Paths.get(realPath, filename).toString());
+                    if (filename == null || filename.isEmpty() || filename == "") {
+                        imagePath = b.getImage();
+                    }
+
                     String serviceDetail = b.getServiceDetail();
-                    sDao.UpdateServiceByID(serviceName, price, serviceDetail, cateID, image, serviceID);
+                    sDao.UpdateServiceByID(serviceName, price, serviceDetail, cateID, imagePath, serviceID);
                     String message = "Chỉnh sửa thông tin thành công!";
                     ServiceDTO service = sDao.getServiceByID(serviceID);
                     request.setAttribute("message", message);

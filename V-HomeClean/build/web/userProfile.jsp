@@ -29,25 +29,23 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
-        <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-                 Bootstrap DataTable CSS -->
+
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--                <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">         -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
         <link rel="stylesheet" type="text/css" href="css/ProfileStyle.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
         <style>
             .profile-image-label {
                 display: block;
@@ -55,14 +53,14 @@
                 height: 40px;
                 border-radius: 50%;
                 background-color: #f5f5f5;
-                color: #999;
+                color: #009ce7;
                 font-size: 20px;
                 text-align: center;
                 line-height: 40px;
                 cursor: pointer;
                 position: relative;
                 bottom: 50px;
-                left: 110px;
+                left: 130px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
@@ -70,9 +68,7 @@
                 background-color: #CCC;
             }
 
-            .profile-image-label i {
-                margin-top: 10px;
-            }
+
             .full-section {
                 width: 100%;
                 height: 100vh; /* vh stands for viewport height */
@@ -81,7 +77,7 @@
                 .profile-image-label{
                     position: relative;
                     bottom: 50px;
-                    left: 170px;
+                    left: 130px;
                 }
             }
 
@@ -99,7 +95,23 @@
                 height: 100%;
                 z-index: -1;
             }
+            .avatar1 {
+                width: 150px; /* Định dạng kích thước hình ảnh */
+                height: 150px;
+                border-radius: 50%; /* Định dạng góc cong tạo hiệu ứng tròn */
+                overflow: hidden; /* Ẩn phần vượt ra khỏi hình tròn */
+                margin-left: 30px;
+            }
+
+            .avatar1 img {
+                width: 100%; /* Định dạng kích thước hình ảnh bên trong */
+                height: 100%;
+                object-fit: cover; /* Căn chỉnh hình ảnh để lấp đầy không gian */
+            }
+
         </style>
+
+
     </head>
 
     <body>
@@ -113,29 +125,22 @@
             }
         %>
 
-        <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container text-center py-5">
-<!--                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #f52626;"> ${ERROR}</strong></h1>
-                <h1 class="display-4 text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h1>-->
-                <h1 class="display-4 text-white animated slideInDown mb-4">Thông Tin Tài Khoản</h1>
-            </div>
-        </div>
-
 
 
 
         <section class=" my-5">
             <div class="container-fluid">
-                <div class="bg-white shadow rounded-lg d-block d-sm-flex w-full ">
+                <div class="bg-white shadow rounded-lg d-block d-sm-flex w-full m-5">
                     <div class="profile-tab-nav border-right">
                         <div class="p-4">
-                            <div class="img-circle text-center mb-3">
-                                <img src="${acc.image}" alt="Image" class="shadow">
+                            <div class=" avatar1 img-circle">
+                                <img id="profileImage" src="${acc.image}" alt="Image" class="shadow">
                             </div>
-
                             <label for="profile-image" class="profile-image-label">
+                                <input type="file" id="profile-image" name="image" style="display: none;">
                                 <i class="fas fa-camera"></i>
                             </label>
+
                             <h4 class="text-center">${acc.fullName}</h4>
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -148,12 +153,8 @@
                                 Mật Khẩu
                             </a>
                             <a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
-                                <i class="fa fa-user text-center mr-1"></i> 
-                                Tình Trạng Đơn
-                            </a>
-                            <a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
                                 <i class="fa fa-tv text-center mr-1"></i> 
-                                Tổng Số Đơn
+                                Tổng Đơn
                             </a>
                             <a class="nav-link" id="notification-tab" data-toggle="pill" href="#notification" role="tab" aria-controls="notification" aria-selected="false">
                                 <i class="fa fa-bell text-center mr-1"></i> 
@@ -164,44 +165,43 @@
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                             <form action="ProfilePageController" method="post">
-                                <!--                                <input type="file" name="image" id="profile-image" accept="image/*" style="display: none;">-->
                                 <h3 class="mb-4">Thông Tin Tài Khoản</h3>
-                                 <h6 class="text-white animated slideInDown mb-4"><strong style="color: #00d747;" >${message}</strong></h6>
+                                <p><strong style="font-family: sans-serif;color: #00d747;" >${message}</strong></p>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Họ và Tên</label>
-                                            <input name="fullName" type="text" class="form-control" value="${acc.fullName}">
+                                            <label style="color: black">Họ và Tên</label>
+                                            <input name="fullName" type="text" class="text-info form-control" value="${acc.fullName}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Ngày Sinh</label>
-                                            <input name="dateOfBirth" type="date" class="form-control" value="${acc.dateOfBirth}">
+                                            <label style="color: black">Ngày Sinh</label>
+                                            <input name="dateOfBirth" type="date" class=" text-info form-control" value="${acc.dateOfBirth}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Email</label>
-                                            <input name="email" type="email" class="form-control" value="${acc.email}">
+                                            <label style="color: black">Email</label>
+                                            <input name="email" type="email" class="text-info form-control" value="${acc.email}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Số Điện Thoại</label>
-                                            <input name="phone" type="text" class="form-control" value="${acc.phone}">
+                                            <label style="color: black">Số Điện Thoại</label>
+                                            <input name="phone" type="text" class="text-info form-control" value="${acc.phone}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Địa chỉ</label>
-                                            <input name="address" type="text" class="form-control" value="${acc.address}">
+                                            <label style="color: black">Địa chỉ</label>
+                                            <input name="address" type="text" class="text-info form-control" value="${acc.address}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Giới tính</label>
-                                            <select name="gender" class="form-control">
+                                            <label style="color: black">Giới tính</label>
+                                            <select name="gender" class="text-info form-control">
                                                 <c:choose>
                                                     <c:when test="${acc.gender eq 'Male'}">
                                                         <option value="Male" selected>Nam</option>
@@ -222,7 +222,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input class="btn btn-primary" style="width: 40%" name="action" value="Cập Nhật" type="submit" >
+                                    <input class="btn btn-outline-primary" style="width: 40%" name="action" value="Cập Nhật" type="submit" >
                                 </div>
                             </form>
 
@@ -250,7 +250,7 @@
 
                                             <div class="form-group">
 
-                                                <label>Mật khẩu cũ</label>
+                                                <label style="color: black" >Mật khẩu cũ</label>
                                                 <input required="" type="password" name="password" class="form-control">
                                                 <div class="old-pass"> <i class="fa-solid fa-warning"></i> Xác nhận mật khẩu cũ</div>
                                             </div>
@@ -259,7 +259,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Mật khẩu mới</label>
+                                                <label style="color: black" >Mật khẩu mới</label>
                                                 <input required="" type="password" name="newPassword" class="form-control">
                                                 <div class="requirement mt-3">
                                                     <p>Mật khẩu mới phải chứa:</p>
@@ -276,14 +276,14 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Xác nhận mật khẩu mới</label>
+                                                <label style="color: black">Xác nhận mật khẩu mới</label>
                                                 <input required="" type="password" name="confirm" class="form-control">
                                                 <p class="confirm-new-pass"> <i class="fa-solid fa-warning"></i>Xác nhận đúng mật khẩu mới!</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <input class="btn btn-primary change-pass-button" type="submit" name="action" value="Thay Đổi Mật Khẩu"
+                                    <input class="btn btn-outline-primary change-pass-button" type="submit" name="action" value="Thay Đổi Mật Khẩu"
                                            class="btn btn-block btn-info">
                                     <!--                            <div>
                                                                     <button class="btn btn-primary">Update</button>
@@ -299,81 +299,218 @@
                         <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
                             <h3 class="mb-4">Tình Trạng Đơn Dịch Vụ</h3>
                             <div class="row">
-                                <table id="example_table1" class="table table-hover text-center table-info">
+                                <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-info">
                                     <thead>
                                         <tr>
                                             <th>Dịch vụ</th>
                                             <th>Định Kì</th>
-                                            <th>Mã phòng</th>
-                                            <th>Khu vực</th>
                                             <th>Nhân viên</th>
-                                            <th>Thời gian</th>
                                             <th>Tổng chi phí</th>
+                                            <th>Chỉnh sửa</th>
                                             <th>Tình Trạng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="booking" items="${ListB}">
+
+                                        <c:forEach var="booking" items="${ListB}" varStatus="loop">
                                             <c:set var="addressParts" value="${fn:split(booking.bookingAddress, '||')}"/>
                                             <tr>
                                                 <td>${booking.serviceName}</td>
                                                 <td>${booking.typeOfService}</td>
-                                                <td>${addressParts[0]}</td>
-                                                <td>${addressParts[1]}</td>
-                                                <td>${booking.staffID}</td>
                                                 <td>${booking.bookingDate}</td>
                                                 <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>
                                                 <td>
-                                                    <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
-                                                        <button class="btn btn-dark">Xác nhận</button>
-                                                    </c:if>
-                                                    <c:if test="${booking.bookingStatus eq 'Đang hoạt động'}">
-                                                        <button class="btn btn-primary">Đang làm</button>
-                                                    </c:if>
-                                                    <c:if test="${booking.bookingStatus eq 'Hoàn tất'}">
-                                                        <button class="btn btn-success">Hoàn tất</button>
-                                                    </c:if>
+                                                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#b${booking.bookingID}">
+                                                        Xem Thêm
+                                                    </button>
                                                 </td>
+                                                <!-- Modal -->
+                                        <div class="modal fade" id="b${booking.bookingID}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Chi tiết đơn của khách hàng</h5>
+                                                        <div style="margin: auto" class="text-center" id="rateYo${booking.bookingID}"></div>
+
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="container-fluid">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    Thông tin nhân viên
+                                                                    <c:forEach items="${allAccounts}" var="o">
+                                                                        <c:if test="${booking.staffID == o.accountID}">
+                                                                            <c:set var="staffName" value="${o.fullName}" />
+                                                                            <c:set var="staffAge" value="${o.age}" />
+                                                                            <c:set var="staffEmail" value="${o.email}" />
+                                                                            <c:set var="staffPhone" value="${o.phone}" />
+                                                                            <c:set var="staffImage" value="${o.image}" />
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                    <c:choose>
+                                                                        <c:when test="${empty staffName}">
+                                                                            <div class="p-3 text-center">
+                                                                                <h4 class="text-center text-danger">Hiện tại chưa có nhân viên phụ trách</h4>
+                                                                            </div>
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                            <div class="p-3 text-center">
+                                                                                <div style="margin-left: 80px;" class="avatar1 img-circle">
+                                                                                    <img id="profileImage" src="${staffImage}" alt="Image" class="shadow">
+                                                                                </div>
+                                                                                <h4 class="text-center text-success">${staffName}</h4>
+                                                                                <h5 class="text-center text-primary">${staffAge} tuổi</h5>
+                                                                            </div>
+                                                                            <div class="card">
+                                                                                <div class="card-body">
+                                                                                    Địa chỉ liên hệ
+                                                                                    <form action="#">
+                                                                                        <div class="form-group">
+                                                                                            <label class="text-info">Số điện thoại</label>
+                                                                                            <input style="color: #000;" readonly="" value="${staffPhone}" type="text" class="form-control text-center">
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="text-info">Địa chỉ email</label>
+                                                                                            <input style="color: #000;" readonly="" value="${staffEmail}" type="text" class="form-control text-center">
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
+
+
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    Thông tin đơn
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <form action="#">
+                                                                                <div class="form-group">
+                                                                                    <label class="text-info">Thời gian</label>
+                                                                                    <input style="color: #000;" readonly="" value="${fn:substring(booking.bookingDate, 11, 16)}" type="text" class="form-control text-center">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="text-info">Ngày (yyyy-mm-dd)</label>
+                                                                                    <input style="color: #000;" readonly="" value="${fn:substring(booking.bookingDate, 0, 10)}" type="text" class="form-control text-center">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <c:set var="addressArray" value="${fn:split(booking.bookingAddress, '||')}" />
+                                                                                    <label class="text-info">Số phòng</label>
+                                                                                    <input style="color: #000;" readonly="" value="${fn:trim(addressArray[0])}" type="text" class="form-control text-center">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="text-info">Khu vực</label>
+                                                                                    <input style="color: #000;" readonly="" value="${fn:trim(addressArray[1])}" type="text" class="form-control text-center">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label class="text-info">Định kì</label>
+                                                                                    <input style="color: #000;" readonly="" value="${booking.typeOfService}" type="text" class="form-control text-center">
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <fmt:formatNumber var="formattedPrice" value="${booking.totalPrice}" pattern="###,###" />
+                                                                                    <label class="text-info">Tổng chi phí</label>
+                                                                                    <div style="display: flex" class=" text-center col-md-12">
+                                                                                        <input style="color: #000;" readonly=""
+                                                                                               required=""
+                                                                                               name="bookingPrice"
+                                                                                               type="text"
+                                                                                               class="form-control text-center"
+                                                                                               value="${formattedPrice}"
+                                                                                               />
+                                                                                        <span style="position: absolute;" class="btn btn-success">VND</span>     
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div style="display: flex; justify-content: space-between" class="modal-footer">
+                                                            <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy đơn</button>
+                                                            </c:if>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <td>
+                                                <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
+                                                    <button class="btn btn-info">Đã xác nhận</button>
+                                                </c:if>
+                                                <c:if test="${booking.bookingStatus eq 'Đang thực hiện'}">
+                                                    <button class="btn btn-info">Đang hoạt động</button>
+                                                </c:if>
+                                                <c:if test="${booking.bookingStatus eq 'Xác nhận hoàn thành'}">
+                                                    <button class="btn btn-info" data-toggle="modal" data-target="#a${loop.index}">Xác nhận đơn</button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="a${loop.index}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Phản hồi từ quý khách</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <form action="ProfilePageController" method="POST">
+                                                                    <div class="modal-body">
+                                                                        Quý khách có hài lòng với dịch vụ của công ty chúng tôi không ạ ?
+                                                                        <div class="col-lg-12 col-md-6 wow fadeInUp mt-3" data-wow-delay="0.3s">
+
+                                                                            <input name="bookingID" type="hidden" value="${booking.bookingID}">
+                                                                            <div class="row g-3">
+                                                                                <div class="col-12">
+                                                                                    <div class="form-floating">
+                                                                                        <textarea name="feedbackDetail" class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                                                                        <label for="message">Hãy cho chúng tôi biết cảm nhận của quý khách</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div>Mức độ hài lòng của quý khách:</div>
+                                                                                    <div style="margin: auto" class="text-center" id="rateYo"></div>
+                                                                                    <input type="hidden" id="ratingInput" name="rating" value="">
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="display: flex; justify-content: space-between" class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                                        <button id="submitBtn" disabled name="action" value="Đánh giá" type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
+                                                    <button class="btn btn-success" >Hoàn tất</button>
+                                                </c:if>
+                                            </td>
                                             </tr>
                                         </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
-                            <h3 class="mb-4">Số Đơn Của Bạn</h3>
-                            <div class="row">
-                                <table id="example_table2" class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Mã đơn</th>
-                                            <th>dịch vụ</th>
-                                            <th>Mã phòng</th>
-                                            <th>Khu vực</th>
-                                            <th>Nhân viên</th>
-                                            <th>Tổng chi phí</th>
-                                            <th>Tình Trạng</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Mã đơn</td>
-                                            <td>Dịch vụ</td>
-                                            <td>Mã phòng</td>
-                                            <td>Khu vực</td>
-                                            <td>Nhân viên</td>
-                                            <td>Tổng chi phí</td>
-                                            <td>Tình trạng</td>
-                                        </tr>
-                                    </tbody>
+                                        </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
-                            <h3 class="mb-4">Thông Tin</h3>
+                            <h3 class="mb-4">Thông Tin Thông Báo</h3>
                             <div class="form-group">
 
-                                <table id="example_table3" class="table">
+                                <table style="border: #004085 solid medium" id="example_table3" class="table table-hover text-center table-info">
                                     <thead>
                                         <tr>
                                             <th></th>
@@ -415,12 +552,10 @@
         <%            }
         %>
     </section>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>-->
-    <!--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <!-- Bootstrap js -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -432,6 +567,44 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <!--    //----------------------------------------------------------------------------------
+    //cập nhật hình ảnh Real Time-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Bắt sự kiện khi người dùng thay đổi trường input file
+            $('#profile-image').change(function () {
+                var fileInput = $('#profile-image')[0].files[0];
+                if (fileInput) {
+                    var formData = new FormData();
+                    formData.append('image', fileInput);
+
+                    $.ajax({
+                        url: 'UpdateImageProfileController',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            // Cập nhật hình ảnh mới trên trang web
+                            $('#profileImage').attr('src', response);
+                            $('#profile-image-2').attr('src', response);
+                        },
+                        error: function (xhr, status, error) {
+                            // Xử lý lỗi (nếu có)
+                            console.log(error);
+                        }
+                    });
+                }
+
+            });
+        });
+    </script>
+    <!-- cho data table -->
+    <!-- jQuery Datatable js -->
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <!-- Bootstrap Datatable js -->    
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#example_table1').DataTable({
@@ -458,6 +631,7 @@
                 }
             });
         });
+
         $(document).ready(function () {
             $('#example_table2').DataTable({
                 language: {
@@ -483,6 +657,7 @@
                 }
             });
         });
+
         $(document).ready(function () {
             $('#example_table3').DataTable({
                 language: {
@@ -511,6 +686,7 @@
     </script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <!--phan nay danh cho thay doi mat khau-->
     <script>
         var status = "${status}";
 
@@ -518,6 +694,13 @@
         if (status === "change-password") {
             window.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('password-tab').click();
+                status = "";
+            });
+        }
+
+        if (status === "feedBack") {
+            window.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('security-tab').click();
                 status = "";
             });
         }
@@ -670,10 +853,36 @@
 
             button.disabled = isButtonDisabled;
         }
+    </script>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Khởi tạo plugin rateYo
+            $("#rateYo").rateYo();
 
+            // Gắn sự kiện cho plugin rateYo khi người dùng thay đổi đánh giá
+            $("#rateYo").rateYo("option", "onSet", function (rating) {
+                if (rating > 0) {
+                    $("#submitBtn").prop("disabled", false); // Enable button khi có đánh giá
+                } else {
+                    $("#submitBtn").prop("disabled", true); // Disable button khi chưa có đánh giá
+                }
+                $("#ratingInput").val(rating); // Gán giá trị đánh giá vào trường ẩn (hidden input)
+            });
 
+        <c:forEach var="booking" items="${ListB}">
+            <c:forEach items="${feedBackList}" var="f">
+                <c:if test="${booking.bookingID eq f.bookingID}">
+            $("#rateYo1").rateYo({
+                rating: ${f.rating},
+                readOnly: true
+            });
+                </c:if>
+            </c:forEach>
+        </c:forEach>
+        });
     </script>
 
 </body>

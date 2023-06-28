@@ -6,9 +6,14 @@ package controller.admin;
  * and open the template in the editor.
  */
 import DAO.AccountDAO;
+import DAO.BookingDAO;
+import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.BookingDTO;
+import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +44,8 @@ public class UserGeneralPageController extends HttpServlet {
         HttpSession session = request.getSession();
         String accountID = request.getParameter("accountID"); // dùng để tìm ra user profile người lần đầu
         AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
+        ServiceDAO sDao = new ServiceDAO();
         String action = request.getParameter("action");
         AccountDTO a = (AccountDTO) session.getAttribute("acc"); // account này dùng để lấy ra người đang sử dụng cái trang này
         if (a == null) {
@@ -48,6 +55,12 @@ public class UserGeneralPageController extends HttpServlet {
                 if (action == null || action.isEmpty()) {
                     //account này dùng để thể hiện ra user profile
                     AccountDTO b = aDao.GetAccountByAccountID(accountID);
+                    List<BookingDTO> listBookingAccount = bDao.getBookingDetailByAccountID(accountID);
+                    List<ServiceDTO> listServices = sDao.getAllService();
+                    List<AccountDTO> ListAllAccounts = aDao.getAllAccounts();
+                    request.setAttribute("listServices", listServices);
+                    request.setAttribute("ListAllAccounts", ListAllAccounts);
+                    request.setAttribute("listBookingAccount", listBookingAccount);
                     session.setAttribute("account", b);
                 }
                 if (action.equalsIgnoreCase("Chỉnh Sửa")) {
@@ -66,6 +79,8 @@ public class UserGeneralPageController extends HttpServlet {
                     aDao.UpdateAccountProfile(email, password, fullName, address, phone, roleID_2, gender, dateOfBirth, image, 0, accountID_2);
                     AccountDTO updatedAccount = aDao.GetAccountByAccountID(accountID_2);
                     String message = "Chỉnh sửa thông tin thành công!";
+                    List<BookingDTO> listBookingAccount = bDao.getBookingDetailByAccountID(accountID);
+                    request.setAttribute("listBookingAccount", listBookingAccount);
                     request.setAttribute("account", updatedAccount);
                     request.setAttribute("message", message);
                 }

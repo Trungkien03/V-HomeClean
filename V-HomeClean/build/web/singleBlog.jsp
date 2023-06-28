@@ -132,18 +132,18 @@
 
                             <div>
 
-                                <div class="comment-area card border-0 p-5">
+                                <div class="comment-area card border-0">
 
                                     <ul class="comment-tree list-unstyled">
+                                        <c:forEach items="${listCmt}" var="o">
+                                            <li class="mb-2">
+                                                <div style="margin-left: 20px;" class="comment-area-box">
+    <!--                                                <input name="blogID" value="${o.blogID}" type="hidden">-->
 
-                                        <li class="mb-5">
-                                            <div style="margin-left: 20px;" class="comment-area-box">
-<!--                                                <input name="blogID" value="${o.blogID}" type="hidden">-->
-                                                <c:forEach items="${listCmt}" var="o">
                                                     <div style="display: flex; ">
                                                         <div style="margin-left: -11px">
 
-                                                            <img src="${o.imageAcc}" style="width: 30px; height: 30px; border-radius: 0px;" >
+                                                            <img src="${o.imageAcc}" style="width: 30px; height: 30px; border-radius: 50%" >
                                                         </div>
                                                         <div style="  border: #999 solid 1px; border-radius:12px; width: 100%; margin-bottom: 2%; margin-left: 12px">
 
@@ -170,21 +170,40 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </c:forEach>
-                                            </div>
+
+                                                </div>
 
 
-                                        </li>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
+                                    <style>
+                                        .pagination .page-item .page-link {
 
+                                            color: #009ce7; /* Màu chữ trắng */
+                                        }
 
-                                    <div class="row mt-5">
-                                        <div class="col-lg-8">
+                                        .pagination .page-item .page-link:hover,
+                                        .pagination .page-item .page-link:focus {
+                                            background-color: #00A4F7; /* Màu xanh đậm khi hover hoặc focus */
+                                            border-color: #0056b3;
+                                            color: white;
+                                        }
+
+                                        .pagination .page-item .page-link[aria-current="page"] {
+                                            background-color: #0056b3; /* Màu xanh đậm cho trang hiện tại */
+                                            border-color: #0056b3;
+                                        }
+
+                                    </style>
+
+                                    <div class="row" >
+                                        <div class="col-lg-8" >
                                             <nav aria-label="Page navigation example">
                                                 <ul class="pagination">
-                                                    <li class="page-item">
+                                                    <li  class="page-item">
                                                         <c:if test="${tag > 1}">
-                                                            <a class="page-link" href="SingleBlogController?index=${tag - 1}" aria-label="Previous">
+                                                            <a  class="page-link" href="SingleBlogController?index=${tag - 1}&amp;blogID=${BlogDetail.blogID}&amp;action=paging" aria-label="Previous">
                                                                 <span aria-hidden="true">&laquo;</span>
                                                             </c:if>
                                                         </a>
@@ -197,7 +216,7 @@
 
                                                     <li class="page-item">
                                                         <c:if test="${tag < endP}">
-                                                            <a class="page-link" href="SingleBlogController?index=${tag + 1}" aria-label="Next">
+                                                            <a class="page-link" href="SingleBlogController?index=${tag + 1}&amp;blogID=${BlogDetail.blogID}&amp;action=paging" aria-label="Next">
                                                                 <span aria-hidden="true">&raquo;</span>
                                                             </a>
                                                         </c:if>
@@ -212,18 +231,17 @@
 
 
                                 </div>
+                                <div>
+                                    <form action="SingleBlogController?index=${tag}&amp;action=paging" class="contact-form bg-white rounded " id="comment-form">
 
-                                <div style="margin-left: 1.9%; margin-top: -13%;">
-                                    <form action="SingleBlogController" class="contact-form bg-white rounded p-5" id="comment-form">
-
-                                        <h5 class="mb-4">Viết Bình Luận</h5>
+                                        <h5 >Viết Bình Luận</h5>
                                         <div style="display: flex;">
                                             <div>
                                                 <c:if test="${empty sessionScope.acc.image}">
-                                                    <img src="https://img.myloview.cz/plakaty/default-avatar-profile-icon-vector-social-media-user-image-700-205124837.jpg" style="width: 38px; height: 38px; border-radius: 0px;">
+                                                    <img src="https://img.myloview.cz/plakaty/default-avatar-profile-icon-vector-social-media-user-image-700-205124837.jpg" style="width: 38px; height: 38px; border-radius: 50%;">
                                                 </c:if>
                                                 <c:if test="${not empty sessionScope.acc.image}">
-                                                    <img src="${sessionScope.acc.image}" style="width: 28px; height: 28px; border-radius: 0px;">
+                                                    <img src="${sessionScope.acc.image}" style="width: 28px; height: 28px; border-radius: 50%;">
                                                 </c:if>
 
                                             </div>  
@@ -251,36 +269,7 @@
                                 display: flex;
                             }
                         </style>
-                        <!--                        <div class="col-lg-12">
-                        
-                                                    <form action="SingleBlogController" class="contact-form bg-white rounded p-5" id="comment-form">
-                                                        <h4 class="mb-4">Viết Bình Luận</h4>
-                                                        <input class="form-control" type="hidden" name="blogID" value="${BlogDetail.blogID}">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                     
-                                                                    <input class="form-control" type="text" name="accountID" placeholder="Name:">
-                                                                    <div class="infoCMT">
-                        
-                                                                    </div>
-                                                                </div>
-                                                                <br>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                                                        <div class="form-group">
-                                                                                                            <input class="form-control" type="hidden" name="accountID">
-                                                                                                        </div>
-                                                            </div>
-                                                        </div>
-                        
-                        
-                                                                                        <input  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."
-                                                        <textarea class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."></textarea>
-                        
-                                                        <input type="submit" class="btn btn-primary" name="action" id="submit_contact" value="Bình luận">
-                                                    </form>
-                                                </div>-->
+
                     </div>
                 </div>
 

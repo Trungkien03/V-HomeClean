@@ -5,11 +5,16 @@
  */
 package controller;
 
+import DAO.AccountDAO;
 import DAO.BlogDAO;
+import DAO.BookingDAO;
 import DAO.CommentDAO;
+import DAO.NotificationDAO;
 import DTO.AccountDTO;
 import DTO.BlogDTO;
+import DTO.BookingDTO;
 import DTO.CommentDTO;
+import DTO.NotificationDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -38,6 +43,9 @@ public class SingleBlogController extends HttpServlet {
         HttpSession session = request.getSession();
         String blogID = request.getParameter("blogID");
         BlogDAO dao = new BlogDAO();
+        NotificationDAO nDao = new NotificationDAO();
+        AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
         List<BlogDTO> list = dao.getAllBlog();
         String action = request.getParameter("action");
         BlogDTO b = dao.getBlogByID(blogID);
@@ -45,12 +53,11 @@ public class SingleBlogController extends HttpServlet {
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         String url = "singleBlog.jsp";
         String indexPage = request.getParameter("index");
-        if (indexPage == null) {
+
+        if (indexPage == null || indexPage.equals("-1")) {
             indexPage = "1";
         }
-        if (indexPage.equals("-1")) {
-            indexPage = "1";
-        }
+
         int index = Integer.parseInt(indexPage);
         int count = cdao.CountComment(blogID);
         int endPage = count / 5;
@@ -62,8 +69,8 @@ public class SingleBlogController extends HttpServlet {
         session.setAttribute("listCmt", listC);
         session.setAttribute("tag", index);
         session.setAttribute("endP", endPage);
+
         try {
-            
             if (action == null || action.isEmpty()) {
                 request.setAttribute("listB", list);
                 session.setAttribute("BlogDetail", b);
@@ -72,6 +79,19 @@ public class SingleBlogController extends HttpServlet {
                 session.setAttribute("tag", index);
                 session.setAttribute("endP", endPage);
                 request.getRequestDispatcher(url).forward(request, response);
+            }
+
+            if (a != null) {
+                String typeNotiUser = "User";
+                String typeNotiStaff = "Staff";
+                List<AccountDTO> listAllAccounts = aDao.getAllAccounts();
+                session.setAttribute("listAllAccounts", listAllAccounts);
+                List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("listNotiUnread", listNotiUnread);
+                int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+                List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+                session.setAttribute("ListBookingAccounts", ListBookingAccounts);
             }
 
             if (action.equalsIgnoreCase("Bình luận")) {
@@ -89,7 +109,6 @@ public class SingleBlogController extends HttpServlet {
                         cdao.AddComment(message, accountID, blogID1, imageAcc);
                         session.setAttribute("listB", list);
                         session.setAttribute("BlogDetail", b);
-                        //listC = cdao.getCommentV2(blogID);
                         listC = cdao.pagingComment(index, blogID);
                         session.setAttribute("listCmt", listC);
                         session.setAttribute("tag", index);
@@ -100,9 +119,18 @@ public class SingleBlogController extends HttpServlet {
                     }
                 }
             }
-            
-            if(action.equalsIgnoreCase("paging")){
-                response.sendRedirect("singleBlog.jsp#commentContainer");
+
+            if (action.equalsIgnoreCase("paging")) {
+                try {
+                    listC = cdao.pagingComment(index, blogID);
+                    session.setAttribute("BlogDetail", b);
+                    session.setAttribute("listCmt", listC);
+                    session.setAttribute("tag", index);
+                    session.setAttribute("endP", endPage);
+                    response.sendRedirect("singleBlog.jsp#commentContainer");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

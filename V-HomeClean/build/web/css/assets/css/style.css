@@ -1909,7 +1909,6 @@ html.menu-opened body {
     display: table;
     height: 100vh;
     min-height: 100vh;
-    background-image: url(../img/log-bg.png);
     position: relative;
     width: 100%;
     background-position: center;

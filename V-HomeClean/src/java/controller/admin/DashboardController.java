@@ -8,8 +8,10 @@ package controller.admin;
 import DAO.AccountDAO;
 import DAO.BlogDAO;
 import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.NotificationDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,9 +42,11 @@ public class DashboardController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
         int UserID = 4;
         AccountDAO aDao = new AccountDAO();
         ServiceDAO sDao = new ServiceDAO();
+        NotificationDAO nDao = new NotificationDAO();
         int TotalUsers = aDao.CountAccountByRoleID(UserID);
         int TotalServices = sDao.CountService();
         List<AccountDTO> listUsers =  aDao.GetAccountsByRoleID(UserID);
@@ -55,6 +60,15 @@ public class DashboardController extends HttpServlet {
         BlogDAO blogDao = new BlogDAO();
         int totalBlogs = blogDao.countBlogs();
         request.setAttribute("totalBlogs", totalBlogs);
+        
+        //lấy ra những thằng Notification
+        String typeNotiAdmin = "Admin"; //lấy ra những cái nào của thằng admin cần đọc thôi
+        List<NotificationDTO> listNotifications = nDao.getAllNotificationByTypeNoti(typeNotiAdmin); // lấy ra danh sách những thông báo của Admin
+        session.setAttribute("listNotifications", listNotifications);
+        List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+        session.setAttribute("listAllAccounts", listAllAccounts);
+        int totalUnreadNoti = nDao.CountUnreadNotificationAndtypeNoti("false", typeNotiAdmin);
+        session.setAttribute("totalUnreadNoti", totalUnreadNoti);
         
         request.setAttribute("ListUsers", listUsers);
         request.getRequestDispatcher("/dashboard/index.jsp").forward(request, response);

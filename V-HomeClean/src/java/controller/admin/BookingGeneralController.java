@@ -7,6 +7,7 @@ package controller.admin;
 
 import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
@@ -47,6 +48,7 @@ public class BookingGeneralController extends HttpServlet {
         BookingDAO bDao = new BookingDAO();
         ServiceDAO sDao = new ServiceDAO();
         AccountDAO aDao = new AccountDAO();
+        NotificationDAO nDao = new NotificationDAO();
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
         } else {
@@ -86,6 +88,14 @@ public class BookingGeneralController extends HttpServlet {
                         ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
                         AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
                         AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
+                        
+                        String notiDetails = "Nhân viên " +  staff.getFullName() + " sẽ đảm nhận cho dịch vụ " + service.getServiceName() + " của bạn vào thời gian " + booking.getBookingDate();
+                        String typeNotiUser = "User"; //để định dạng thông báo này sẽ được gửi tới user
+                        nDao.InsertNotification(account.getAccountID(), bookingIDString, notiDetails, "false", typeNotiUser);
+                        
+                        String notiDetailsStaff = "Bạn vừa được giao một đơn dịch vụ mới từ Quản lý " + a.getFullName() + " với mã hàng hóa là " + bookingID;
+                        String typeNotiStaff = "Staff";
+                        nDao.InsertNotification(staff.getAccountID(), bookingIDString, notiDetailsStaff, "false", typeNotiStaff);
                         int roleIDFixElec = 2;
                         int roleIDFixWater = 5;
                         int roleIDClean = 6;

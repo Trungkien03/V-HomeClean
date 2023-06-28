@@ -130,8 +130,9 @@ CREATE TABLE Notification
 	AccountID NVARCHAR(20) NOT NULL,
 	BookingID INT NOT NULL,
 	Detail NVARCHAR(MAX) NOT NULL,
-	Create_at DATETIME not null,
+	Create_at DATETIME DEFAULT GETDATE() NOT NULL,
 	Status bit NOT NULL,
+	TypeNoti NVARCHAR(50) NOT NULL,
 	FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
 	FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 )
@@ -142,9 +143,9 @@ GO
 CREATE TABLE Feedback
 (
   FeedbackID INT NOT NULL IDENTITY(1,1),
-  Date DATE NOT NULL,
+  Date DATETIME NOT NULL,
   Feedback_Text NVARCHAR(MAX) NOT NULL,
-  Rating INT NOT NULL,
+  Rating FLOAT NOT NULL,
   AccountID NVARCHAR(20) NOT NULL,
   BookingID INT NOT NULL,
   PRIMARY KEY (FeedbackID),
@@ -245,7 +246,7 @@ GO
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0001', N'hieublockchain2002@gmail.com', N'1', N'Đoàn Thanh Hiếu', N'Bình Dương', N'0987654321', 1, N'Male', CAST(N'2000-02-12' AS Date), 1, N'img/adminHieu.jpg', 6000888.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiên', N'32/3, Gia Tân 1, Thống Nhất, Đồng Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 0.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiên', N'32/3, Gia Tân 1, Thống Nhất, Đồng Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/Kien-Profile-2.jpg', 0.0000)
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0003', N'staff1@gmail.com', N'1', N'Adela JohnSon', N'Lê Văn Việt', N'0987654321', 6, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner1.jpg', 25000000.0000)
 GO
@@ -277,6 +278,12 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0017', N'MinhTQ01@gmail.com', N'Kienmundo1!', N'Trần Quang Minh', N'An Tây, Bên Cát, T.Bình Dương', N'0972131295', 2, N'Male', CAST(N'2002-10-01' AS Date), 1, N'img/user.jpg', 20000000.0000)
 GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0018', N'ThangPM012@gmail.com', N'Kienmundo1!', N'Phạm Minh Thắng', N'Gò Dầu, Tây Ninh', N'0886751117', 2, N'Male', CAST(N'2002-03-03' AS Date), 1, N'img/user.jpg', 12900000.0000)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0019', N'TuongNV031@gmail.com', N'Kienmundo1!', N'Nguyễn Vũ Tường', N'TP. Hồ Chí Minh', N'0886751119', 2, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/user.jpg', 25000000.0000)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0020', N'TuanHV012@gmail.com', N'Kienmundo1!', N'Hoàng Văn Tuấn', N'TP. Hồ Chí Minh', N'0972131298', 6, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 20000000.0000)
+GO
 
 GO
 INSERT [dbo].[CateService] ([CateID], [CateName]) VALUES (1, N'Dịch vụ vệ sinh')
@@ -297,28 +304,15 @@ INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [C
 GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE05', N'Sửa chữa đồ điện', 200000.0000, N'Dịch vụ sửa chữa đồ điện đảm bảo rằng các thiết bị điện trong căn hộ của bạn hoạt động ổn định và an toàn. Đội ngũ kỹ thuật viên sẽ kiểm tra và khắc phục các sự cố như mất điện, đứt dây, hỏng bộ nguồn và các vấn đề khác liên quan đến hệ thống điện. Họ sẽ thực hiện các biện pháp sửa chữa cần thiết để đảm bảo các thiết bị điện hoạt động trơn tru và đáng tin cậy. Dịch vụ này giúp bạn an tâm và tiết kiệm thời gian và công sức trong việc bảo trì và sửa chữa các thiết bị điện trong căn hộ của mình.', 2, N'img/serviceSuaChuaDoDien.jpg', 1)
 GO
-INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE06', N'Sửa chữa hệ thống nước', 250000.0000, N'Dịch vụ sửa chữa nước đảm bảo sự hoạt động ổn định của hệ thống nước trong căn hộ của bạn. Đội ngũ thợ sẽ khắc phục sự cố như rò rỉ đường ống nước, hỏng bồn nước, vòi nước hỏng, và các vấn đề khác. Họ sẽ thực hiện các biện pháp sửa chữa và thay thế linh kiện cần thiết để đảm bảo hệ thống nước hoạt động hiệu quả. Dịch vụ này giúp bạn có một nguồn nước sạch sẽ và ổn định trong căn hộ của mình.', 2, N'img/serviceSuaChuaHeThongNuoc.jpg', 1)
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE06', N'Sửa chữa hệ thống nước', 250000.0000, N'Dịch vụ sửa chữa nước đảm bảo sự hoạt động ổn định của hệ thống nước trong căn hộ của bạn. Đội ngũ thợ sẽ khắc phục sự cố như rò rỉ đường ống nước, hỏng bồn nước, vòi nước hỏng, và các vấn đề khác. Họ sẽ thực hiện các biện pháp sửa chữa và thay thế linh kiện cần thiết để đảm bảo hệ thống nước hoạt động hiệu quả. Dịch vụ này giúp bạn có một nguồn nước sạch sẽ và ổn định trong căn hộ của mình.', 3, N'img/serviceSuaChuaHeThongNuoc.jpg', 1)
 GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE07', N'Sửa chữa thiết bị gia dụng', 100000.0000, N'Dịch vụ sửa chữa thiết bị gia dụng đảm bảo rằng các thiết bị trong gia đình của bạn hoạt động tốt và lâu bền. Đội ngũ kỹ thuật viên chuyên nghiệp sẽ tiến hành sửa chữa các thiết bị như máy giặt, tủ lạnh, lò vi sóng, máy lọc không khí và các thiết bị khác. Họ sẽ kiểm tra, chẩn đoán và khắc phục các sự cố như không hoạt động, hỏng linh kiện, mất hiệu suất và các vấn đề khác. Dịch vụ này giúp bạn tiết kiệm thời gian, tiền bạc và nỗ lực trong việc sửa chữa các thiết bị gia dụng, đồng thời đảm bảo rằng chúng hoạt động tốt và đáng tin cậy.', 2, N'img/serviceSuaChuaGiaDung.jpg', 1)
 GO
 INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE08', N'Tẩy bóng sàn nhà cũ, đánh bóng sàn nhà', 550000.0000, N'Sàn nhà, sàn trung tâm thương mại, tòa nhà, công ty, … là nơi bị tác động nhiều do nhiều người qua lại. Chính vì vậy mà việc vệ sinh, đánh bóng sàn cũng là một trong những việc vô cùng quan trọng nhằm mang lại môi trường sạch, đẹp và kéo dài tuổi thọ của sàn', 1, N'img/serviceTayBongSanNha.jpg', 1)
 GO
+INSERT [dbo].[Service] ([ServiceID], [ServiceName], [Price], [ServiceDetail], [CateID], [Image], [Status]) VALUES (N'SE09', N'Dịch vụ lau kính', 150000.0000, N'Dịch vụ lau kính của chúng tôi được thực hiện bởi đội ngũ nhân viên kỹ thuật tận tâm và giàu kinh nghiệm. Chúng tôi sử dụng các phương pháp và công nghệ tiên tiến để đảm bảo kết quả tối ưu và sự hài lòng của khách hàng.
 
-SET IDENTITY_INSERT [dbo].[Booking] ON 
-GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (1, N'AC0002', N'Xác nhận', N'', N'SE01')
-GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (2, N'AC0002', N'Xác nhận', N'', N'SE06')
-GO
-SET IDENTITY_INSERT [dbo].[Booking] OFF
-GO
-SET IDENTITY_INSERT [dbo].[BookingDetail] ON 
-GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 500000.0000, CAST(N'2023-06-13T10:14:00.000' AS DateTime), N'S1.01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Hãy cử nhiều người đến cho tôi!')
-GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (2, 2, 100000.0000, CAST(N'2023-06-13T10:14:00.000' AS DateTime), N'S1.01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Hãy cử người có kinh nghiệm thật nhiều cho tôi !')
-GO
-SET IDENTITY_INSERT [dbo].[BookingDetail] OFF
+Đội ngũ chuyên gia của chúng tôi sẽ làm sạch kính của bạn một cách kỹ lưỡng và tỉ mỉ, loại bỏ các vết bẩn, dấu vân tay, bụi bẩn và các tạp chất khác mà không để lại vết trầy xước hay vết nhòe trên bề mặt kính. Chúng tôi đảm bảo kính của bạn sẽ trở nên sáng bóng, trong suốt và đẹp mắt như mới.', 1, N'img/glass-cleaning1630751581.png', 1)
 GO
 
 INSERT [dbo].[BlogCate] ([BlogCateID], [CateName]) VALUES (1, N'Mẹo dọn dẹp')
@@ -340,3 +334,15 @@ INSERT [dbo].[Blog] (  [CommentID], [Title], [SubTitle], [Content], [AccountID],
 GO
 
 
+GO
+SET IDENTITY_INSERT [dbo].[Booking] ON 
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (1, N'AC0006', N'Xác nhận hoàn thành', N'AC0003', N'SE03')
+GO
+SET IDENTITY_INSERT [dbo].[Booking] OFF
+GO
+SET IDENTITY_INSERT [dbo].[BookingDetail] ON 
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 300000.0000, CAST(N'2023-06-28T00:49:00.000' AS DateTime), N'S1.07 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tuần', N'Test')
+GO
+SET IDENTITY_INSERT [dbo].[BookingDetail] OFF
