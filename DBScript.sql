@@ -398,7 +398,6 @@ INSERT [dbo].[Blog] ([BlogID], [CommentID], [Title], [SubTitle], [Content], [Acc
 GO
 
 
-GO
 SET IDENTITY_INSERT [dbo].[Booking] ON 
 GO
 INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (1, N'AC0006', N'Xác nhận hoàn thành', N'AC0003', N'SE03')
@@ -410,3 +409,19 @@ GO
 INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 300000.0000, CAST(N'2023-06-28T00:49:00.000' AS DateTime), N'S1.07 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tuần', N'Test')
 GO
 SET IDENTITY_INSERT [dbo].[BookingDetail] OFF
+
+GO
+SET IDENTITY_INSERT [dbo].[Notification] ON 
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (1, N'AC0006', 1, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.07 ở khu vực Vinhomes Golden River - TP. Hồ Chí Minh vào ngày 2023-06-28', CAST(N'2023-06-27T09:49:29.857' AS DateTime), 0, N'Admin')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (2, N'AC0006', 1, N'Nhân viên Adela JohnSon sẽ đảm nhận cho dịch vụ Vệ sinh sofa, rèm, nệm, kính của bạn vào thời gian 2023-06-28 00:49:00.0', CAST(N'2023-06-27T09:50:02.893' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (3, N'AC0003', 1, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 1', CAST(N'2023-06-27T09:50:02.903' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (4, N'AC0006', 1, N'Nhân viên Adela JohnSon đã xác nhận đơn của bạn và bắt đầu thực hiện.', CAST(N'2023-06-27T11:10:21.787' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (5, N'AC0006', 1, N'Nhân viên Adela JohnSon đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.', CAST(N'2023-06-27T11:32:08.860' AS DateTime), 0, N'User')
+GO
+SET IDENTITY_INSERT [dbo].[Notification] OFF
+GO

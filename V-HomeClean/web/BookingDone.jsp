@@ -71,89 +71,91 @@
                                                         </div>
                                                         <div class="col-md-9">
                                                             <p class="text-muted mb-0">${acc.fullName}</p>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Tên dịch vụ:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p class="text-muted mb-0">${serviceName}</p>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Địa chỉ email:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p class="text-muted mb-0">${acc.email}</p>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Số điện thoại:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p class="text-muted mb-0">${acc.phone}</p>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Mã phòng:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p class="text-muted mb-0">${vinhomesID}</p>
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Khu vực:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p class="text-muted mb-0">${area}</p>
-                                                        </div>
-                                                    </div>
-                                                     <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Thời gian:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p class="text-muted mb-0">${bookingDate}</p>
-                                                        </div>
-                                                    </div>
-                                                     <hr>
-                                                     <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Giá ước lượng:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p class="text-muted mb-0">${totalPrice}</p>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                                
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Tên dịch vụ:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p class="text-muted mb-0">${serviceName}</p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Địa chỉ email:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p class="text-muted mb-0">${acc.email}</p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Số điện thoại:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p class="text-muted mb-0">${acc.phone}</p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Mã phòng:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p class="text-muted mb-0">${vinhomesID}</p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Khu vực:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p class="text-muted mb-0">${area}</p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Thời gian:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p class="text-muted mb-0">${bookingDate}</p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Giá ước lượng:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p class="text-muted mb-0">${totalPrice}</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <a class="btn btn-primary py-3 px-5" href="#">Kiểm tra đơn của bạn</a>
+
                                         </div>
+                                        <form action="ProfilePageController" method="post">
+                                            <button class="btn btn-primary py-3 px-5" name="action" value="Kiểm tra">Kiểm tra đơn hàng của bạn</button>
+                                        </form>
                                     </div>
                                 </div>
-                            </section>     
-                        </div>
+                            </div>
+                        </section>     
                     </div>
-
                 </div>
+
             </div>
+        </div>
 
-            <!-- 404 End -->
+        <!-- 404 End -->
 
 
-            <!-- Footer Start -->
+        <!-- Footer Start -->
         <jsp:include page="footer.jsp"></jsp:include>
         <!-- Footer End -->
 
