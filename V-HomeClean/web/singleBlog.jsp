@@ -76,7 +76,7 @@
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb justify-content-center mb-0">
                         <li class="breadcrumb-item"><a class="text-white" href="index.jsp">Trang chủ</a></li>
-<!--                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>-->
+                        <!--                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>-->
                         <li class="breadcrumb-item text-primary active" aria-current="page">BLOG</li>
                     </ol>
                 </nav>
@@ -93,32 +93,21 @@
                                 <img style="margin-left: 43px; width: 80%; height: auto; max-height: 650px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); text-align: center" class="img-single-blog" src="${BlogDetail.image}" alt="" >
 
                                 <div class="blog-item-content bg-white p-5">
-                                    <!--                                        <div class="blog-item-meta bg-gray py-1 px-2">
-                                                                                <span class="text-muted text-capitalize mr-3"><i class="ti-pencil-alt mr-2"></i>Creativity</span>
-                                                                                <span class="text-muted text-capitalize mr-3"><i class="ti-comment mr-2"></i>5 Comments</span>
-                                                                                <span class="text-black text-capitalize mr-3"><i class="ti-time mr-1"></i> 28th January</span>
-                                                                            </div> -->
+                                    <h2 class="mt-3 mb-4"><a style="color: rgb(37, 150, 190); font-size: 40px; font-weight: bold;" href="#">${BlogDetail.title}</a></h2>
+                                    <p class="lead mb-4 font-weight-normal text-black" style="font-family: 'Arial', sans-serif; font-size: 14px; font-weight: 300; font-style: italic; color: #333;">${BlogDetail.subTitle}</p>
 
-                                    <h2 class="mt-3 mb-4"><a href="#">${BlogDetail.title}</a></h2>
-                                    <!--                                        <p class="lead mb-4">Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!</p>-->
 
-                                    <!--                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae.</p>-->
-
-                                    <!--                                        <h3 class="quote">A brand for a company is like a reputation for a person. You earn reputation by trying to do hard things well.</h3>-->
-                                    <p class="lead mb-4 font-weight-normal text-black">${BlogDetail.subTitle}</p>
                                     <br>
                                     <p class="lead mb-4 font-weight-normal text-black">${BlogDetail.content}</p>
 
-
-                                    <!--                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, rerum beatae repellat tenetur incidunt quisquam libero dolores laudantium. Nesciunt quis itaque quidem, voluptatem autem eos animi laborum iusto expedita sapiente.</p>-->
-
                                     <div class="tag-option mt-5 clearfix">
-                                        <!--                                        <ul class="float-left list-inline"> 
-                                                                                    <li>Tags:</li> 
-                                                                                    <li class="list-inline-item"><a href="#" rel="tag">Advancher</a></li>
-                                                                                    <li class="list-inline-item"><a href="#" rel="tag">Landscape</a></li>
-                                                                                    <li class="list-inline-item"><a href="#" rel="tag">Travel</a></li>
-                                                                                </ul>        -->
+
+                                        <!--                                                                                <ul class="float-left list-inline"> 
+                                                                                                                            <li>Tags:</li> 
+                                                                                                                            <li class="list-inline-item"><a href="#" rel="tag">Advancher</a></li>
+                                                                                                                            <li class="list-inline-item"><a href="#" rel="tag">Landscape</a></li>
+                                                                                                                            <li class="list-inline-item"><a href="#" rel="tag">Travel</a></li>
+                                                                                                                        </ul>        -->
 
                                         <ul class="float-right list-inline">
                                             <li class="list-inline-item"> Share: </li>
@@ -128,80 +117,115 @@
                                             <li class="list-inline-item"><a href="#" target="_blank"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
                                         </ul>
                                     </div>
+
+                                    <div>
+                                        <h5>Rating</h5>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-
-                        <!--                        <div class="col-lg-12 mb-5">
-                                                    <div class="posts-nav bg-white p-5 d-lg-flex d-md-flex justify-content-between ">
-                                                        <a class="post-prev align-items-center" href="#">
-                                                            <div class="posts-prev-item mb-4 mb-lg-0">
-                                                                <span class="nav-posts-desc text-color">- Previous Post</span>
-                                                                <h6 class="nav-posts-title mt-1">
-                                                                    Donec consectetuer ligula <br>vulputate sem tristique.
-                                                                </h6>
-                                                            </div>
-                                                        </a>
-                                                        <div class="border"></div>
-                                                        <a class="posts-next" href="#">
-                                                            <div class="posts-next-item pt-4 pt-lg-0">
-                                                                <span class="nav-posts-desc text-lg-right text-md-right text-color d-block">- Next Post</span>
-                                                                <h6 class="nav-posts-title mt-1">
-                                                                    Ut aliquam sollicitudin leo.
-                                                                </h6>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>-->
-
-
-
                         <!--==========================================HIEN THI COMMENT=================================================-->
                         <h3 style="margin-left: 40px" class="mb-4">Bình Luận</h3>
-                        <div id="commentContainer" style="margin-left: 55px; border: #999 solid 1px; width: 100%; max-width: 770px; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);" class="col-lg-12 mb-5">
+                        <div id="commentContainer" style="margin-left: 55px; border: black solid 1px; width: 100%; max-width: 770px; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);" class="col-lg-12 mb-5">
 
                             <div>
 
                                 <div class="comment-area card border-0 p-5">
+
                                     <ul class="comment-tree list-unstyled">
 
                                         <li class="mb-5">
                                             <div style="margin-left: 20px;" class="comment-area-box">
-
+<!--                                                <input name="blogID" value="${o.blogID}" type="hidden">-->
                                                 <c:forEach items="${listCmt}" var="o">
                                                     <div style="display: flex; ">
                                                         <div style="margin-left: -11px">
+
                                                             <img src="${o.imageAcc}" style="width: 30px; height: 30px; border-radius: 0px;" >
                                                         </div>
-                                                        <div style="border-bottom: 1px solid #999; width: 100%; margin-bottom: 2%; margin-left: 12px">
+                                                        <div style="  border: #999 solid 1px; border-radius:12px; width: 100%; margin-bottom: 2%; margin-left: 12px">
 
 
                                                             <!--                                                        <img alt="" src="images/blog/test1.jpg" class="img-fluid float-left mr-3 mt-2">-->
-                                                            <h6 class="mb-1">${o.fullName}</h6>
-                                                            <div class="comment-meta mt-4 mt-lg-0 mt-md-0 float-lg-right float-md-right">
-                                                                <!--                                                        <a href="#"><i class="icofont-reply mr-2 text-muted"></i>Reply |</a>-->
-                                                                <span style="font-size: x-small; color: #999;" class="date-comm">${o.time}</span>
-                                                            </div>
+                                                            <style>
+                                                                .contentCmt{
+                                                                    margin: 12px;
+                                                                }
+                                                            </style>
+                                                            <div class="contentCmt">
+                                                                <h6 style="color: #6666FF;" class="mb-1">${o.fullName}</h6>
 
-                                                            <div class="comment-content mt-3">
-                                                                <p>${o.message}</p>
+
+                                                                <div class="comment-content mt-3" style="flex: 1;">
+                                                                    <p style="color: black;">${o.message}</p>
+                                                                </div>
+                                                                <div class="comment-meta mt-4 mt-lg-0 mt-md-0 float-lg-right float-md-right">
+                                                                    <span style="font-size: x-small; color: #999;" class="date-comm">${o.time}</span>
+                                                                </div>
+
+
+
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </c:forEach>
                                             </div>
 
+
                                         </li>
                                     </ul>
+
+
+                                    <div class="row mt-5">
+                                        <div class="col-lg-8">
+                                            <nav aria-label="Page navigation example">
+                                                <ul class="pagination">
+                                                    <li class="page-item">
+                                                        <c:if test="${tag > 1}">
+                                                            <a class="page-link" href="SingleBlogController?index=${tag - 1}" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </c:if>
+                                                        </a>
+                                                    </li>
+                                                    <c:forEach begin="1" end="${endP}" var="i">
+                                                        <li class="page-item">
+                                                            <a class="page-link" href="SingleBlogController?index=${i}&amp;blogID=${BlogDetail.blogID}&amp;action=paging">${i}</a>
+                                                        </li>
+                                                    </c:forEach>
+
+                                                    <li class="page-item">
+                                                        <c:if test="${tag < endP}">
+                                                            <a class="page-link" href="SingleBlogController?index=${tag + 1}" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </c:if>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+
+
+
+
+
                                 </div>
-                                <div style="margin-left: 1.9%; margin-top: -13%">
+
+                                <div style="margin-left: 1.9%; margin-top: -13%;">
                                     <form action="SingleBlogController" class="contact-form bg-white rounded p-5" id="comment-form">
 
                                         <h5 class="mb-4">Viết Bình Luận</h5>
                                         <div style="display: flex;">
                                             <div>
-                                                <img src="${sessionScope.acc.image}" style="width: 30px; height: 30px; border-radius: 0px;" >
+                                                <c:if test="${empty sessionScope.acc.image}">
+                                                    <img src="https://img.myloview.cz/plakaty/default-avatar-profile-icon-vector-social-media-user-image-700-205124837.jpg" style="width: 38px; height: 38px; border-radius: 0px;">
+                                                </c:if>
+                                                <c:if test="${not empty sessionScope.acc.image}">
+                                                    <img src="${sessionScope.acc.image}" style="width: 28px; height: 28px; border-radius: 0px;">
+                                                </c:if>
+
                                             </div>  
                                             <div style="margin-left: 2%; width: 100%">
                                                 <input class="form-control" type="hidden" name="blogID" value="${BlogDetail.blogID}">
@@ -209,15 +233,18 @@
 
 
                                                 <!--                                <input  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."-->
-                                                <textarea  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."></textarea>
+                                                <textarea style="border-radius: 15px;"  class="form-control mb-3" name="message" id="comment" cols="30" rows="5" placeholder="Nhập nội dung.."></textarea>
 
-                                                <input type="submit" class="btn btn-primary" name="action" id="submit_contact" value="Bình luận">
+                                                <input style="border-radius: 12px;" type="submit" class="btn btn-primary" name="action" id="submit_contact" value="Bình luận">
                                             </div>
                                         </div>
+
                                     </form>
                                 </div>
                             </div>
                         </div>
+
+
                         <!--==========================================INSERT COMMENT=================================================-->
                         <style>
                             .infoCMT {

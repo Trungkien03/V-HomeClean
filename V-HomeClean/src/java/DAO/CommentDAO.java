@@ -135,31 +135,35 @@ public class CommentDAO {
         return list;
     }
 
-    public int CountComment() {
-        String query = "SELECT COUNT(*)  FROM Comment;";
+    public int CountComment(String blogID) {
+        String query = "SELECT COUNT(*)  FROM Comment\n"
+                + "WHERE BlogID = ?";
         int totalComments = 0;
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
+            ps.setString(1, blogID);
             rs = ps.executeQuery();
             if (rs.next()) {
-                totalComments = rs.getInt("total_comment");
+                totalComments = rs.getInt(1);
             }
         } catch (Exception e) {
         }
         return totalComments;
     }
 
-    public List<CommentDTO> pagingComment(int index) {
+    public List<CommentDTO> pagingComment(int index, String blogID) {
         List<CommentDTO> list = new ArrayList<>();
 
-        String query = "SELECT c.CommentID,c.Message, c.Time,c.AccountID, c.BlogID, a.FullName, c.Image \n"
+        String query = "SELECT c.CommentID, c.Message, c.Time, c.AccountID, c.BlogID, a.FullName, c.Image \n"
                 + "FROM Comment c, Account a\n"
-                + "WHERE c.AccountID = a.AccountID ORDER BY BlogID OFFSET ? ROWS FETCH NEXT 6 ROWS ONLY";
+                + "WHERE c.AccountID = a.AccountID AND c.BlogID = ? \n"
+                + "ORDER BY c.CommentID OFFSET ? ROWS FETCH NEXT 5 ROWS ONLY";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1, (index - 1) * 6);
+            ps.setString(1, blogID);
+            ps.setInt(2, (index - 1) * 5);
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new CommentDTO(rs.getInt(1),
@@ -171,18 +175,16 @@ public class CommentDAO {
                         rs.getNString(7)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return list;
-
     }
 
     public static void main(String[] args) {
         CommentDAO dao = new CommentDAO();
-        List<CommentDTO> list = dao.getCommentV2("Bl0001");
-        for (CommentDTO commentDTO : list) {
-            System.out.println(commentDTO.toString());
-        }
+        int total = dao.CountComment("1");
+        System.out.println(total);
     }
 
 }

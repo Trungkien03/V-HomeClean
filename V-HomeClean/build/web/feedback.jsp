@@ -1,17 +1,16 @@
 <%-- 
-    Document   : appointment
-    Created on : May 20, 2023, 9:49:07 PM
-    Author     : Trung Kien
+    Document   : feedback
+    Created on : Jun 27, 2023, 10:22:51 PM
+    Author     : Hieu Doan
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>V-HomeClean - Write Blog</title>
+        <title>V-HomeClean - Feedback</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -59,7 +58,8 @@
             <!-- Page Header Start -->
             <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container text-center py-5">
-                    <h1 class="display-4 text-white animated slideInDown mb-4">Viết Blog Mới</h1>
+                    <h1 style="color: #007BFF" class="display-4 text-white animated slideInDown mb-4">Viết phản hồi của bạn!</h1>
+
                     <!--                    <nav aria-label="breadcrumb animated slideInDown">
                                             <ol class="breadcrumb justify-content-center mb-0">
                                                 <li class="breadcrumb-item"><a class="text-white" href="#">Trang chủ</a></li>
@@ -72,6 +72,7 @@
 
 
             <!-- Appointment Start -->
+
             <div class="container-xxl py-5">
                 <div class="container">
                     <div class="row g-5">
@@ -92,16 +93,48 @@
                                 background-color: #f5f5f5;
 
                             }
-                            
-                            label{
-                                color: black;
-                            }
 
                         </style>
+                        <h2 style="color: #007BFF; font-size: 23px; text-align: center; font-family: 'Arial', sans-serif; font-weight: bold;">Hãy giúp chúng tôi cải thiện bằng cách gửi cho chúng tôi những phản hồi, nhận xét của bạn về dịch vụ!</h2>
+
                         <div class="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="box-blog">
 
-                                <form action="BlogPageController" method="post" enctype="multipart/form-data">
+                                <style>
+                                    .custom-form {
+                                        background-color: #f8f9fa;
+                                        padding: 20px;
+                                        border-radius: 5px;
+                                    }
+                                    .custom-form label {
+                                        color: #333;
+                                        font-weight: bold;
+                                    }
+                                    .custom-form input[type="text"],
+                                    .custom-form select,
+                                    .custom-form textarea {
+                                        background-color: #fff;
+                                        border: none;
+                                        border-radius: 5px;
+                                        padding: 10px;
+                                        margin-bottom: 10px;
+                                        box-shadow: none;
+                                    }
+                                    .custom-form input[type="submit"] {
+                                        background-color: #007BFF;
+                                        color: #fff;
+                                        border: none;
+                                        border-radius: 5px;
+                                        padding: 10px 20px;
+                                        cursor: pointer;
+                                        transition: background-color 0.3s ease;
+                                    }
+                                    .custom-form input[type="submit"]:hover {
+                                        background-color: #0056b3;
+                                    }
+                                </style>
+
+                                <form action="BlogPageController" method="post" enctype="multipart/form-data" class="custom-form">
                                     <div class="row g-3">
                                         <input class="form-control" type="hidden" name="accountID" value="${acc.accountID}">
                                     <div class="col-12">
@@ -116,33 +149,53 @@
                                             <label for="subTitle">Phụ đề</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <!--                                        <div class="form-floating">
-                                                                                    <input type="file" name="image" class="form-control bg-light border-0" id="image" placeholder="Select Image">
-                                                                                    <label for="image">Hình ảnh</label>
-                                                                                </div>-->
-                                 
-                                        <div class="form-floating">
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input  style="font-size: 25px;" type="file" name="image" class="custom-file-input" id="image" aria-describedby="inputGroupFileAddon">
-                                                    <label class="custom-file-label" for="image">Chọn ảnh</label>
-                                                </div>
-                                            </div>
-                                            <label for="image">Hình ảnh</label>
+                                    <style>
+                                        .rating {
+                                            display: inline-block;
+                                        }
+
+                                        .rating input {
+                                            display: none;
+                                        }
+
+                                        .rating label {
+                                            float: right;
+                                            cursor: pointer;
+                                            color: #888;
+                                        }
+
+                                        .rating label:before {
+                                            content: '\2605';
+                                            font-size: 24px;
+                                        }
+
+                                        .rating input:checked ~ label {
+                                            color: #ffcc00;
+                                        }
+
+                                        .rating label:hover,
+                                        .rating label:hover ~ label {
+                                            color: #ffcc00;
+                                        }
+                                    </style>
+                                    <h4 style="font-size: 15px; margin-left: 12px;">Rating</h4>
+                                    <div class="col-12">
+                                        
+                                        <div class="rating">
+                                            <input type="radio" id="star5" name="rating" value="5">
+                                            <label for="star5"></label>
+                                            <input type="radio" id="star4" name="rating" value="4">
+                                            <label for="star4"></label>
+                                            <input type="radio" id="star3" name="rating" value="3">
+                                            <label for="star3"></label>
+                                            <input type="radio" id="star2" name="rating" value="2">
+                                            <label for="star2"></label>
+                                            <input type="radio" id="star1" name="rating" value="1">
+                                            <label for="star1"></label>
                                         </div>
+                                    </div>
 
 
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-floating">
-                                            <select name="blogCateID" class="form-select bg-light border-0" id="blogCateID">
-                                                <option value="1">Mẹo dọn dẹp</option>
-                                                <option value="2">Mẹo sửa chữa</option>
-                                            </select>
-                                            <label for="blogCateID">Phân loại</label>
-                                        </div>
-                                    </div>
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <textarea id="summernote" name="content" class="form-control bg-light border-0" placeholder="Leave a message here" style="height: 500px"></textarea>
@@ -153,6 +206,7 @@
                                     </div>
                                 </div>
                             </form>
+
 
 
 
@@ -255,5 +309,4 @@
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
     </body>
-
 </html>

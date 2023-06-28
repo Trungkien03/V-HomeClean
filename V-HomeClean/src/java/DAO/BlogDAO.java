@@ -10,6 +10,7 @@ import DTO.BlogDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,65 +116,88 @@ public class BlogDAO {
         return list;
 
     }
-    
+
     //dem so blog
     public int countBlogs() {
-    String query = "SELECT COUNT(*) AS TotalBlogs FROM Blog";
-    int total = 0;
-    try {
-        conn = new DBContext().getConnection();
-        ps = conn.prepareStatement(query);
-        rs = ps.executeQuery();
-        if (rs.next()) {
-            total = rs.getInt("TotalBlogs");
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    } finally {
-        try {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ps != null) {
-                ps.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (Exception e) {
-            // Handle exception appropriately
-        }
-    }
-    return total;
-}
-
-    
-    
-
-    public void InsertBlog(String title, String subTitle, String content, String accountID, int blogCateID, String image) {
-        String query = "INSERT INTO Blog ( Title, SubTitle, Content, AccountID, BlogCateID, Time, Image)\n"
-                + "VALUES ( ?, ?, ?, ?, ?, GETDATE(), ?);";
+        String query = "SELECT COUNT(*) AS TotalBlogs FROM Blog";
+        int total = 0;
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt("TotalBlogs");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e) {
+                // Handle exception appropriately
+            }
+        }
+        return total;
+    }
+
+//    public void InsertBlog(String title, String subTitle, String content, String accountID, int blogCateID, String image) {
+//        String query = "INSERT INTO Blog ( Title, SubTitle, Content, AccountID, BlogCateID, Time, Image)\n"
+//                + "VALUES ( ?, ?, ?, ?, ?, GETDATE(), ?);";
+//        try {
+//            conn = new DBContext().getConnection();
+//            ps = conn.prepareStatement(query);
+//            ps.setString(1, title);
+//            ps.setNString(2, subTitle);
+//            ps.setNString(3, content);
+//            ps.setString(4, accountID);
+//            ps.setInt(5, blogCateID);
+//            ps.setString(6, image);
+//
+//            ps.executeUpdate();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+    public String insertBlog(String title, String subTitle, String content, String accountID, int blogCateID, String image) {
+        String blogID = null;
+        String query = "INSERT INTO Blog (Title, SubTitle, Content, AccountID, BlogCateID, Time, Image)\n"
+                + "VALUES (?, ?, ?, ?, ?, GETDATE(), ?);";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, title);
-            ps.setNString(2, subTitle);
-            ps.setNString(3, content);
+            ps.setString(2, subTitle);
+            ps.setString(3, content);
             ps.setString(4, accountID);
             ps.setInt(5, blogCateID);
             ps.setString(6, image);
 
             ps.executeUpdate();
-        } catch (Exception e) {
-        }
-    }
-    
-    
 
-    public static void main(String[] args) {
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                blogID = rs.getString(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return blogID;
+    }
+
+
+
+public static void main(String[] args) {
 
         BlogDAO dao = new BlogDAO();
-        int total = dao.countBlogs();
+        String total = dao.insertBlog("1", "1", "1", "AC0001", 2, "1");
         System.out.println(total);
 
     }

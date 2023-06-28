@@ -6,8 +6,10 @@
 package controller;
 
 import DAO.BlogDAO;
+import DAO.CommentDAO;
 import DTO.AccountDTO;
 import DTO.BlogDTO;
+import DTO.CommentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -56,14 +58,14 @@ public class BlogPageController extends HttpServlet {
         if (endPage % 6 != 0) {
             endPage++;
         }
-
+        CommentDAO cdao = new CommentDAO();
         List<BlogDTO> list = dao.pagingBlog(index);
         try {
 
             if (action.equalsIgnoreCase("Xuất Bản")) {
                 if (a == null) {
                     url = "login.jsp";
-                    String error = "Bạn cần đăng nhập tài khoản để đăng bài blog.";
+                    String error = "Bạn cần đăng nhập tài khoản để đăng bài viết.";
                     request.setAttribute("ERROR", error);
                 } else {
                     String accountID = a.getAccountID();
@@ -83,9 +85,14 @@ public class BlogPageController extends HttpServlet {
                     String title = request.getParameter("title");
                     String subTitle = request.getParameter("subTitle");
                     String content = request.getParameter("content");
-                    dao.InsertBlog(title, subTitle, content, accountID, blogCateID, imagePath);
-                    url = "blogWithSide.jsp";
-
+                    String blogID = dao.insertBlog(title, subTitle, content, accountID, blogCateID, imagePath);
+                    BlogDTO b = dao.getBlogByID(blogID);
+                    List<CommentDTO> listC = cdao.getCommentV2(blogID);
+                    request.setAttribute("listB", list);
+                    session.setAttribute("BlogDetail", b);
+                    request.setAttribute("listCmt", listC);
+                    url = "singleBlog.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
                 }
             }
         } catch (Exception e) {

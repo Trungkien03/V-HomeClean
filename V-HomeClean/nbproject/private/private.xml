@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/web/blogWithSide.jsp</file>
             <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/controller/BlogPageController.java</file>
-            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/DAO/BlogDAO.java</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/web/singleBlog.jsp</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/DAO/CommentDAO.java</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/src/java/controller/SingleBlogController.java</file>
+            <file>file:/D:/SWP391_Project/V-HomeClean/V-HomeClean/web/feedback.jsp</file>
         </group>
     </open-files>
 </project-private>

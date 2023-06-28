@@ -12,13 +12,17 @@ import DTO.BlogDTO;
 import DTO.CommentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -40,12 +44,33 @@ public class SingleBlogController extends HttpServlet {
         CommentDAO cdao = new CommentDAO();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         String url = "singleBlog.jsp";
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
+        }
+        if (indexPage.equals("-1")) {
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+        int count = cdao.CountComment(blogID);
+        int endPage = count / 5;
+        if (endPage % 5 != 0) {
+            endPage++;
+        }
+
+        List<CommentDTO> listC = cdao.pagingComment(index, blogID);
+        session.setAttribute("listCmt", listC);
+        session.setAttribute("tag", index);
+        session.setAttribute("endP", endPage);
         try {
+            
             if (action == null || action.isEmpty()) {
                 request.setAttribute("listB", list);
                 session.setAttribute("BlogDetail", b);
-                List<CommentDTO> listC = cdao.getCommentV2(blogID);
-                request.setAttribute("listCmt", listC);
+                listC = cdao.pagingComment(index, blogID);
+                session.setAttribute("listCmt", listC);
+                session.setAttribute("tag", index);
+                session.setAttribute("endP", endPage);
                 request.getRequestDispatcher(url).forward(request, response);
             }
 
@@ -62,16 +87,22 @@ public class SingleBlogController extends HttpServlet {
                         String imageAcc = a.getImage();
                         String blogID1 = b.getBlogID();
                         cdao.AddComment(message, accountID, blogID1, imageAcc);
-                        
                         session.setAttribute("listB", list);
                         session.setAttribute("BlogDetail", b);
-                        List<CommentDTO> listC = cdao.getCommentV2(blogID);
+                        //listC = cdao.getCommentV2(blogID);
+                        listC = cdao.pagingComment(index, blogID);
                         session.setAttribute("listCmt", listC);
+                        session.setAttribute("tag", index);
+                        session.setAttribute("endP", endPage);
                         response.sendRedirect("singleBlog.jsp#commentContainer");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
+            }
+            
+            if(action.equalsIgnoreCase("paging")){
+                response.sendRedirect("singleBlog.jsp#commentContainer");
             }
         } catch (Exception e) {
             e.printStackTrace();
