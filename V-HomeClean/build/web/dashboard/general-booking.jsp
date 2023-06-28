@@ -227,12 +227,16 @@
 
                                                 <div class="mt-5" style="display: flex; justify-content: space-between; align-content: center;">
                                                     <div class="text-end text-center">
-                                                        <input id="update-button" name="action" type="submit" value="Cập nhật" class="btn btn-primary" />
+                                                        <c:if test="${booking.bookingStatus eq 'Xác nhận' || booking.bookingStatus eq 'Chờ xác nhận'}">
+                                                            <input id="update-button" name="action" type="submit" value="Cập nhật" class="btn btn-primary" />
+                                                        </c:if>
                                                     </div>
                                                     <div class="text-end text-center">
-                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
-                                                            Hủy lịch hẹn
-                                                        </button>
+                                                        <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
+                                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                                                                Hủy lịch hẹn
+                                                            </button>
+                                                        </c:if>
                                                     </div>
 
                                                     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

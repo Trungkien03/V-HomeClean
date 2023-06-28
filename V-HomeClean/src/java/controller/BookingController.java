@@ -81,7 +81,7 @@ public class BookingController extends HttpServlet {
                 String date = request.getParameter("date");
                 String time = request.getParameter("time");
                 String message = request.getParameter("message");
-                String status = "Xác nhận";
+                String status = "Chờ xác nhận";
                 String staffID = "";
 
                 String bookingDate = date + " " + time + ":00";

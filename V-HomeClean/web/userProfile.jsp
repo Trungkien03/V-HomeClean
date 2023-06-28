@@ -45,7 +45,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
         <style>
             .profile-image-label {
                 display: block;
@@ -311,7 +311,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="booking" items="${ListB}">
+
+                                        <c:forEach var="booking" items="${ListB}" varStatus="loop">
                                             <c:set var="addressParts" value="${fn:split(booking.bookingAddress, '||')}"/>
                                             <tr>
                                                 <td>${booking.serviceName}</td>
@@ -329,6 +330,8 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLongTitle">Chi tiết đơn của khách hàng</h5>
+                                                        <div style="margin: auto" class="text-center" id="rateYo${booking.bookingID}"></div>
+
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -355,7 +358,7 @@
                                                                         </c:when>
                                                                         <c:otherwise>
                                                                             <div class="p-3 text-center">
-                                                                                <div class="avatar img-circle">
+                                                                                <div style="margin-left: 80px;" class="avatar1 img-circle">
                                                                                     <img id="profileImage" src="${staffImage}" alt="Image" class="shadow">
                                                                                 </div>
                                                                                 <h4 class="text-center text-success">${staffName}</h4>
@@ -371,7 +374,7 @@
                                                                                         </div>
                                                                                         <div class="form-group">
                                                                                             <label class="text-info">Địa chỉ email</label>
-                                                                                            <input readonly="" value="${staffEmail}" type="text" class="form-control text-center">
+                                                                                            <input style="color: #000;" readonly="" value="${staffEmail}" type="text" class="form-control text-center">
                                                                                         </div>
                                                                                     </form>
                                                                                 </div>
@@ -428,6 +431,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
 
 
@@ -443,13 +447,57 @@
 
                                             <td>
                                                 <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
-                                                    <button disabled="" class="btn btn-info">Chờ xác nhận</button>
+                                                    <button class="btn btn-info">Đã xác nhận</button>
                                                 </c:if>
-                                                <c:if test="${booking.bookingStatus eq 'Đang hoạt động'}">
-                                                    <button class="btn btn-primary">Đang hoạt động</button>
+                                                <c:if test="${booking.bookingStatus eq 'Đang thực hiện'}">
+                                                    <button class="btn btn-info">Đang hoạt động</button>
                                                 </c:if>
-                                                <c:if test="${booking.bookingStatus eq 'Hoàn tất'}">
-                                                    <button class="btn btn-success">Hoàn tất</button>
+                                                <c:if test="${booking.bookingStatus eq 'Xác nhận hoàn thành'}">
+                                                    <button class="btn btn-info" data-toggle="modal" data-target="#a${loop.index}">Xác nhận đơn</button>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="a${loop.index}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Phản hồi từ quý khách</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <form action="ProfilePageController" method="POST">
+                                                                    <div class="modal-body">
+                                                                        Quý khách có hài lòng với dịch vụ của công ty chúng tôi không ạ ?
+                                                                        <div class="col-lg-12 col-md-6 wow fadeInUp mt-3" data-wow-delay="0.3s">
+
+                                                                            <input name="bookingID" type="hidden" value="${booking.bookingID}">
+                                                                            <div class="row g-3">
+                                                                                <div class="col-12">
+                                                                                    <div class="form-floating">
+                                                                                        <textarea name="feedbackDetail" class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                                                                        <label for="message">Hãy cho chúng tôi biết cảm nhận của quý khách</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div>Mức độ hài lòng của quý khách:</div>
+                                                                                    <div style="margin: auto" class="text-center" id="rateYo"></div>
+                                                                                    <input type="hidden" id="ratingInput" name="rating" value="">
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="display: flex; justify-content: space-between" class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                                        <button id="submitBtn" disabled name="action" value="Đánh giá" type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
+                                                    <button class="btn btn-success" >Hoàn tất</button>
                                                 </c:if>
                                             </td>
                                             </tr>
@@ -650,6 +698,13 @@
             });
         }
 
+        if (status === "feedBack") {
+            window.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('security-tab').click();
+                status = "";
+            });
+        }
+
         // Khởi tạo biến để lưu trạng thái của mỗi điều kiện
         let isOldPasswordValid = false;
         let isNewPasswordValid = false;
@@ -801,6 +856,34 @@
     </script>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Khởi tạo plugin rateYo
+            $("#rateYo").rateYo();
+
+            // Gắn sự kiện cho plugin rateYo khi người dùng thay đổi đánh giá
+            $("#rateYo").rateYo("option", "onSet", function (rating) {
+                if (rating > 0) {
+                    $("#submitBtn").prop("disabled", false); // Enable button khi có đánh giá
+                } else {
+                    $("#submitBtn").prop("disabled", true); // Disable button khi chưa có đánh giá
+                }
+                $("#ratingInput").val(rating); // Gán giá trị đánh giá vào trường ẩn (hidden input)
+            });
+
+        <c:forEach var="booking" items="${ListB}">
+            <c:forEach items="${feedBackList}" var="f">
+                <c:if test="${booking.bookingID eq f.bookingID}">
+            $("#rateYo1").rateYo({
+                rating: ${f.rating},
+                readOnly: true
+            });
+                </c:if>
+            </c:forEach>
+        </c:forEach>
+        });
+    </script>
 
 </body>
 

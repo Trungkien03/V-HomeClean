@@ -2,8 +2,11 @@ package controller;
 
 import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.FeedBackDAO;
+import DAO.NotificationDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
+import DTO.FeedBackDTO;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -37,13 +40,17 @@ public class ProfilePageController extends HttpServlet {
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         AccountDAO aDao = new AccountDAO();
         BookingDAO bDao = new BookingDAO();
+        FeedBackDAO fDao = new FeedBackDAO();
+        NotificationDAO nDao = new NotificationDAO();
         String action = request.getParameter("action");
         String url = "userProfile.jsp";
+        String typeNotiUser = "User"; //xác nhận kiểu noti sẽ được gửi tới khách hàng
+        String typeNotiStaff = "Staff";
         if (a == null) {
             response.sendRedirect("login.jsp");
         } else {
             try {
-                
+
                 if (action.equalsIgnoreCase("Cập nhật")) {
                     String fullName = request.getParameter("fullName");
                     String dateOfBirth = request.getParameter("dateOfBirth");
@@ -93,12 +100,45 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
+
+                if (action.equalsIgnoreCase("Đánh giá")) {
+                    String bookingIDString = request.getParameter("bookingID");
+                    String accountID = a.getAccountID();
+                    String feedbackDetail = request.getParameter("feedbackDetail");
+                    String ratingString = request.getParameter("rating");
+                    BookingDTO bookingUser = bDao.getBookingByID(bookingIDString);
+                    double rating = 0;
+                    boolean check = false;
+                    if (ratingString != null) {
+                        rating = Double.parseDouble(ratingString);
+                    }
+                    int bookingID = 0;
+                    if (bookingIDString != null) {
+                        bookingID = Integer.parseInt(bookingIDString);
+                    }
+                    if (bookingID != 0) {
+                        String bookingStatus = "Hoàn thành";
+                        bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
+                        request.setAttribute("message", "Không tìm thấy ID của booking");
+                        check = true;
+                    }
+                    if (check == true) {
+                        String notiDetail = "Khách hàng " + a.getFullName() + " đã xác nhận và đã gửi feed về đơn dịch vụ có mã số " + bookingIDString;
+                        nDao.InsertNotification(bookingUser.getStaffID(), bookingIDString, notiDetail, "false", typeNotiStaff);
+                        fDao.insertFeedback(feedbackDetail, rating, accountID, bookingIDString);
+                        request.setAttribute("status", "feedBack");
+                        url = "userProfile.jsp";
+                    }
+
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 String accountID = a.getAccountID();
+                List<FeedBackDTO> feedBackList = fDao.getListFeedBack();
                 List<BookingDTO> BookingList = bDao.getBookingDetailByAccountID(accountID);
                 List<AccountDTO> allAccounts = aDao.getAllAccounts();
+                request.setAttribute("feedBackList", feedBackList);
                 request.setAttribute("allAccounts", allAccounts);
                 request.setAttribute("ListB", BookingList);
                 request.getRequestDispatcher(url).forward(request, response);

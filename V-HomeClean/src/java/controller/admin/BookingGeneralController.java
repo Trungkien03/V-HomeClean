@@ -93,7 +93,7 @@ public class BookingGeneralController extends HttpServlet {
                         String typeNotiUser = "User"; //để định dạng thông báo này sẽ được gửi tới user
                         nDao.InsertNotification(account.getAccountID(), bookingIDString, notiDetails, "false", typeNotiUser);
                         
-                        String notiDetailsStaff = "Bạn vừa được giao một đơn dịch vụ mới từ Quản lý " + a.getFullName();
+                        String notiDetailsStaff = "Bạn vừa được giao một đơn dịch vụ mới từ Quản lý " + a.getFullName() + " với mã hàng hóa là " + bookingID;
                         String typeNotiStaff = "Staff";
                         nDao.InsertNotification(staff.getAccountID(), bookingIDString, notiDetailsStaff, "false", typeNotiStaff);
                         int roleIDFixElec = 2;

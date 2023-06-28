@@ -48,12 +48,12 @@ public class StaffTaskPageController extends HttpServlet {
         NotificationDAO nDao = new NotificationDAO();
         String action = request.getParameter("action");
         String url = "taskStaffsPage.jsp";
+        String typeNotiUser = "User"; //xác nhận kiểu noti sẽ được gửi tới khách hàng
+        String typeNotiStaff = "Staff"; //xác nhận kiểu noti sẽ được gửi tới nhân viên
         if (a == null) {
             response.sendRedirect("login.jsp");
         } else {
             if (a != null) {
-                String typeNotiUser = "User";
-                String typeNotiStaff = "Staff";
                 List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
                 session.setAttribute("listAllAccounts", listAllAccounts);
                 List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
@@ -65,10 +65,45 @@ public class StaffTaskPageController extends HttpServlet {
             }
             try {
                 if (action.equalsIgnoreCase("Xác nhận")) {
-
+                    String bookingIDString = request.getParameter("bookingID");
+                    BookingDTO userBooking = bDao.getBookingByID(bookingIDString);
+                    AccountDTO staff = aDao.GetAccountByAccountID(userBooking.getStaffID());
+                    int bookingID = 0;
+                    boolean check = false;
+                    if (bookingIDString != null) {
+                        bookingID = Integer.parseInt(bookingIDString);
+                    }
+                    if (bookingID != 0) {
+                        String bookingStatus = "Đang thực hiện";
+                        bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
+                        request.setAttribute("message", "Không tìm thấy ID của booking");
+                        check = true;
+                    }
+                    if (check == true) {
+                        String notiDetail = "Nhân viên " + staff.getFullName() + " đã xác nhận đơn của bạn và bắt đầu thực hiện.";
+                        nDao.InsertNotification(userBooking.getAccountID(), userBooking.getBookingID(), notiDetail, "false", typeNotiUser);
+                    }
                 }
-                if (action.equalsIgnoreCase("Hoàn thành")) {
 
+                if (action.equalsIgnoreCase("Hoàn thành")) {
+                    String bookingIDString = request.getParameter("bookingID");
+                    BookingDTO userBooking = bDao.getBookingByID(bookingIDString);
+                    AccountDTO staff = aDao.GetAccountByAccountID(userBooking.getStaffID());
+                    int bookingID = 0;
+                    boolean check = false;
+                    if (bookingIDString != null) {
+                        bookingID = Integer.parseInt(bookingIDString);
+                    }
+                    if (bookingID != 0) {
+                        String bookingStatus = "Xác nhận hoàn thành";
+                        bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
+                        request.setAttribute("message", "Không tìm thấy ID của booking");
+                        check = true;
+                    }
+                    if (check == true) {
+                        String notiDetail = "Nhân viên " + staff.getFullName() + " đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.";
+                        nDao.InsertNotification(userBooking.getAccountID(), userBooking.getBookingID(), notiDetail, "false", typeNotiUser);
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();

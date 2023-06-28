@@ -41,7 +41,6 @@ public class BookingDAO {
             ps.executeUpdate();
 
             // Retrieve the generated BookingID
-            
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     bookingID = generatedKeys.getInt(1);
@@ -122,9 +121,8 @@ public class BookingDAO {
         }
         return bookingList;
     }
-    
-    
-     //get all booking by id
+
+    //get all booking by id
     public List<BookingDTO> getBookingDetailByStaffID(String StaffID) {
         String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.TypeOfService, bd.Message\n"
                 + "FROM Booking b, BookingDetail bd , Service s\n"
@@ -255,7 +253,7 @@ public class BookingDAO {
         return bookingList;
     }
 
-    // cập nhật đơn
+    // cập nhật nhân viên cho đơn hàng từ manager
     public void updateBookingWithStaffIDandStatus(String staffID, String status, int bookingID) {
         String query = "UPDATE Booking\n"
                 + "SET StaffID = ?, BookingStatus = ?\n"
@@ -272,11 +270,28 @@ public class BookingDAO {
         }
     }
 
+    //cập nhận trạng thái đơn từ nhân viên
+    public void updateBookingWithBookingIdAndStatus(int bookingID, String status) {
+        String query = "UPDATE Booking\n"
+                + "SET BookingStatus = ?\n"
+                + "WHERE BookingID = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, status);
+            ps.setInt(2, bookingID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        List<BookingDTO> list = dao.getBookingDetailByStaffID("AC0005");
-        for (BookingDTO bookingDTO : list) {
-            System.out.println(bookingDTO.toString());
-        }
+        BookingDTO a = dao.getBookingByID("1");
+        System.out.println(a);
+        dao.updateBookingWithBookingIdAndStatus(1, "Xác nhận");
+        BookingDTO b = dao.getBookingByID("1");
+        System.out.println(b);
     }
 }

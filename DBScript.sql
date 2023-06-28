@@ -132,6 +132,7 @@ CREATE TABLE Notification
 	Detail NVARCHAR(MAX) NOT NULL,
 	Create_at DATETIME DEFAULT GETDATE() NOT NULL,
 	Status bit NOT NULL,
+	TypeNoti NVARCHAR(50) NOT NULL,
 	FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
 	FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 )
@@ -142,9 +143,9 @@ GO
 CREATE TABLE Feedback
 (
   FeedbackID INT NOT NULL IDENTITY(1,1),
-  Date DATE NOT NULL,
+  Date DATETIME NOT NULL,
   Feedback_Text NVARCHAR(MAX) NOT NULL,
-  Rating INT NOT NULL,
+  Rating FLOAT NOT NULL,
   AccountID NVARCHAR(20) NOT NULL,
   BookingID INT NOT NULL,
   PRIMARY KEY (FeedbackID),
@@ -395,3 +396,17 @@ INSERT [dbo].[Blog] ([BlogID], [CommentID], [Title], [SubTitle], [Content], [Acc
 Tạo tâm lý thoải mái cho những người trong gia đình Có rất nhiều người ái ngại khi có sự xuất hiện của người lạ trong gia đình mình thì việc lựa chọn hình thức Dịch vụ vệ sinh nhà cửa theo giờ sẽ là giải pháp giải quyết vấn đề này.', N'AC0001', 1, CAST(N'2023-03-11T00:00:00.000' AS DateTime), N'https://www.thespruce.com/thmb/c3znkzZgMeuvzBy4wH13jVllfUo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/plants-with-big-flowers-4138211-hero-b10becb169064cc4b3c7967adc1b22e1.jpg')
 INSERT [dbo].[Blog] ([BlogID], [CommentID], [Title], [SubTitle], [Content], [AccountID], [BlogCateID], [Time], [Image]) VALUES (N'Bl0017', NULL, N'Kiem Tra', N'ok', N'Khi sử sụng Dịch vụ vệ sinh nhà cửa theo giờ sẽ có các lợi ích sau:\n\n1.\nTạo tâm lý thoải mái cho những người trong gia đình Có rất nhiều người ái ngại khi có sự xuất hiện của người lạ trong gia đình mình thì việc lựa chọn hình thức Dịch vụ vệ sinh nhà cửa theo giờ sẽ là giải pháp giải quyết vấn đề này.', N'AC0001', 1, CAST(N'2023-03-11T00:00:00.000' AS DateTime), N'https://www.thespruce.com/thmb/c3znkzZgMeuvzBy4wH13jVllfUo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/plants-with-big-flowers-4138211-hero-b10becb169064cc4b3c7967adc1b22e1.jpg')
 GO
+
+
+GO
+SET IDENTITY_INSERT [dbo].[Booking] ON 
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (1, N'AC0006', N'Xác nhận hoàn thành', N'AC0003', N'SE03')
+GO
+SET IDENTITY_INSERT [dbo].[Booking] OFF
+GO
+SET IDENTITY_INSERT [dbo].[BookingDetail] ON 
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 300000.0000, CAST(N'2023-06-28T00:49:00.000' AS DateTime), N'S1.07 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tuần', N'Test')
+GO
+SET IDENTITY_INSERT [dbo].[BookingDetail] OFF

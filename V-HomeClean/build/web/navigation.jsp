@@ -255,7 +255,8 @@
                                         <a href="#">
                                             <div class="media d-flex">
                                                 <span style="width: 50px; text-align: center;" class="avatar avatar-sm flex-shrink-0">
-                                                    <c:set var="image" value="img/user.jpg" />
+                                                    <c:set var="image" value="img/user.jpg" /> <!-- Khởi tạo giá trị mặc định cho image -->
+
                                                     <c:forEach items="${ListBookingAccounts}" var="booking">
                                                         <c:if test="${notification.bookingID eq booking.bookingID}">
                                                             <c:forEach items="${listAllAccounts}" var="account">
@@ -265,7 +266,6 @@
                                                             </c:forEach>
                                                         </c:if>
                                                     </c:forEach>
-
                                                     <img class="avatar-img rounded-circle" alt="User Image" src="${image}" />
                                                 </span>
                                                 <div class="media-body">
