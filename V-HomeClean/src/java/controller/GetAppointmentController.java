@@ -5,11 +5,15 @@
  */
 package controller;
 
+import DAO.AccountDAO;
+import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.BookingDTO;
+import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,8 +45,23 @@ public class GetAppointmentController extends HttpServlet {
         HttpSession session = request.getSession();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         if (a == null) {
-            response.sendRedirect("login.jsp");
+            request.setAttribute("ERROR", "Bạn cần đăng nhập tài khoản để đặt lịch!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
+            NotificationDAO nDao = new NotificationDAO();
+            AccountDAO aDao = new AccountDAO();
+            BookingDAO bDao = new BookingDAO();
+            String typeNotiUser = "User";
+            String typeNotiStaff = "Staff";
+            List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+            session.setAttribute("listAllAccounts", listAllAccounts);
+            List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("listNotiUnread", listNotiUnread);
+            int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+            List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+            session.setAttribute("ListBookingAccounts", ListBookingAccounts);
+
             String serviceID = request.getParameter("serviceID");
             ServiceDAO dao = new ServiceDAO();
             List<ServiceDTO> list = dao.getAllService();

@@ -4,13 +4,20 @@
     Author     : Trung Kien
 --%>
 
+<%@page import="DTO.AccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <!DOCTYPE html>
-<div class="header">
+
+
+
+<div id="header-content" class="header">
     <div class="header-left">
-        <a href="../HomePageController" class="navbar-brand d-flex align-items-center">
+        <a href="HomePageController" class="navbar-brand d-flex align-items-center">
             <h3 style="color: #f8e43c" class="logo"><i class="fa fa-building text-primary me-3"></i><strong>V-HomeClean</strong></h3>
-    </a>
+        </a>
     </div>
 
     <a href="javascript:void(0);" id="toggle_btn">
@@ -36,7 +43,11 @@
                 class="dropdown-toggle nav-link"
                 data-bs-toggle="dropdown"
                 >
-                <i class="fa fa-bell"></i> <span class="badge badge-pill">3</span>
+                <i class="fa fa-bell"></i>
+                <c:if test="${totalUnreadNoti > 0}">
+                    <span id="totalNotification" class="badge badge-pill" >${sessionScope.totalUnreadNoti}</span>
+                </c:if>
+
             </a>
             <div class="dropdown-menu notifications">
                 <div class="topnav-dropdown-header">
@@ -44,101 +55,53 @@
                     <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
                 </div>
                 <div class="noti-content">
-                    <ul class="notification-list">
-                        <li class="notification-message">
-                            <a href="#">
-                                <div class="media d-flex">
-                                    <span class="avatar avatar-sm flex-shrink-0">
-                                        <img
-                                            class="avatar-img rounded-circle"
-                                            alt="User Image"
-                                            src="assets/img/profiles/avatar-02.jpg"
-                                            />
-                                    </span>
-                                    <div class="media-body flex-grow-1">
-                                        <p class="noti-details">
-                                            <span class="noti-title">Carlson Tech</span> has
-                                            approved
-                                            <span class="noti-title">your estimate</span>
-                                        </p>
-                                        <p class="noti-time">
-                                            <span class="notification-time">4 mins ago</span>
-                                        </p>
+                    <ul id="notificationList" class="notification-list">
+                        <c:forEach items="${sessionScope.listNotifications}" var="o">
+                            <li class="notification-message">
+                                <a href="#">
+                                    <div class="media d-flex">
+                                        <span class="avatar avatar-sm flex-shrink-0">
+                                            <c:forEach items="${listAllAccounts}" var="b">
+                                                <c:if test="${b.accountID == o.accountID}">
+                                                    <c:set var="image" value="${b.image}" />
+                                                </c:if>
+                                            </c:forEach>
+                                            <img
+                                                class="avatar-img rounded-circle"
+                                                alt="User Image"
+                                                src="${image}"
+                                                />
+                                        </span>
+                                        <div class="media-body flex-grow-1">
+                                            <p class="noti-details text-black">
+                                                ${o.detail}
+                                            </p>
+                                            <c:set var="minutes" value="${o.calculateMinutesFromNow()}" />
+                                            <p class="noti-time">
+                                                <span class="notification-time">
+                                                    <c:choose>
+                                                        <c:when test="${minutes < 60}">
+                                                            ${minutes} phút trước
+                                                        </c:when>
+                                                        <c:when test="${minutes < 1440}">
+                                                            <c:set var="hours" value="${fn:substringBefore((minutes / 60), '.')}"/>
+                                                            ${hours} giờ trước
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <c:set var="days" value="${fn:substringBefore((minutes / 1440), '.')}"/>
+                                                            ${days} ngày trước
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </span>
+                                            </p>
+
+
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="notification-message">
-                            <a href="#">
-                                <div class="media d-flex">
-                                    <span class="avatar avatar-sm flex-shrink-0">
-                                        <img
-                                            class="avatar-img rounded-circle"
-                                            alt="User Image"
-                                            src="assets/img/profiles/avatar-11.jpg"
-                                            />
-                                    </span>
-                                    <div class="media-body flex-grow-1">
-                                        <p class="noti-details">
-                                            <span class="noti-title"
-                                                  >International Software Inc</span
-                                            >
-                                            has sent you a invoice in the amount of
-                                            <span class="noti-title">$218</span>
-                                        </p>
-                                        <p class="noti-time">
-                                            <span class="notification-time">6 mins ago</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="notification-message">
-                            <a href="#">
-                                <div class="media d-flex">
-                                    <span class="avatar avatar-sm flex-shrink-0">
-                                        <img
-                                            class="avatar-img rounded-circle"
-                                            alt="User Image"
-                                            src="assets/img/profiles/avatar-17.jpg"
-                                            />
-                                    </span>
-                                    <div class="media-body flex-grow-1">
-                                        <p class="noti-details">
-                                            <span class="noti-title">John Hendry</span> sent a
-                                            cancellation request
-                                            <span class="noti-title">Apple iPhone XR</span>
-                                        </p>
-                                        <p class="noti-time">
-                                            <span class="notification-time">8 mins ago</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="notification-message">
-                            <a href="#">
-                                <div class="media d-flex">
-                                    <span class="avatar avatar-sm flex-shrink-0">
-                                        <img
-                                            class="avatar-img rounded-circle"
-                                            alt="User Image"
-                                            src="assets/img/profiles/avatar-13.jpg"
-                                            />
-                                    </span>
-                                    <div class="media-body flex-grow-1">
-                                        <p class="noti-details">
-                                            <span class="noti-title">Mercury Software Inc</span>
-                                            added a new product
-                                            <span class="noti-title">Apple MacBook Pro</span>
-                                        </p>
-                                        <p class="noti-time">
-                                            <span class="notification-time">12 mins ago</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                                </a>
+                            </li>
+                        </c:forEach>
+
                     </ul>
                 </div>
                 <div class="topnav-dropdown-footer">
@@ -156,30 +119,35 @@
                 <span class="user-img"
                       ><img
                         class="rounded-circle"
-                        src="assets/img/profiles/avatar-01.jpg"
+                        src="${acc.image}"
                         width="31"
-                        alt="Seema Sisty"
+                        alt="${acc.fullName}"
                         /></span>
             </a>
             <div class="dropdown-menu">
                 <div class="user-header">
                     <div class="avatar avatar-sm">
                         <img
-                            src="assets/img/profiles/avatar-01.jpg"
+                            src="${acc.image}"
                             alt="User Image"
                             class="avatar-img rounded-circle"
                             />
                     </div>
                     <div class="user-text">
-                        <h6>Seema Sisty</h6>
+                        <h6>${acc.fullName}</h6>
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
-                <a class="dropdown-item" href="general.jsp">My Profile</a>
-                <a class="dropdown-item" href="general.jsp">Account Settings</a>
-                <a class="dropdown-item" href="login.jsp">Logout</a>
-                <a class="dropdown-item" href="../index.jsp">Back to V-HomeClean</a>
+                <a class="dropdown-item" href="UserGeneralPageController?accountID=${acc.accountID}">Cài Đặt Tài Khoản</a>
+                <a class="dropdown-item" href="LogoutController">Đăng Xuất</a>
+                <a class="dropdown-item" href="HomePageController">Back to V-HomeClean</a>
             </div>
         </li>
     </ul>
 </div>
+
+
+
+
+
+

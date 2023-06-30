@@ -11,7 +11,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items_end_begin;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatNumber_value_pattern_nobody;
 
@@ -22,13 +21,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspInit() {
-    _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_forEach_var_items_end_begin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_fmt_formatNumber_value_pattern_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
-    _jspx_tagPool_c_forEach_var_items.release();
     _jspx_tagPool_c_forEach_var_items_end_begin.release();
     _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.release();
   }
@@ -66,34 +63,21 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <meta charset=\"utf-8\">\r\n");
-      out.write("        <title>Apex - Home Repair Website Template</title>\r\n");
+      out.write("        <title>V-HomeClean - Trang chủ</title>\r\n");
       out.write("        <meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\">\r\n");
       out.write("        <meta content=\"\" name=\"keywords\">\r\n");
       out.write("        <meta content=\"\" name=\"description\">\r\n");
-      out.write("\r\n");
-      out.write("        <!-- Favicon -->\r\n");
       out.write("        <link href=\"img/favicon.ico\" rel=\"icon\">\r\n");
-      out.write("\r\n");
-      out.write("        <!-- Google Web Fonts -->\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n");
-      out.write("<!--        <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap\" rel=\"stylesheet\"> -->\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n");
       out.write("        <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n");
       out.write("        <link href=\"https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap\" rel=\"stylesheet\">\r\n");
-      out.write("\r\n");
-      out.write("        <!-- Icon Font Stylesheet -->\r\n");
       out.write("        <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css\" rel=\"stylesheet\">\r\n");
       out.write("        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css\" rel=\"stylesheet\">\r\n");
-      out.write("\r\n");
-      out.write("        <!-- Libraries Stylesheet -->\r\n");
       out.write("        <link href=\"lib/animate/animate.min.css\" rel=\"stylesheet\">\r\n");
       out.write("        <link href=\"lib/owlcarousel/assets/owl.carousel.min.css\" rel=\"stylesheet\">\r\n");
-      out.write("\r\n");
-      out.write("        <!-- Customized Bootstrap Stylesheet -->\r\n");
       out.write("        <link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">\r\n");
-      out.write("\r\n");
-      out.write("        <!-- Template Stylesheet -->\r\n");
       out.write("        <link href=\"css/style.css\" rel=\"stylesheet\">\r\n");
       out.write("    </head>\r\n");
       out.write("\r\n");
@@ -115,11 +99,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                            <h5 class=\"text-light text-uppercase mb-3 animated slideInDown\">Chào mừng đến với <span style=\"color: #f8e43c\">V-HomeClean</span></h5>\r\n");
       out.write("                                            <h1 class=\"display-2 text-light mb-3 animated slideInDown\">Công ty dịch vụ chuyên vệ sinh và sửa chữa khu dân cư VinHomes</h1>\r\n");
       out.write("                                            <ol class=\"breadcrumb mb-4 pb-2\">\r\n");
-      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Commercial</li>\r\n");
-      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Residential</li>\r\n");
-      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Industrial</li>\r\n");
+      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Uy Tín</li>\r\n");
+      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Nhanh Chóng</li>\r\n");
+      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Tiện Lợi</li>\r\n");
       out.write("                                            </ol>\r\n");
-      out.write("                                            <a href=\"\" class=\"btn btn-primary py-3 px-5\">More Details</a>\r\n");
+      out.write("                                            <a href=\"\" class=\"btn btn-primary py-3 px-5\">Chi tiết về V-HomeClean</a>\r\n");
       out.write("                                        </div>\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
@@ -134,11 +118,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                            <h5 class=\"text-light text-uppercase mb-3 animated slideInDown\">Chào mừng đến với <span style=\"color: #f8e43c\">V-HomeClean</span></h5>\r\n");
       out.write("                                            <h1 class=\"display-2 text-light mb-3 animated slideInDown\">Dịch vụ Vệ sinh & Sửa chữa Chuyên nghiệp</h1>\r\n");
       out.write("                                            <ol class=\"breadcrumb mb-4 pb-2\">\r\n");
-      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Commercial</li>\r\n");
-      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Residential</li>\r\n");
-      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Industrial</li>\r\n");
+      out.write("                                               <li class=\"breadcrumb-item fs-5 text-light\">Uy Tín</li>\r\n");
+      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Nhanh Chóng</li>\r\n");
+      out.write("                                                <li class=\"breadcrumb-item fs-5 text-light\">Tiện Lợi</li>\r\n");
       out.write("                                            </ol>\r\n");
-      out.write("                                            <a href=\"\" class=\"btn btn-primary py-3 px-5\">More Details</a>\r\n");
+      out.write("                                            <a href=\"\" class=\"btn btn-primary py-3 px-5\">Chi tiết về V-HomeClean</a>\r\n");
       out.write("                                        </div>\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
@@ -179,7 +163,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.5s\">\r\n");
       out.write("                            <div class=\"h-100\">\r\n");
       out.write("                                <div class=\"border-start border-5 border-primary ps-4 mb-5\">\r\n");
-      out.write("                                    <h6 class=\"text-body text-uppercase mb-2\">About Us</h6>\r\n");
+      out.write("                                    <h6 class=\"text-body text-uppercase mb-2\">Thông tin về chúng tôi</h6>\r\n");
       out.write("                                    <h1 class=\"display-6 mb-0\">Dịch vụ chuyên về dọn dẹp và vệ sinh căn hộ!</h1>\r\n");
       out.write("                                </div>\r\n");
       out.write("                                <p> là đơn vị dịch vụ dọn dẹp và vệ sinh căn hộ chuyên nghiệp. Chúng tôi sẽ đảm bảo rằng căn hộ của bạn luôn sạch sẽ, gọn gàng và thoải mái. Đội ngũ nhân viên giàu kinh nghiệm và tận tâm của chúng tôi sẽ làm sạch từ trần nhà, lau kính, vệ sinh lỗ thông hơi, gầm tủ và các góc khuất khác. Hãy để V-HomeClean mang đến cho bạn không gian sống tươi mới và thoáng đãng trong căn hộ của mình.</p>\r\n");
@@ -266,7 +250,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"row g-5\">\r\n");
       out.write("                        <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.1s\">\r\n");
       out.write("                            <div class=\"border-start border-5 border-primary ps-4 mb-5\">\r\n");
-      out.write("                                <h6 class=\"text-body text-uppercase mb-2\">Why Choose Us!</h6>\r\n");
+      out.write("                                <h6 class=\"text-body text-uppercase mb-2\">Tại sao bạn nên chọn chúng tôi?</h6>\r\n");
       out.write("                                <h1 class=\"display-6 mb-0\">Chuyên môn hóa và các tính năng của công ty chúng tôi</h1>\r\n");
       out.write("                            </div>\r\n");
       out.write("                            <p class=\"mb-5\">là một công ty chuyên môn hóa trong lĩnh vực dọn dẹp và vệ sinh. Chúng tôi tự hào cung cấp các tính năng và dịch vụ sau:</p>\r\n");
@@ -325,12 +309,12 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"row g-5 align-items-end mb-5\">\r\n");
       out.write("                        <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.1s\">\r\n");
       out.write("                            <div class=\"border-start border-5 border-primary ps-4\">\r\n");
-      out.write("                                <h6 class=\"text-body text-uppercase mb-2\">Our Services</h6>\r\n");
-      out.write("                                <h1 class=\"display-6 mb-0\">Construction And Renovation Solutions</h1>\r\n");
+      out.write("                                <h6 class=\"text-body text-uppercase mb-2\">Dịch vụ của chúng tôi</h6>\r\n");
+      out.write("                                <h1 class=\"display-6 mb-0\">Nâng cấp không gian sống của bạn!</h1>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                        <div class=\"col-lg-6 text-lg-end wow fadeInUp\" data-wow-delay=\"0.3s\">\r\n");
-      out.write("                            <a class=\"btn btn-primary py-3 px-5\" href=\"ServicePageController\">More Services</a>\r\n");
+      out.write("                            <a class=\"btn btn-primary py-3 px-5\" href=\"ServicePageController\">Xem thêm dịch vụ</a>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"row g-4 justify-content-center\">\r\n");
@@ -410,12 +394,12 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"row g-5 align-items-end mb-5\">\r\n");
       out.write("                        <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.1s\">\r\n");
       out.write("                            <div class=\"border-start border-5 border-primary ps-4\">\r\n");
-      out.write("                                <h6 class=\"text-body text-uppercase mb-2\">Our Team</h6>\r\n");
-      out.write("                                <h1 class=\"display-6 mb-0\">Our Expert Worker</h1>\r\n");
+      out.write("                                <h6 class=\"text-body text-uppercase mb-2\">Đội ngũ của chúng tôi</h6>\r\n");
+      out.write("                                <h1 class=\"display-6 mb-0\">Nhân viên tiêu biểu</h1>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                        <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.3s\">\r\n");
-      out.write("                            <p class=\"mb-0\">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>\r\n");
+      out.write("                            <p class=\"mb-0\">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"row g-4\">\r\n");
@@ -436,24 +420,24 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <div class=\"row g-5\">\r\n");
       out.write("                        <div class=\"col-lg-5 wow fadeInUp\" data-wow-delay=\"0.1s\">\r\n");
       out.write("                            <div class=\"border-start border-5 border-primary ps-4 mb-5\">\r\n");
-      out.write("                                <h6 class=\"text-body text-uppercase mb-2\">Testimonial</h6>\r\n");
-      out.write("                                <h1 class=\"display-6 mb-0\">What Our Happy Clients Say!</h1>\r\n");
+      out.write("                                <h6 class=\"text-body text-uppercase mb-2\">Feedbacks</h6>\r\n");
+      out.write("                                <h1 class=\"display-6 mb-0\">Khách hàng nói gì về V-HomeCLeam</h1>\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <p class=\"mb-4\">Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>\r\n");
+      out.write("                            <p class=\"mb-4\">Đây là những phản hồi nổi bật của khách hàng đã trải nghiệm sử dụng dịch vụ của V-HomeClean. Giúp bạn có thể chọn sử dụng dịch vụ của chúng tôi một cách an tâm từ những trải nghiệm tốt, thực tế của những khách hàng trước.</p>\r\n");
       out.write("                            <div class=\"row g-4\">\r\n");
       out.write("                                <div class=\"col-sm-6\">\r\n");
       out.write("                                    <div class=\"d-flex align-items-center mb-2\">\r\n");
       out.write("                                        <i class=\"fa fa-users fa-2x text-primary flex-shrink-0\"></i>\r\n");
-      out.write("                                        <h1 class=\"ms-3 mb-0\">123+</h1>\r\n");
+      out.write("                                        <h1 class=\"ms-3 mb-0\">777</h1>\r\n");
       out.write("                                    </div>\r\n");
-      out.write("                                    <h5 class=\"mb-0\">Happy Clients</h5>\r\n");
+      out.write("                                    <h5 class=\"mb-0\">Khách hàng thân thiết</h5>\r\n");
       out.write("                                </div>\r\n");
       out.write("                                <div class=\"col-sm-6\">\r\n");
       out.write("                                    <div class=\"d-flex align-items-center mb-2\">\r\n");
       out.write("                                        <i class=\"fa fa-check fa-2x text-primary flex-shrink-0\"></i>\r\n");
-      out.write("                                        <h1 class=\"ms-3 mb-0\">123+</h1>\r\n");
+      out.write("                                        <h1 class=\"ms-3 mb-0\">789</h1>\r\n");
       out.write("                                    </div>\r\n");
-      out.write("                                    <h5 class=\"mb-0\">Projects Done</h5>\r\n");
+      out.write("                                    <h5 class=\"mb-0\">Dịch vụ đã cung cấp</h5>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
@@ -602,11 +586,13 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:forEach
-    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items_end_begin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_1.setParent(null);
     _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ListA}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     _jspx_th_c_forEach_1.setVar("o");
+    _jspx_th_c_forEach_1.setBegin(0);
+    _jspx_th_c_forEach_1.setEnd(2);
     int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
@@ -641,7 +627,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_c_forEach_1.doCatch(_jspx_exception);
     } finally {
       _jspx_th_c_forEach_1.doFinally();
-      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+      _jspx_tagPool_c_forEach_var_items_end_begin.reuse(_jspx_th_c_forEach_1);
     }
     return false;
   }

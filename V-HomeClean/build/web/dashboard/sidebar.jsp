@@ -11,107 +11,92 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="menu-title"></li>
-                <li class="active">
-                    <a href="index.jsp"
+                <li id="dashboard-link" class="active">
+                    <a href="DashboardController"
                        ><i class="fe fe-home"></i> <span>Dashboard</span></a
                     >
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-users"></i> <span> Users</span>
+                       ><i class="fe fe-users"></i> <span> Tài Khoản </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="users.jsp">Users</a></li>
-                        <li><a href="blocked-users.jsp">Blocked User</a></li>
-                        <li><a href="report-users.jsp">Report User</a></li>
+                        <li id="users-management-link"><a href="UsersManagementController">Quản Lý Khách Hàng</a></li>
+                        <li id="staff-management-link"><a href="StaffManagementController">Quản Lý Nhân Viên</a></li>
+                        <li id="users-block-link"><a href="UsersBlockPageController">Tài Khoản Bị Khóa</a></li>
+                        <li id="account-create-link"><a href="AccountCreateController">Tạo Tài Khoản Mới</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-sync"></i> <span> History </span>
+                       ><i class="fe fe-file-zip"></i> <span> Dịch Vụ </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="call-history.jsp"> Call History </a></li>
-                        <li><a href="group-history.jsp"> Group History </a></li>
+                        <li id="orders-details-link"><a href="ServicesManagementController"> Quản Lý Dịch Vụ </a></li>
+                        <li id="orders-details-link"><a href="ServicesBlockPageController"> Dịch Vụ Bị Khóa </a></li>
+                        <li id="orders-management-link"><a href="ServiceCreateController"> Tạo Mới Dịch Vụ </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-gear"></i> <span> Settings </span>
+                       ><i class="fe fe-file-zip"></i> <span> Đơn Hẹn </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li><a href="general.jsp">General</a></li>
-                        <li><a href="admob.jsp">Admob </a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="blank-page.jsp"
-                       ><i class="fe fe-file"></i> <span>Blank Page</span></a
-                    >
-                </li>
-                <li>
-                    <a href="components.jsp"
-                       ><i class="fe fe-vector"></i> <span>Components</span></a
-                    >
-                </li>
-                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-layout"></i>
-                        <span> Forms <span class="menu-arrow"></span></span
-                        ></a>
-                    <ul style="display: none">
-                        <li><a href="form-input-groups.jsp">Input Groups</a></li>
-                        <li><a href="form-vertical.jsp">Vertical Form </a></li>
-                        <li><a href="form-validation.jsp">Form Validation </a></li>
+                        <li id="appointment-details-link"><a href="BookingsManagementController"> Quản Lý Đơn </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-table"></i>
-                        <span> Tables <span class="menu-arrow"></span></span
-                        ></a>
-                    <ul style="display: none">
-                        <li><a href="tables-basic.jsp">Basic Tables </a></li>
-                        <li><a href="data-tables.jsp">Data Table </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="javascript:void(0);"
-                       ><i class="fe fe-code"></i> <span>Multi Level</span>
+                       ><i class="fe fe-globe"></i> <span> Blogs </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li class="submenu">
-                            <a href="javascript:void(0);">
-                                <span>Level 1</span> <span class="menu-arrow"></span
-                                ></a>
-                            <ul style="display: none">
-                                <li>
-                                    <a href="javascript:void(0);"><span>Level 2</span></a>
-                                </li>
-                                <li class="submenu">
-                                    <a href="javascript:void(0);">
-                                        <span> Level 2</span> <span class="menu-arrow"></span
-                                        ></a>
-                                    <ul style="display: none">
-                                        <li><a href="javascript:void(0);">Level 3</a></li>
-                                        <li><a href="javascript:void(0);">Level 3</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"> <span>Level 2</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);"> <span>Level 1</span></a>
-                        </li>
+                        <li id="blog-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Blog </a></li>
+                        <li id="blog-management-link"><a href="dashboard/create-blog.jsp"> Tạo Mới Blog </a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"
+                       ><i class="fe fe-gear"></i> <span> Thông Báo </span>
+                        <span class="menu-arrow"></span
+                        ></a>
+                    <ul style="display: none">
+                        <li id="notification-management-link"><a href="dashboard/general.jsp">Quản Lý Thông Báo</a></li>
+                        <li id="faq-management-link"><a href="dashboard/admob.jsp">Quản Lý Thắc Mắc</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#"
+                       ><i class="fe fe-gear"></i> <span> Cài Đặt </span>
+                        <span class="menu-arrow"></span
+                        ></a>
+                    <ul style="display: none">
+                        <li id="general-settings-link"><a href="dashboard/general.jsp">Cài Đặt Chung</a></li>
+                        <li id="admob-settings-link"><a href="dashboard/admob.jsp">Admob</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </div>
+
+<script>
+    // Lấy danh sách tất cả các thẻ <li> trong submenu
+    var submenuItems = document.querySelectorAll('.submenu li');
+
+    // Lặp qua danh sách các thẻ <li> và gán sự kiện click cho mỗi thẻ
+    submenuItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            // Bỏ lớp "active" khỏi tất cả các thẻ <li>
+            submenuItems.forEach(function(submenuItem) {
+                submenuItem.classList.remove('active');
+            });
+
+            // Thêm lớp "active" cho thẻ <li> được click
+            this.classList.add('active');
+        });
+    });
+</script>
