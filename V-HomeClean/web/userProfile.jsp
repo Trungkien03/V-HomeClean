@@ -304,7 +304,7 @@
                                         <tr>
                                             <th>Dịch vụ</th>
                                             <th>Định Kì</th>
-                                            <th>Nhân viên</th>
+                                            <th>Thời gian</th>
                                             <th>Tổng chi phí</th>
                                             <th>Chỉnh sửa</th>
                                             <th>Tình Trạng</th>
@@ -330,7 +330,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLongTitle">Chi tiết đơn của khách hàng</h5>
-                                                        <div style="margin: auto" class="text-center" id="rateYo${booking.bookingID}"></div>
+
 
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -341,6 +341,11 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     Thông tin nhân viên
+                                                                    <c:set var="staffName" value=""/>
+                                                                    <c:set var="staffAge" value="" />
+                                                                    <c:set var="staffEmail" value="" />
+                                                                    <c:set var="staffPhone" value="" />
+                                                                    <c:set var="staffImage" value="" />
                                                                     <c:forEach items="${allAccounts}" var="o">
                                                                         <c:if test="${booking.staffID == o.accountID}">
                                                                             <c:set var="staffName" value="${o.fullName}" />
@@ -431,13 +436,33 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <div style="margin: auto;margin-top: 10px;" class="text-center" id="rateYo${booking.bookingID}"></div>
+                                                                            <div class="text-center text-black" style="color: #000">
+                                                                                <c:forEach items="${feedBackList}" var="j">
+                                                                                    <c:if test="${booking.bookingID eq j.bookingID}">
+
+
+                                                                                        <p>
+                                                                                            ${j.feedbackDetail}
+                                                                                        </p>
+
+
+                                                                                    </c:if>
+                                                                                </c:forEach>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
                                                             </div>
 
 
                                                         </div>
                                                         <div style="display: flex; justify-content: space-between" class="modal-footer">
-                                                            <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
+                                                            <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy đơn</button>
                                                             </c:if>
                                                         </div>
@@ -446,6 +471,9 @@
                                             </div>
 
                                             <td>
+                                                <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
+                                                    <button class="btn btn-info">Chờ xác nhận</button>
+                                                </c:if>
                                                 <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
                                                     <button class="btn btn-info">Đã xác nhận</button>
                                                 </c:if>
@@ -628,7 +656,9 @@
                         "sSortAscending": ": Sắp xếp cột tăng dần",
                         "sSortDescending": ": Sắp xếp cột giảm dần"
                     }
-                }
+                },
+                order: [[2, 'des']]
+
             });
         });
 
@@ -875,7 +905,7 @@
         <c:forEach var="booking" items="${ListB}">
             <c:forEach items="${feedBackList}" var="f">
                 <c:if test="${booking.bookingID eq f.bookingID}">
-            $("#rateYo1").rateYo({
+            $("#rateYo${booking.bookingID}").rateYo({
                 rating: ${f.rating},
                 readOnly: true
             });

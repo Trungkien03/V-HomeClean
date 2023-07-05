@@ -17,24 +17,26 @@ public class CommentDTO {
     private String accountID;
     private String blogID;
     private String fullName;
+    private String imageAcc;
 
     public CommentDTO() {
     }
 
-    public CommentDTO(int commentID, String message, String time, String accountID, String blogID, String fullName) {
+    public CommentDTO(int commentID, String message, String time, String accountID, String blogID, String fullName, String imageAcc) {
         this.commentID = commentID;
         this.message = message;
         this.time = time;
         this.accountID = accountID;
         this.blogID = blogID;
         this.fullName = fullName;
+        this.imageAcc = imageAcc;
     }
 
-    public int getComment() {
+    public int getCommentID() {
         return commentID;
     }
 
-    public void setComment(int commentID) {
+    public void setCommentID(int commentID) {
         this.commentID = commentID;
     }
 
@@ -78,9 +80,18 @@ public class CommentDTO {
         this.fullName = fullName;
     }
 
-    @Override
-    public String toString() {
-        return "CommentDTO{" + "commentID=" + commentID + ", message=" + message + ", time=" + time + ", accountID=" + accountID + ", blogID=" + blogID + ", fullName=" + fullName + '}';
+    public String getImageAcc() {
+        return imageAcc;
     }
 
+    public void setImageAcc(String imageAcc) {
+        this.imageAcc = imageAcc;
+    }
+
+    @Override
+    public String toString() {
+        return "CommentDTO{" + "commentID=" + commentID + ", message=" + message + ", time=" + time + ", accountID=" + accountID + ", blogID=" + blogID + ", fullName=" + fullName + ", imageAcc=" + imageAcc + '}';
+    }
+
+    
 }

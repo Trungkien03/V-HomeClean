@@ -68,8 +68,8 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive custom-table-responsive">                                          
-                                        <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
-                                            <thead>
+                                        <table style="border: #00b4d8 solid medium" id="example_table" class="table table-center tab-content table-hover ">
+                                            <thead style="border: #00b4d8 solid medium" >
                                                 <tr>
                                                     <th class="text-center">Họ và Tên</th>
                                                     <th class="text-center">Vai trò</th>

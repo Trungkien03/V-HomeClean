@@ -66,8 +66,8 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive custom-table-responsive p-3">                                          
-                                        <table id="example_table" class="table table-center tab-content table-striped">
-                                            <thead>
+                                        <table  style="border: #00b4d8 solid medium" id="example_table" class="table table-center tab-content table-striped">
+                                            <thead style="border: #00b4d8 solid medium" >
                                                 <tr>
                                                     <th>Họ và Tên</th>
                                                     <th>Vai trò</th>
@@ -121,7 +121,7 @@
                                                             <div class="actions">
                                                                 <a
                                                                     href="UserGeneralPageController?accountID=${o.accountID}"
-                                                                    class="btn btn-sm bg-success-light "
+                                                                    class="btn btn-large bg-info-light "
                                                                     title="View Document"
                                                                     >
                                                                     <i class="fe fe-eye"></i>

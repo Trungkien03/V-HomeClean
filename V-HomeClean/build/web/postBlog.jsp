@@ -92,6 +92,10 @@
                                 background-color: #f5f5f5;
 
                             }
+                            
+                            label{
+                                color: black;
+                            }
 
                         </style>
                         <div class="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
@@ -112,7 +116,7 @@
                                             <label for="subTitle">Phụ đề</label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <!--                                        <div class="form-floating">
                                                                                     <input type="file" name="image" class="form-control bg-light border-0" id="image" placeholder="Select Image">
                                                                                     <label for="image">Hình ảnh</label>
@@ -121,7 +125,7 @@
                                         <div class="form-floating">
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" name="image" class="custom-file-input" id="image" aria-describedby="inputGroupFileAddon">
+                                                    <input  style="font-size: 25px;" type="file" name="image" class="custom-file-input" id="image" aria-describedby="inputGroupFileAddon">
                                                     <label class="custom-file-label" for="image">Chọn ảnh</label>
                                                 </div>
                                             </div>
@@ -130,7 +134,7 @@
 
 
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-floating">
                                             <select name="blogCateID" class="form-select bg-light border-0" id="blogCateID">
                                                 <option value="1">Mẹo dọn dẹp</option>
