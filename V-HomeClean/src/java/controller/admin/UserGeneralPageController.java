@@ -58,6 +58,8 @@ public class UserGeneralPageController extends HttpServlet {
                     List<BookingDTO> listBookingAccount = bDao.getBookingDetailByAccountID(accountID);
                     List<ServiceDTO> listServices = sDao.getAllService();
                     List<AccountDTO> ListAllAccounts = aDao.getAllAccounts();
+                    int totalUserBookings = bDao.CountBookingByAccountID(accountID);
+                    request.setAttribute("totalUserBookings", totalUserBookings);
                     request.setAttribute("listServices", listServices);
                     request.setAttribute("ListAllAccounts", ListAllAccounts);
                     request.setAttribute("listBookingAccount", listBookingAccount);
@@ -80,6 +82,8 @@ public class UserGeneralPageController extends HttpServlet {
                     AccountDTO updatedAccount = aDao.GetAccountByAccountID(accountID_2);
                     String message = "Chỉnh sửa thông tin thành công!";
                     List<BookingDTO> listBookingAccount = bDao.getBookingDetailByAccountID(accountID);
+                    int totalUserBookings = bDao.CountBookingByAccountID(accountID);
+                    request.setAttribute("totalUserBookings", totalUserBookings);
                     request.setAttribute("listBookingAccount", listBookingAccount);
                     request.setAttribute("account", updatedAccount);
                     request.setAttribute("message", message);

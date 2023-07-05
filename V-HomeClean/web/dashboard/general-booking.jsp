@@ -32,6 +32,8 @@
         <link rel="stylesheet" href="css/assets/plugins/morris/morris.css" />
 
         <link rel="stylesheet" href="css/assets/css/style.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     </head>
     <body>
         <div class="main-wrapper">
@@ -95,6 +97,21 @@
                                             id="top-justified-tab1"
                                             >
                                             <form action="BookingGeneralController" method="post">
+                                                <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
+                                                    <div class="card text-center">
+                                                        <h1>Feedback từ khách hàng</h1>
+                                                        <div style="margin: auto;margin-top: 10px;" class="text-center" id="rateYo${booking.bookingID}"></div>
+                                                        <div class="text-center text-black" style="color: #000">
+                                                            <c:forEach items="${feedBackList}" var="j">
+                                                                <c:if test="${booking.bookingID eq j.bookingID}">
+                                                                    <p>
+                                                                        ${j.feedbackDetail}
+                                                                    </p>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </div>
+                                                    </div>
+                                                </c:if>
                                                 <input type="hidden" name="bookingID" value="${booking.bookingID}">
                                                 <div class="form-group" style="display:flex; justify-content: center; align-items: center">
                                                     <label class="text-info font-weight-600 w-25">Tên dịch vụ:</label>
@@ -258,6 +275,7 @@
                                                     </div>
 
                                                 </div>
+
                                             </form>
                                         </div>
                                         <div class="tab-pane" id="top-justified-tab2">
@@ -618,7 +636,34 @@
                 });
             });
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Khởi tạo plugin rateYo
+                $("#rateYo").rateYo();
 
+                // Gắn sự kiện cho plugin rateYo khi người dùng thay đổi đánh giá
+                $("#rateYo").rateYo("option", "onSet", function (rating) {
+                    if (rating > 0) {
+                        $("#submitBtn").prop("disabled", false); // Enable button khi có đánh giá
+                    } else {
+                        $("#submitBtn").prop("disabled", true); // Disable button khi chưa có đánh giá
+                    }
+                    $("#ratingInput").val(rating); // Gán giá trị đánh giá vào trường ẩn (hidden input)
+                });
+
+            <c:forEach var="booking" items="${ListB}">
+                <c:forEach items="${feedBackList}" var="f">
+                    <c:if test="${booking.bookingID eq f.bookingID}">
+                $("#rateYo${booking.bookingID}").rateYo({
+                    rating: ${f.rating},
+                    readOnly: true
+                });
+                    </c:if>
+                </c:forEach>
+            </c:forEach>
+            });
+        </script>
     </body>
 </html>
 

@@ -141,12 +141,14 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <div class=\"row align-items-center justify-content-center\">\r\n");
       out.write("                    <div  class=\"col-md-8 form login-form\">\r\n");
       out.write("                        <h3 class=\"m-2\">Đăng Nhập</h3>\r\n");
-      out.write("                        <strong style=\"color: green\">");
+      out.write("                        <div class=\"text-center\">\r\n");
+      out.write("                            <strong style=\"color: green\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${message}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</strong>\r\n");
-      out.write("                        <strong style=\"color: red\">");
+      out.write("                            <strong style=\"color: red\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ERROR}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</strong>\r\n");
+      out.write("                        </div>\r\n");
       out.write("                        <form action=\"MainController\" method=\"post\">\r\n");
       out.write("                            <div class=\"form-group first mb-3\">\r\n");
       out.write("                                <label for=\"username\">Email</label>\r\n");
@@ -278,7 +280,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <!--                                <label for=\"password\">Địa Chỉ</label>-->\r\n");
-      out.write("                                <select class=\"form-select\" id=\"vinhomesOptions\" name=\"area\" aria-label=\"Guardian Relationship\">\r\n");
+      out.write("                                <select required=\"\" class=\"form-select\" id=\"vinhomesOptions\" name=\"area\" aria-label=\"Guardian Relationship\">\r\n");
       out.write("                                    <option value=\"\">-- Chọn khu vực Vinhomes --</option>\r\n");
       out.write("                                    <option value=\"Vinhomes Central Park - TP. Hồ Chí Minh\">Vinhomes Central Park - TP. Hồ Chí Minh</option>\r\n");
       out.write("                                    <option value=\"Vinhomes Golden River - TP. Hồ Chí Minh\">Vinhomes Golden River - TP. Hồ Chí Minh</option>\r\n");
@@ -297,7 +299,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <!--                          <label for=\"password\">Số Điện Thoại</label> -->\r\n");
-      out.write("                                <input type=\"text\" name=\"phone\" class=\"form-control\" placeholder=\"Số điện thoại\" id=\"password\">\r\n");
+      out.write("                                <input required=\"\" type=\"text\" name=\"phone\" class=\"form-control\" placeholder=\"Số điện thoại\" id=\"password\">\r\n");
       out.write("                                ");
  if (userError.getPhone() != null) {
       out.write("\r\n");
@@ -331,7 +333,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("                            <div class=\"form-group mb-3\">\r\n");
       out.write("                                <label for=\"DateOfBirth\">Ngày sinh</label>\r\n");
-      out.write("                                <input type=\"date\" name=\"DateOfBirth\" class=\"form-control\" placeholder=\"Ngày sinh của bạn\" id=\"password\">\r\n");
+      out.write("                                <input required=\"\" type=\"date\" name=\"DateOfBirth\" class=\"form-control\" placeholder=\"Ngày sinh của bạn\" id=\"password\">\r\n");
       out.write("                                ");
  if (userError.getDateOfBirth() != null) {
       out.write("\r\n");

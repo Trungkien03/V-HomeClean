@@ -85,19 +85,53 @@
                                                         <c:forEach items="${AccountsList}" var="user">
                                                             <c:if test="${user.accountID eq o.accountID}">
                                                                 <c:set var="accountName" value="${user.fullName}" />
+                                                                <c:set var="accountImage" value="${user.image}" />
                                                             </c:if>
                                                         </c:forEach>
-                                                        <td class="text-center">${accountName}</td>
+                                                        <td class="text-center">
+                                                            <h2 class="table-avatar">
+                                                                <a 
+                                                                    href="#"
+                                                                    class="avatar avatar-sm me-2"
+                                                                    ><img
+                                                                        class="avatar-img rounded-circle"
+                                                                        src="${accountImage}"
+                                                                        alt="User Image"
+                                                                        /></a>
+                                                                <a href="#"
+                                                                   >${accountName}</a
+                                                                >
+                                                            </h2>
+                                                        </td>
                                                         <td class="text-center">${o.serviceName}</td>
 
                                                         <c:set var="staffName" value="Chưa có nhân viên" /> <!-- Mặc định là "Chưa có nhân viên" -->
+                                                        <c:set var="staffImage" value="img/user.jpg" />
                                                         <c:forEach items="${StaffList}" var="staff">
                                                             <c:if test="${staff.accountID eq o.staffID}">
                                                                 <c:set var="staffName" value="${staff.fullName}" />
+                                                                <c:if test="${staffName ne 'Chưa có nhân viên'}">
+                                                                    <c:set var="staffImage" value="${staff.image}" />
+                                                                </c:if>
+
                                                             </c:if>
                                                         </c:forEach>
                                                         <td class="text-center">${o.bookingDate}</td>
-                                                        <td class="text-center">${staffName}</td>
+                                                        <td class="text-center">
+                                                            <h2 class="table-avatar">
+                                                                <a 
+                                                                    href="#"
+                                                                    class="avatar avatar-sm me-2"
+                                                                    ><img
+                                                                        class="avatar-img rounded-circle"
+                                                                        src="${staffImage}"
+                                                                        alt="User Image"
+                                                                        /></a>
+                                                                <a href="#"
+                                                                   >${staffName}</a
+                                                                >
+                                                            </h2>
+                                                        </td>
                                                         <td class="text-center">${o.bookingStatus}</td>
                                                         <td class="text-center">
                                                             <div class="actions">

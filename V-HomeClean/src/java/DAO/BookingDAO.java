@@ -286,12 +286,28 @@ public class BookingDAO {
         }
     }
 
+    public int CountBookingByAccountID(String accountID) {
+        String query = "SELECT COUNT(*) AS NumberOfBookings\n"
+                + "FROM Booking\n"
+                + "WHERE AccountID = ?";
+        int total = 0;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, accountID);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                total = rs.getInt("NumberOfBookings");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
+
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        BookingDTO a = dao.getBookingByID("1");
-        System.out.println(a);
-        dao.updateBookingWithBookingIdAndStatus(1, "Xác nhận");
-        BookingDTO b = dao.getBookingByID("1");
-        System.out.println(b);
+        int total = dao.CountBookingByAccountID("AC0006");
+        System.out.println(total);
     }
 }
