@@ -48,7 +48,7 @@
                                                 <i class="fe fe-users"></i>
                                             </span>
                                             <div class="dash-count">
-                                                <a style="font-size: 15px; color: #00d747" href="#" class="count-title">Số Lượng Người Dùng</a>
+                                                <a style="font-size: 15px; color: #00d747" href="#" class="count-title">Người Dùng</a>
                                                 <a href="#" class="count">${TotalUsers}</a>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-6 d-flex mt-5">
+                        <div class="col-md-12 d-flex mt-5">
                             <div class="card card-table flex-fill" style="border: #007bff solid medium">
                                 <div class="card-header text-center">
                                     <h4 class="card-title float-start font-weight-600">Danh Sách Người Dùng</h4>
@@ -142,8 +142,20 @@
                                             <tbody>
                                                 <c:forEach items="${ListUsers}" var="o">
                                                     <tr>
-                                                        <td>${o.accountID}</td>
-                                                        <td>${o.fullName}</td>
+                                                        <td>
+                                                            <h2 class="table-avatar">
+                                                                <a 
+                                                                    href="#"
+                                                                    class="avatar avatar-sm me-2"
+                                                                    ><img
+                                                                        class="avatar-img rounded-circle"
+                                                                        src="${o.image}"
+                                                                        alt="User Image"
+                                                                        /></a>
+                                                            </h2>
+                                                        </td>
+                                                        </td>
+                                                        <td><a href="#">${o.fullName}</a></td>
                                                         <td>
                                                             <c:choose>
                                                                 <c:when test="${o.gender eq 'Male'}">
@@ -181,52 +193,50 @@
 
 
 
-                        <div class="col-md-6 d-flex mt-5">
+                        <div class="col-md-12 d-flex mt-5">
                             <div class="card card-table flex-fill" style="border: #007bff solid medium">
                                 <div class="card-header">
                                     <h4 class="card-title float-start font-weight-600">Danh Sách Đơn</h4>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive p-3">
-                                        <table id="example_table1" class="table table-bordered text-center table-hover">
+                                    <div class="table-responsive custom-table-responsive">                                          
+                                        <table id="example_table1" class="table table-center tab-content table-hover table-bordered ">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Dịch vụ</th>
-                                                    <th>Khu Vực</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Tình Trạng</th>
+                                                    <th class="text-center">Tên khách hàng</th>
+                                                    <th class="text-center">Tên dịch vụ</th>
+                                                    <th class="text-center">Thời gian</th>
+                                                    <th class="text-center">Trạng thái</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${ListUsers}" var="o">
+                                                <c:forEach items="${bookingsList}" var="o">
                                                     <tr>
-                                                        <td>${o.accountID}</td>
-                                                        <td>${o.fullName}</td>
-                                                        <td>
-                                                            <c:choose>
-                                                                <c:when test="${o.gender eq 'Male'}">
-                                                                    Nam
-                                                                </c:when>
-                                                                <c:when test="${o.gender eq 'Female'}">
-                                                                    Nữ
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    Khác
-                                                                </c:otherwise>
-                                                            </c:choose>
+                                                        <c:forEach items="${AccountsList}" var="user">
+                                                            <c:if test="${user.accountID eq o.accountID}">
+                                                                <c:set var="accountName" value="${user.fullName}" />
+                                                                <c:set var="accountImage" value="${user.image}" />
+                                                            </c:if>
+                                                        </c:forEach>
+                                                        <td class="text-center">
+                                                            <h2 class="table-avatar">
+                                                                <a 
+                                                                    href="#"
+                                                                    class="avatar avatar-sm me-2"
+                                                                    ><img
+                                                                        class="avatar-img rounded-circle"
+                                                                        src="${accountImage}"
+                                                                        alt="User Image"
+                                                                        /></a>
+                                                                <a href="#"
+                                                                   >${accountName}</a
+                                                                >
+                                                            </h2>
                                                         </td>
-                                                        <td>
-                                                            ${o.dateOfBirth}
-                                                        </td>
-                                                        <td> <c:choose>
-                                                                <c:when test="${o.status == true}">
-                                                                    <button type="button" class="btn btn-rounded btn-success">Active</button>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <button type="button" class="btn btn-rounded btn-danger">Blocked</button>
-                                                                </c:otherwise>
-                                                            </c:choose>
+                                                        <td class="text-center">${o.serviceName}</td>
+                                                        <td class="text-center">${o.bookingDate}</td>
+                                                        <td class="text-center">${o.bookingStatus}</td>
+
                                                     </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -235,11 +245,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-md-12">
-                            <div id='calendar'></div>
-                        </div>
-
+                    </div>
+                    <div class="col-md-12">
+                        <div id='calendar'></div>
                     </div>
                 </div>
             </div>

@@ -75,7 +75,7 @@
                                                     <th class="text-center">Vai trò</th>
                                                     <th class="text-center">Số điện thoại</th>
                                                     <th class="text-center">Tuổi</th>
-                                                    <th class="text-center">Tổng Lương</th>
+                                                    <th class="text-center">Lương(Trong Tháng)</th>
                                                     <th class="text-center">Thông tin</th>
                                                     <th class="text-center">Khóa tài khoản</th>
                                                 </tr>

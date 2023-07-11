@@ -14,7 +14,6 @@ import DTO.BookingDTO;
 import DTO.FeedBackDTO;
 import DTO.NotificationDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -100,6 +99,8 @@ public class StaffTaskPageController extends HttpServlet {
                     if (bookingID != 0) {
                         String bookingStatus = "Xác nhận hoàn thành";
                         bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
+                        double getUpdateSalary = aDao.getSalaryWithAccountID(staff.getAccountID());
+                        aDao.updateSalaryWithAccountID(staff.getAccountID(), getUpdateSalary);
                         request.setAttribute("message", "Không tìm thấy ID của booking");
                         check = true;
                     }

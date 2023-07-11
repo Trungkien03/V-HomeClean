@@ -64,6 +64,10 @@ public class StaffManagementController extends HttpServlet {
                 ListStaffs.addAll(ListStaffsFixEletric);
                 ListStaffs.addAll(ListStaffsFixWater);
                 ListStaffs.addAll(ListstaffsClean);
+                for (AccountDTO staff : ListStaffs) {
+                    double getUpdateSalary = aDao.getSalaryWithAccountID(staff.getAccountID());
+                    aDao.updateSalaryWithAccountID(staff.getAccountID(), getUpdateSalary);
+                }
                 int TotalStaffsFixElectric = aDao.CountAccountByRoldIDandStatus(roleIDFixElec, "true");
                 int TotalStaffsFixWater = aDao.CountAccountByRoldIDandStatus(roleIDFixWater, "true");
                 int TotalStaffsClean = aDao.CountAccountByRoldIDandStatus(roleIDClean, "true");

@@ -582,11 +582,54 @@ public class AccountDAO {
 
     }
 
-    public static void main(String[] args) {
-        AccountDAO dao = new AccountDAO();
-        dao.updateImageAccountWithID("img/Kien-Profile-2.jpg", "AC0002");
-        
+    //tính tổng số lương của từng người trong tháng với điều kiện là booking đó phải là hoàn thành
+    public double getSalaryWithAccountID(String accountID) {
+        String query = "SELECT SUM(TotalPrice) AS MonthlySalary\n"
+                + "FROM BookingDetail\n"
+                + "WHERE BookingID IN (\n"
+                + "  SELECT BookingID\n"
+                + "  FROM Booking\n"
+                + "  WHERE StaffID = ? AND (BookingStatus = 'Hoàn thành' OR BookingStatus = 'Xác nhận hoàn thành')\n"
+                + ")\n"
+                + "AND DATEPART(MONTH, BookingDate) = DATEPART(MONTH, GETDATE())\n"
+                + "AND DATEPART(YEAR, BookingDate) = DATEPART(YEAR, GETDATE());";
+        double total = 0;
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, accountID);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                total = rs.getDouble("MonthlySalary");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return total;
+    }
 
+    //cập nhật số lương
+    public void updateSalaryWithAccountID(String accountID, double salary) {
+        String query = "UPDATE Account\n"
+                + "SET Salary = ?\n"
+                + "WHERE AccountID = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setDouble(1, salary);
+            ps.setString(2, accountID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+//        AccountDAO dao = new AccountDAO();
+//        AccountDTO a = dao.GetAccountByAccountID("AC0004");
+//        dao.updateSalaryWithAccountID("AC0004", 12);
+//        System.out.println(a);
+        
     }
 
 }
