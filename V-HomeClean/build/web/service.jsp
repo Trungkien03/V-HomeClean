@@ -74,6 +74,14 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <nav aria-label="breadcrumb animated slideInDown">
+                            <ol class="breadcrumb justify-content-center mb-0">
+                                <li class="breadcrumb-item">Dịch Vụ Vệ Sinh</li>
+                                <li class="breadcrumb-item text-primary active" aria-current="page">Dịch Vụ Sửa chửa</li>
+                            </ol>
+                        </nav> 
+                    </div>
                     <div class="row g-4 justify-content-center">
                     <c:forEach items="${listS}" var="o">
 
@@ -95,13 +103,13 @@
                 </div>
 
 
-                    <style>
-                        .paging{
-                            text-align: center;
-                            margin-top: 5%;
-                            margin-left: 45%;
-                        }
-                    </style>
+                <style>
+                    .paging{
+                        text-align: center;
+                        margin-top: 5%;
+                        margin-left: 45%;
+                    }
+                </style>
                 <div class="paging" >
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
