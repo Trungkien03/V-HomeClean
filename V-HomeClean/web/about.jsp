@@ -3,7 +3,8 @@
     Created on : May 20, 2023, 9:48:39 PM
     Author     : Trung Kien
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Giới Thiệu</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -49,12 +50,11 @@
         <!-- Page Header Start -->
         <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container text-center py-5">
-                <h1 class="display-4 text-white animated slideInDown mb-4">About Us</h1>
+                <h1 class="display-4 text-white animated slideInDown mb-4">Giới Thiệu</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb justify-content-center mb-0">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-primary active" aria-current="page">About</li>
+                        <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Trang Chủ</a></li>
+                        <li class="breadcrumb-item text-primary active" aria-current="page">Giới Thiệu</li>
                     </ol>
                 </nav>
             </div>
@@ -81,24 +81,25 @@
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="h-100">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-body text-uppercase mb-2">About Us</h6>
-                                <h1 class="display-6 mb-0">Unique Solutions For Residentials & Industries!</h1>
+                                <h6 class="text-body text-uppercase mb-2">Giới thiệu</h6>
+                                <h1 class="display-6 mb-0">Dịch vụ chuyên về dọn dẹp và vệ sinh căn hộ!</h1>
                             </div>
-                            <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                            <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                            <p>là đơn vị dịch vụ dọn dẹp và vệ sinh căn hộ chuyên nghiệp. Chúng tôi sẽ đảm bảo rằng căn hộ của bạn luôn sạch sẽ, gọn gàng và thoải mái. 
+                                Đội ngũ nhân viên giàu kinh nghiệm và tận tâm của chúng tôi sẽ làm sạch từ trần nhà, lau kính, vệ sinh lỗ thông hơi, gầm tủ và các góc khuất khác. Hãy để V-HomeClean mang đến cho bạn không gian sống tươi mới và thoáng đãng trong căn hộ của mình.</p>
+                            <p class="mb-4">Một công ty đặc biệt cung cấp các dịch vụ dọn dẹp và vệ sinh chuyên nghiệp cho các không gian dân cư.</p>
                             <div class="border-top mt-4 pt-4">
                                 <div class="row g-4">
                                     <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.1s">
                                         <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 class="mb-0">Ontime at services</h6>
+                                        <h6 class="mb-0">Luôn sẵn sàng</h6>
                                     </div>
                                     <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
                                         <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 class="mb-0">24/7 hours services</h6>
+                                        <h6 class="mb-0">Dịch vụ 24/7</h6>
                                     </div>
                                     <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
                                         <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 class="mb-0">Verified professionals</h6>
+                                        <h6 class="mb-0">Chuyên nghiệp</h6>
                                     </div>
                                 </div>
                             </div>
@@ -116,42 +117,26 @@
                 <div class="row g-5 align-items-end mb-5">
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="border-start border-5 border-primary ps-4">
-                            <h6 class="text-body text-uppercase mb-2">Our Team</h6>
-                            <h1 class="display-6 mb-0">Our Expert Worker</h1>
+                            <h6 class="text-body text-uppercase mb-2">Đội ngũ</h6>
+                            <h1 class="display-6 mb-0">Nhân viên chuyên gia của chúng tôi</h1>
                         </div>
                     </div>
                     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        <p class="mb-0">Đội ngũ nhân viên của chúng tôi được đào tạo và cập nhật kiến thức liên tục về các phương pháp bảo trì và sửa chữa chung cư hiện đại nhất. Họ có kỹ năng vững chắc trong việc xác định và khắc phục các vấn đề phổ biến liên quan đến hệ thống điện, nước, cửa, cửa sổ, sàn, tường và các yếu tố khác của chung cư.</p>
                     </div>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item position-relative">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                            <div class="team-text bg-white p-4">
-                                <h5>Full Name</h5>
-                                <span>Engineer</span>
+                <c:forEach items="${ListA}" var="o" begin="0" end="2">
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item position-relative">
+                                <img class="img-fluid" src="${o.image}" alt="">
+                                <div class="team-text bg-white p-4">
+                                    <h5>${o.fullName}</h5>
+                                    <span>Nhân Viên</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item position-relative">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                            <div class="team-text bg-white p-4">
-                                <h5>Full Name</h5>
-                                <span>Engineer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item position-relative">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                            <div class="team-text bg-white p-4">
-                                <h5>Full Name</h5>
-                                <span>Engineer</span>
-                            </div>
-                        </div>
-                    </div>
+                       </c:forEach>
                 </div>
             </div>
         </div>

@@ -6,11 +6,16 @@
 package controller;
 
 import DAO.AccountDAO;
+import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.BookingDTO;
+import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,13 +44,36 @@ public class HomePageController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int StaffID = 2;
         HttpSession session = request.getSession();
-        ServiceDAO dao = new ServiceDAO();
+        NotificationDAO nDao = new NotificationDAO();
         AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        if (a != null) {
+            String typeNotiUser = "User";
+            String typeNotiStaff = "Staff";
+            List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+            session.setAttribute("listAllAccounts", listAllAccounts);
+            List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("listNotiUnread", listNotiUnread);
+            int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(),"false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+            List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+            session.setAttribute("ListBookingAccounts", ListBookingAccounts);
+        }
+        int roleIDFixElec = 2;
+        int roleIDFixWater = 5;
+        int roleIDClean = 6;
+        ServiceDAO dao = new ServiceDAO();
         List<ServiceDTO> list = dao.getAllService();
-        List<AccountDTO> listAc = aDao.GetAccountsByRoleID(StaffID);
-        request.setAttribute("ListA", listAc);
+        List<AccountDTO> ListStaffsFixEletric = aDao.GetAccountByRoleIDAndStatus(roleIDFixElec, "true");
+        List<AccountDTO> ListStaffsFixWater = aDao.GetAccountByRoleIDAndStatus(roleIDFixWater, "true");
+        List<AccountDTO> ListstaffsClean = aDao.GetAccountByRoleIDAndStatus(roleIDClean, "true");
+        List<AccountDTO> ListStaffs = new ArrayList<>();
+        ListStaffs.addAll(ListStaffsFixEletric);
+        ListStaffs.addAll(ListStaffsFixWater);
+        ListStaffs.addAll(ListstaffsClean);
+        request.setAttribute("ListA", ListstaffsClean);
         request.setAttribute("listS", list);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

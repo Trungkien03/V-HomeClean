@@ -5,12 +5,15 @@
  */
 package controller;
 
+import DAO.AccountDAO;
+import DAO.BookingDAO;
+import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
+import DTO.BookingDTO;
+import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,10 +43,43 @@ public class ServicePageController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
         ServiceDAO dao = new ServiceDAO();
+        HttpSession session = request.getSession();
+        NotificationDAO nDao = new NotificationDAO();
+        AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
+        AccountDTO a = (AccountDTO) session.getAttribute("acc");
+        if (a != null) {
+            String typeNotiUser = "User";
+            String typeNotiStaff = "Staff";
+            List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+            session.setAttribute("listAllAccounts", listAllAccounts);
+            List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("listNotiUnread", listNotiUnread);
+            int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+            session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+            List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+            session.setAttribute("ListBookingAccounts", ListBookingAccounts);
+        }
         List<ServiceDTO> list = dao.getAllService();
+        String indexPage = request.getParameter("index");
+        if (indexPage == null) {
+            indexPage = "1";
+        }
+        if (indexPage.equals("-1")) {
+            indexPage = "1";
+        }
+        int index = Integer.parseInt(indexPage);
+        int count = dao.CountService();
+        int endPage = count / 6;
+        if (endPage % 6 != 0) {
+            endPage++;
+        }
+
+        list = dao.pagingService(index);
         request.setAttribute("listS", list);
+        request.setAttribute("endP", endPage);
+        request.setAttribute("tag", index);
         request.getRequestDispatcher("service.jsp").forward(request, response);
     }
 

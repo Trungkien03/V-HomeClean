@@ -12,42 +12,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <title>Dreamchat - Dashboard</title>
 
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="css/assets/img/favicon.png">
 
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/assets/css/bootstrap.min.css">
 
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/assets/css/font-awesome.min.css">
 
-        <link rel="stylesheet" href="assets/css/feathericon.min.css">
+        <link rel="stylesheet" href="css/assets/css/feathericon.min.css">
 
-        <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+        <link rel="stylesheet" href="css/assets/plugins/morris/morris.css">
 
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="css/assets/css/style.css">
     </head>
     <body>
-
         <div class="main-wrapper login-body">
             <div class="login-wrapper">
                 <div class="container">
                     <div class="loginbox">
                         <div class="login-right">
                             <div class="login-right-wrap">
-                                <h1>Login</h1>
-                                <p class="account-subtitle">Access to our dashboard</p>
-
-                                <form action="index.jsp">
+                                <h1>Đăng Nhập</h1>
+                                <p class="account-subtitle">Truy cập vào bảng điều khiển</p>
+                                <form action="../DashboardLoginController" method="post">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Email">
+                                        <input name="email" class="form-control" type="text" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Password">
+                                        <input name="password" class="form-control" type="password" placeholder="Mật Khẩu">
                                     </div>
                                     <div class="form-group">
-                                        <button class="btn btn-primary btn-block" type="submit">Login</button>
+                                        <input type="submit" class="btn btn-primary btn-block" name="action" value="Đăng Nhập" />
                                     </div>
                                 </form>
-
-                                <div class="text-center forgotpass"><a href="forgot-password.jsp">Forgot Password?</a></div>
+                                <div class="text-center forgotpass"><a href="../HomePageController">Forgot Password?</a></div>
                             </div>
                         </div>
                     </div>
@@ -56,12 +53,12 @@
         </div>
 
 
-        <script src="assets/js/jquery-3.6.0.min.js"></script>
+        <script src="css/assets/js/jquery-3.6.0.min.js"></script>
 
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="css/assets/js/bootstrap.bundle.min.js"></script>
 
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="css/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-        <script src="assets/js/script.js"></script>
+        <script src="css/assets/js/script.js"></script>
     </body>
 </html>

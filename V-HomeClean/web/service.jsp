@@ -14,7 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Dịch Vụ</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -51,11 +51,11 @@
             <!-- Page Header Start -->
             <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container text-center py-5">
-                    <h1 class="display-4 text-white animated slideInDown mb-4">Our Services</h1>
+                    <h1 class="display-4 text-white animated slideInDown mb-4">Dịch Vụ Của Chúng Tôi</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb justify-content-center mb-0">
-                            <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Home</a></li>
-                            <li class="breadcrumb-item text-primary active" aria-current="page">Our Services</li>
+                            <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Trang chủ</a></li>
+                            <li class="breadcrumb-item text-primary active" aria-current="page">Dịch Vụ Của Chúng Tôi</li>
                         </ol>
                     </nav>
                 </div>
@@ -69,18 +69,14 @@
                     <div class="row g-5 align-items-end mb-5">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4">
-                                <h6 class="text-body text-uppercase mb-2">Our Services</h6>
-                                <h1 class="display-6 mb-0">Construction And Renovation Solutions</h1>
+                                <h6 class="text-body text-uppercase mb-2">Dịch Vụ Của Chúng Tôi</h6>
+                                <h1 class="display-6 mb-0">Nâng cấp không gian sống của bạn!</h1>
                             </div>
-                        </div>
-                        <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
-                            <a class="btn btn-primary py-3 px-5" href="">More Services</a>
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
-
                     <c:forEach items="${listS}" var="o">
-                        
+
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                             <input name="serviceID" value="${o.serviceID}" type="hidden">
                             <div class="service-item bg-light overflow-hidden h-100">
@@ -97,8 +93,44 @@
 
 
                 </div>
+
+
+                    <style>
+                        .paging{
+                            text-align: center;
+                            margin-top: 5%;
+                            margin-left: 45%;
+                        }
+                    </style>
+                <div class="paging" >
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <c:if test="${tag > 1}">
+                                    <a class="page-link" href="ServicePageController?index=${tag - 1}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </c:if>
+                                </a>
+                            </li>
+
+                            <c:forEach begin="1" end ="${endP}" var="i">
+                                <li class="page-item"><a class="page-link" href="ServicePageController?index=${i}">${i}</a></li>
+                                </c:forEach>
+                            <li class="page-item">
+                                <c:if test="${tag < endP}">
+                                    <a class="page-link" href="ServicePageController?index=${tag + 1}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </c:if>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
             </div>
         </div>
+
+
         <!-- Service End -->
 
 
@@ -108,8 +140,8 @@
                 <div class="row g-5">
                     <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="border-start border-5 border-primary ps-4 mb-5">
-                            <h6 class="text-body text-uppercase mb-2">Appointment</h6>
-                            <h1 class="display-6 mb-0">A Company Involved In Service And Maintenance</h1>
+                            <h6 class="text-body text-uppercase mb-2">Hỗ Trợ</h6>
+                            <h1 class="display-6 mb-0">Công ty cung cấp dịch vụ và bảo trì chung cư</h1>
                         </div>
                         <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
                     </div>
@@ -119,35 +151,35 @@
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-light border-0" id="gname" placeholder="Gurdian Name">
-                                        <label for="gname">Your Name</label>
+                                        <label for="gname">Tên của bạn</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="email" class="form-control bg-light border-0" id="gmail" placeholder="Gurdian Email">
-                                        <label for="gmail">Your Email</label>
+                                        <label for="gmail">Địa chỉ email</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-light border-0" id="cname" placeholder="Child Name">
-                                        <label for="cname">Your Mobile</label>
+                                        <label for="cname">Số điện thoại</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control bg-light border-0" id="cage" placeholder="Child Age">
-                                        <label for="cage">Service Type</label>
+                                        <label for="cage">Chủ đề</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                        <label for="message">Message</label>
+                                        <label for="message">Điền thắc mắc của bạn ở đây</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Gửi câu hỏi</button>
                                 </div>
                             </div>
                         </form>

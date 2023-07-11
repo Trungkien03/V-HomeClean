@@ -15,30 +15,17 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
-
-        <!-- Favicon -->
         <link href="img/favicon.ico" rel="icon">
-
-        <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!--        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet"> -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
-
-        <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-        <!-- Libraries Stylesheet -->
         <link href="lib/animate/animate.min.css" rel="stylesheet">
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-        <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     </head>
 
@@ -77,11 +64,11 @@
                                             <h5 class="text-light text-uppercase mb-3 animated slideInDown">Chào mừng đến với <span style="color: #f8e43c">V-HomeClean</span></h5>
                                             <h1 class="display-2 text-light mb-3 animated slideInDown">Dịch vụ Vệ sinh & Sửa chữa Chuyên nghiệp</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
-                                                <li class="breadcrumb-item fs-5 text-light">Commercial</li>
-                                                <li class="breadcrumb-item fs-5 text-light">Residential</li>
-                                                <li class="breadcrumb-item fs-5 text-light">Industrial</li>
+                                               <li class="breadcrumb-item fs-5 text-light">Uy Tín</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Nhanh Chóng</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Tiện Lợi</li>
                                             </ol>
-                                            <a href="" class="btn btn-primary py-3 px-5">More Details</a>
+                                            <a href="" class="btn btn-primary py-3 px-5">Chi tiết về V-HomeClean</a>
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +109,7 @@
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="h-100">
                                 <div class="border-start border-5 border-primary ps-4 mb-5">
-                                    <h6 class="text-body text-uppercase mb-2">About Us</h6>
+                                    <h6 class="text-body text-uppercase mb-2">Thông tin về chúng tôi</h6>
                                     <h1 class="display-6 mb-0">Dịch vụ chuyên về dọn dẹp và vệ sinh căn hộ!</h1>
                                 </div>
                                 <p> là đơn vị dịch vụ dọn dẹp và vệ sinh căn hộ chuyên nghiệp. Chúng tôi sẽ đảm bảo rằng căn hộ của bạn luôn sạch sẽ, gọn gàng và thoải mái. Đội ngũ nhân viên giàu kinh nghiệm và tận tâm của chúng tôi sẽ làm sạch từ trần nhà, lau kính, vệ sinh lỗ thông hơi, gầm tủ và các góc khuất khác. Hãy để V-HomeClean mang đến cho bạn không gian sống tươi mới và thoáng đãng trong căn hộ của mình.</p>
@@ -209,7 +196,7 @@
                     <div class="row g-5">
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-body text-uppercase mb-2">Why Choose Us!</h6>
+                                <h6 class="text-body text-uppercase mb-2">Tại sao bạn nên chọn chúng tôi?</h6>
                                 <h1 class="display-6 mb-0">Chuyên môn hóa và các tính năng của công ty chúng tôi</h1>
                             </div>
                             <p class="mb-5">là một công ty chuyên môn hóa trong lĩnh vực dọn dẹp và vệ sinh. Chúng tôi tự hào cung cấp các tính năng và dịch vụ sau:</p>
@@ -269,7 +256,7 @@
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4">
                                 <h6 class="text-body text-uppercase mb-2">Dịch vụ của chúng tôi</h6>
-                                <h1 class="display-6 mb-0">Nâng cấp không gian sống cho bạn! </h1>
+                                <h1 class="display-6 mb-0">Nâng cấp không gian sống của bạn!</h1>
                             </div>
                         </div>
                         <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
@@ -306,10 +293,11 @@
                     <div class="row g-5">
                         <div class="col-lg-5 col-md-6 wow fadeIn" data-wow-delay="0.3s">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-white text-uppercase mb-2">Appointment</h6>
-                                <h1 class="display-6 text-white mb-0">A Company Involved In Service And Maintenance</h1>
+                                <h6 class="text-white text-uppercase mb-2">Bạn có thắc mắc gì không ?</h6>
+                                <h1 class="display-6 text-white mb-0">Chúng tôi sẽ giải đáp mọi thắc mắc của bạn</h1>
                             </div>
-                            <p class="text-white mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                            <p class="text-white mb-0">Công ty chúng tôi sẽ trợ giúp cho quý khách hàng hết sức, Chúng tôi luôn đặt ưu tiên trải nghiệm của khách
+                            hàng lên hàng đầu</p>
                         </div>
                         <div class="col-lg-7 col-md-6 wow fadeIn" data-wow-delay="0.5s">
                             <form>
@@ -317,35 +305,35 @@
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control bg-dark border-0" id="gname" placeholder="Gurdian Name">
-                                            <label for="gname">Your Name</label>
+                                            <label for="gname">Tên của bạn</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="email" class="form-control bg-dark border-0" id="gmail" placeholder="Gurdian Email">
-                                            <label for="gmail">Your Email</label>
+                                            <label for="gmail">Email của bạn</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control bg-dark border-0" id="cname" placeholder="Child Name">
-                                            <label for="cname">Your Mobile</label>
+                                            <label for="cname">Số điện thoại</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-floating">
                                             <input type="text" class="form-control bg-dark border-0" id="cage" placeholder="Child Age">
-                                            <label for="cage">Service Type</label>
+                                            <label for="cage">Chủ đề câu hỏi</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
                                             <textarea class="form-control bg-dark border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Message</label>
+                                            <label for="message">Hãy viết câu hỏi thắc mắc của bạn tại đây</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Get Appointment</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit">Đặt câu hỏi</button>
                                     </div>
                                 </div>
                             </form>
@@ -371,7 +359,7 @@
                         </div>
                     </div>
                     <div class="row g-4">
-                    <c:forEach items="${ListA}" var="o">
+                    <c:forEach items="${ListA}" var="o" begin="0" end="2">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="team-item position-relative">
                                 <img class="img-fluid" src="${o.image}" alt="">
@@ -381,8 +369,7 @@
                                 </div>
                             </div>
                         </div>
-                       </c:forEach>
-                        
+                       </c:forEach>                        
                     </div>
                 </div>
             </div>
@@ -396,7 +383,7 @@
                         <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="border-start border-5 border-primary ps-4 mb-5">
                                 <h6 class="text-body text-uppercase mb-2">Feedbacks</h6>
-                                <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeCLeam</h1>
+                                <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeClean</h1>
                             </div>
                             <p class="mb-4">Đây là những phản hồi nổi bật của khách hàng đã trải nghiệm sử dụng dịch vụ của V-HomeClean. Giúp bạn có thể chọn sử dụng dịch vụ của chúng tôi một cách an tâm từ những trải nghiệm tốt, thực tế của những khách hàng trước.</p>
                             <div class="row g-4">

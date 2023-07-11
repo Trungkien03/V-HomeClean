@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
-        <title>Apex - Home Repair Website Template</title>
+        <title>V-HomeClean - Đăng Nhập và Đăng Ký</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -35,10 +35,26 @@
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/Loginstyle.css" rel="stylesheet">
+        <style>
+            .container-fluid.page-header {
+                position: relative;
+            }
+
+            .container-fluid.page-header:before {
+                content: "";
+                background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://medvance.com.sg/wp-content/uploads/2016/08/medvance-my-account-banner-no-gloss.jpg);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+            }
+        </style>
     </head>
 
     <body>
@@ -69,21 +85,28 @@
             }
         %>
 
+        <div class="container-fluid page-header wow fadeIn py-5" data-wow-delay="0.1s">
+            <div class="container text-center py-5">
+                <h1 class="display-4 text-white animated slideInDown mb-4">Đăng Nhập và Đăng Ký</h1>
+            </div>
+        </div>
         <div class="d-lg-flex half">
             <div class="container">
-                <div class="row align-items-center justify-content-center login-form">
-                    <div  class="col-md-8 form">
+                <div class="row align-items-center justify-content-center">
+                    <div  class="col-md-8 form login-form">
                         <h3 class="m-2">Đăng Nhập</h3>
-                        <strong style="color: green">${message}</strong>
-                        <strong style="color: red">${ERROR}</strong>
+                        <div class="text-center">
+                            <strong style="color: green">${message}</strong>
+                            <strong style="color: red">${ERROR}</strong>
+                        </div>
                         <form action="MainController" method="post">
                             <div class="form-group first mb-3">
-                                <label for="username">Tên Đăng Nhập</label>
-                                <input name="email" type="email" class="form-control" placeholder="Email của bạn" id="username" value="<%=uname%>">
+                                <label for="username">Email</label>
+                                <input required="" name="email" type="email" class="form-control" placeholder="Nhập email" id="username" value="<%=uname%>">
                             </div>
                             <div class="form-group last mb-3">
                                 <label for="password">Mật Khẩu</label>
-                                <input name="password" type="password" class="form-control" placeholder="Mật Khẩu Của Bạn" id="password" value="<%=pass%>">
+                                <input required="" name="password" type="password" class="form-control" placeholder="Mật khẩu" id="password" value="<%=pass%>">
                             </div>
                             <div class="form-group d-flex mb-5 align-items-center">
                                 <label for="remember-me">Nhớ Mật Khẩu
@@ -106,52 +129,98 @@
 
             <div class="container">
                 <div class="row align-items-center justify-content-center">
-                    <div class="col-md-8 form">
-                        <h3 class="m-2">Đăng Ký</h3>
+                    <div class="col-md-8 form register-form">
+                        <h3 class="m-2">Đăng Ký Tài Khoản</h3>
                         <form action="MainController" method="post">
                             <div class="form-group mb-3">
-                                <label for="username">Tên Đăng Nhập</label>
-                                <input type="email" name="email" class="form-control" placeholder="Email của bạn" id="username">
+                                <!--                                <label for="username">Tên Đăng Nhập</label>-->
+                                <input type="email" name="email" class="form-control" placeholder="Nhập email" id="username">
                                 <% if (userError.getEmail() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getEmail()%></strong>
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="password">Mật Khẩu</label>
-                                <input name="password" type="password" class="form-control" placeholder="Mật Khẩu Của Bạn" id="password">
+                                <!--                                <label for="password">Mật Khẩu</label>-->
+                                <div class="wrapper">
+                                    <div class="pass-field">
+                                        <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </div>
+                                    <div class="requirement mt-3">
+                                        <p>Mật khẩu phải chứa:</p>
+                                        <ul class="requirement-list">
+                                            <li><i class="fa-solid fa-circle"></i><span>Ít nhất 8 ký tự</span></li>
+                                            <li><i class="fa-solid fa-circle"></i><span>Ít nhất 1 số tự nhiên (0...9)</span></li>
+                                            <li><i class="fa-solid fa-circle"></i><span>Ít nhất 1 ký tự thường (a...z)</span></li>
+                                            <li><i class="fa-solid fa-circle"></i><span>Ít nhất 1 ký tự đặc biệt (!...$) </span></li>
+                                            <li><i class="fa-solid fa-circle"></i><span>Ít nhất 1 ký tự in hoa (A...Z)</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <% if (userError.getPassword() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getPassword()%></strong>
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="password">Xác Nhận Mật Khẩu</label>
-                                <input type="password" name="confirmP" class="form-control" placeholder="Mật Khẩu Của Bạn" id="password">
+                                <!--                                <label for="password">Xác Nhận Mật Khẩu</label>-->
+                                <div class="wrapper">
+                                    <div class="pass-field confirm-pass">
+                                        <input type="password" name="confirmP" class="form-control" placeholder="Xác nhận mật khẩu" id="confirmP">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </div>
+                                    <div class="requirement-confirm requirement" style="display: none;">
+                                        <p>Vui lòng:</p>
+                                        <ul class="requirement-list">
+                                            <li><i class="fa-solid fa-circle"></i><span>Xác nhận mật khẩu</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <% if (userError.getConfirm() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getConfirm()%></strong>
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="password">Họ Và Tên</label>
-                                <input type="text" name="fullName" class="form-control" placeholder="Họ Và Tên Của Bạn" id="password">
+                                <!--                                <label for="password">Họ Và Tên</label>-->
+                                <input type="text" name="fullName" class="form-control" placeholder="Họ và tên" id="password">
                                 <% if (userError.getFullName() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getFullName()%></strong>
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="password">Địa Chỉ</label>
-                                <input type="text" name="address" class="form-control" placeholder="Địa Chỉ Của Bạn" id="password">
+                                <div class="wrapper">
+                                    <div class="room-field">
+                                        <input type="text" name="roomID" class="form-control" placeholder="Mã Phòng Ex:S01-01" id="confirmP">
+                                    </div>
+                                    <div class="room-requirement requirement" style="display: none;">
+                                        <p>Vui lòng:</p>
+                                        <ul class="room-requirement-list requirement-list">
+                                            <li><i class="fa-solid fa-warning"></i><span>Nhập đúng định dạng mã phòng</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <!--                                <label for="password">Địa Chỉ</label>-->
+                                <select required="" class="form-select" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
+                                    <option value="">-- Chọn khu vực Vinhomes --</option>
+                                    <option value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - TP. Hồ Chí Minh</option>
+                                    <option value="Vinhomes Golden River - TP. Hồ Chí Minh">Vinhomes Golden River - TP. Hồ Chí Minh</option>
+                                    <option value="Vinhomes Metropolis - Hà Nội">Vinhomes Metropolis - Hà Nội</option>
+
+                                </select>
                                 <% if (userError.getAddress() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getAddress()%></strong>
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="password">Số Điện Thoại</label>
-                                <input type="text" name="phone" class="form-control" placeholder="Số Điện Thoại Của Bạn" id="password">
+                                <!--                          <label for="password">Số Điện Thoại</label> -->
+                                <input required="" type="text" name="phone" class="form-control" placeholder="Số điện thoại" id="password">
                                 <% if (userError.getPhone() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getPhone()%></strong>
                                 <% } %>
                             </div>
-                            <div class="form-group mb-3">
+                            <div class="form-group text-center m-2">
                                 <label for="password">Giới Tính:</label>
                                 <label>
                                     <input type="radio" name="gender" value="male"> Nam
@@ -168,24 +237,19 @@
                             <% } %>
                             <div class="form-group mb-3">
                                 <label for="DateOfBirth">Ngày sinh</label>
-                                <input type="date" name="DateOfBirth" class="form-control" placeholder="Ngày sinh của bạn" id="password">
+                                <input required="" type="date" name="DateOfBirth" class="form-control" placeholder="Ngày sinh của bạn" id="password">
                                 <% if (userError.getDateOfBirth() != null) {%>
                                 <strong style="color: #e72734;" ><%= userError.getDateOfBirth()%></strong>
                                 <% }%>
                             </div>
                             <div style="text-align: center;" class="form-group">
-                                <input name="action" type="submit" value="Đăng Ký" class="btn btn-block btn-primary">
+                                <input name="action" type="submit" value="Đăng Ký" class="registerButton  btn btn-block btn-primary">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!-- Footer Start -->
-        <jsp:include page="footer.jsp"></jsp:include>
-        <!-- Footer End -->
 
 
         <!-- Back to Top -->

@@ -8,7 +8,6 @@ package controller;
 import DAO.AccountDAO;
 import DTO.AccountDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -34,11 +33,14 @@ public class LoginController extends HttpServlet {
         AccountDAO ACdao = new AccountDAO();
         AccountDTO a = ACdao.Login(email, pass);
         
-        
         if(a==null){
             request.setAttribute("ERROR", "Tài khoản hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
+            
+        } else if(a.getStatus().equalsIgnoreCase("false")){
+            request.setAttribute("ERROR", "Tài khoản của bạn đã bị khóa");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        } else{
             HttpSession session = request.getSession();
             session.setAttribute("acc", a);
             
