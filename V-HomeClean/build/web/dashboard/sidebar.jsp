@@ -55,12 +55,11 @@
                         ></a>
                     <ul style="display: none">
                         <li id="blog-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Blog </a></li>
-                        <li id="blog-management-link"><a href="dashboard/create-blog.jsp"> Tạo Mới Blog </a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-gear"></i> <span> Thông Báo </span>
+                       ><i class="fe fe-bell"></i> <span> Thông Báo </span>
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
@@ -68,7 +67,7 @@
                         <li id="faq-management-link"><a href="dashboard/admob.jsp">Quản Lý Thắc Mắc</a></li>
                     </ul>
                 </li>
-                <li class="submenu">
+<!--                <li class="submenu">
                     <a href="#"
                        ><i class="fe fe-gear"></i> <span> Cài Đặt </span>
                         <span class="menu-arrow"></span
@@ -77,7 +76,7 @@
                         <li id="general-settings-link"><a href="dashboard/general.jsp">Cài Đặt Chung</a></li>
                         <li id="admob-settings-link"><a href="dashboard/admob.jsp">Admob</a></li>
                     </ul>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>

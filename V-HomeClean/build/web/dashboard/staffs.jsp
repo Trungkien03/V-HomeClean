@@ -68,14 +68,14 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive custom-table-responsive">                                          
-                                        <table id="example_table" class="table table-center tab-content table-hover table-bordered ">
-                                            <thead>
+                                        <table style="border: #00b4d8 solid medium" id="example_table" class="table table-center tab-content table-hover ">
+                                            <thead style="border: #00b4d8 solid medium" >
                                                 <tr>
                                                     <th class="text-center">Họ và Tên</th>
                                                     <th class="text-center">Vai trò</th>
                                                     <th class="text-center">Số điện thoại</th>
                                                     <th class="text-center">Tuổi</th>
-                                                    <th class="text-center">Tổng Lương</th>
+                                                    <th class="text-center">Lương(Trong Tháng)</th>
                                                     <th class="text-center">Thông tin</th>
                                                     <th class="text-center">Khóa tài khoản</th>
                                                 </tr>

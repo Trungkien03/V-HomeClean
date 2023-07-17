@@ -7,6 +7,7 @@ import DAO.NotificationDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
 import DTO.FeedBackDTO;
+import DTO.NotificationDTO;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -129,7 +130,10 @@ public class ProfilePageController extends HttpServlet {
                         request.setAttribute("status", "feedBack");
                         url = "userProfile.jsp";
                     }
-
+                }
+                if(action.equalsIgnoreCase("Kiểm tra")){
+                    request.setAttribute("status", "feedBack");
+                    url = "userProfile.jsp";
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -137,7 +141,9 @@ public class ProfilePageController extends HttpServlet {
                 String accountID = a.getAccountID();
                 List<FeedBackDTO> feedBackList = fDao.getListFeedBack();
                 List<BookingDTO> BookingList = bDao.getBookingDetailByAccountID(accountID);
+                List<NotificationDTO> listNoti = nDao.getAllNotiByAccountID(accountID);
                 List<AccountDTO> allAccounts = aDao.getAllAccounts();
+                request.setAttribute("listNoti", listNoti);
                 request.setAttribute("feedBackList", feedBackList);
                 request.setAttribute("allAccounts", allAccounts);
                 request.setAttribute("ListB", BookingList);

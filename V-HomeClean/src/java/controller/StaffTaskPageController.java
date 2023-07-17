@@ -7,12 +7,13 @@ package controller;
 
 import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.FeedBackDAO;
 import DAO.NotificationDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
+import DTO.FeedBackDTO;
 import DTO.NotificationDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,6 +46,7 @@ public class StaffTaskPageController extends HttpServlet {
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         AccountDAO aDao = new AccountDAO();
         BookingDAO bDao = new BookingDAO();
+        FeedBackDAO fDao = new FeedBackDAO();
         NotificationDAO nDao = new NotificationDAO();
         String action = request.getParameter("action");
         String url = "taskStaffsPage.jsp";
@@ -97,6 +99,8 @@ public class StaffTaskPageController extends HttpServlet {
                     if (bookingID != 0) {
                         String bookingStatus = "Xác nhận hoàn thành";
                         bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
+                        double getUpdateSalary = aDao.getSalaryWithAccountID(staff.getAccountID());
+                        aDao.updateSalaryWithAccountID(staff.getAccountID(), getUpdateSalary);
                         request.setAttribute("message", "Không tìm thấy ID của booking");
                         check = true;
                     }
@@ -109,9 +113,11 @@ public class StaffTaskPageController extends HttpServlet {
                 e.printStackTrace();
             } finally {
                 String accountID = a.getAccountID();
+                List<FeedBackDTO> feedBackList = fDao.getListFeedBack();
                 List<BookingDTO> TaskList = bDao.getBookingDetailByStaffID(accountID);
                 List<AccountDTO> allAccounts = aDao.getAllAccounts();
                 List<NotificationDTO> listNoti = nDao.getAllNotiByAccountID(accountID);
+                request.setAttribute("feedBackList", feedBackList);
                 request.setAttribute("listNoti", listNoti);
                 request.setAttribute("allAccounts", allAccounts);
                 request.setAttribute("TaskList", TaskList);

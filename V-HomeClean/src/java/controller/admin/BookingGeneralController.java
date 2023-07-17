@@ -7,10 +7,12 @@ package controller.admin;
 
 import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.FeedBackDAO;
 import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
+import DTO.FeedBackDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,6 +50,7 @@ public class BookingGeneralController extends HttpServlet {
         BookingDAO bDao = new BookingDAO();
         ServiceDAO sDao = new ServiceDAO();
         AccountDAO aDao = new AccountDAO();
+        FeedBackDAO fDao = new FeedBackDAO();
         NotificationDAO nDao = new NotificationDAO();
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
@@ -67,6 +70,11 @@ public class BookingGeneralController extends HttpServlet {
                     List<AccountDTO> ListStaffsFixEletric = aDao.getAvailableStaffByRoleID(roleIDFixElec);
                     List<AccountDTO> ListStaffsFixWater = aDao.getAvailableStaffByRoleID(roleIDFixWater);
                     List<AccountDTO> ListstaffsClean = aDao.getAvailableStaffByRoleID(roleIDClean);
+
+                    List<FeedBackDTO> feedBackList = fDao.getListFeedBack();
+                    List<BookingDTO> BookingList = bDao.getAllLatestBookings();
+                    request.setAttribute("feedBackList", feedBackList);
+                    request.setAttribute("ListB", BookingList);
                     request.setAttribute("listAccounts", listAccounts);
                     request.setAttribute("ListStaffsFixEletric", ListStaffsFixEletric);
                     request.setAttribute("ListStaffsFixWater", ListStaffsFixWater);
@@ -88,11 +96,11 @@ public class BookingGeneralController extends HttpServlet {
                         ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
                         AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
                         AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
-                        
-                        String notiDetails = "Nhân viên " +  staff.getFullName() + " sẽ đảm nhận cho dịch vụ " + service.getServiceName() + " của bạn vào thời gian " + booking.getBookingDate();
+
+                        String notiDetails = "Nhân viên " + staff.getFullName() + " sẽ đảm nhận cho dịch vụ " + service.getServiceName() + " của bạn vào thời gian " + booking.getBookingDate();
                         String typeNotiUser = "User"; //để định dạng thông báo này sẽ được gửi tới user
                         nDao.InsertNotification(account.getAccountID(), bookingIDString, notiDetails, "false", typeNotiUser);
-                        
+
                         String notiDetailsStaff = "Bạn vừa được giao một đơn dịch vụ mới từ Quản lý " + a.getFullName() + " với mã hàng hóa là " + bookingID;
                         String typeNotiStaff = "Staff";
                         nDao.InsertNotification(staff.getAccountID(), bookingIDString, notiDetailsStaff, "false", typeNotiStaff);
@@ -115,6 +123,10 @@ public class BookingGeneralController extends HttpServlet {
                         e.printStackTrace();
                     }
 
+                }
+                if (action.equalsIgnoreCase("Hủy")) {
+                    String bookingIDString = request.getParameter("bookingID");
+                    int bookingID = Integer.parseInt(bookingIDString);
                 }
             } catch (Exception e) {
                 e.printStackTrace();

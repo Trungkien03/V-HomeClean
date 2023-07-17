@@ -74,66 +74,105 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <nav aria-label="breadcrumb animated slideInDown">
-                            <ol class="breadcrumb justify-content-center mb-0">
-                                <li class="breadcrumb-item">Dịch Vụ Vệ Sinh</li>
-                                <li class="breadcrumb-item text-primary active" aria-current="page">Dịch Vụ Sửa chửa</li>
-                            </ol>
-                        </nav> 
-                    </div>
-                    <div class="row g-4 justify-content-center">
-                    <c:forEach items="${listS}" var="o">
 
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <input name="serviceID" value="${o.serviceID}" type="hidden">
-                            <div class="service-item bg-light overflow-hidden h-100">
-                                <img class="img-fluid" src="${o.image}" alt="">
-                                <div class="service-text position-relative text-center h-100 p-4">
-                                    <h5 class="mb-3">${o.serviceName}</h5>
-                                    <p>Giá ước lượng chỉ từ <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
-                                    <a class="small" href="GetAppointmentController?serviceID=${o.serviceID}">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
+                    <style>
+                        /* Thêm CSS để tạo navbar */
+                        .navbar {
+                            background-color: #007bff;
+                            overflow: hidden;
+                            margin-bottom: 25px;
+                         
+                        }
+
+                        .navbar ul {
+                            list-style-type: none;
+                            
+                            padding: 0;
+                            
+                        }
+
+                        .navbar li {
+                            float: left;
+                        }
+
+                        .navbar li a {
+                            display: block;
+                            color: white;
+                            text-align: center;
+                            padding: 4px 12px;
+                            text-decoration: none;
+                        }
+
+                        /* Thêm màu nền khi di chuột vào mục */
+                        .navbar li a:hover {
+                            margin-left: 11px;
+                            background-color: #0a53be;
+                        }
+                    </style>
+                    </head>
+                    <body>
+
+                        <!-- Thanh navbar -->
+                        <div class="navbar">
+                            <ul>
+                            <c:forEach items="${listCS}" var="o">
+                                <li><a href="MainController?action=Distinct&cateID=${o.cateID}">${o.cateName}</a></li>
+                                </c:forEach>
+                        </ul>
+                    </div>
+
+                    <div class="row g-4 justify-content-center">
+                        <c:forEach items="${listS}" var="o">
+
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <input name="serviceID" value="${o.serviceID}" type="hidden">
+                                <div class="service-item bg-light overflow-hidden h-100">
+                                    <img class="img-fluid" src="${o.image}" alt="">
+                                    <div class="service-text position-relative text-center h-100 p-4">
+                                        <h5 class="mb-3">${o.serviceName}</h5>
+                                        <p>Giá ước lượng chỉ từ <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
+                                        <a class="small" href="GetAppointmentController?serviceID=${o.serviceID}">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
 
 
 
-                </div>
+                    </div>
 
 
-                <style>
-                    .paging{
-                        text-align: center;
-                        margin-top: 5%;
-                        margin-left: 45%;
-                    }
-                </style>
-                <div class="paging" >
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <c:if test="${tag > 1}">
-                                    <a class="page-link" href="ServicePageController?index=${tag - 1}" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </c:if>
-                                </a>
-                            </li>
-
-                            <c:forEach begin="1" end ="${endP}" var="i">
-                                <li class="page-item"><a class="page-link" href="ServicePageController?index=${i}">${i}</a></li>
-                                </c:forEach>
-                            <li class="page-item">
-                                <c:if test="${tag < endP}">
-                                    <a class="page-link" href="ServicePageController?index=${tag + 1}" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
+                    <style>
+                        .paging{
+                            text-align: center;
+                            margin-top: 5%;
+                            margin-left: 45%;
+                        }
+                    </style>
+                    <div class="paging" >
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <c:if test="${tag > 1}">
+                                        <a class="page-link" href="ServicePageController?index=${tag - 1}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </c:if>
                                     </a>
-                                </c:if>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                                </li>
+
+                                <c:forEach begin="1" end ="${endP}" var="i">
+                                    <li class="page-item"><a class="page-link" href="ServicePageController?index=${i}">${i}</a></li>
+                                    </c:forEach>
+                                <li class="page-item">
+                                    <c:if test="${tag < endP}">
+                                        <a class="page-link" href="ServicePageController?index=${tag + 1}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </c:if>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
 
             </div>
         </div>

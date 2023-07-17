@@ -43,15 +43,14 @@
 
         <link rel="stylesheet" type="text/css" href="css/ProfileStyle.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <!--        <link href="lib/animate/animate.min.css" rel="stylesheet">
-                <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">-->
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
         <style>
             .modal-backdrop.modal-stack {
                 z-index: 1040;
             }
 
         </style>
+
     </head>
 
     <body>
@@ -224,6 +223,22 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="card">
+                                                                                    <div class="card-body">
+                                                                                        <div style="margin: auto;margin-top: 10px;" class="text-center" id="rateYo${booking.bookingID}"></div>
+                                                                                        <div class="text-center text-black" style="color: #000">
+                                                                                            <c:forEach items="${feedBackList}" var="j">
+                                                                                                <c:if test="${booking.bookingID eq j.bookingID}">
+                                                                                                    <p>
+                                                                                                        ${j.feedbackDetail}
+                                                                                                    </p>
+                                                                                                </c:if>
+                                                                                            </c:forEach>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
 
 
@@ -247,7 +262,7 @@
                                                                         </c:if>
                                                                         <c:if test="${booking.bookingStatus eq 'Hoàn tất'}">
                                                                             <button disabled="" type="button" class="btn btn-success" data-toggle="modal" data-target="#a${loop.index}"">
-                                                                               Đã hoàn thành
+                                                                                Đã hoàn thành
                                                                             </button>
                                                                         </c:if>
                                                                     </div>
@@ -418,6 +433,21 @@
     </script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script>
+        $(document).ready(function () {
+        <c:forEach var="booking" items="${TaskList}">
+            <c:forEach items="${feedBackList}" var="f">
+                <c:if test="${booking.bookingID eq f.bookingID}">
+            $("#rateYo${booking.bookingID}").rateYo({
+                rating: ${f.rating},
+                readOnly: true
+            });
+                </c:if>
+            </c:forEach>
+        </c:forEach>
+        });
+    </script>
 </body>
 
 </html>

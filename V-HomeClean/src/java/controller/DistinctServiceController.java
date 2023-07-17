@@ -5,59 +5,43 @@
  */
 package controller;
 
-import DAO.AccountDAO;
-import DTO.AccountDTO;
+import DAO.CategorySDAO;
+import DAO.ServiceDAO;
+import DTO.CategoryServiceDTO;
+import DTO.ServiceDTO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Asus
+ * @author Hieu Doan
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "DistinctServiceController", urlPatterns = {"/DistinctServiceController"})
+public class DistinctServiceController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String email = request.getParameter("email");
-        String pass = request.getParameter("password");
-        String checkboxValue = request.getParameter("remember-me");
-        AccountDAO ACdao = new AccountDAO();
-        AccountDTO a = ACdao.Login(email, pass);
+        int cateID =  Integer.parseInt(request.getParameter("cateID"));
+//        String cateID = request.getParameter("cateID");
+
+        CategorySDAO dao = new CategorySDAO();
+
+        List<ServiceDTO> list = dao.getServiceByCateID(cateID);
+        List<CategoryServiceDTO> listC = dao.getAllCategory();
+//        HttpSession session = request.getSession();
+//        session.removeAttribute("listP");
+        request.setAttribute("listS", list);
+        request.setAttribute("listCS", listC);
         
-        if(a==null){
-            request.setAttribute("ERROR", "Tài khoản hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-            
-        } else if(a.getStatus().equalsIgnoreCase("false")){
-            request.setAttribute("ERROR", "Tài khoản của bạn đã bị khóa");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else{
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            
-            
-            if (checkboxValue != null && checkboxValue.equalsIgnoreCase("on")) {
-                    Cookie u = new Cookie("User", email);
-                    Cookie p = new Cookie("Pass", pass);
-                    u.setMaxAge(60 * 2);
-                    p.setMaxAge(60 * 2);
-                    response.addCookie(u);
-                    response.addCookie(p);
-                }
-            
-            
-            
-            request.getRequestDispatcher("HomePageController").forward(request, response);
-        }
+        request.getRequestDispatcher("service.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

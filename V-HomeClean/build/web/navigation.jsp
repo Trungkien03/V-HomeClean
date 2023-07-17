@@ -84,13 +84,6 @@
                     <a href="BlogPageController" class="dropdown-item">Bài Viết</a>
 
                     <a href="postBlog.jsp" class="dropdown-item">Đăng Bài Viết</a>
-
-                    
-
-                    <a href="appointment.jsp" class="dropdown-item">Appointment</a>
-                    <a href="team.jsp" class="dropdown-item">Our Team</a>
-                    <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>
-                    <a href="404.jsp" class="dropdown-item">404 Page</a>
                 </div>
             </div>
             <a href="ContactPageController" class="nav-item nav-link"><strong>Liên Hệ</strong></a>

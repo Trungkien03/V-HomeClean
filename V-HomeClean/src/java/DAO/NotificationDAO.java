@@ -71,7 +71,11 @@ public class NotificationDAO {
         String query = "SELECT *\n"
                 + "FROM Notification\n"
                 + "WHERE AccountID = ? AND Status = ? AND (TypeNoti = ? OR TypeNoti = ?)\n"
-                + "ORDER BY ABS(DATEDIFF(minute, Create_at, GETDATE()))";
+                + "ORDER BY ABS(DATEDIFF(second, Create_at, GETDATE())),\n"
+                + "         ABS(DATEDIFF(minute, Create_at, GETDATE())),\n"
+                + "         ABS(DATEDIFF(day, Create_at, GETDATE())),\n"
+                + "         ABS(DATEDIFF(month, Create_at, GETDATE())),\n"
+                + "         ABS(DATEDIFF(year, Create_at, GETDATE()))";
         List<NotificationDTO> list = new ArrayList<>();
         try {
             conn = new DBContext().getConnection();

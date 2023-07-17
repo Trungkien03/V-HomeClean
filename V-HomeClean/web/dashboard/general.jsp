@@ -108,7 +108,7 @@
                                     <div class="profile-list">
                                         <a href="#"><i class="fe fe-document"></i></a>
                                         <a href="#">Tổng Đơn</a>
-                                        <a href="#" class="float-end"><h5>403</h5></a>
+                                        <a href="#" class="float-end"><h5>${totalUserBookings}</h5></a>
                                     </div>
                                     <div class="profile-list">
                                         <a href="#"><i class="fe fe-activity"></i></a>
@@ -261,78 +261,87 @@
                                                                         </div>
                                                                     </td>
                                                                     <td class="text-center">
-                                                                        <button type="button" class="btn btn-info" disabled="">
-                                                                            ${b.bookingStatus}
-                                                                        </button>
-                                                                    </td>
+                                                                        <c:if test="${b.bookingStatus eq 'Chờ xác nhận'}">
+                                                                            <button class="btn btn-info">Chờ xác nhận</button>
+                                                                        </c:if>
+                                                                        <c:if test="${b.bookingStatus eq 'Xác nhận'}">
+                                                                            <button class="btn btn-primary">Đã xác nhận</button>
+                                                                        </c:if>
+                                                                        <c:if test="${b.bookingStatus eq 'Đang thực hiện'}">
+                                                                            <button class="btn btn-warning">Đang hoạt động</button>
+                                                                        </c:if>
+                                                                        <c:if test="${b.bookingStatus eq 'Hoàn thành'}">
+                                                                            <button class="btn btn-success">Hoàn thành</button>
+                                                                        </c:if>
+                                                                        </td>
 
 
-                                                            <div class="modal fade" id="booking${b.bookingID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header text-center">
-                                                                            <h5 class="modal-title text-primary" id="exampleModalLabel">Thông tin chi tiết đơn</h5>
-                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="col-md-12">
-                                                                                <div class="card">
-                                                                                    <div class="card-body">
-                                                                                        <form action="#">
-                                                                                            <div class="form-group">
-                                                                                                <label class="text-info">Thời gian</label>
-                                                                                                <input readonly="" value="${fn:substring(b.bookingDate, 11, 16)}" type="text" class="form-control">
-                                                                                            </div>
-                                                                                            <div class="form-group">
-                                                                                                <label class="text-info">Ngày (yyyy-mm-dd)</label>
-                                                                                                <input readonly="" value="${fn:substring(b.bookingDate, 0, 10)}" type="text" class="form-control">
-                                                                                            </div>
-                                                                                            <div class="form-group">
-                                                                                                <c:set var="addressArray" value="${fn:split(b.bookingAddress, '||')}" />
-                                                                                                <label class="text-info">Số phòng</label>
-                                                                                                <input readonly="" value="${fn:trim(addressArray[0])}" type="text" class="form-control">
-                                                                                            </div>
-                                                                                            <div class="form-group">
-                                                                                                <label class="text-info">Khu vực</label>
-                                                                                                <input readonly="" value="${fn:trim(addressArray[1])}" type="text" class="form-control">
-                                                                                            </div>
-
-                                                                                            <div class="form-group">
-                                                                                                <label class="text-info">Định kì</label>
-                                                                                                <input readonly="" value="${b.typeOfService}" type="text" class="form-control">
-                                                                                            </div>
-
-                                                                                            <div class="form-group">
-                                                                                                <fmt:formatNumber var="formattedPrice" value="${b.totalPrice}" pattern="###,###" />
-                                                                                                <label class="text-info">Tổng chi phí</label>
-                                                                                                <div style="display: flex" class="col-md-12">
-                                                                                                    <input readonly=""
-                                                                                                           required=""
-                                                                                                           name="bookingPrice"
-                                                                                                           type="text"
-                                                                                                           class="form-control"
-                                                                                                           value="${formattedPrice}"
-                                                                                                           />
-                                                                                                    <span class="btn btn-success">VND</span>     
+                                                                <div class="modal fade" id="booking${b.bookingID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header text-center">
+                                                                                <h5 class="modal-title text-primary" id="exampleModalLabel">Thông tin chi tiết đơn</h5>
+                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="card">
+                                                                                        <div class="card-body">
+                                                                                            <form action="#">
+                                                                                                <div class="form-group">
+                                                                                                    <label class="text-info">Thời gian</label>
+                                                                                                    <input readonly="" value="${fn:substring(b.bookingDate, 11, 16)}" type="text" class="form-control">
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <label class="text-info">Ngày (yyyy-mm-dd)</label>
+                                                                                                    <input readonly="" value="${fn:substring(b.bookingDate, 0, 10)}" type="text" class="form-control">
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <c:set var="addressArray" value="${fn:split(b.bookingAddress, '||')}" />
+                                                                                                    <label class="text-info">Số phòng</label>
+                                                                                                    <input readonly="" value="${fn:trim(addressArray[0])}" type="text" class="form-control">
+                                                                                                </div>
+                                                                                                <div class="form-group">
+                                                                                                    <label class="text-info">Khu vực</label>
+                                                                                                    <input readonly="" value="${fn:trim(addressArray[1])}" type="text" class="form-control">
                                                                                                 </div>
 
-                                                                                            </div>
-                                                                                        </form>
+                                                                                                <div class="form-group">
+                                                                                                    <label class="text-info">Định kì</label>
+                                                                                                    <input readonly="" value="${b.typeOfService}" type="text" class="form-control">
+                                                                                                </div>
+
+                                                                                                <div class="form-group">
+                                                                                                    <fmt:formatNumber var="formattedPrice" value="${b.totalPrice}" pattern="###,###" />
+                                                                                                    <label class="text-info">Tổng chi phí</label>
+                                                                                                    <div style="display: flex" class="col-md-12">
+                                                                                                        <input readonly=""
+                                                                                                               required=""
+                                                                                                               name="bookingPrice"
+                                                                                                               type="text"
+                                                                                                               class="form-control"
+                                                                                                               value="${formattedPrice}"
+                                                                                                               />
+                                                                                                        <span class="btn btn-success">VND</span>     
+                                                                                                    </div>
+
+                                                                                                </div>
+                                                                                            </form>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="modal-footer" style="display: flex; justify-content: space-between">
-                                                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Không</button>
-                                                                            <button type="button" class="btn btn-outline-primary">
-                                                                                <a href="#">Có</a>
-                                                                            </button>
+                                                                            <div class="modal-footer" style="display: flex; justify-content: space-between">
+                                                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Không</button>
+                                                                                <button type="button" class="btn btn-outline-primary">
+                                                                                    <a href="#">Có</a>
+                                                                                </button>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
-                                                            </tr>
+                                                                </tr>
                                                         </c:forEach>
                                                         </tbody>
                                                     </table>
