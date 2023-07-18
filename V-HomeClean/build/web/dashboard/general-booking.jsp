@@ -325,11 +325,6 @@
                                                                 <a href="#" class="float-end"><h5>${account.age}</h5></a>
                                                             </div>
                                                             <div class="profile-list">
-                                                                <a href="#"><i class="fe fe-document"></i></a>
-                                                                <a href="#">Tổng Đơn</a>
-                                                                <a href="#" class="float-end"><h5>403</h5></a>
-                                                            </div>
-                                                            <div class="profile-list">
                                                                 <a href="#"><i class="fe fe-activity"></i></a>
                                                                 <a href="#">Tình Trạng</a>
                                                                 <c:choose>
@@ -340,16 +335,6 @@
                                                                         <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
                                                                     </c:when>
                                                                 </c:choose>
-                                                            </div>
-                                                            <div class="profile-list">
-                                                                <a href="group-history.jsp"
-                                                                   ><button
-                                                                        type="button"
-                                                                        class="btn btn-block btn-outline-light"
-                                                                        >
-                                                                        Xem ....
-                                                                    </button></a
-                                                                >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -471,11 +456,6 @@
                                                                         <a href="#" class="float-end"><h5>${staff.age}</h5></a>
                                                                     </div>
                                                                     <div class="profile-list">
-                                                                        <a href="#"><i class="fe fe-document"></i></a>
-                                                                        <a href="#">Tổng Đơn</a>
-                                                                        <a href="#" class="float-end"><h5>403</h5></a>
-                                                                    </div>
-                                                                    <div class="profile-list">
                                                                         <a href="#"><i class="fe fe-activity"></i></a>
                                                                         <a href="#">Tình Trạng</a>
                                                                         <c:choose>
@@ -486,16 +466,6 @@
                                                                                 <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
                                                                             </c:when>
                                                                         </c:choose>
-                                                                    </div>
-                                                                    <div class="profile-list">
-                                                                        <a href="group-history.jsp"
-                                                                           ><button
-                                                                                type="button"
-                                                                                class="btn btn-block btn-outline-light"
-                                                                                >
-                                                                                Xem ....
-                                                                            </button></a
-                                                                        >
                                                                     </div>
                                                                 </div>
                                                             </div>

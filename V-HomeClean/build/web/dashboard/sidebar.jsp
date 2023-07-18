@@ -54,7 +54,7 @@
                         <span class="menu-arrow"></span
                         ></a>
                     <ul style="display: none">
-                        <li id="blog-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Blog </a></li>
+                        <li id="blog-details-link"><a href="BlogsManagementController"> Quản Lý Blog </a></li>
                     </ul>
                 </li>
                 <li class="submenu">

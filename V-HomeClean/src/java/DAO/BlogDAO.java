@@ -26,9 +26,8 @@ public class BlogDAO {
 
     public List<BlogDTO> getAllBlog() {
         List<BlogDTO> list = new ArrayList<>();
-        String query = "SELECT b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName\n"
-                + "FROM Blog b\n"
-                + "INNER JOIN BlogCate bc ON b.BlogCateID = bc.BlogCateID\n"
+        String query = "SELECT b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName, bc.BlogCateID\n"
+                + "FROM Blog b INNER JOIN BlogCate bc ON b.BlogCateID = bc.BlogCateID\n"
                 + "ORDER BY b.Time DESC";
         try {
             conn = new DBContext().getConnection();
@@ -46,6 +45,7 @@ public class BlogDAO {
                         rs.getInt(9)));
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }
@@ -148,24 +148,6 @@ public class BlogDAO {
         return total;
     }
 
-//    public void InsertBlog(String title, String subTitle, String content, String accountID, int blogCateID, String image) {
-//        String query = "INSERT INTO Blog ( Title, SubTitle, Content, AccountID, BlogCateID, Time, Image)\n"
-//                + "VALUES ( ?, ?, ?, ?, ?, GETDATE(), ?);";
-//        try {
-//            conn = new DBContext().getConnection();
-//            ps = conn.prepareStatement(query);
-//            ps.setString(1, title);
-//            ps.setNString(2, subTitle);
-//            ps.setNString(3, content);
-//            ps.setString(4, accountID);
-//            ps.setInt(5, blogCateID);
-//            ps.setString(6, image);
-//
-//            ps.executeUpdate();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
     public String insertBlog(String title, String subTitle, String content, String accountID, int blogCateID, String image) {
         String blogID = null;
         String query = "INSERT INTO Blog (Title, SubTitle, Content, AccountID, BlogCateID, Time, Image)\n"
@@ -192,13 +174,13 @@ public class BlogDAO {
         return blogID;
     }
 
-
-
-public static void main(String[] args) {
+    public static void main(String[] args) {
 
         BlogDAO dao = new BlogDAO();
-        String total = dao.insertBlog("1", "1", "1", "AC0001", 2, "1");
-        System.out.println(total);
+        List<BlogDTO> total = dao.getAllBlog();
+        for (BlogDTO blogDTO : total) {
+            System.out.println(blogDTO);
+        }
 
     }
 

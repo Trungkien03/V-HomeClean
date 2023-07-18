@@ -107,21 +107,15 @@
                                     </p>
                                 </div>
                                 <div class="card-body p-0">
-
-                                    <div class="profile-list">
-                                        <a href="#"><i class="fe fe-document"></i></a>
-                                        <a href="#">Tổng Đơn</a>
-                                        <a href="#" class="float-end"><h5>403</h5></a>
-                                    </div>
                                     <div class="profile-list">
                                         <a href="#"><i class="fe fe-activity"></i></a>
                                         <a href="#">Tình Trạng</a>
                                         <c:choose>
                                             <c:when test="${service.status eq true}">
-                                                <a href="#" class="float-end"><h5 style="color: #00bf6f;">Hoạt động</h5></a>
+                                                <a href="#" class="float-end"><h5 style="color: #00bf6f;">Đang Hoạt động</h5></a>
                                             </c:when>
                                             <c:when test="${service.status eq false}">
-                                                <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
+                                                <a href="#" class="float-end"><h5 style="color: #b21f2d;">Ngưng Hoạt Động</h5></a>
                                             </c:when>
                                         </c:choose>
                                     </div>
@@ -151,14 +145,6 @@
                                                 href="#top-justified-tab2"
                                                 data-bs-toggle="tab"
                                                 >Mô Tả Dịch Vụ</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="#top-justified-tab3"
-                                                data-bs-toggle="tab"
-                                                >Thông Báo</a
                                             >
                                         </li>
                                     </ul>
@@ -226,9 +212,6 @@
                                             <div class="text-end text-center">
                                                 <input name="action" type="submit" value="Chỉnh Sửa" class="btn btn-primary" />
                                             </div>
-                                        </div>
-                                        <div class="tab-pane" id="top-justified-tab3">
-                                            Tab content 3
                                         </div>
                                     </div>
 

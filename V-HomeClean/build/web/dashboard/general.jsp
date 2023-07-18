@@ -331,12 +331,12 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="modal-footer" style="display: flex; justify-content: space-between">
+<!--                                                                            <div class="modal-footer" style="display: flex; justify-content: space-between">
                                                                                 <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Không</button>
                                                                                 <button type="button" class="btn btn-outline-primary">
                                                                                     <a href="#">Có</a>
                                                                                 </button>
-                                                                            </div>
+                                                                            </div>-->
                                                                         </div>
                                                                     </div>
                                                                 </div>
