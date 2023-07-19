@@ -14,23 +14,23 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
+
         <title>V-HomeClean - Dashboard</title>
         <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
                  Bootstrap DataTable CSS -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
-
         <link rel="stylesheet" href="css/assets/css/font-awesome.min.css" />
 
         <link rel="stylesheet" href="css/assets/css/feathericon.min.css" />
 
         <link rel="stylesheet" href="css/assets/plugins/morris/morris.css" />
-
+        <link rel="stylesheet" href="css/calendarStyle.css">
         <link rel="stylesheet" href="css/assets/css/style.css" />
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
         <!-- Liên kết đến tệp CSS của ApexCharts (tuỳ chọn) -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@latest/dist/apexcharts.min.css">
+
     </head>
     <body>
         <div class="main-wrapper">
@@ -246,9 +246,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div id='calendar'></div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -321,19 +318,6 @@
             });
         </script>
 
-        <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-        <script>
-
-            document.addEventListener('DOMContentLoaded', function () {
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth'
-                });
-                calendar.render();
-            });
-
-        </script>
-
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             // Lấy tham chiếu đến thẻ canvas
@@ -346,7 +330,7 @@
                     labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'], // Nhãn trục x
                     datasets: [{
                             label: 'Thông Số Trong Năm', // Nhãn của dữ liệu
-                            data: [12, 19, totalBlogs, ${TotalServices}, 2, 3, 5, 6, 1, 2, 6, 8], // Dữ liệu
+                            data: ${listTotalByMonths}, // Dữ liệu
                             backgroundColor: 'rgba(0, 123, 255, 0.6)' // Màu nền của cột
                         }]
                 },
@@ -364,7 +348,7 @@
 
         <script>
             var options = {
-                series: [${totalBlogs}, 55, 13, 43, 22, 12, 23],
+                series: ${listTotalByWeek},
                 chart: {
                     width: 380,
                     type: 'pie',
@@ -389,29 +373,6 @@
         </script>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                // Hàm để gửi yêu cầu Ajax để cập nhật session
-                function updateSession() {
-                    $.ajax({
-                        url: "DashboardController", // Đường dẫn đến servlet xử lý yêu cầu Ajax
-                        type: "POST",
-                        success: function (data) {
-                            console.log("Session updated successfully.");
-                        },
-                        error: function (xhr, textStatus, errorThrown) {
-                            console.log("Error updating session:", errorThrown);
-                        }
-                    });
-                }
-
-                // Khi trang được tải, gọi hàm cập nhật session
-                updateSession();
-
-                // Thiết lập định thời để cập nhật session sau mỗi 5 giây
-                setInterval(updateSession, 5000);
-            });
-        </script>
     </body>
 </html>
 

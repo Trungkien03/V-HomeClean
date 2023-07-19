@@ -46,12 +46,12 @@
                         <div class="page-header">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h3 class="page-title">Staffs Management</h3>
+                                    <h3 class="page-title">Quản Lý Nhân Viên</h3>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="dashboard/index.jsp">Dashboard</a>
+                                            <a href="dashboard/index.jsp">Bảng Điều Khiển</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Staffs Management</li>
+                                        <li class="breadcrumb-item active">Quản Lý Nhân Viên</li>
                                     </ul>
                                 </div>
                             </div>

@@ -58,7 +58,7 @@
                     <ul id="notificationList" class="notification-list">
                         <c:forEach items="${sessionScope.listNotifications}" var="o">
                             <li class="notification-message">
-                                <a href="#">
+                                <a href="NotificationController?bookingID=${o.bookingID}&notificationID=${o.notificationID}">
                                     <div class="media d-flex">
                                         <span class="avatar avatar-sm flex-shrink-0">
                                             <c:forEach items="${listAllAccounts}" var="b">

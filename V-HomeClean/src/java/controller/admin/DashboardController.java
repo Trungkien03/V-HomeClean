@@ -14,7 +14,6 @@ import DTO.AccountDTO;
 import DTO.BookingDTO;
 import DTO.NotificationDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -76,9 +75,20 @@ public class DashboardController extends HttpServlet {
         session.setAttribute("listAllAccounts", listAllAccounts);
         int totalUnreadNoti = nDao.CountUnreadNotificationAndtypeNoti("false", typeNotiAdmin);
         session.setAttribute("totalUnreadNoti", totalUnreadNoti);
-
         request.setAttribute("ListUsers", listUsers);
-
+        
+        //-------------------------------------------------------------------------------------
+        //đây là thông số để đưa vào chart.js
+        ArrayList<Integer> listTotalByMonths = new ArrayList<Integer>();
+        for(int i = 1;i<13;i++){
+            listTotalByMonths.add(bDao.CountBookingByMonth(i));
+        }
+        request.setAttribute("listTotalByMonths", listTotalByMonths);
+        
+        ArrayList<Integer> listTotalByWeek = bDao.getlistTotalByWeek();
+        request.setAttribute("listTotalByWeek", listTotalByWeek);
+        //------------------------------------------------------------------------------------
+        
         
         List<AccountDTO> AccountsList = aDao.getAllAccounts(); // lấy ra những accounts
         List<BookingDTO> bookingsList = bDao.getAllLatestBookings(); // lấy ra những booking gần nhất
