@@ -42,32 +42,30 @@
                                 </h1>
                             </div>
                             <div class="pt-3 pb-3">
-                                <form action="ProfilePageController" method="POST">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label style="color: black">Mật khẩu mới</label>
-                                                <input required="" type="password" name="newPassword" class="form-control">
-                                                <div class="requirement mt-3">
-                                                    <p>Mật khẩu mới phải chứa:</p>
-                                                    <ul class="requirement-list" style="list-style-type: none;">
-                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 8 ký tự</span></li>
-                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 1 số tự nhiên (0...9)</span></li>
-                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 1 ký tự thường (a...z)</span></li>
-                                                        <li><i class="fa-solid fa-warning"></i><span>Ít nhất 1 ký tự đặc biệt (!...$) </span></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+
+
+
+                                <form class="form-horizontal" action="MainController" method="POST">
+                                    <div class="form-group row justify-content-center px-3">
+                                        <strong style="color: red" >${ERROR}</strong>
+
+                                        <div class="col-9 px-0">
+                                            <input type="password" name="password" placeholder="&#xf084; &nbsp; Mật Khẩu Mới"
+                                                   class="form-control border-info placeicon" >
                                         </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label style="color: black">Xác nhận mật khẩu</label>
-                                                <input required="" type="password" name="confirm" class="form-control">
-                                                <div class="confirm-new-pass"></div>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row justify-content-center px-3">
+                                        <div class="col-9 px-0">
+                                            <input type="password" name="confirm" 
+                                                   placeholder="&#xf084; &nbsp; Xác Nhận Mật Khẩu Mới"
+                                                   class="form-control border-info placeicon">
                                         </div>
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-success btn-lg btn-block mt-3 change-pass-button" disabled>Cập nhật</button>
+                                    </div>
+
+                                    <div class="form-group row justify-content-center">
+                                        <div class="col-3 px-3 mt-3">
+                                            <input class="btn btn-primary" type="submit" name="action" value="Cập nhật mật khẩu"
+                                                   class="btn btn-block btn-info">
                                         </div>
                                     </div>
                                 </form>
