@@ -58,36 +58,40 @@ public class ServiceGeneralController extends HttpServlet {
                     String serviceID = request.getParameter("serviceID");
                     ServiceDTO service = sDao.getServiceByID(serviceID);
                     session.setAttribute("service", service);
-                }
-                if (action.equalsIgnoreCase("Chỉnh sửa")) {
+                } else if (action.equalsIgnoreCase("Chỉnh sửa")) {
                     String serviceID = request.getParameter("serviceID");
                     ServiceDTO b = sDao.getServiceByID(serviceID);
+
                     String serviceName = request.getParameter("serviceName");
                     String cateIDString = request.getParameter("serviceType");
                     int cateID = Integer.parseInt(cateIDString);
+
                     String priceString = request.getParameter("price");
-                    // Loại bỏ ký tự đặc biệt từ chuỗi
+                    // Remove non-numeric characters from the price string
                     priceString = priceString.replaceAll("[^0-9]", "");
-                    // Chuyển đổi thành số
+                    // Convert the price to an integer
                     int price = Integer.parseInt(priceString);
 
                     Part part = request.getPart("image");
-                    String realPath = request.getServletContext().getRealPath("/img/");
-                    realPath = realPath.replace("\\build\\web", "\\web");
+                    String realPath = request.getServletContext().getRealPath("/img/").replace("\\build\\web", "\\web");
                     String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-                    String imagePath = "img/" + filename; // Đường dẫn tới ảnh
+                    String imagePath = "img/";
 
+                    // Create the directory if it doesn't exist
                     if (!Files.exists(Paths.get(realPath))) {
                         Files.createDirectories(Paths.get(realPath));
                     }
 
-                    part.write(Paths.get(realPath, filename).toString());
-                    if (filename == null || filename.isEmpty() || filename == "") {
-                        imagePath = b.getImage();
+                    if (filename != null && !filename.isEmpty()) {
+                        imagePath += filename; // Path to the image
+                        part.write(Paths.get(realPath, filename).toString());
+                    } else {
+                        imagePath = b.getImage(); // Keep the previous image path if no new image is selected
                     }
 
                     String serviceDetail = b.getServiceDetail();
                     sDao.UpdateServiceByID(serviceName, price, serviceDetail, cateID, imagePath, serviceID);
+
                     String message = "Chỉnh sửa thông tin thành công!";
                     ServiceDTO service = sDao.getServiceByID(serviceID);
                     request.setAttribute("message", message);
@@ -98,6 +102,7 @@ public class ServiceGeneralController extends HttpServlet {
             } finally {
                 request.getRequestDispatcher("/dashboard/general-service.jsp").forward(request, response);
             }
+
         }
     }
 
