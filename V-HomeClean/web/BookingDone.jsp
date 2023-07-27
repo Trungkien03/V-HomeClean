@@ -56,10 +56,11 @@
                             <i class="bi bi-check-circle-fill display-1 text-primary"></i>
                             <h1 class="display-1">Congratulations</h1>
                             <h1 class="">Đơn của bạn đã được ghi nhận thành công</h1>
-                            <img style="width: 100%" src="img/QRcodeKien.jpg">
-                            <p style="color: black;">Bạn vui lòng thanh toán phí trung gian (chỉ phí trung gian) qua mã QR code
+                            <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
+                            <p style="color: black;">Bạn vui lòng thanh toán phí qua mã QR code
                             ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
-                            <p style="color: black;"class="mb-4">Cú pháp: Thanh toan - [mã đơn hàng]</p>
+                            <p style="color: black;">Chủ tài khoản: Le Quoc Thang</p>
+                            <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
                             <a class="btn btn-primary py-3 px-5" href="HomePageController">Về Lại Trang Chủ</a>
                         </div>
                         <div class="col-md-6">

@@ -175,7 +175,7 @@
                                 <div style="color: black;" class="form-floating">
                                     <select style="color: black;" required="Vui lòng chọn khu vực" class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
                                         <option value="">-- Chọn Vinhomes --</option>
-                                        <option style="color: black;" value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - Hà Nội</option>
+                                        <option style="color: black;" value="Vinhomes Smart City - TP. Hồ Chí Minh">Vinhomes Smart City - Hà Nội</option>
                                     </select>
                                     <label for="relationship">Chọn khu vực</label>
                                 </div>
@@ -223,7 +223,6 @@
                                     </select>
                                     <label for="relationship">Chọn khu vực</label>
                                 </div>
-                                <strong style="color: #e72734;" >${areaError}</strong>
                             </div>
 
                             <div class="col-sm-6">

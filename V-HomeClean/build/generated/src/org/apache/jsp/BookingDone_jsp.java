@@ -106,8 +106,11 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"col-md-6\">\n");
       out.write("                            <i class=\"bi bi-check-circle-fill display-1 text-primary\"></i>\n");
       out.write("                            <h1 class=\"display-1\">Congratulations</h1>\n");
-      out.write("                            <h1 class=\"mb-4\">Đơn của bạn đã được xác nhận thành công</h1>\n");
-      out.write("                            <p class=\"mb-4\">Kiểm tra lại thông tin đơn hàng thông qua Thông Tin Tài Khoản của bạn</p>\n");
+      out.write("                            <h1 class=\"\">Đơn của bạn đã được ghi nhận thành công</h1>\n");
+      out.write("                            <img style=\"width: 100%\" src=\"img/QRcodeKien.jpg\">\n");
+      out.write("                            <p style=\"color: black;\">Bạn vui lòng thanh toán phí trung gian (chỉ phí trung gian) qua mã QR code\n");
+      out.write("                            ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>\n");
+      out.write("                            <p style=\"color: black;\"class=\"mb-4\">Cú pháp: Thanh toan - [mã đơn hàng]</p>\n");
       out.write("                            <a class=\"btn btn-primary py-3 px-5\" href=\"HomePageController\">Về Lại Trang Chủ</a>\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-6\">\n");
@@ -116,14 +119,18 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <div class=\"row\">\n");
       out.write("                                        <div class=\"col-md-12\">\n");
       out.write("                                            <h1>Thông tin đơn của bạn</h1>\n");
-      out.write("                                            <div class=\"card mb-4\">\n");
+      out.write("                                            <p class=\"mb-4\">Kiểm tra lại thông tin đơn hàng thông qua Thông Tin Tài Khoản của bạn</p>\n");
+      out.write("                                            <div style=\"color: black;\">Mã đơn hàng của bạn: 12");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${bookingIDNumber}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</div>\n");
+      out.write("                                            <div style=\"color: black;\" class=\"card mb-4\">\n");
       out.write("                                                <div class=\"card-body\">\n");
       out.write("                                                    <div class=\"row\">\n");
       out.write("                                                        <div class=\"col-md-3\">\n");
       out.write("                                                            <p class=\"mb-0\">Họ và Tên:</p>\n");
       out.write("                                                        </div>\n");
       out.write("                                                        <div class=\"col-md-9\">\n");
-      out.write("                                                            <p class=\"text-muted mb-0\">");
+      out.write("                                                            <p style=\"color: black;\" class=\"text-muted mb-0\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${acc.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -134,7 +141,7 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                        <p class=\"mb-0\">Tên dịch vụ:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${serviceName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -145,7 +152,7 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                        <p class=\"mb-0\">Địa chỉ email:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${acc.email}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -153,10 +160,10 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <hr>\n");
       out.write("                                                <div class=\"row\">\n");
       out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p class=\"mb-0\">Số điện thoại:</p>\n");
+      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Số điện thoại:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${acc.phone}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -164,10 +171,10 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <hr>\n");
       out.write("                                                <div class=\"row\">\n");
       out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p class=\"mb-0\">Mã phòng:</p>\n");
+      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Mã phòng:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${vinhomesID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -175,10 +182,10 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <hr>\n");
       out.write("                                                <div class=\"row\">\n");
       out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p class=\"mb-0\">Khu vực:</p>\n");
+      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Khu vực:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${area}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -186,10 +193,10 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <hr>\n");
       out.write("                                                <div class=\"row\">\n");
       out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p class=\"mb-0\">Thời gian:</p>\n");
+      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Thời gian:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${bookingDate}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -197,10 +204,10 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <hr>\n");
       out.write("                                                <div class=\"row\">\n");
       out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p class=\"mb-0\">Giá ước lượng:</p>\n");
+      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Giá ước lượng:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       if (_jspx_meth_fmt_formatNumber_0(_jspx_page_context))
         return;
       out.write("</p>\n");
@@ -208,10 +215,10 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                </div>\n");
       out.write("                                                <div class=\"row\">\n");
       out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p class=\"mb-0\">Phí trung gian:</p>\n");
+      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Phí trung gian:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       if (_jspx_meth_fmt_formatNumber_1(_jspx_page_context))
         return;
       out.write("</p>\n");
@@ -219,10 +226,10 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                </div>\n");
       out.write("                                                    <div class=\"row\">\n");
       out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p class=\"mb-0\">Tổng chi phí:</p>\n");
+      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Tổng chi phí:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\">");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       if (_jspx_meth_fmt_formatNumber_2(_jspx_page_context))
         return;
       out.write("</p>\n");

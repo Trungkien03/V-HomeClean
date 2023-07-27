@@ -246,13 +246,13 @@ GO
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0001', N'hieublockchain2002@gmail.com', N'1', N'Đoàn Thanh Hiếu', N'Bình Dương', N'0987654321', 1, N'Male', CAST(N'2000-02-12' AS Date), 1, N'img/adminHieu.jpg', 6000888.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiên', N'32/3, Gia Tân 1, Thống Nhất, Đồng Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/Kien-Profile-2.jpg', 0.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0002', N'trungkiennguyen0310@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiên', N'32/3, Gia Tân 1, Thống Nhất, Đồng Nai', N'0974102437', 1, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 0.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0003', N'staff1@gmail.com', N'1', N'Adela JohnSon', N'Lê Văn Việt', N'0987654321', 6, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner1.jpg', 25000000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0003', N'staff1@gmail.com', N'1', N'Adela JohnSon', N'Lê Văn Việt', N'0987654321', 6, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner1.jpg', 0.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0004', N'staff2@gmail.com', N'1', N'Johnson Micheal', N'Tân Bình', N'0897654321', 6, N'Male', CAST(N'2002-10-10' AS Date), 1, N'img/cleanner2.jpg', 25000000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0004', N'staff2@gmail.com', N'1', N'Johnson Micheal', N'Tân Bình', N'0897654321', 6, N'Male', CAST(N'2002-10-10' AS Date), 1, N'img/cleanner2.jpg', 100000.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0005', N'staff3@gmail.com', N'1', N'Micheal Diana', N'Quận 9, Thành phố Hồ Chí Minh', N'0987675321', 6, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner3.jpg', NULL)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0005', N'staff3@gmail.com', N'1', N'Micheal Diana', N'Quận 9, Thành phố Hồ Chí Minh', N'0987675321', 6, N'Female', CAST(N'2002-12-03' AS Date), 1, N'img/cleanner3.jpg', 0.0000)
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0006', N'user1@gmail.com', N'1', N'Nguyễn Hà Mai', N'Hà Nội', N'0987654321', 4, N'Female', CAST(N'1995-08-15' AS Date), 1, N'img/user1.jpg', NULL)
 GO
@@ -274,15 +274,19 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0015', N'user10@gmail.com', N'1', N'Huỳnh Văn An', N'Long An', N'0898765432', 4, N'Male', CAST(N'1998-02-05' AS Date), 1, N'img/user10.jpg', NULL)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0016', N'Test01@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Hiếu', N'An Tây, Bên Cát, T.Bình Dương', N'0972131292', 5, N'Male', CAST(N'2002-12-12' AS Date), 1, N'img/user.jpg', 12000000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0016', N'Test01@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Hiếu', N'An Tây, Bên Cát, T.Bình Dương', N'0972131292', 5, N'Male', CAST(N'2002-12-12' AS Date), 1, N'img/user.jpg', 0.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0017', N'MinhTQ01@gmail.com', N'Kienmundo1!', N'Trần Quang Minh', N'An Tây, Bên Cát, T.Bình Dương', N'0972131295', 2, N'Male', CAST(N'2002-10-01' AS Date), 1, N'img/user.jpg', 20000000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0017', N'MinhTQ01@gmail.com', N'Kienmundo1!', N'Trần Quang Minh', N'An Tây, Bên Cát, T.Bình Dương', N'0972131295', 2, N'Male', CAST(N'2002-10-01' AS Date), 1, N'img/user.jpg', 0.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0018', N'ThangPM012@gmail.com', N'Kienmundo1!', N'Phạm Minh Thắng', N'Gò Dầu, Tây Ninh', N'0886751117', 2, N'Male', CAST(N'2002-03-03' AS Date), 1, N'img/user.jpg', 12900000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0018', N'ThangPM012@gmail.com', N'Kienmundo1!', N'Phạm Minh Thắng', N'Gò Dầu, Tây Ninh', N'0886751117', 2, N'Male', CAST(N'2002-03-03' AS Date), 1, N'img/user.jpg', 0.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0019', N'TuongNV031@gmail.com', N'Kienmundo1!', N'Nguyễn Vũ Tường', N'TP. Hồ Chí Minh', N'0886751119', 2, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/user.jpg', 25000000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0019', N'TuongNV031@gmail.com', N'Kienmundo1!', N'Nguyễn Vũ Tường', N'TP. Hồ Chí Minh', N'0886751119', 2, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/user.jpg', 0.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0020', N'TuanHV012@gmail.com', N'Kienmundo1!', N'Hoàng Văn Tuấn', N'TP. Hồ Chí Minh', N'0972131298', 6, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 20000000.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0020', N'TuanHV012@gmail.com', N'Kienmundo1!', N'Hoàng Văn Tuấn', N'TP. Hồ Chí Minh', N'0972131298', 6, N'Male', CAST(N'2002-10-03' AS Date), 1, N'img/adminKien.jpg', 0.0000)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0021', N'trungkiennguyen024310@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiênnnn', N'ádasd', N'0974102439', 6, N'Male', CAST(N'2002-10-02' AS Date), 1, N'img/adminKien.jpg', 100000.0000)
+GO
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0022', N'trungkiennguyen123@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiên', N's01.01-2001 The Sapphire Parkville || Vinhomes Smart City - TP. Hồ Chí Minh', N'0974102412', 4, N'male', CAST(N'2002-10-03' AS Date), 1, N'img/young-housewife-cleaning-with-rug-detergent-isolated.png', 0.0000)
 GO
 
 GO
@@ -341,65 +345,150 @@ INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [S
 GO
 INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (2, N'AC0006', N'Hoàn thành', N'AC0004', N'SE02')
 GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (3, N'AC0006', N'Chờ xác nhận', N'', N'SE02')
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (3, N'AC0006', N'Xác nhận', N'AC0004', N'SE02')
 GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (4, N'AC0006', N'Chờ xác nhận', N'', N'SE03')
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (4, N'AC0006', N'Hoàn thành', N'AC0003', N'SE03')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (5, N'AC0007', N'Hoàn thành', N'AC0021', N'SE04')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (6, N'AC0007', N'Xác nhận', N'AC0020', N'SE02')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (7, N'AC0007', N'Hoàn thành', N'AC0021', N'SE02')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (8, N'AC0021', N'Chờ xác nhận', N'', N'SE02')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (9, N'AC0007', N'Chờ xác nhận', N'', N'SE02')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (10, N'AC0022', N'Chờ xác nhận', N'', N'SE02')
 GO
 SET IDENTITY_INSERT [dbo].[Booking] OFF
 GO
 SET IDENTITY_INSERT [dbo].[BookingDetail] ON 
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 300000.0000, CAST(N'2023-06-28T00:49:00.000' AS DateTime), N'S1.07 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tuần', N'Test')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 300000.0000, CAST(N'2023-01-28T00:49:00.000' AS DateTime), N'S1.07 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tuần', N'Test')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (2, 2, 100000.0000, CAST(N'2023-06-29T04:32:00.000' AS DateTime), N'S1.08 || Vinhomes Metropolis - Hà Nội', N'Dịch vụ 1 lần', N'Chuẩn bị kĩ càng giúp tôi')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (2, 2, 100000.0000, CAST(N'2023-07-29T04:32:00.000' AS DateTime), N'S1.08 || Vinhomes Metropolis - Hà Nội', N'Dịch vụ 1 lần', N'Chuẩn bị kĩ càng giúp tôi')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (3, 3, 100000.0000, CAST(N'2023-06-29T16:13:00.000' AS DateTime), N'S1.08 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tuần', N'Oke chưa ? ')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (3, 3, 100000.0000, CAST(N'2023-07-29T16:13:00.000' AS DateTime), N'S1.08 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tuần', N'Oke chưa ? ')
 GO
 INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (4, 4, 300000.0000, CAST(N'2023-06-30T15:24:00.000' AS DateTime), N'S1.05 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Ok')
 GO
-SET IDENTITY_INSERT [dbo].[BookingDetail] OFF
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (5, 5, 200000.0000, CAST(N'2023-08-12T14:26:00.000' AS DateTime), N'S1.01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Ok')
 GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (6, 6, 100000.0000, CAST(N'2023-07-19T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tháng', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (7, 7, 100000.0000, CAST(N'2023-07-19T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tháng', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (8, 8, 100000.0000, CAST(N'2023-07-21T00:12:00.000' AS DateTime), N'S01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (9, 9, 100000.0000, CAST(N'2023-07-27T07:10:00.000' AS DateTime), N's01.01-3201 The Sapphire 1 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (10, 10, 100000.0000, CAST(N'2023-07-28T14:40:00.000' AS DateTime), N'S01.12-0101 The Sapphire Parkville || Vinhomes Smart City - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+GO
+SET IDENTITY_INSERT [dbo].[BookingDetail] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Notification] ON 
 GO
-INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (1, N'AC0006', 1, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.07 ở khu vực Vinhomes Golden River - TP. Hồ Chí Minh vào ngày 2023-06-28', CAST(N'2023-06-27T09:49:29.857' AS DateTime), 0, N'Admin')
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (1, N'AC0006', 1, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.07 ở khu vực Vinhomes Golden River - TP. Hồ Chí Minh vào ngày 2023-06-28', CAST(N'2023-06-27T09:49:29.857' AS DateTime), 1, N'Admin')
 GO
 INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (2, N'AC0006', 1, N'Nhân viên Adela JohnSon sẽ đảm nhận cho dịch vụ Vệ sinh sofa, rèm, nệm, kính của bạn vào thời gian 2023-06-28 00:49:00.0', CAST(N'2023-06-27T09:50:02.893' AS DateTime), 0, N'User')
 GO
 INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (3, N'AC0003', 1, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 1', CAST(N'2023-06-27T09:50:02.903' AS DateTime), 0, N'Staff')
 GO
-INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (4, N'AC0006', 1, N'Nhân viên Adela JohnSon đã xác nhận đơn của bạn và bắt đầu thực hiện.', CAST(N'2023-06-27T11:10:21.787' AS DateTime), 0, N'User')
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (4, N'AC0006', 1, N'Nhân viên Adela JohnSon đã xác nhận đơn của bạn và bắt đầu thực hiện.', CAST(N'2023-06-27T11:10:21.787' AS DateTime), 1, N'User')
 GO
 INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (5, N'AC0006', 1, N'Nhân viên Adela JohnSon đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.', CAST(N'2023-06-27T11:32:08.860' AS DateTime), 0, N'User')
 GO
-INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (6, N'AC0006', 2, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.08 ở khu vực Vinhomes Metropolis - Hà Nội vào ngày 2023-06-29', CAST(N'2023-06-28T11:32:32.433' AS DateTime), 0, N'Admin')
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (6, N'AC0006', 2, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.08 ở khu vực Vinhomes Metropolis - Hà Nội vào ngày 2023-06-29', CAST(N'2023-06-28T11:32:32.433' AS DateTime), 1, N'Admin')
 GO
-INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (7, N'AC0006', 2, N'Nhân viên Johnson Micheal sẽ đảm nhận cho dịch vụ Vệ sinh phòng của bạn vào thời gian 2023-06-29 04:32:00.0', CAST(N'2023-06-28T11:40:44.220' AS DateTime), 0, N'User')
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (7, N'AC0006', 2, N'Nhân viên Johnson Micheal sẽ đảm nhận cho dịch vụ Vệ sinh phòng của bạn vào thời gian 2023-06-29 04:32:00.0', CAST(N'2023-06-28T11:40:44.220' AS DateTime), 1, N'User')
 GO
 INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (8, N'AC0004', 2, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 2', CAST(N'2023-06-28T11:40:44.230' AS DateTime), 0, N'Staff')
 GO
 INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (9, N'AC0003', 1, N'Khách hàng Nguyễn Hà Mai đã xác nhận và đã gửi feed về đơn dịch vụ có mã số 1', CAST(N'2023-06-28T11:47:18.523' AS DateTime), 0, N'Staff')
 GO
-INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (10, N'AC0006', 2, N'Nhân viên Johnson Micheal đã xác nhận đơn của bạn và bắt đầu thực hiện.', CAST(N'2023-06-28T12:11:43.740' AS DateTime), 0, N'User')
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (10, N'AC0006', 2, N'Nhân viên Johnson Micheal đã xác nhận đơn của bạn và bắt đầu thực hiện.', CAST(N'2023-06-28T12:11:43.740' AS DateTime), 1, N'User')
 GO
-INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (11, N'AC0006', 2, N'Nhân viên Johnson Micheal đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.', CAST(N'2023-06-28T12:11:46.800' AS DateTime), 0, N'User')
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (11, N'AC0006', 2, N'Nhân viên Johnson Micheal đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.', CAST(N'2023-06-28T12:11:46.800' AS DateTime), 1, N'User')
 GO
 INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (12, N'AC0004', 2, N'Khách hàng Nguyễn Hà Mai đã xác nhận và đã gửi feed về đơn dịch vụ có mã số 2', CAST(N'2023-06-28T12:12:20.360' AS DateTime), 0, N'Staff')
 GO
-INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (13, N'AC0006', 3, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.08 ở khu vực Vinhomes Golden River - TP. Hồ Chí Minh vào ngày 2023-06-29', CAST(N'2023-06-28T12:14:00.920' AS DateTime), 0, N'Admin')
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (13, N'AC0006', 3, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.08 ở khu vực Vinhomes Golden River - TP. Hồ Chí Minh vào ngày 2023-06-29', CAST(N'2023-06-28T12:14:00.920' AS DateTime), 1, N'Admin')
 GO
-INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (14, N'AC0006', 4, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.05 ở khu vực Vinhomes Central Park - TP. Hồ Chí Minh vào ngày 2023-06-30', CAST(N'2023-06-28T12:24:52.940' AS DateTime), 0, N'Admin')
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (14, N'AC0006', 4, N'Nguyễn Hà Mai mới đặt lịch dịch vụ mới cho căn hộ S1.05 ở khu vực Vinhomes Central Park - TP. Hồ Chí Minh vào ngày 2023-06-30', CAST(N'2023-06-28T12:24:52.940' AS DateTime), 1, N'Admin')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (15, N'AC0006', 3, N'Nhân viên Johnson Micheal sẽ đảm nhận cho dịch vụ Vệ sinh phòng của bạn vào thời gian 2023-06-29 16:13:00.0', CAST(N'2023-06-29T20:26:43.160' AS DateTime), 1, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (16, N'AC0004', 3, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 3', CAST(N'2023-06-29T20:26:43.180' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (17, N'AC0006', 4, N'Nhân viên Adela JohnSon sẽ đảm nhận cho dịch vụ Vệ sinh sofa, rèm, nệm, kính của bạn vào thời gian 2023-06-30 15:24:00.0', CAST(N'2023-07-05T22:10:45.303' AS DateTime), 1, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (18, N'AC0003', 4, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 4', CAST(N'2023-07-05T22:10:45.350' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (19, N'AC0007', 5, N'Trương Tuấn Anh mới đặt lịch dịch vụ mới cho căn hộ S1.01 ở khu vực Vinhomes Central Park - TP. Hồ Chí Minh vào ngày 2023-07-12', CAST(N'2023-07-11T13:28:12.037' AS DateTime), 1, N'Admin')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (20, N'AC0007', 5, N'Nhân viên Micheal Diana sẽ đảm nhận cho dịch vụ Vệ sinh máy lạnh của bạn vào thời gian 2023-07-12 14:26:00.0', CAST(N'2023-07-11T13:29:25.417' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (21, N'AC0005', 5, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 5', CAST(N'2023-07-11T13:29:25.440' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (22, N'AC0007', 5, N'Nhân viên Nguyễn Trung Kiênnnn sẽ đảm nhận cho dịch vụ Vệ sinh máy lạnh của bạn vào thời gian 2023-07-12 14:26:00.0', CAST(N'2023-07-11T13:34:53.670' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (23, N'AC0021', 5, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 5', CAST(N'2023-07-11T13:34:53.687' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (24, N'AC0007', 5, N'Nhân viên Nguyễn Trung Kiênnnn đã xác nhận đơn của bạn và bắt đầu thực hiện.', CAST(N'2023-07-11T13:36:08.993' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (25, N'AC0007', 5, N'Nhân viên Nguyễn Trung Kiênnnn đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.', CAST(N'2023-07-11T13:36:44.460' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (26, N'AC0021', 5, N'Khách hàng Trương Tuấn Anh đã xác nhận và đã gửi feed về đơn dịch vụ có mã số 5', CAST(N'2023-07-11T13:38:27.213' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (27, N'AC0007', 6, N'Trương Tuấn Anh mới đặt lịch dịch vụ mới cho căn hộ S1.01 ở khu vực Vinhomes Golden River - TP. Hồ Chí Minh vào ngày 2023-07-19', CAST(N'2023-07-18T20:17:11.800' AS DateTime), 1, N'Admin')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (28, N'AC0007', 7, N'Trương Tuấn Anh mới đặt lịch dịch vụ mới cho căn hộ S1.01 ở khu vực Vinhomes Golden River - TP. Hồ Chí Minh vào ngày 2023-07-19', CAST(N'2023-07-18T20:20:36.613' AS DateTime), 1, N'Admin')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (29, N'AC0007', 6, N'Nhân viên Micheal Diana sẽ đảm nhận cho dịch vụ Vệ sinh phòng của bạn vào thời gian 2023-07-19 20:19:00.0', CAST(N'2023-07-18T20:27:53.997' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (30, N'AC0005', 6, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 6', CAST(N'2023-07-18T20:27:54.003' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (31, N'AC0007', 7, N'Nhân viên Nguyễn Trung Kiênnnn sẽ đảm nhận cho dịch vụ Vệ sinh phòng của bạn vào thời gian 2023-07-19 20:19:00.0', CAST(N'2023-07-18T20:28:09.757' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (32, N'AC0021', 7, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 7', CAST(N'2023-07-18T20:28:09.767' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (33, N'AC0006', 4, N'Nhân viên Adela JohnSon đã xác nhận đơn của bạn và bắt đầu thực hiện.', CAST(N'2023-07-18T20:39:47.830' AS DateTime), 1, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (34, N'AC0006', 4, N'Nhân viên Adela JohnSon đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.', CAST(N'2023-07-18T20:39:51.207' AS DateTime), 1, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (35, N'AC0003', 4, N'Khách hàng Nguyễn Hà Mai đã xác nhận và đã gửi feed về đơn dịch vụ có mã số 4', CAST(N'2023-07-18T20:40:29.150' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (36, N'AC0007', 7, N'Nhân viên Nguyễn Trung Kiênnnn đã xác nhận đơn của bạn và bắt đầu thực hiện.', CAST(N'2023-07-18T20:42:37.683' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (37, N'AC0007', 7, N'Nhân viên Nguyễn Trung Kiênnnn đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.', CAST(N'2023-07-18T20:42:41.280' AS DateTime), 0, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (38, N'AC0021', 7, N'Khách hàng Trương Tuấn Anh đã xác nhận và đã gửi feed về đơn dịch vụ có mã số 7', CAST(N'2023-07-18T20:43:36.250' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (39, N'AC0021', 8, N'Nguyễn Trung Kiênnnn mới đặt lịch dịch vụ mới cho căn hộ S01 ở khu vực Vinhomes Central Park - TP. Hồ Chí Minh vào ngày 2023-07-21', CAST(N'2023-07-20T13:09:02.670' AS DateTime), 0, N'Admin')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (40, N'AC0007', 6, N'Nhân viên Hoàng Văn Tuấn sẽ đảm nhận cho dịch vụ Vệ sinh phòng của bạn vào thời gian 2023-07-19 20:19:00.0', CAST(N'2023-07-20T13:12:02.207' AS DateTime), 1, N'User')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (41, N'AC0020', 6, N'Bạn vừa được giao một đơn dịch vụ mới từ Quản lý Nguyễn Trung Kiên với mã hàng hóa là 6', CAST(N'2023-07-20T13:12:02.227' AS DateTime), 0, N'Staff')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (42, N'AC0007', 9, N'Trương Tuấn Anh mới đặt lịch dịch vụ mới cho căn hộ s01.01-3201 The Sapphire 1 ở khu vực Vinhomes Central Park - TP. Hồ Chí Minh vào ngày 2023-07-27', CAST(N'2023-07-26T14:09:26.763' AS DateTime), 1, N'Admin')
+GO
+INSERT [dbo].[Notification] ([NotificationID], [AccountID], [BookingID], [Detail], [Create_at], [Status], [TypeNoti]) VALUES (43, N'AC0022', 10, N'Nguyễn Trung Kiên mới đặt lịch dịch vụ mới cho căn hộ S01.12-0101 The Sapphire Parkville ở khu vực Vinhomes Smart City - TP. Hồ Chí Minh vào ngày 2023-07-28', CAST(N'2023-07-27T11:40:29.440' AS DateTime), 0, N'Admin')
 GO
 SET IDENTITY_INSERT [dbo].[Notification] OFF
-GO
 
 
-GO
 SET IDENTITY_INSERT [dbo].[Feedback] ON 
 GO
 INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (1, CAST(N'2023-06-28T11:47:18.540' AS DateTime), N'Dịch vụ tốt và Oke', 2.6, N'AC0006', 1)
 GO
 INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (2, CAST(N'2023-06-28T12:12:20.373' AS DateTime), N'Thắng đã hiểu chưa ??', 4.5, N'AC0006', 2)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (3, CAST(N'2023-07-11T13:38:27.240' AS DateTime), N'OK', 3.5, N'AC0007', 5)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (4, CAST(N'2023-07-18T20:40:29.160' AS DateTime), N'Oke dịch vụ tốt', 4.6, N'AC0006', 4)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (5, CAST(N'2023-07-18T20:43:36.263' AS DateTime), N'Oke dịch vụ ổn ', 3.8, N'AC0007', 7)
 GO
 SET IDENTITY_INSERT [dbo].[Feedback] OFF
 GO
