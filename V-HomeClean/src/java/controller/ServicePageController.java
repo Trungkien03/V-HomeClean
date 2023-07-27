@@ -7,10 +7,12 @@ package controller;
 
 import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.CategorySDAO;
 import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
+import DTO.CategoryServiceDTO;
 import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
@@ -48,6 +50,7 @@ public class ServicePageController extends HttpServlet {
         NotificationDAO nDao = new NotificationDAO();
         AccountDAO aDao = new AccountDAO();
         BookingDAO bDao = new BookingDAO();
+        CategorySDAO cDao = new CategorySDAO();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         if (a != null) {
             String typeNotiUser = "User";
@@ -77,6 +80,8 @@ public class ServicePageController extends HttpServlet {
         }
         List<ServiceDTO> listSv = dao.getAllService();
         list = dao.pagingService(index);
+        List<CategoryServiceDTO> listCS = cDao.getAllCategory();
+        session.setAttribute("listCS", listCS);
         request.setAttribute("listS", list);
         request.setAttribute("listSv", listSv);
         request.setAttribute("endP", endPage);

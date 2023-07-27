@@ -1,12 +1,3 @@
-<%-- 
-    Document   : resetPassword
-    Created on : May 27, 2023, 1:07:52 PM
-    Author     : Asus
---%>
-
-<%@page import="DTO.UserError"%>
-<%@page import="java.util.List"%>
-<%@page import="DTO.AccountDTO"%>
 <%@page import="DTO.AccountDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,38 +7,27 @@
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <title>V-HomeClean - Cập Nhật Lại Mật Khẩu</title>
-        <link
-            href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
-            rel='stylesheet'>
-        <link
-            href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'
-            rel='stylesheet'>
-        <script type='text/javascript'
-        src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="css/Loginstyle.css" rel="stylesheet">
         <style>
             .placeicon {
                 font-family: fontawesome
             }
-
             .custom-control-label::before {
                 background-color: #dee2e6;
                 border: #dee2e6
             }
         </style>
     </head>
-
-    <%
-        AccountDTO Acc = (AccountDTO) session.getAttribute("Account");
-        if (Acc != null) {
-
-    %>
-
     <body oncontextmenu='return false' class='snippet-body bg-info'>
-      
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
-        
 
+        <%
+            AccountDTO Acc = (AccountDTO) session.getAttribute("Account");
+            if (Acc != null) {
+        %>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
         <div>
             <!-- Container containing all contents -->
             <div class="container">
@@ -64,7 +44,7 @@
                             <div class="pt-3 pb-3">
 
 
-                                
+
                                 <form class="form-horizontal" action="MainController" method="POST">
                                     <div class="form-group row justify-content-center px-3">
                                         <strong style="color: red" >${ERROR}</strong>
@@ -90,44 +70,110 @@
                                     </div>
                                 </form>
                             </div>
-                            <!-- Alternative Login -->
-                            <div class="mx-0 px-0 bg-light">
-
-                                <!-- Horizontal Line -->
-                                <div class="px-4 pt-5">
-                                    <hr>
-                                </div>
-                                <!-- Register Now -->
-                                <div class="pt-2">
-                                    <div class="row justify-content-center">
-                                        <h5>
-                                            <span><a href="login.jsp" style="text-align: center"> Quay về trang đăng nhập</a></span>
-                                        </h5>
-
-
-                                    </div>
-                                    <div
-                                        class="row justify-content-center align-items-center pt-4 pb-5">
-                                        <div class="col-4">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <%            }
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js'></script>
+
+        <script>
+            let isNewPasswordValid = false;
+            let isConfirmationValid = false;
+
+            // Check nhập mật khẩu mới
+            const newPasswordInput = document.querySelector('input[name="newPassword"]');
+            const confirmInput = document.querySelector('input[name="confirm"]');
+            const confirmMessage = document.querySelector('.confirm-new-pass');
+
+            confirmMessage.style.display = 'none';
+
+            newPasswordInput.addEventListener('input', checkNewPassword);
+            confirmInput.addEventListener('input', checkConfirmation);
+
+            function checkNewPassword(event) {
+                const newPassword = event.target.value;
+
+                // Kiểm tra các yêu cầu cho mật khẩu mới
+                const lengthRequirement = newPassword.length >= 8;
+                const numberRequirement = /\d/.test(newPassword);
+                const lowercaseRequirement = /[a-z]/.test(newPassword);
+                const specialCharRequirement = /[!@$]/.test(newPassword);
+
+                // Hiển thị requirementList cho các yêu cầu thỏa mãn
+                const requirementList = document.querySelector('.requirement-list');
+                const requirementItems = requirementList.querySelectorAll('li');
+
+                requirementItems.forEach((item, index) => {
+                    const icon = item.querySelector('i');
+
+                    if (index === 0 && lengthRequirement) {
+                        icon.classList.remove('fa-warning');
+                        icon.classList.add('fa-check');
+                        item.style.color = '#00d747';
+                    } else if (index === 1 && numberRequirement) {
+                        icon.classList.remove('fa-warning');
+                        icon.classList.add('fa-check');
+                        item.style.color = '#00d747';
+                    } else if (index === 2 && lowercaseRequirement) {
+                        icon.classList.remove('fa-warning');
+                        icon.classList.add('fa-check');
+                        item.style.color = '#00d747';
+                    } else if (index === 3 && specialCharRequirement) {
+                        icon.classList.remove('fa-warning');
+                        icon.classList.add('fa-check');
+                        item.style.color = '#00d747';
+                    } else {
+                        icon.classList.remove('fa-check');
+                        icon.classList.add('fa-warning');
+                        item.style.color = 'red';
+                    }
+                });
+
+                // Kiểm tra tính hợp lệ của mật khẩu mới
+                isNewPasswordValid = lengthRequirement && numberRequirement && lowercaseRequirement && specialCharRequirement;
+
+                // Kiểm tra trạng thái tổng hợp và kích hoạt/disabled nút
+                updateButtonState();
+            }
+
+            function checkConfirmation(event) {
+                const newPassword = newPasswordInput.value;
+                const confirmation = event.target.value;
+
+                // Kiểm tra xác nhận mật khẩu mới
+                isConfirmationValid = confirmation === newPassword;
+
+                // Hiển thị thông báo xác nhận đúng/sai
+                if (confirmation !== '') {
+                    confirmMessage.style.display = 'block';
+                    confirmMessage.style.color = isConfirmationValid ? '#00d747' : 'red';
+                    confirmMessage.innerHTML = isConfirmationValid ? '<i class="fa-solid fa-check"></i> Xác nhận đúng mật khẩu mới!' : '<i class="fa-solid fa-warning"></i> Xác nhận sai mật khẩu mới!';
+                } else {
+                    confirmMessage.style.display = 'none';
+                }
+
+                // Kiểm tra trạng thái tổng hợp và kích hoạt/disabled nút
+                updateButtonState();
+            }
+
+            // Cập nhật trạng thái của nút dựa trên kết quả kiểm tra
+            function updateButtonState() {
+                const button = document.querySelector('.change-pass-button');
+                const isButtonDisabled = !(isNewPasswordValid && isConfirmationValid);
+
+                button.disabled = isButtonDisabled;
+            }
+        </script>
+
+        <%
+            } else {
+                response.sendRedirect("login.jsp");
+            }
         %>
 
-     <br>
-          
-     
-     <script type='text/javascript'
-        src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
-        
     </body>
 </html>
