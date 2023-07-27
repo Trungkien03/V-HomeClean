@@ -100,14 +100,14 @@
                                     <br>
                                     <p class="lead mb-4 font-weight-normal text-black">${BlogDetail.content}</p>
 
-                                    <div class="tag-option mt-5 clearfix">
+<!--                                    <div class="tag-option mt-5 clearfix">
 
-                                        <!--                                                                                <ul class="float-left list-inline"> 
+                                                                                                                        <ul class="float-left list-inline"> 
                                                                                                                             <li>Tags:</li> 
                                                                                                                             <li class="list-inline-item"><a href="#" rel="tag">Advancher</a></li>
                                                                                                                             <li class="list-inline-item"><a href="#" rel="tag">Landscape</a></li>
                                                                                                                             <li class="list-inline-item"><a href="#" rel="tag">Travel</a></li>
-                                                                                                                        </ul>        -->
+                                                                                                                        </ul>        
 
                                         <ul class="float-right list-inline">
                                             <li class="list-inline-item"> Share: </li>
@@ -121,7 +121,7 @@
                                     <div>
                                         <h5>Rating</h5>
 
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>
@@ -283,7 +283,7 @@
                                         <div class="col-lg-8">
                                             <h3 class=" mb-3">
                                                 <a href="SingleBlogController?blogID=${o.blogID}" style="color: rgb(37, 150, 190); font-size: 20px;">
-                                                    ${o.title}
+                                                   ▶ ${o.title}
                                                 </a>
                                             </h3>
                                         </div>
@@ -297,7 +297,7 @@
                             </div>
                         </div>
 
-                        <div class="sidebar-widget card border-0 mb-3">
+<!--                        <div class="sidebar-widget card border-0 mb-3">
                             <img src="images/blog/blog-author.jpg" alt="" class="img-fluid">
                             <div class="card-body p-4 text-center">
                                 <h5 class="mb-0 mt-4">Arther Conal</h5>
@@ -322,9 +322,9 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>-->
 
-                        <div class="sidebar-widget bg-white rounded tags p-4 mb-3">
+<!--                        <div class="sidebar-widget bg-white rounded tags p-4 mb-3">
                             <h5 class="mb-4">Tags</h5>
 
                             <a href="#">Web</a>
@@ -335,7 +335,7 @@
                             <a href="#">Marketing</a>
                             <a href="#">Social Media</a>
                             <a href="#">Branding</a>
-                        </div>
+                        </div>-->
                     </div>
                 </div>   
             </div>

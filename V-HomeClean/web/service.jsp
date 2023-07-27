@@ -74,11 +74,10 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-=======
+
                     <div class="row g-4 justify-content-center">
-                    <c:forEach items="${listSv}" var="o">
->>>>>>> b13f1bf5d1ea0853a81a44e2b2bb9d4ea67b8410
+                    
+
 
                     <style>
                         /* Thêm CSS để tạo navbar */
@@ -154,7 +153,7 @@
                             margin-left: 45%;
                         }
                     </style>
-<<<<<<< HEAD
+<!--
                     <div class="paging" >
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
@@ -178,33 +177,9 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
-=======
-<!--                <div class="paging" >
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <c:if test="${tag > 1}">
-                                    <a class="page-link" href="ServicePageController?index=${tag - 1}" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </c:if>
-                                </a>
-                            </li>
+                    </div>-->
 
-                            <c:forEach begin="1" end ="${endP}" var="i">
-                                <li class="page-item"><a class="page-link" href="ServicePageController?index=${i}">${i}</a></li>
-                                </c:forEach>
-                            <li class="page-item">
-                                <c:if test="${tag < endP}">
-                                    <a class="page-link" href="ServicePageController?index=${tag + 1}" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </c:if>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>-->
->>>>>>> b13f1bf5d1ea0853a81a44e2b2bb9d4ea67b8410
+
 
             </div>
         </div>

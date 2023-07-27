@@ -241,14 +241,12 @@ public class ServiceDAO {
    
 
     public static void main(String[] args) {
-<<<<<<< HEAD
-        
-=======
+
         ServiceDAO dao = new ServiceDAO();
         List<ServiceDTO> list = dao.getAllService();
         for (ServiceDTO serviceDTO : list) {
             System.out.println(serviceDTO);
         }
->>>>>>> b13f1bf5d1ea0853a81a44e2b2bb9d4ea67b8410
+
     }
 }

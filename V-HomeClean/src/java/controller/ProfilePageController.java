@@ -51,6 +51,7 @@ public class ProfilePageController extends HttpServlet {
             response.sendRedirect("login.jsp");
         } else {
             try {
+                //cập nhật thông tin tài khoản
                 if (action.equalsIgnoreCase("Cập nhật")) {
                     String fullName = request.getParameter("fullName");
                     String dateOfBirth = request.getParameter("dateOfBirth");
@@ -71,6 +72,8 @@ public class ProfilePageController extends HttpServlet {
                     request.setAttribute("message", "Cập nhật thông tin tài khoản thành công!");
                     url = "userProfile.jsp";
                 }
+                
+                //thay đổi mật khẩu
                 if (action.equalsIgnoreCase("Thay Đổi Mật Khẩu")) {
                     String password = request.getParameter("password");
                     String newPassword = request.getParameter("newPassword");
@@ -100,6 +103,8 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
+                
+                //đánh giá đơn hàng
                 if (action.equalsIgnoreCase("Đánh giá")) {
                     String bookingIDString = request.getParameter("bookingID");
                     String accountID = a.getAccountID();
@@ -129,10 +134,14 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
+                
+                //kiểm tra đơn hàng khi vừa mới đặt hàng xong
                 if (action.equalsIgnoreCase("Kiểm tra")) {
                     request.setAttribute("status", "feedBack");
                     url = "userProfile.jsp";
                 }
+                
+                //xem thông báo từ homepage
                 if (action.equalsIgnoreCase("XemThongBao")) {
                     String notificationID = request.getParameter("notificationID");
                     nDao.updateStatusNotification(notificationID, "true");

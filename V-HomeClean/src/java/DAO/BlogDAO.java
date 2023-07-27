@@ -51,16 +51,11 @@ public class BlogDAO {
 //    }
     public List<BlogDTO> getAllBlog() {
         List<BlogDTO> list = new ArrayList<>();
-<<<<<<< HEAD
-        String query = "SELECT TOP 6 b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName, b.blogCateID\n"
+
+        String query = "SELECT TOP 12 b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName, b.blogCateID\n"
                 + "FROM Blog b\n"
                 + "INNER JOIN BlogCate bc ON b.BlogCateID = bc.BlogCateID\n"
                 + "ORDER BY NEWID()";
-=======
-        String query = "SELECT b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName, bc.BlogCateID\n"
-                + "FROM Blog b INNER JOIN BlogCate bc ON b.BlogCateID = bc.BlogCateID\n"
-                + "ORDER BY b.Time DESC";
->>>>>>> b13f1bf5d1ea0853a81a44e2b2bb9d4ea67b8410
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -209,19 +204,13 @@ public class BlogDAO {
     public static void main(String[] args) {
 
         BlogDAO dao = new BlogDAO();
-<<<<<<< HEAD
-//        String total = dao.insertBlog("1", "1", "1", "AC0001", 2, "1");
-//        System.out.println(total);
-        List<BlogDTO> list = dao.getAllBlog();
-        for (BlogDTO o : list) {
-            System.out.println(o);
-    }
-=======
+
+
         List<BlogDTO> total = dao.getAllBlog();
         for (BlogDTO blogDTO : total) {
             System.out.println(blogDTO);
         }
->>>>>>> b13f1bf5d1ea0853a81a44e2b2bb9d4ea67b8410
+
 
     }
 

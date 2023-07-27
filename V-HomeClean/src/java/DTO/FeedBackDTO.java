@@ -13,6 +13,7 @@ public class FeedBackDTO {
    private String accountID;
    private String bookingID;
 
+
     public FeedBackDTO() {
     }
 
@@ -77,8 +78,4 @@ public class FeedBackDTO {
     public String toString() {
         return "FeedBackDTO{" + "feedBackID=" + feedBackID + ", date=" + date + ", feedbackDetail=" + feedbackDetail + ", rating=" + rating + ", accountID=" + accountID + ", bookingID=" + bookingID + '}';
     }
-
-   
-   
-   
 }
