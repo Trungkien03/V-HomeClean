@@ -37,7 +37,7 @@ public class DistinctServiceController extends HttpServlet {
         List<CategoryServiceDTO> listC = dao.getAllCategory();
 //        HttpSession session = request.getSession();
 //        session.removeAttribute("listP");
-        request.setAttribute("listS", list);
+        request.setAttribute("listSv", list);
         request.setAttribute("listCS", listC);
         
         request.getRequestDispatcher("service.jsp").forward(request, response);

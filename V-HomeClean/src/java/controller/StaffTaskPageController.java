@@ -15,6 +15,10 @@ import DTO.FeedBackDTO;
 import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -101,15 +105,83 @@ public class StaffTaskPageController extends HttpServlet {
                         String bookingStatus = "Xác nhận hoàn thành";
                         bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
                         double getUpdateSalary = aDao.getSalaryWithAccountID(staff.getAccountID());
-                        double updateSalary = (userBooking.getTotalPrice()*70)/100;
-                        getUpdateSalary = getUpdateSalary + updateSalary; // cập nhật lại lương nhân viên khi mới làm xong
-                        aDao.updateSalaryWithAccountID(staff.getAccountID(), getUpdateSalary);
+                        double updateSalary = (userBooking.getTotalPrice() * 70) / 100;
+                        double totalUpdate = getUpdateSalary + updateSalary; // cập nhật lại lương nhân viên khi mới làm xong
+                        aDao.updateSalaryWithAccountID(staff.getAccountID(), totalUpdate);
                         request.setAttribute("message", "Không tìm thấy ID của booking");
                         check = true;
                     }
                     if (check == true) {
                         String notiDetail = "Nhân viên " + staff.getFullName() + " đã xác nhận hoàn thành đơn, quý khách vui lòng xác nhận đơn.";
                         nDao.InsertNotification(userBooking.getAccountID(), userBooking.getBookingID(), notiDetail, "false", typeNotiUser);
+                        if (userBooking.getTypeOfService().equalsIgnoreCase("Định kì theo tuần")) {
+                            String accountID = userBooking.getAccountID();
+                            String status = "Chờ xác nhận";
+                            String staffID = "";
+                            String serviceID = userBooking.getServiceID();
+                            int totalPrice = userBooking.getTotalPrice();
+                            String bookingDateString = userBooking.getBookingDate();
+                            String bookingAddress = userBooking.getBookingAddress();
+                            String typeOfService = userBooking.getTypeOfService();
+                            String message = "";
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            try {
+                                // Chuyển đổi String thành Date
+                                Date bookingDate = sdf.parse(bookingDateString);
+
+                                // Tạo đối tượng Calendar và đặt thời gian của nó là bookingDate
+                                Calendar calendar = Calendar.getInstance();
+                                calendar.setTime(bookingDate);
+
+                                // Thêm 1 tuần (7 ngày) vào thời gian hiện tại
+                                calendar.add(Calendar.WEEK_OF_YEAR, 1);
+
+                                // Lấy thời gian 1 tuần sau
+                                Date oneWeekLater = calendar.getTime();
+
+                                // Chuyển đổi thời gian 1 tuần sau thành String để hiển thị
+                                String oneWeekLaterString = sdf.format(oneWeekLater);
+
+                                int bookingIDNumber = bDao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, oneWeekLaterString, bookingAddress, typeOfService, message);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                        if (userBooking.getTypeOfService().equalsIgnoreCase("Định kì theo tháng")) {
+                            String accountID = userBooking.getAccountID();
+                            String status = "Chờ xác nhận";
+                            String staffID = "";
+                            String serviceID = userBooking.getServiceID();
+                            int totalPrice = userBooking.getTotalPrice();
+                            String bookingDateString = userBooking.getBookingDate();
+                            String bookingAddress = userBooking.getBookingAddress();
+                            String typeOfService = userBooking.getTypeOfService();
+                            String message = "";
+
+                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            try {
+                                // Chuyển đổi String thành Date
+                                Date bookingDate = sdf.parse(bookingDateString);
+
+                                // Tạo đối tượng Calendar và đặt thời gian của nó là bookingDate
+                                Calendar calendar = Calendar.getInstance();
+                                calendar.setTime(bookingDate);
+
+                                // Thêm 1 tháng vào thời gian hiện tại
+                                calendar.add(Calendar.MONTH, 1);
+
+                                // Lấy thời gian 1 tháng sau
+                                Date oneMonthLater = calendar.getTime();
+
+                                // Chuyển đổi thời gian 1 tháng sau thành String để hiển thị
+                                String oneMonthLaterString = sdf.format(oneMonthLater);
+
+                                int bookingIDNumber = bDao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, oneMonthLaterString, bookingAddress, typeOfService, message);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 }
             } catch (Exception e) {
@@ -129,7 +201,7 @@ public class StaffTaskPageController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

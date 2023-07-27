@@ -92,9 +92,11 @@ public class DashboardController extends HttpServlet {
         
         List<AccountDTO> AccountsList = aDao.getAllAccounts(); // lấy ra những accounts
         List<BookingDTO> bookingsList = bDao.getAllLatestBookings(); // lấy ra những booking gần nhất
+        List<BookingDTO> bookingsListToday = bDao.getAllBookingToday(); // lấy ra những booking gần nhất
         int totalActiveBookings = bDao.CountTotalBookingExceptStatus("hủy"); // count tất cả những booking đang trong thời gian hoạt động hoặc chờ được xử lý
         request.setAttribute("AccountsList", AccountsList);
         request.setAttribute("bookingsList", bookingsList);
+        request.setAttribute("bookingsListToday", bookingsListToday);
         request.setAttribute("totalActiveBookings", totalActiveBookings);
         request.getRequestDispatcher("/dashboard/index.jsp").forward(request, response);
     }

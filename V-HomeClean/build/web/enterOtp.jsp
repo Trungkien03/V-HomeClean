@@ -12,6 +12,11 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <title>V-HomeClean - Nhập mã OTP</title>
         <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
+        <link
             href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
             rel="stylesheet" id="bootstrap-css">
         <script

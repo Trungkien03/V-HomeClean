@@ -15,6 +15,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>V-HomeClean - Dịch Vụ</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -126,7 +131,7 @@
 
 
                         <div class="row g-4 justify-content-center">
-                            <c:forEach items="${listS}" var="o">
+                            <c:forEach items="${listSv}" var="o">
 
                                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                                     <input name="serviceID" value="${o.serviceID}" type="hidden">

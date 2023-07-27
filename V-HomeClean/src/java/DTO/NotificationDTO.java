@@ -7,7 +7,6 @@ package DTO;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.mail.internet.ParseException;
 
 public class NotificationDTO {
 

@@ -12,7 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -254,6 +257,39 @@ public class BookingDAO {
         return bookingList;
     }
 
+    public List<BookingDTO> getAllBookingToday() {
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName, bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.TypeOfService, bd.Message\n"
+                + "FROM Booking b\n"
+                + "JOIN BookingDetail bd ON b.BookingID = bd.BookingID\n"
+                + "JOIN Service s ON b.ServiceID = s.ServiceID\n"
+                + "WHERE b.BookingStatus != 'hủy'\n"
+                + "AND CONVERT(DATE, bd.BookingDate) = CONVERT(DATE, GETDATE())\n"
+                + "ORDER BY ABS(DATEDIFF(DAY, bd.BookingDate, GETDATE()));";
+        List<BookingDTO> bookingList = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                bookingList.add(new BookingDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getNString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getNString(6),
+                        rs.getString(7),
+                        rs.getInt(8),
+                        rs.getString(9),
+                        rs.getNString(10),
+                        rs.getNString(11),
+                        rs.getNString(12)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookingList;
+    }
+
     // cập nhật nhân viên cho đơn hàng từ manager
     public void updateBookingWithStaffIDandStatus(String staffID, String status, int bookingID) {
         String query = "UPDATE Booking\n"
@@ -378,7 +414,30 @@ public class BookingDAO {
 
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        ArrayList<Integer> list = dao.getlistTotalByWeek();
-        System.out.println(list);
+        BookingDTO b = dao.getBookingByID("2");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            // Chuyển đổi String thành Date
+            Date bookingDate = sdf.parse(b.getBookingDate());
+
+            // Tạo đối tượng Calendar và đặt thời gian của nó là bookingDate
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(bookingDate);
+
+            // Thêm 1 tuần (7 ngày) vào thời gian hiện tại
+            calendar.add(Calendar.WEEK_OF_YEAR, 1);
+
+            // Lấy thời gian 1 tuần sau
+            Date oneWeekLater = calendar.getTime();
+
+            // Chuyển đổi thời gian 1 tuần sau thành String để hiển thị
+            String oneWeekLaterString = sdf.format(oneWeekLater);
+
+            // Hiển thị kết quả
+            System.out.println(oneWeekLaterString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
