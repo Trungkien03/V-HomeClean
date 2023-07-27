@@ -285,10 +285,6 @@
 
                                     <input class="btn btn-outline-primary change-pass-button" type="submit" name="action" value="Thay Đổi Mật Khẩu"
                                            class="btn btn-block btn-info">
-                                    <!--                            <div>
-                                                                    <button class="btn btn-primary">Update</button>
-                                                                    <button class="btn btn-light">Cancel</button>
-                                                                </div>-->
                                 </form>
                             </div>
                         </div>
@@ -399,8 +395,25 @@
                                                                                     <input style="color: #000;" readonly="" value="${fn:substring(booking.bookingDate, 11, 16)}" type="text" class="form-control text-center">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label class="text-info">Ngày (yyyy-mm-dd)</label>
-                                                                                    <input style="color: #000;" readonly="" value="${fn:substring(booking.bookingDate, 0, 10)}" type="text" class="form-control text-center">
+                                                                                    <label class="text-info">Ngày (mm-dd-yyyy)</label>
+                                                                                    <c:set var="date" value="${fn:split(booking.bookingDate, ' ')}"/>
+                                                                                    <c:set var="formattedDate" value="${fn:split(date[0], '-')}"/>
+
+                                                                                    <c:set var="month" value="${formattedDate[1]}"/>
+                                                                                    <c:choose>
+                                                                                        <c:when test="${fn:length(month) == 1}">
+                                                                                            <c:set var="month" value="0${month}" />
+                                                                                        </c:when>
+                                                                                    </c:choose>
+
+                                                                                    <c:set var="day" value="${formattedDate[2]}"/>
+                                                                                    <c:choose>
+                                                                                        <c:when test="${fn:length(day) == 1}">
+                                                                                            <c:set var="day" value="0${day}" />
+                                                                                        </c:when>
+                                                                                    </c:choose>
+                                                                                    <c:set var="formattedDateString" value="${month}-${day}-${formattedDate[0]}" />
+                                                                                    <input style="color: #000;" readonly="" value="${formattedDateString}" type="text" class="form-control text-center">
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <c:set var="addressArray" value="${fn:split(booking.bookingAddress, '||')}" />
@@ -538,35 +551,57 @@
                             <h3 class="mb-4">Thông Tin Thông Báo</h3>
                             <div class="form-group">
 
-                                <table style="border: #004085 solid medium" id="example_table3" class="table table-hover text-center table-info">
+                                <table style="border: #004085 solid medium" id="example_table3" class="table table-hover table-bordered table-info">
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th>Nội Dung</th>
-                                            <th></th>
+                                            <th class="text-center font-weight-600">Hình Ảnh</th>
+                                            <th class="text-center font-weight-600">Nội Dung</th>
+                                            <th class="text-center font-weight-600">Thời Gian</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
+                                        <c:forEach items="${listNotiOfUser}" var="o">
+                                            <tr>
+                                                <td class="text-center">
+                                                    <span style="width: 70px; text-align: center;">
+                                                        <c:set var="image" value="img/user.jpg" /> <!-- Khởi tạo giá trị mặc định cho image -->
+
+                                                        <c:forEach items="${ListBookingAccounts}" var="booking">
+                                                            <c:if test="${o.bookingID eq booking.bookingID}">
+                                                                <c:forEach items="${listAllAccounts}" var="account">
+                                                                    <c:if test="${account.accountID eq booking.staffID}">
+                                                                        <c:set var="image" value="${account.image}" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                        <img style="width: 53px; height: 52px" class="rounded-circle" alt="User Image" src="${image}" />
+                                                    </span>
+                                                </td>
+                                                <td style="width: 300px;">${o.detail}</td>
+
+                                                <c:set var="date" value="${fn:split(o.createAt, ' ')}"/>
+                                                <c:set var="date" value="${fn:split(o.createAt, ' ')}"/>
+                                                <c:set var="formattedDate" value="${fn:split(date[0], '-')}"/>
+
+                                                <c:set var="month" value="${formattedDate[1]}"/>
+                                                <c:choose>
+                                                    <c:when test="${fn:length(month) == 1}">
+                                                        <c:set var="month" value="0${month}" />
+                                                    </c:when>
+                                                </c:choose>
+
+                                                <c:set var="day" value="${formattedDate[2]}"/>
+                                                <c:choose>
+                                                    <c:when test="${fn:length(day) == 1}">
+                                                        <c:set var="day" value="0${day}" />
+                                                    </c:when>
+                                                </c:choose>
+                                                <c:set var="formattedDateString" value="${month}-${day}-${formattedDate[0]}" />
+
+                                                <td>${formattedDateString}</td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -729,6 +764,13 @@
         }
 
         if (status === "feedBack") {
+            window.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('security-tab').click();
+                status = "";
+            });
+        }
+
+        if (status === "checkNoti") {
             window.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('security-tab').click();
                 status = "";

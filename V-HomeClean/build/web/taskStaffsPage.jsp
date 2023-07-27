@@ -90,16 +90,18 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th class="text-center">Mã đơn hàng</th>
+                                                <th class="text-center" style="width: 100px;">Mã đơn hàng</th>
                                                 <th class="text-center">Khách hàng</th>
-                                                <th class="text-center">Dịch vụ</th>
-                                                <th class="text-center">Khu vực</th>
-                                                <th class="text-center">Tình Trạng</th>
+                                                <th class="text-center" style="width: 100px;">Dịch vụ</th>
+                                                <th class="text-center" style="width: 150px;">Khu vực</th>
+                                                <th class="text-center">Thời gian</th>
+                                                <th class="text-center" style="width: 150px;">Tình Trạng</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <c:forEach var="booking" items="${TaskList}" varStatus="loop">
                                             <c:set var="addressParts" value="${fn:split(booking.bookingAddress, '||')}"/>
+                                            <c:set var="date" value="${fn:split(booking.bookingDate, ' ')}"/>
                                             <tr>
                                                 <td class="text-center">${loop.index + 1}</td>
                                                 <c:forEach items="${allAccounts}" var="o">
@@ -115,6 +117,7 @@
                                                 <td class="text-center">${customerName}</td>
                                                 <td class="text-center">${booking.serviceName}</td>
                                                 <td class="text-center">${addressParts[1]}</td>
+                                                <td class="text-center">${date[0]}</td>
 <!--                                                <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>-->
                                                 <td class="text-center">
                                                     <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
@@ -386,7 +389,12 @@
                         "sSortAscending": ": Sắp xếp cột tăng dần",
                         "sSortDescending": ": Sắp xếp cột giảm dần"
                     }
-                }
+                },
+                columnDefs: [
+                    {"orderable": false, "targets": 5} // Tắt tính năng tự động sắp xếp cho cột đầu tiên
+                ],
+                order: [] // Không sắp xếp ban đầu
+
             });
         });
 

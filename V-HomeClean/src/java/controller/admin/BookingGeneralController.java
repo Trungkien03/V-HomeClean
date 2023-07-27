@@ -13,6 +13,7 @@ import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
 import DTO.FeedBackDTO;
+import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -83,6 +84,18 @@ public class BookingGeneralController extends HttpServlet {
                     request.setAttribute("service", service);
                     request.setAttribute("account", account);
                     request.setAttribute("staff", staff);
+
+                    //lấy ra những thằng Notification
+                    int UserID = 4;
+                    List<AccountDTO> listUsers = aDao.GetAccountsByRoleID(UserID);
+                    String typeNotiAdmin = "Admin"; //lấy ra những cái nào của thằng admin cần đọc thôi
+                    List<NotificationDTO> listNotifications = nDao.getAllNotificationByTypeNoti(typeNotiAdmin); // lấy ra danh sách những thông báo của Admin
+                    session.setAttribute("listNotifications", listNotifications);
+                    List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+                    session.setAttribute("listAllAccounts", listAllAccounts);
+                    int totalUnreadNoti = nDao.CountUnreadNotificationAndtypeNoti("false", typeNotiAdmin);
+                    session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+                    request.setAttribute("ListUsers", listUsers);
                 }
 
                 if (action.equalsIgnoreCase("Cập Nhật")) {

@@ -81,9 +81,13 @@ public class BookingController extends HttpServlet {
                 String date = request.getParameter("date");
                 String time = request.getParameter("time");
                 String message = request.getParameter("message");
+                String areaAppartment = request.getParameter("areaApartment");
                 String status = "Chờ xác nhận";
                 String staffID = "";
 
+                if (areaAppartment != null) {
+                    vinHomesID = vinHomesID + " " + areaAppartment;
+                }
                 String bookingDate = date + " " + time + ":00";
                 String bookingAddress = vinHomesID + " || " + area;
 
@@ -162,6 +166,7 @@ public class BookingController extends HttpServlet {
                     request.setAttribute("area", area);
                     request.setAttribute("bookingDate", bookingDate);
                     request.setAttribute("totalPrice", totalPrice);
+                    request.setAttribute("bookingIDNumber", bookingIDNumber);
                     request.getRequestDispatcher(SUCCESS).forward(request, response);
                 } else {
                     List<ServiceDTO> list = sdao.getAllService();

@@ -51,7 +51,6 @@ public class ProfilePageController extends HttpServlet {
             response.sendRedirect("login.jsp");
         } else {
             try {
-
                 if (action.equalsIgnoreCase("Cập nhật")) {
                     String fullName = request.getParameter("fullName");
                     String dateOfBirth = request.getParameter("dateOfBirth");
@@ -101,7 +100,6 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
-
                 if (action.equalsIgnoreCase("Đánh giá")) {
                     String bookingIDString = request.getParameter("bookingID");
                     String accountID = a.getAccountID();
@@ -131,18 +129,34 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
-                if(action.equalsIgnoreCase("Kiểm tra")){
+                if (action.equalsIgnoreCase("Kiểm tra")) {
                     request.setAttribute("status", "feedBack");
+                    url = "userProfile.jsp";
+                }
+                if (action.equalsIgnoreCase("XemThongBao")) {
+                    String notificationID = request.getParameter("notificationID");
+                    nDao.updateStatusNotification(notificationID, "true");
+                    request.setAttribute("status", "checkNoti");
                     url = "userProfile.jsp";
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
+                List<AccountDTO> listAllAccounts = aDao.getAllAccounts(); // lấy danh sách này để phụ trợ cho việc hiển thị thông báo (Notification)
+                session.setAttribute("listAllAccounts", listAllAccounts);
+                List<NotificationDTO> listNotiUnread = nDao.getAllNotiByAccountIDAndStatusAndTypeNoti(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("listNotiUnread", listNotiUnread);
+                int totalUnreadNoti = nDao.CountUnreadNotificationAndTypeNotiAndAccountID(a.getAccountID(), "false", typeNotiUser, typeNotiStaff);
+                session.setAttribute("totalUnreadNoti", totalUnreadNoti);
+                List<BookingDTO> ListBookingAccounts = bDao.getBookingDetailByAccountID(a.getAccountID());
+                session.setAttribute("ListBookingAccounts", ListBookingAccounts);
                 String accountID = a.getAccountID();
                 List<FeedBackDTO> feedBackList = fDao.getListFeedBack();
                 List<BookingDTO> BookingList = bDao.getBookingDetailByAccountID(accountID);
                 List<NotificationDTO> listNoti = nDao.getAllNotiByAccountID(accountID);
                 List<AccountDTO> allAccounts = aDao.getAllAccounts();
+                List<NotificationDTO> listNotiOfUser = nDao.getAllNotiByAccountID(a.getAccountID());
+                request.setAttribute("listNotiOfUser", listNotiOfUser);
                 request.setAttribute("listNoti", listNoti);
                 request.setAttribute("feedBackList", feedBackList);
                 request.setAttribute("allAccounts", allAccounts);

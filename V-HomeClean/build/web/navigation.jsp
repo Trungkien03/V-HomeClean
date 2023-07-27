@@ -69,14 +69,7 @@
         <div class="navbar-nav ms-auto py-3 py-lg-0">
             <a href="HomePageController" class="nav-item nav-link active"><strong>Trang Chủ</strong></a>
             <a href="AboutPageController" class="nav-item nav-link"><strong>Giới Thiệu</strong></a>
-            <div class="nav-item dropdown">
-                <a href="ServicePageController" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Dịch Vụ</strong></a>
-                <div class="dropdown-menu bg-light m-0">
-                    <a href="ServicePageController" class="dropdown-item">Tổng Hợp Dịch Vụ</a>
-                    <a href="#" class="dropdown-item">Dịch Vụ Sửa Chữa</a>
-                    <a href="#" class="dropdown-item">Dịch Vụ Dọn Dẹp</a>
-                </div>
-            </div>
+            <a href="ServicePageController" class="nav-item nav-link"><strong>Dịch Vụ</strong></a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Bài Viết</strong></a>
                 <div class="dropdown-menu bg-light m-0">
@@ -250,7 +243,7 @@
                             <ul id="notificationList" class="notification-list">
                                 <c:forEach items="${sessionScope.listNotiUnread}" var="notification">
                                     <li class="notification-link notification-message">
-                                        <a href="#">
+                                        <a href="ProfilePageController?notificationID=${notification.notificationID}&action=XemThongBao">
                                             <div class="media d-flex">
                                                 <span style="width: 50px; text-align: center;" class="avatar avatar-sm flex-shrink-0">
                                                     <c:set var="image" value="img/user.jpg" /> <!-- Khởi tạo giá trị mặc định cho image -->
