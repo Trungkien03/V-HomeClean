@@ -57,6 +57,7 @@ public class StaffTaskPageController extends HttpServlet {
         String url = "taskStaffsPage.jsp";
         String typeNotiUser = "User"; //xác nhận kiểu noti sẽ được gửi tới khách hàng
         String typeNotiStaff = "Staff"; //xác nhận kiểu noti sẽ được gửi tới nhân viên
+        String typeNotiAdmin = "Admin";
         if (a == null) {
             response.sendRedirect("login.jsp");
         } else {
@@ -116,6 +117,7 @@ public class StaffTaskPageController extends HttpServlet {
                         nDao.InsertNotification(userBooking.getAccountID(), userBooking.getBookingID(), notiDetail, "false", typeNotiUser);
                         if (userBooking.getTypeOfService().equalsIgnoreCase("Định kì theo tuần")) {
                             String accountID = userBooking.getAccountID();
+                            AccountDTO accountBooking = aDao.GetAccountByAccountID(accountID);
                             String status = "Chờ xác nhận";
                             String staffID = "";
                             String serviceID = userBooking.getServiceID();
@@ -143,6 +145,10 @@ public class StaffTaskPageController extends HttpServlet {
                                 String oneWeekLaterString = sdf.format(oneWeekLater);
 
                                 int bookingIDNumber = bDao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, oneWeekLaterString, bookingAddress, typeOfService, message);
+                                String detailNotificationForAdmin = "Một đơn dịch vụ của khách hàng " + accountBooking.getFullName() + " vừa được mới được tạo, thực hiện vào thời gian " + oneWeekLaterString;
+                                String detailNotificationForUser = "Đơn dịch vụ mới được khởi tạo, thực hiện vào ngày " + oneWeekLaterString;
+                                nDao.InsertNotification(accountBooking.getAccountID(), bookingIDString, detailNotificationForAdmin, "false", typeNotiAdmin);
+                                nDao.InsertNotification(accountBooking.getAccountID(), bookingIDString, detailNotificationForUser, "false", typeNotiUser);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -158,7 +164,7 @@ public class StaffTaskPageController extends HttpServlet {
                             String bookingAddress = userBooking.getBookingAddress();
                             String typeOfService = userBooking.getTypeOfService();
                             String message = "";
-
+                            AccountDTO accountBooking = aDao.GetAccountByAccountID(accountID);
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                             try {
                                 // Chuyển đổi String thành Date
@@ -178,6 +184,10 @@ public class StaffTaskPageController extends HttpServlet {
                                 String oneMonthLaterString = sdf.format(oneMonthLater);
 
                                 int bookingIDNumber = bDao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, oneMonthLaterString, bookingAddress, typeOfService, message);
+                                String detailNotificationForAdmin = "Một đơn dịch vụ của khách hàng " + accountBooking.getFullName() + " vừa được mới được tạo, thực hiện vào thời gian " + oneMonthLaterString;
+                                String detailNotificationForUser = "Đơn dịch vụ mới được khởi tạo, thực hiện vào ngày " + oneMonthLaterString;
+                                nDao.InsertNotification(accountBooking.getAccountID(), bookingIDString, detailNotificationForAdmin, "false", typeNotiAdmin);
+                                nDao.InsertNotification(accountBooking.getAccountID(), bookingIDString, detailNotificationForUser, "false", typeNotiUser);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

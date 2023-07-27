@@ -14,7 +14,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>V-HomeClean - Dashboard</title>
+        <title>V-HomeClean - Quản lý tài khoản</title>
 
         <link
             rel="shortcut icon"

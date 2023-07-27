@@ -3,21 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/StaffTaskPageController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/blogWithSide.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/SeviceDetails-GetAppointment.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/BookingDone.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/ServicePageController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/service.jsp</file>
             <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/footer.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/singleBlog.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/DistinctServiceController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/admob.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/login.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/js/main.js</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/SingleBlogController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/RegisterController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/BookingController.java</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/header.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/bookings.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/admin/StaffGeneralPageController.java</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/sidebar.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/admin/AccountCreateController.java</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/general-booking.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/DTO/AccountDTO.java</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/navigation.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/index.jsp</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/blocked-services.jsp</file>
         </group>
     </open-files>
 </project-private>

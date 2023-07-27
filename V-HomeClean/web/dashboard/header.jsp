@@ -13,6 +13,15 @@
 
 
 
+<%
+    AccountDTO user = (AccountDTO) session.getAttribute("acc");
+    if (user == null || (user.getRoleID() != 1 && user.getRoleID() != 3)) {
+        response.sendRedirect("login.jsp");
+    }
+%>
+
+
+
 <div id="header-content" class="header">
     <div class="header-left">
         <a href="HomePageController" class="navbar-brand d-flex align-items-center">

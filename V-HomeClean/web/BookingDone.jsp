@@ -60,9 +60,9 @@
                         <div class="col-md-6">
                             <i class="bi bi-check-circle-fill display-1 text-primary"></i>
                             <h1 class="display-1">Congratulations</h1>
-                            <h3 class="">Đơn của bạn đã được ghi nhận thành công</h3>
+                            <h3 class="">Đơn của quý khách đã được ghi nhận thành công</h3>
                             <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
-                            <p style="color: black;">Bạn vui lòng thanh toán phí qua mã QR code
+                            <p style="color: black;">Quý khách vui lòng thanh toán phí qua mã QR code
                                 ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
                             <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
                             <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>

@@ -360,6 +360,11 @@
                                                                         <c:when test="${empty staffName}">
                                                                             <div class="p-3 text-center">
                                                                                 <h4 class="text-center text-danger">Hiện tại chưa có nhân viên phụ trách</h4>
+                                                                                <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
+                                                                                <p style="color: black;">Nếu bạn thanh toàn rồi, quý khách vui lòng đợi, chúng tôi sẽ xác nhận đơn cho quý khách sớm nhất có thể</p>
+                                                                                <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
+                                                                                <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
+                                                                                <p style="color: red;">Lưu ý: Chúng tôi chỉ chấp nhận thanh toán qua online.</p>
                                                                             </div>
                                                                         </c:when>
                                                                         <c:otherwise>

@@ -3,7 +3,8 @@
     Created on : May 28, 2023, 11:33:15 PM
     Author     : Trung Kien
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <%@page import="DTO.UserError"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
         <title>V-HomeClean - Tạo Tài Khoản</title>
-        
+
         <link
             rel="shortcut icon"
             type="image/x-icon"
@@ -168,8 +169,12 @@
                                             <div class="col-md-10">
                                                 <select required="" name="roleID" class="form-control form-select">
                                                     <option>-- Chọn --</option>
-                                                    <option value="1">Admin</option>
-                                                    <option value="3">Quản lý</option>
+                                                    <c:if test="${sessionScope.acc.roleID == 1}">
+                                                        <option value="1">Admin</option>
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.acc.roleID == 1}">
+                                                        <option value="3">Quản lý</option>
+                                                    </c:if>
                                                     <option value="6">Nhân viên vệ sinh</option>
                                                     <option value="2">Nhân viên sửa chữa điện</option>
                                                     <option value="5">Nhân viên sửa chữa nước</option>

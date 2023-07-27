@@ -98,7 +98,7 @@
                         <a href="login.jsp" class="dropdown-item">Đăng Ký</a>
                     </c:if>
                     <c:if test="${sessionScope.acc != null}">
-                        <c:if test="${sessionScope.acc.roleID == 1}">
+                        <c:if test="${sessionScope.acc.roleID == 1 || sessionScope.acc.roleID == 3 }">
                             <a href="DashboardController" class="dropdown-item">Bảng Điều Khiển</a>
                         </c:if>
                     </c:if>

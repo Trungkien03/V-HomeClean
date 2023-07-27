@@ -32,6 +32,10 @@
     </head>
 
     <body>
+        
+        
+        
+        
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -115,7 +119,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8 d-flex mt-5">
+                        <div class="col-md-12 d-flex mt-5">
                             <div class="card card-table flex-fill" style="border: #007bff solid medium">
                                 <div class="card-header text-center">
                                     <h4 class="card-title float-start font-weight-600">Danh Sách Đơn Trong Ngày Hôm Nay</h4>
@@ -127,6 +131,7 @@
                                                 <tr>
                                                     <th class="text-center">Khách hàng</th>
                                                     <th class="text-center">Tên dịch vụ</th>
+                                                    <th class="text-center">Thời gian</th>
                                                     <th class="text-center">Trạng thái</th>
                                                     <th class="text-center">Chi tiết lịch hẹn</th>
                                                 </tr>
@@ -148,7 +153,27 @@
                                                             </h2>
                                                         </td>
                                                         <td class="text-center">${o.serviceName}</td>
-                                                        <td class="text-center">${o.bookingStatus}</td>
+                                                        <td class="text-center">${o.bookingDate}</td>
+                                                        <td class="text-center">
+                                                            <c:if test="${o.bookingStatus eq 'Chờ xác nhận'}">
+                                                                <button class="btn btn-info">Chờ xác nhận</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Xác nhận'}">
+                                                                <button class="btn btn-info">Đã xác nhận</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Đang thực hiện'}">
+                                                                <button class="btn btn-info">Đang hoạt động</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Hủy'}">
+                                                                <button class="btn btn-danger">Đã Hủy</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Xác nhận hoàn thành'}">
+                                                                <button class="btn btn-success">Xác Nhận Hoàn Thành</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Hoàn thành'}">
+                                                                <button  class="btn btn-success">Hoàn Thành</button>
+                                                            </c:if>
+                                                        </td>
                                                         <td class="text-center">
                                                             <div class="actions">
                                                                 <a href="BookingGeneralController?bookingID=${o.bookingID}" class="btn btn-large bg-info-light" title="View Document">
@@ -218,19 +243,38 @@
 
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <canvas id="myChart"></canvas>
+
         <script>
             // Lấy tham chiếu đến thẻ canvas
             var ctx = document.getElementById('myChart').getContext('2d');
             var totalBlogs = ${totalBlogs};
+
+            // Mảng chứa các màu tương ứng với từng tháng
+            var colors = [
+                '#fd7f6f', // Tháng 1
+                '#7eb0d5', // Tháng 2
+                '#b2e061', // Tháng 3
+                '#bd7ebe', // Tháng 4
+                '#ffb55a', // Tháng 5
+                '#ffee65', // Tháng 6
+                '#beb9db', // Tháng 7
+                '#fdcce5', // Tháng 8
+                '#8bd3c7', // Tháng 9
+                '#1a53ff', // Tháng 10
+                '#0d88e6', // Tháng 11
+                '#00b7c7'  // Tháng 12
+            ];
+
             // Tạo biểu đồ
             var myChart = new Chart(ctx, {
                 type: 'bar', // Loại biểu đồ, ví dụ: bar, line, pie, v.v.
                 data: {
                     labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'], // Nhãn trục x
                     datasets: [{
-                            label: 'Thông Số Trong Năm', // Nhãn của dữ liệu
+                            label: 'Thông số trong năm', // Nhãn của dữ liệu
                             data: ${listTotalByMonths}, // Dữ liệu
-                            backgroundColor: 'rgba(0, 123, 255, 0.6)' // Màu nền của cột
+                            backgroundColor: colors // Mảng màu nền của cột
                         }]
                 },
                 options: {
@@ -244,6 +288,8 @@
             });
         </script>
 
+
+
         <script>
             var options = {
                 series: ${listTotalByWeek},
@@ -251,7 +297,7 @@
                     width: 380,
                     type: 'pie',
                 },
-                labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ Nhật'],
+                labels: [`Thứ 2 ${Monday}`, `Thứ 3${Tuesday}`, `Thứ 4${Wednesday}`, `Thứ 5${Thursday}`, `Thứ 6 ${Friday}`,`Thứ 7 ${Saturday}`,`Chủ Nhật${Sunday}`],
                 responsive: [{
                         breakpoint: 480,
                         options: {
