@@ -19,7 +19,7 @@
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="css/assets/img/favicon.png"
+            href="css/assets/img/icon.png"
             />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />

@@ -20,7 +20,7 @@
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="css/assets/img/favicon.png"
+            href="css/assets/img/icon.png"
             />
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />

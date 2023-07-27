@@ -17,6 +17,11 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <title>V-HomeClean - Cập Nhật Lại Mật Khẩu</title>
         <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
+        <link
             href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
             rel='stylesheet'>
         <link

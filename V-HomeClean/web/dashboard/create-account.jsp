@@ -15,6 +15,12 @@
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
         <title>V-HomeClean - Tạo Tài Khoản</title>
+        
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
 

@@ -15,6 +15,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>V-HomeClean - Dịch Vụ</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">

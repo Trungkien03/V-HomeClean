@@ -13,6 +13,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
         <title>V-HomeClean - Dashboard</title>
 
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
+        
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
