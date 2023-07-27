@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
-                    <c:forEach items="${listS}" var="o">
+                    <c:forEach items="${listSv}" var="o">
 
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                             <input name="serviceID" value="${o.serviceID}" type="hidden">
@@ -102,7 +102,7 @@
                             margin-left: 45%;
                         }
                     </style>
-                <div class="paging" >
+<!--                <div class="paging" >
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item">
@@ -125,7 +125,7 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+                </div>-->
 
             </div>
         </div>

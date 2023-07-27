@@ -75,9 +75,10 @@ public class ServicePageController extends HttpServlet {
         if (endPage % 6 != 0) {
             endPage++;
         }
-
+        List<ServiceDTO> listSv = dao.getAllService();
         list = dao.pagingService(index);
         request.setAttribute("listS", list);
+        request.setAttribute("listSv", listSv);
         request.setAttribute("endP", endPage);
         request.setAttribute("tag", index);
         request.getRequestDispatcher("service.jsp").forward(request, response);

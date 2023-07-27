@@ -80,6 +80,7 @@ public class ServiceDAO {
                 totalServices = rs.getInt("total_count");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return totalServices;
     }
@@ -242,7 +243,9 @@ public class ServiceDAO {
 
     public static void main(String[] args) {
         ServiceDAO dao = new ServiceDAO();
-        ServiceDTO a = dao.GetServiceByName("Tổng vệ sinh");
-        System.out.println(a);
+        List<ServiceDTO> list = dao.getAllService();
+        for (ServiceDTO serviceDTO : list) {
+            System.out.println(serviceDTO);
+        }
     }
 }

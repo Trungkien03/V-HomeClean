@@ -140,7 +140,6 @@
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <!--                                <label for="password">Mật Khẩu</label>-->
                                 <div class="wrapper">
                                     <div class="pass-field">
                                         <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
@@ -162,7 +161,7 @@
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <!--                                <label for="password">Xác Nhận Mật Khẩu</label>-->
+                                
                                 <div class="wrapper">
                                     <div class="pass-field confirm-pass">
                                         <input type="password" name="confirmP" class="form-control" placeholder="Xác nhận mật khẩu" id="confirmP">
@@ -181,7 +180,7 @@
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <!--                                <label for="password">Họ Và Tên</label>-->
+                                
                                 <input type="text" name="fullName" class="form-control" placeholder="Họ và tên" id="password">
                                 <% if (userError.getFullName() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getFullName()%></strong>
@@ -190,7 +189,7 @@
                             <div class="form-group mb-3">
                                 <div class="wrapper">
                                     <div class="room-field">
-                                        <input type="text" name="roomID" class="form-control" placeholder="Mã Phòng Ex:S01-01" id="confirmP">
+                                        <input type="text" name="roomID" class="form-control" placeholder="Mã Phòng và Mã Tòa Ex:S01-01" id="confirmP">
                                     </div>
                                     <div class="room-requirement requirement" style="display: none;">
                                         <p>Vui lòng:</p>
@@ -201,20 +200,17 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                <!--                                <label for="password">Địa Chỉ</label>-->
+                                
                                 <select required="" class="form-select" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
                                     <option value="">-- Chọn khu vực Vinhomes --</option>
-                                    <option value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - TP. Hồ Chí Minh</option>
-                                    <option value="Vinhomes Golden River - TP. Hồ Chí Minh">Vinhomes Golden River - TP. Hồ Chí Minh</option>
-                                    <option value="Vinhomes Metropolis - Hà Nội">Vinhomes Metropolis - Hà Nội</option>
-
+                                    <option value="Vinhomes Smart City - TP. Hồ Chí Minh">Vinhomes Smart City - Hà Nội</option>
                                 </select>
                                 <% if (userError.getAddress() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getAddress()%></strong>
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                <!--                          <label for="password">Số Điện Thoại</label> -->
+                                
                                 <input required="" type="text" name="phone" class="form-control" placeholder="Số điện thoại" id="password">
                                 <% if (userError.getPhone() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getPhone()%></strong>

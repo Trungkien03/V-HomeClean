@@ -11,10 +11,20 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_fmt_formatNumber_value_pattern_nobody;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -41,6 +51,8 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -188,9 +200,32 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                        <p class=\"mb-0\">Giá ước lượng:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p class=\"text-muted mb-0\"><fmt:formatNumber value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${totalPrice}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\" pattern=\"###,### VND\"/></p>\n");
+      out.write("                                                        <p class=\"text-muted mb-0\">");
+      if (_jspx_meth_fmt_formatNumber_0(_jspx_page_context))
+        return;
+      out.write("</p>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                </div>\n");
+      out.write("                                                <div class=\"row\">\n");
+      out.write("                                                    <div class=\"col-md-3\">\n");
+      out.write("                                                        <p class=\"mb-0\">Phí trung gian:</p>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"col-md-9\">\n");
+      out.write("                                                        <p class=\"text-muted mb-0\">");
+      if (_jspx_meth_fmt_formatNumber_1(_jspx_page_context))
+        return;
+      out.write("</p>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                </div>\n");
+      out.write("                                                    <div class=\"row\">\n");
+      out.write("                                                    <div class=\"col-md-3\">\n");
+      out.write("                                                        <p class=\"mb-0\">Tổng chi phí:</p>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"col-md-9\">\n");
+      out.write("                                                        <p class=\"text-muted mb-0\">");
+      if (_jspx_meth_fmt_formatNumber_2(_jspx_page_context))
+        return;
+      out.write("</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                </div>\n");
       out.write("                                            </div>\n");
@@ -247,5 +282,62 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_fmt_formatNumber_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatNumber
+    org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag _jspx_th_fmt_formatNumber_0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag) _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag.class);
+    _jspx_th_fmt_formatNumber_0.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatNumber_0.setParent(null);
+    _jspx_th_fmt_formatNumber_0.setValue(new String("100000"));
+    _jspx_th_fmt_formatNumber_0.setPattern("###,### VND");
+    int _jspx_eval_fmt_formatNumber_0 = _jspx_th_fmt_formatNumber_0.doStartTag();
+    if (_jspx_th_fmt_formatNumber_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_0);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatNumber_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatNumber
+    org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag _jspx_th_fmt_formatNumber_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag) _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag.class);
+    _jspx_th_fmt_formatNumber_1.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatNumber_1.setParent(null);
+    _jspx_th_fmt_formatNumber_1.setValue(new String("30000"));
+    _jspx_th_fmt_formatNumber_1.setPattern("###,### VND");
+    int _jspx_eval_fmt_formatNumber_1 = _jspx_th_fmt_formatNumber_1.doStartTag();
+    if (_jspx_th_fmt_formatNumber_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_1);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_fmt_formatNumber_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  fmt:formatNumber
+    org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag _jspx_th_fmt_formatNumber_2 = (org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag) _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag.class);
+    _jspx_th_fmt_formatNumber_2.setPageContext(_jspx_page_context);
+    _jspx_th_fmt_formatNumber_2.setParent(null);
+    _jspx_th_fmt_formatNumber_2.setValue(new String("130000"));
+    _jspx_th_fmt_formatNumber_2.setPattern("###,### VND");
+    int _jspx_eval_fmt_formatNumber_2 = _jspx_th_fmt_formatNumber_2.doStartTag();
+    if (_jspx_th_fmt_formatNumber_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_2);
+      return true;
+    }
+    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_2);
+    return false;
   }
 }

@@ -59,24 +59,9 @@
                 </li>
                 <li class="submenu">
                     <a href="#"
-                       ><i class="fe fe-bell"></i> <span> Thông Báo </span>
-                        <span class="menu-arrow"></span
+                       ><i class="fe fe-bell"></i> <span> Danh Sách thắc mắc</span
                         ></a>
-                    <ul style="display: none">
-                        <li id="notification-management-link"><a href="dashboard/general.jsp">Quản Lý Thông Báo</a></li>
-                        <li id="faq-management-link"><a href="dashboard/admob.jsp">Quản Lý Thắc Mắc</a></li>
-                    </ul>
                 </li>
-<!--                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-gear"></i> <span> Cài Đặt </span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul style="display: none">
-                        <li id="general-settings-link"><a href="dashboard/general.jsp">Cài Đặt Chung</a></li>
-                        <li id="admob-settings-link"><a href="dashboard/admob.jsp">Admob</a></li>
-                    </ul>
-                </li>-->
             </ul>
         </div>
     </div>
@@ -87,10 +72,10 @@
     var submenuItems = document.querySelectorAll('.submenu li');
 
     // Lặp qua danh sách các thẻ <li> và gán sự kiện click cho mỗi thẻ
-    submenuItems.forEach(function(item) {
-        item.addEventListener('click', function() {
+    submenuItems.forEach(function (item) {
+        item.addEventListener('click', function () {
             // Bỏ lớp "active" khỏi tất cả các thẻ <li>
-            submenuItems.forEach(function(submenuItem) {
+            submenuItems.forEach(function (submenuItem) {
                 submenuItem.classList.remove('active');
             });
 
