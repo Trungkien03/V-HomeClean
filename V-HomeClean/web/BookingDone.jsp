@@ -55,10 +55,10 @@
                         <div class="col-md-6">
                             <i class="bi bi-check-circle-fill display-1 text-primary"></i>
                             <h1 class="display-1">Congratulations</h1>
-                            <h1 class="">Đơn của bạn đã được ghi nhận thành công</h1>
+                            <h3 class="">Đơn của bạn đã được ghi nhận thành công</h3>
                             <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
                             <p style="color: black;">Bạn vui lòng thanh toán phí qua mã QR code
-                            ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
+                                ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
                             <p style="color: black;">Chủ tài khoản: Le Quoc Thang</p>
                             <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
                             <a class="btn btn-primary py-3 px-5" href="HomePageController">Về Lại Trang Chủ</a>
@@ -71,14 +71,14 @@
                                             <h1>Thông tin đơn của bạn</h1>
                                             <p class="mb-4">Kiểm tra lại thông tin đơn hàng thông qua Thông Tin Tài Khoản của bạn</p>
                                             <div style="color: black;">Mã đơn hàng của bạn: 12${bookingIDNumber}</div>
-                                            <div style="color: black;" class="card mb-4">
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Họ và Tên:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p style="color: black;" class="text-muted mb-0">${acc.fullName}</p>
+                                        <div style="color: black;" class="card mb-4">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Họ và Tên:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p style="color: black;" class="text-muted mb-0">${acc.fullName}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -138,26 +138,10 @@
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <p style="color: black;" class="mb-0">Giá ước lượng:</p>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="100000" pattern="###,### VND" /></p>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-3">
-                                                        <p style="color: black;" class="mb-0">Phí trung gian:</p>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="30000" pattern="###,### VND" /></p>
-                                                    </div>
-                                                </div>
-                                                    <div class="row">
-                                                    <div class="col-md-3">
                                                         <p style="color: black;" class="mb-0">Tổng chi phí:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="130000" pattern="###,### VND" /></p>
+                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="${totalPrice}" pattern="###,### VND" /></p>
                                                     </div>
                                                 </div>
                                             </div>

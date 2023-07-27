@@ -106,11 +106,12 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"col-md-6\">\n");
       out.write("                            <i class=\"bi bi-check-circle-fill display-1 text-primary\"></i>\n");
       out.write("                            <h1 class=\"display-1\">Congratulations</h1>\n");
-      out.write("                            <h1 class=\"\">Đơn của bạn đã được ghi nhận thành công</h1>\n");
-      out.write("                            <img style=\"width: 100%\" src=\"img/QRcodeKien.jpg\">\n");
-      out.write("                            <p style=\"color: black;\">Bạn vui lòng thanh toán phí trung gian (chỉ phí trung gian) qua mã QR code\n");
-      out.write("                            ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>\n");
-      out.write("                            <p style=\"color: black;\"class=\"mb-4\">Cú pháp: Thanh toan - [mã đơn hàng]</p>\n");
+      out.write("                            <h3 class=\"\">Đơn của bạn đã được ghi nhận thành công</h3>\n");
+      out.write("                            <img class=\"img-thumbnail\" style=\"width: 70%; height: 45%;\" src=\"img/thangQR.jpg\">\n");
+      out.write("                            <p style=\"color: black;\">Bạn vui lòng thanh toán phí qua mã QR code\n");
+      out.write("                                ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>\n");
+      out.write("                            <p style=\"color: black;\">Chủ tài khoản: Le Quoc Thang</p>\n");
+      out.write("                            <p style=\"color: black;\">Cú pháp: Thanh toan - [mã đơn hàng]</p>\n");
       out.write("                            <a class=\"btn btn-primary py-3 px-5\" href=\"HomePageController\">Về Lại Trang Chủ</a>\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-6\">\n");
@@ -123,14 +124,14 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                            <div style=\"color: black;\">Mã đơn hàng của bạn: 12");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${bookingIDNumber}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</div>\n");
-      out.write("                                            <div style=\"color: black;\" class=\"card mb-4\">\n");
-      out.write("                                                <div class=\"card-body\">\n");
-      out.write("                                                    <div class=\"row\">\n");
-      out.write("                                                        <div class=\"col-md-3\">\n");
-      out.write("                                                            <p class=\"mb-0\">Họ và Tên:</p>\n");
-      out.write("                                                        </div>\n");
-      out.write("                                                        <div class=\"col-md-9\">\n");
-      out.write("                                                            <p style=\"color: black;\" class=\"text-muted mb-0\">");
+      out.write("                                        <div style=\"color: black;\" class=\"card mb-4\">\n");
+      out.write("                                            <div class=\"card-body\">\n");
+      out.write("                                                <div class=\"row\">\n");
+      out.write("                                                    <div class=\"col-md-3\">\n");
+      out.write("                                                        <p class=\"mb-0\">Họ và Tên:</p>\n");
+      out.write("                                                    </div>\n");
+      out.write("                                                    <div class=\"col-md-9\">\n");
+      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${acc.fullName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -204,33 +205,11 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                                <hr>\n");
       out.write("                                                <div class=\"row\">\n");
       out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Giá ước lượng:</p>\n");
-      out.write("                                                    </div>\n");
-      out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
-      if (_jspx_meth_fmt_formatNumber_0(_jspx_page_context))
-        return;
-      out.write("</p>\n");
-      out.write("                                                    </div>\n");
-      out.write("                                                </div>\n");
-      out.write("                                                <div class=\"row\">\n");
-      out.write("                                                    <div class=\"col-md-3\">\n");
-      out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Phí trung gian:</p>\n");
-      out.write("                                                    </div>\n");
-      out.write("                                                    <div class=\"col-md-9\">\n");
-      out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
-      if (_jspx_meth_fmt_formatNumber_1(_jspx_page_context))
-        return;
-      out.write("</p>\n");
-      out.write("                                                    </div>\n");
-      out.write("                                                </div>\n");
-      out.write("                                                    <div class=\"row\">\n");
-      out.write("                                                    <div class=\"col-md-3\">\n");
       out.write("                                                        <p style=\"color: black;\" class=\"mb-0\">Tổng chi phí:</p>\n");
       out.write("                                                    </div>\n");
       out.write("                                                    <div class=\"col-md-9\">\n");
       out.write("                                                        <p style=\"color: black;\" class=\"text-muted mb-0\">");
-      if (_jspx_meth_fmt_formatNumber_2(_jspx_page_context))
+      if (_jspx_meth_fmt_formatNumber_0(_jspx_page_context))
         return;
       out.write("</p>\n");
       out.write("                                                    </div>\n");
@@ -299,7 +278,7 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag _jspx_th_fmt_formatNumber_0 = (org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag) _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag.class);
     _jspx_th_fmt_formatNumber_0.setPageContext(_jspx_page_context);
     _jspx_th_fmt_formatNumber_0.setParent(null);
-    _jspx_th_fmt_formatNumber_0.setValue(new String("100000"));
+    _jspx_th_fmt_formatNumber_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${totalPrice}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     _jspx_th_fmt_formatNumber_0.setPattern("###,### VND");
     int _jspx_eval_fmt_formatNumber_0 = _jspx_th_fmt_formatNumber_0.doStartTag();
     if (_jspx_th_fmt_formatNumber_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -307,44 +286,6 @@ public final class BookingDone_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_0);
-    return false;
-  }
-
-  private boolean _jspx_meth_fmt_formatNumber_1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  fmt:formatNumber
-    org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag _jspx_th_fmt_formatNumber_1 = (org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag) _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag.class);
-    _jspx_th_fmt_formatNumber_1.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_formatNumber_1.setParent(null);
-    _jspx_th_fmt_formatNumber_1.setValue(new String("30000"));
-    _jspx_th_fmt_formatNumber_1.setPattern("###,### VND");
-    int _jspx_eval_fmt_formatNumber_1 = _jspx_th_fmt_formatNumber_1.doStartTag();
-    if (_jspx_th_fmt_formatNumber_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_1);
-      return true;
-    }
-    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_1);
-    return false;
-  }
-
-  private boolean _jspx_meth_fmt_formatNumber_2(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  fmt:formatNumber
-    org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag _jspx_th_fmt_formatNumber_2 = (org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag) _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.get(org.apache.taglibs.standard.tag.rt.fmt.FormatNumberTag.class);
-    _jspx_th_fmt_formatNumber_2.setPageContext(_jspx_page_context);
-    _jspx_th_fmt_formatNumber_2.setParent(null);
-    _jspx_th_fmt_formatNumber_2.setValue(new String("130000"));
-    _jspx_th_fmt_formatNumber_2.setPattern("###,### VND");
-    int _jspx_eval_fmt_formatNumber_2 = _jspx_th_fmt_formatNumber_2.doStartTag();
-    if (_jspx_th_fmt_formatNumber_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_2);
-      return true;
-    }
-    _jspx_tagPool_fmt_formatNumber_value_pattern_nobody.reuse(_jspx_th_fmt_formatNumber_2);
     return false;
   }
 }

@@ -47,6 +47,7 @@ public class ProfilePageController extends HttpServlet {
         String url = "userProfile.jsp";
         String typeNotiUser = "User"; //xác nhận kiểu noti sẽ được gửi tới khách hàng
         String typeNotiStaff = "Staff";
+        String typeNotiAdmin = "Admin";
         if (a == null) {
             response.sendRedirect("login.jsp");
         } else {
@@ -147,6 +148,27 @@ public class ProfilePageController extends HttpServlet {
                     nDao.updateStatusNotification(notificationID, "true");
                     request.setAttribute("status", "checkNoti");
                     url = "userProfile.jsp";
+                }
+                
+                if(action.equalsIgnoreCase("Hủy")){
+                    String bookingIDString = request.getParameter("bookingID");
+                    int bookingID = 0;
+                    if (bookingIDString != null) {
+                        bookingID = Integer.parseInt(bookingIDString);
+                    }
+                    String feedbackDetail = request.getParameter("feedbackDetail");
+                    double rating = 0;
+                    String feedbackDefault = "";
+                    if(feedbackDetail != null){
+                        feedbackDefault = feedbackDetail;
+                    }
+                    BookingDTO bookingUser = bDao.getBookingByID(bookingIDString);
+                    String accountID = a.getAccountID();
+                    bDao.updateBookingWithBookingIdAndStatus(bookingID, "Hủy");
+                    String notiDetail = "Khách hàng " + a.getFullName() + " đã hủy đơn hàng với mã số " + bookingIDString;
+                    nDao.InsertNotification(accountID, bookingIDString, notiDetail, "false", typeNotiAdmin);
+                    fDao.insertFeedback(feedbackDefault, rating, accountID, bookingIDString);
+                    request.setAttribute("status", "feedBack");
                 }
             } catch (Exception e) {
                 e.printStackTrace();

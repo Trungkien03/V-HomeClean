@@ -101,7 +101,8 @@ public class StaffTaskPageController extends HttpServlet {
                         String bookingStatus = "Xác nhận hoàn thành";
                         bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
                         double getUpdateSalary = aDao.getSalaryWithAccountID(staff.getAccountID());
-                        getUpdateSalary = getUpdateSalary + userBooking.getTotalPrice(); // cập nhật lại lương nhân viên khi mới làm xong
+                        double updateSalary = (userBooking.getTotalPrice()*70)/100;
+                        getUpdateSalary = getUpdateSalary + updateSalary; // cập nhật lại lương nhân viên khi mới làm xong
                         aDao.updateSalaryWithAccountID(staff.getAccountID(), getUpdateSalary);
                         request.setAttribute("message", "Không tìm thấy ID của booking");
                         check = true;
