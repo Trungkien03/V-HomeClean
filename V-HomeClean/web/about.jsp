@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
                                         <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 class="mb-0">Dịch vụ 24/7</h6>
+                                        <h6 class="mb-0">Dịch vụ tốt</h6>
                                     </div>
                                     <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
                                         <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>

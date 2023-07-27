@@ -168,17 +168,6 @@ CREATE TABLE Comment
 );
 GO
 
---Tạo bảng message cho guest người mà có thắc mắc về dịch vụ
-CREATE TABLE Question (
-  id INT PRIMARY KEY IDENTITY(1,1),
-  name NVARCHAR(255) NOT NULL,
-  email NVARCHAR(255) NOT NULL,
-  subject NVARCHAR(255) NOT NULL,
-  message NVARCHAR(MAX) NOT NULL
-);
-GO
-
-
 -- Tạo trigger AutoGenerateAccountID
 DROP TRIGGER IF EXISTS AutoGenerateAccountID;
 GO

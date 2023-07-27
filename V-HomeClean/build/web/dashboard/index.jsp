@@ -5,6 +5,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,10 +33,10 @@
     </head>
 
     <body>
-        
-        
-        
-        
+
+
+
+
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -123,6 +124,10 @@
                             <div class="card card-table flex-fill" style="border: #007bff solid medium">
                                 <div class="card-header text-center">
                                     <h4 class="card-title float-start font-weight-600">Danh Sách Đơn Trong Ngày Hôm Nay</h4>
+                                    <form action="DashboardController" method="POST">
+                                        <input type="date" name="date">
+                                        <input type="submit" name="action" value="Tìm kiếm">
+                                    </form>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive p-3">
@@ -153,7 +158,26 @@
                                                             </h2>
                                                         </td>
                                                         <td class="text-center">${o.serviceName}</td>
-                                                        <td class="text-center">${o.bookingDate}</td>
+                                                        <td class="text-center">
+                                                            <c:set var="date" value="${fn:split(o.bookingDate, ' ')}"/>
+                                                            <c:set var="formattedDate" value="${fn:split(date[0], '-')}"/>
+
+                                                            <c:set var="month" value="${formattedDate[1]}"/>
+                                                            <c:choose>
+                                                                <c:when test="${fn:length(month) == 1}">
+                                                                    <c:set var="month" value="0${month}" />
+                                                                </c:when>
+                                                            </c:choose>
+
+                                                            <c:set var="day" value="${formattedDate[2]}"/>
+                                                            <c:choose>
+                                                                <c:when test="${fn:length(day) == 1}">
+                                                                    <c:set var="day" value="0${day}" />
+                                                                </c:when>
+                                                            </c:choose>
+                                                            <c:set var="formattedDateString" value="${month}-${day}-${formattedDate[0]}" />
+                                                            ${formattedDateString}
+                                                        </td>
                                                         <td class="text-center">
                                                             <c:if test="${o.bookingStatus eq 'Chờ xác nhận'}">
                                                                 <button class="btn btn-info">Chờ xác nhận</button>
@@ -297,7 +321,7 @@
                     width: 380,
                     type: 'pie',
                 },
-                labels: [`Thứ 2 ${Monday}`, `Thứ 3${Tuesday}`, `Thứ 4${Wednesday}`, `Thứ 5${Thursday}`, `Thứ 6 ${Friday}`,`Thứ 7 ${Saturday}`,`Chủ Nhật${Sunday}`],
+                labels: [`Thứ 2 ${Monday}`, `Thứ 3${Tuesday}`, `Thứ 4${Wednesday}`, `Thứ 5${Thursday}`, `Thứ 6 ${Friday}`, `Thứ 7 ${Saturday}`, `Chủ Nhật${Sunday}`],
                 responsive: [{
                         breakpoint: 480,
                         options: {

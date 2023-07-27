@@ -80,9 +80,9 @@
                     <h1 class="display-4 text-white animated slideInDown mb-4">${BlogDetail.title}</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb justify-content-center mb-0">
-                        <li class="breadcrumb-item"><a class="text-white" href="index.jsp">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a class="text-white" href="HomePageController">Trang chủ</a></li>
                         <!--                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>-->
-                        <li class="breadcrumb-item text-primary active" aria-current="page">BLOG</li>
+                        <li class="breadcrumb-item text-primary active" aria-current="page">Blogs</li>
                     </ol>
                 </nav>
             </div>

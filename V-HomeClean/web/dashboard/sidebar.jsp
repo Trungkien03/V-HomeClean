@@ -64,11 +64,6 @@
                         </ul>
                     </li>
                 </c:if>
-                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-bell"></i> <span> Danh Sách thắc mắc</span
-                        ></a>
-                </li>
             </ul>
         </div>
     </div>
