@@ -14,7 +14,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>Dashboard - Tạo Tài Khoản</title>
+        <title>V-HomeClean - Tạo Tài Khoản</title>
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
 
