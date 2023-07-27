@@ -59,8 +59,9 @@
                             <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
                             <p style="color: black;">Bạn vui lòng thanh toán phí qua mã QR code
                                 ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
-                            <p style="color: black;">Chủ tài khoản: Le Quoc Thang</p>
+                            <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
                             <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
+                            <p style="color: red;">Lưu ý: Chúng tôi chỉ chấp nhận thanh toán qua online.</p>
                             <a class="btn btn-primary py-3 px-5" href="HomePageController">Về Lại Trang Chủ</a>
                         </div>
                         <div class="col-md-6">
