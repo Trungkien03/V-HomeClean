@@ -64,7 +64,7 @@
                                             <h5 class="text-light text-uppercase mb-3 animated slideInDown">Chào mừng đến với <span style="color: #f8e43c">V-HomeClean</span></h5>
                                             <h1 class="display-2 text-light mb-3 animated slideInDown">Dịch vụ Vệ sinh & Sửa chữa Chuyên nghiệp</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
-                                               <li class="breadcrumb-item fs-5 text-light">Uy Tín</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Uy Tín</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Nhanh Chóng</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Tiện Lợi</li>
                                             </ol>
@@ -264,8 +264,8 @@
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
-            <!--Thẻ service ở đây-->
-            
+                        <!--Thẻ service ở đây-->
+
                     <c:forEach items="${listS}" begin="1" end="6" var="o">
                         <input value="${o.serviceID}" type="hidden">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -279,86 +279,86 @@
                             </div>
                         </div>
                     </c:forEach>
-            
 
-                    </div>
+
                 </div>
             </div>
-            <!-- Service End -->
+        </div>
+        <!-- Service End -->
 
 
-            <!-- Appointment Start -->
-            <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-                <div class="container py-5">
-                    <div class="row g-5">
-                        <div class="col-lg-5 col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-white text-uppercase mb-2">Bạn có thắc mắc gì không ?</h6>
-                                <h1 class="display-6 text-white mb-0">Chúng tôi sẽ giải đáp mọi thắc mắc của bạn</h1>
-                            </div>
-                            <p class="text-white mb-0">Công ty chúng tôi sẽ trợ giúp cho quý khách hàng hết sức, Chúng tôi luôn đặt ưu tiên trải nghiệm của khách
-                            hàng lên hàng đầu</p>
+        <!-- Appointment Start -->
+        <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-5 col-md-6 wow fadeIn" data-wow-delay="0.3s">
+                        <div class="border-start border-5 border-primary ps-4 mb-5">
+                            <h6 class="text-white text-uppercase mb-2">Bạn có thắc mắc gì không ?</h6>
+                            <h1 class="display-6 text-white mb-0">Chúng tôi sẽ giải đáp mọi thắc mắc của bạn</h1>
                         </div>
-                        <div class="col-lg-7 col-md-6 wow fadeIn" data-wow-delay="0.5s">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="gname" placeholder="Gurdian Name">
-                                            <label for="gname">Tên của bạn</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control bg-dark border-0" id="gmail" placeholder="Gurdian Email">
-                                            <label for="gmail">Email của bạn</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="cname" placeholder="Child Name">
-                                            <label for="cname">Số điện thoại</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="cage" placeholder="Child Age">
-                                            <label for="cage">Chủ đề câu hỏi</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control bg-dark border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Hãy viết câu hỏi thắc mắc của bạn tại đây</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Đặt câu hỏi</button>
+                        <p class="text-white mb-0">Công ty chúng tôi sẽ trợ giúp cho quý khách hàng hết sức, Chúng tôi luôn đặt ưu tiên trải nghiệm của khách
+                            hàng lên hàng đầu</p>
+                    </div>
+                    <div class="col-lg-7 col-md-6 wow fadeIn" data-wow-delay="0.5s">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control bg-dark border-0" id="gname" placeholder="Gurdian Name">
+                                        <label for="gname">Tên của bạn</label>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control bg-dark border-0" id="gmail" placeholder="Gurdian Email">
+                                        <label for="gmail">Email của bạn</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control bg-dark border-0" id="cname" placeholder="Child Name">
+                                        <label for="cname">Số điện thoại</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control bg-dark border-0" id="cage" placeholder="Child Age">
+                                        <label for="cage">Chủ đề câu hỏi</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control bg-dark border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Hãy viết câu hỏi thắc mắc của bạn tại đây</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Đặt câu hỏi</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!-- Appointment End -->
+        </div>
+        <!-- Appointment End -->
 
 
-            <!-- Team Start -->
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="row g-5 align-items-end mb-5">
-                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="border-start border-5 border-primary ps-4">
-                                <h6 class="text-body text-uppercase mb-2">Đội ngũ của chúng tôi</h6>
-                                <h1 class="display-6 mb-0">Nhân viên tiêu biểu</h1>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="mb-0">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>
+        <!-- Team Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-end mb-5">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="border-start border-5 border-primary ps-4">
+                            <h6 class="text-body text-uppercase mb-2">Đội ngũ của chúng tôi</h6>
+                            <h1 class="display-6 mb-0">Nhân viên tiêu biểu</h1>
                         </div>
                     </div>
-                    <div class="row g-4">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <p class="mb-0">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>
+                    </div>
+                </div>
+                <div class="row g-4">
                     <c:forEach items="${ListA}" var="o" begin="0" end="2">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="team-item position-relative">
@@ -369,65 +369,113 @@
                                 </div>
                             </div>
                         </div>
-                       </c:forEach>                        
-                    </div>
+                    </c:forEach>                        
                 </div>
             </div>
-            <!-- Team End -->
+        </div>
+        <!-- Team End -->
 
 
-            <!-- Testimonial Start -->
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="row g-5">
-                        <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-body text-uppercase mb-2">Feedbacks</h6>
-                                <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeClean</h1>
-                            </div>
-                            <p class="mb-4">Đây là những phản hồi nổi bật của khách hàng đã trải nghiệm sử dụng dịch vụ của V-HomeClean. Giúp bạn có thể chọn sử dụng dịch vụ của chúng tôi một cách an tâm từ những trải nghiệm tốt, thực tế của những khách hàng trước.</p>
-                            <div class="row g-4">
-                                <div class="col-sm-6">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <i class="fa fa-users fa-2x text-primary flex-shrink-0"></i>
-                                        <h1 class="ms-3 mb-0">777</h1>
-                                    </div>
-                                    <h5 class="mb-0">Khách hàng thân thiết</h5>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <i class="fa fa-check fa-2x text-primary flex-shrink-0"></i>
-                                        <h1 class="ms-3 mb-0">789</h1>
-                                    </div>
-                                    <h5 class="mb-0">Dịch vụ đã cung cấp</h5>
-                                </div>
-                            </div>
+        <!-- Testimonial Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="border-start border-5 border-primary ps-4 mb-5">
+                            <h6 class="text-body text-uppercase mb-2">Feedbacks</h6>
+                            <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeClean</h1>
                         </div>
-                        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="owl-carousel testimonial-carousel">
-                                <div class="testimonial-item">
-                                    <img class="img-fluid mb-4" src="img/testimonial-1.jpg" alt="">
-                                    <p class="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
-                                    <div class="bg-primary mb-3" style="width: 60px; height: 5px"></div>
-                                    <h5>Client Name</h5>
-                                    <span>Profession</span>
+                        <p class="mb-4">Đây là những phản hồi nổi bật của khách hàng đã trải nghiệm sử dụng dịch vụ của V-HomeClean. Giúp bạn có thể chọn sử dụng dịch vụ của chúng tôi một cách an tâm từ những trải nghiệm tốt, thực tế của những khách hàng trước.</p>
+
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa fa-users fa-2x text-primary flex-shrink-0"></i>
+                                    <h1 class="ms-3 mb-0">777</h1>
                                 </div>
-                                <div class="testimonial-item">
-                                    <img class="img-fluid mb-4" src="img/testimonial-2.jpg" alt="">
-                                    <p class="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
-                                    <div class="bg-primary mb-3" style="width: 60px; height: 5px"></div>
-                                    <h5>Client Name</h5>
-                                    <span>Profession</span>
+                                <h5 class="mb-0">Khách hàng thân thiết</h5>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa fa-check fa-2x text-primary flex-shrink-0"></i>
+                                    <h1 class="ms-3 mb-0">789</h1>
                                 </div>
+                                <h5 class="mb-0">Dịch vụ đã cung cấp</h5>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
+                        <!--                        <style>
+                                                    /* Đặt kích thước cố định cho khung chứa danh sách Feedback */
+                                                    .feedback-container {
+                                                        max-height: 300px; /* Điều chỉnh kích thước tùy ý */
+                                                        overflow-y: auto; /* Tạo thanh cuộn dọc khi nội dung vượt quá kích thước */
+                                                        border: 1px solid #ccc; /* Tùy chỉnh viền nếu muốn */
+                                                        border-radius: 5px; /* Tùy chỉnh bo góc nếu muốn */
+                                                    }
+                        
+                                                    /* Định dạng cho các phần tử bên trong khung chứa Feedback */
+                                                    .comment-area-box {
+                                                        display: flex;
+                                                    }
+                        
+                                                    .comment-area-box img {
+                                                        width: 30px;
+                                                        height: 30px;
+                                                        border-radius: 50%;
+                                                    }
+                        
+                                                    .comment-content {
+                                                        flex: 1;
+                                                    }
+                                                </style>
+                        
+                                                <div class="feedback-container">
+                                                    <ul class="comment-tree list-unstyled">
+                        <c:forEach items="${ListF}" var="o">
+                            <li class="mb-2">
+                                <div style="margin-left: 20px;" class="comment-area-box">
+                                    <div style="display: flex;">
+                                        <div style="margin-left: -11px">
+                                            <img src="${o.image}" alt="User Image">
+                                        </div>
+                                        <div style="border-radius: 12px; width: 100%; margin-bottom: 2%; margin-left: 12px">
+                                            <div class="contentCmt">
+                                                <h6 style="color: #6666FF;" class="mb-1">${o.fullName}</h6>
+                                                <div class="comment-content mt-3">
+                                                    <p style="color: black;">${o.feedbackDetail}</p>
+                                                </div>
+                                                <div class="comment-meta mt-4 mt-lg-0 mt-md-0 float-lg-right float-md-right">
+                                                    <span style="font-size: x-small; color: #999;" class="date-comm">${o.date}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>-->
+
+                        <div class="owl-carousel testimonial-carousel">
+                            <c:forEach items="${ListF}" var="o">
+                                <div class="testimonial-item">
+                                    <img class="img-fluid mb-4" src="${o.image}" alt="">
+                                    <p class="fs-5">${o.feedbackDetail}</p>
+                                    <div class="bg-primary mb-3" style="width: 60px; height: 5px"></div>
+                                    <h5>${o.fullName}</h5>
+                                    <span>${o.date}</span>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Testimonial End -->
+        </div>
+        <!-- Testimonial End -->
 
 
-            <!-- Footer Start -->
+        <!-- Footer Start -->
         <jsp:include page="footer.jsp"></jsp:include>
         <!-- Footer End -->
 

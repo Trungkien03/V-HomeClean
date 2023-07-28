@@ -38,22 +38,83 @@ public class FeedBackDAO {
             e.printStackTrace();
         }
     }
-    
-    
-    public List<FeedBackDTO> getListFeedBack(){
-        String query = "SELECT * FROM Feedback";
+
+    public List<FeedBackDTO> getListFeedBack() {
+        String query = "SELECT FeedbackID, Date, Feedback_Text, Rating, f.AccountID, BookingID, a.FullName, a.Image\n"
+                + "FROM Feedback f\n"
+                + "JOIN Account a ON f.AccountID = a.AccountID;";
         List<FeedBackDTO> list = new ArrayList<>();
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
-            while(rs.next()){
-                list.add(new FeedBackDTO(rs.getString(1), 
-                        rs.getString(2), 
-                        rs.getNString(3), 
-                        rs.getDouble(4), 
-                        rs.getString(5), 
-                        rs.getString(6)));
+            while (rs.next()) {
+                list.add(new FeedBackDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getNString(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<FeedBackDTO> pagingComment(int index, String blogID) {
+        List<FeedBackDTO> list = new ArrayList<>();
+
+        String query = "SELECT TOP 3 FeedbackID, f.AccountID,  Date,Feedback_Text, Rating, BookingID, a.FullName, a.Image\n"
+                + "FROM Feedback f\n"
+                + "JOIN Account a ON f.AccountID = a.AccountID\n"
+                + "ORDER BY f.Date DESC;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, blogID);
+            ps.setInt(2, (index - 1) * 5);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new FeedBackDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getNString(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public List<FeedBackDTO> getAllFeedBack() {
+        List<FeedBackDTO> list = new ArrayList<>();
+        String query = "SELECT FeedbackID, Date, Feedback_Text, Rating, f.AccountID, BookingID, a.FullName, a.Image\n"
+                + "FROM Feedback f\n"
+                + "JOIN Account a ON f.AccountID = a.AccountID\n"
+                + "ORDER BY Date DESC;"; // Sửa ORDER BY thành "Date DESC" để lấy 3 feedback mới nhất
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new FeedBackDTO(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getNString(3),
+                        rs.getDouble(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8)
+                ));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,9 +124,9 @@ public class FeedBackDAO {
 
     public static void main(String[] args) {
         FeedBackDAO dao = new FeedBackDAO();
-        List<FeedBackDTO> list = dao.getListFeedBack();
-        for (FeedBackDTO feedBackDTO : list) {
-            System.out.println(feedBackDTO.toString());
+        List<FeedBackDTO> list = dao.getAllFeedBack();
+        for (FeedBackDTO o : list) {
+            System.out.println(o);
         }
     }
 }
