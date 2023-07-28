@@ -398,7 +398,7 @@
                 columnDefs: [
                     {"orderable": false, "targets": 5} // Tắt tính năng tự động sắp xếp cho cột đầu tiên
                 ],
-                order: [] // Không sắp xếp ban đầu
+                order: [[5, 'des']]
 
             });
         });
@@ -425,7 +425,8 @@
                         "sSortAscending": ": Sắp xếp cột tăng dần",
                         "sSortDescending": ": Sắp xếp cột giảm dần"
                     }
-                }
+                },
+                order: [[0, 'des']]
             });
         });
 

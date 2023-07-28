@@ -75,7 +75,7 @@
                                                     <th class="text-center">Hình Ảnh</th>
                                                     <th class="text-center">Tên</th>
                                                     <th class="text-center">Thể loại</th>
-                                                    <th class="text-center">Chỉnh sửa</th>
+                                                    <th class="text-center">Chi tiết</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -105,11 +105,11 @@
                                                                         <i class="fe fe-eye"></i>
                                                                     </button>
                                                                 </div>
-                                                                <div class="text-end text-center">
+<!--                                                                <div class="text-end text-center">
                                                                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#b${blog.blogID}">
                                                                         <i class="fe fe-lock"></i>
                                                                     </button>
-                                                                </div>
+                                                                </div>-->
 
                                                                 <div class="modal fade" id="b${blog.blogID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog">

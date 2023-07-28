@@ -179,7 +179,8 @@
                             "sSortAscending": ": Sắp xếp cột tăng dần",
                             "sSortDescending": ": Sắp xếp cột giảm dần"
                         }
-                    }
+                    },
+                    order: [[0, 'des']]
                 });
             });
         </script>

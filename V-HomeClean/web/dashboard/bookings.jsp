@@ -215,7 +215,7 @@
                     columnDefs: [
                         {"orderable": false, "targets": 0} // Tắt tính năng tự động sắp xếp cho cột đầu tiên
                     ],
-                    order: [] // Không sắp xếp ban đầu
+                    order: [[2, 'des']]
                 });
             });
 

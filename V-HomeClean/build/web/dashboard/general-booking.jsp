@@ -256,7 +256,7 @@
                                                         </c:if>
                                                     </div>
                                                     <div class="text-end text-center">
-                                                        <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
+                                                        <c:if test="${booking.bookingStatus ne 'Hoàn thành'}">
                                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                 Hủy lịch hẹn
                                                             </button>

@@ -52,7 +52,7 @@ public class BlogDAO {
     public List<BlogDTO> getAllBlog() {
         List<BlogDTO> list = new ArrayList<>();
 
-        String query = "SELECT TOP 12 b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName, b.blogCateID\n"
+        String query = "SELECT b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName, b.blogCateID\n"
                 + "FROM Blog b\n"
                 + "INNER JOIN BlogCate bc ON b.BlogCateID = bc.BlogCateID\n"
                 + "ORDER BY NEWID()";
@@ -201,16 +201,27 @@ public class BlogDAO {
         return blogID;
     }
 
+    public void DeleteBlog(String blogID) {
+        String query = "DELETE FROM Blog\n"
+                + "WHERE BlogID = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, blogID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
 
         BlogDAO dao = new BlogDAO();
-
 
         List<BlogDTO> total = dao.getAllBlog();
         for (BlogDTO blogDTO : total) {
             System.out.println(blogDTO);
         }
-
 
     }
 

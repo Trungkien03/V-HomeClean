@@ -275,7 +275,7 @@ INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address],
 GO
 INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0021', N'trungkiennguyen024310@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiênnnn', N'ádasd', N'0974102439', 6, N'Male', CAST(N'2002-10-02' AS Date), 1, N'img/adminKien.jpg', 100000.0000)
 GO
-INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0022', N'trungkiennguyen123@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiên', N's01.01-2001 The Sapphire Parkville || Vinhomes Smart City - TP. Hồ Chí Minh', N'0974102412', 4, N'male', CAST(N'2002-10-03' AS Date), 1, N'img/young-housewife-cleaning-with-rug-detergent-isolated.png', 0.0000)
+INSERT [dbo].[Account] ([AccountID], [Email], [Password], [FullName], [Address], [Phone], [RoleID], [Gender], [DateOfBirth], [Status], [Image], [Salary]) VALUES (N'AC0022', N'trungkiennguyen123@gmail.com', N'Kienmundo1!', N'Nguyễn Trung Kiên', N's01.01-2001 The Sapphire Parkville || Vinhomes Smart City - TP. Hồ Chí Minh', N'0974102412', 3, N'male', CAST(N'2002-10-03' AS Date), 1, N'img/young-housewife-cleaning-with-rug-detergent-isolated.png', 0.0000)
 GO
 
 GO
@@ -328,7 +328,7 @@ INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [S
 GO
 INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (2, N'AC0006', N'Hoàn thành', N'AC0004', N'SE02')
 GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (3, N'AC0006', N'Xác nhận', N'AC0004', N'SE02')
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (3, N'AC0006', N'Hoàn thành', N'AC0004', N'SE02')
 GO
 INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (4, N'AC0006', N'Hoàn thành', N'AC0003', N'SE03')
 GO

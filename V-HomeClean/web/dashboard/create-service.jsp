@@ -94,7 +94,7 @@
                                             <label class="col-form-label col-md-2 text-info">Giá dịch vụ</label>
                                             <div class="col-md-10">
                                                 <div class="input-group">
-                                                    <span class="input-group-text">$</span>
+                                                    <span class="input-group-text">VND</span>
                                                     <input name="servicePrice" class="form-control" required="" type="number">
                                                 </div>
                                             </div>

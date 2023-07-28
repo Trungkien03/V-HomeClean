@@ -96,12 +96,25 @@ public class FeedBackDAO {
 
     public List<FeedBackDTO> getAllFeedBack() {
         List<FeedBackDTO> list = new ArrayList<>();
-        String query = "SELECT f.FeedbackID, f.Date, f.Feedback_Text, f.Rating, f.AccountID, f.BookingID, a.FullName, a.Image\n"
-                + "FROM Feedback f\n"
-                + "JOIN Account a ON f.AccountID = a.AccountID\n"
-                + "JOIN Booking b ON f.BookingID = b.BookingID\n"
-                + "WHERE b.BookingStatus = 'Hoàn thành'\n"
-                + "ORDER BY f.Date DESC;"; // Sửa ORDER BY thành "Date DESC" để lấy 3 feedback mới nhất
+        String query = "SELECT FeedbackID, Date, Feedback_Text, Rating, AccountID, BookingID, FullName, Image\n"
+                + "FROM (\n"
+                + "    SELECT \n"
+                + "        f.FeedbackID, \n"
+                + "        f.Date, \n"
+                + "        f.Feedback_Text, \n"
+                + "        f.Rating, \n"
+                + "        f.AccountID, \n"
+                + "        f.BookingID, \n"
+                + "        a.FullName, \n"
+                + "        a.Image,\n"
+                + "        ROW_NUMBER() OVER (PARTITION BY a.FullName ORDER BY f.Date DESC) AS rn\n"
+                + "    FROM Feedback f\n"
+                + "    JOIN Account a ON f.AccountID = a.AccountID\n"
+                + "    JOIN Booking b ON f.BookingID = b.BookingID\n"
+                + "    WHERE b.BookingStatus = 'Hoàn thành'\n"
+                + ") AS subquery\n"
+                + "WHERE rn = 1\n"
+                + "ORDER BY Date DESC;"; // Sửa ORDER BY thành "Date DESC" để lấy 3 feedback mới nhất
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
