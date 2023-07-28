@@ -263,7 +263,6 @@
 
                 if (status === "create-service" && !isModalDisplayed) {
                     var openModalBtn = document.getElementById('openModalBtn');
-                    openModalBtn.style.display = "block";
                     openModalBtn.click();
                     isModalDisplayed = true;
                 }

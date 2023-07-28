@@ -139,7 +139,7 @@
                                         <img class="img-fluid" src="${o.image}" alt="">
                                         <div class="service-text position-relative text-center h-100 p-4">
                                             <h5 class="mb-3">${o.serviceName}</h5>
-                                            <p>Giá ước lượng chỉ từ <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
+                                            <p>Giá dịch vụ: <fmt:formatNumber value="${o.price}" pattern="###,### VND"/></p>
                                             <a class="small" href="GetAppointmentController?serviceID=${o.serviceID}">Đặt Lịch Ngay<i class="fa fa-arrow-right ms-3"></i></a>
                                         </div>
                                     </div>

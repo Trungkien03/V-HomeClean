@@ -76,7 +76,7 @@
                                         <div class="col-md-12">
                                             <h1>Thông tin đơn của bạn</h1>
                                             <p class="mb-4">Kiểm tra lại thông tin đơn hàng thông qua Thông Tin Tài Khoản của bạn</p>
-                                            <div style="color: black;">Mã đơn hàng của bạn: 12${bookingIDNumber}</div>
+                                            <div style="color: black;">Mã đơn hàng của bạn: ${bookingIDNumber}</div>
                                         <div style="color: black;" class="card mb-4">
                                             <div class="card-body">
                                                 <div class="row">

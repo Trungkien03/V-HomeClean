@@ -122,16 +122,6 @@
                                             </c:when>
                                         </c:choose>
                                     </div>
-                                    <div class="profile-list">
-                                        <a href="group-history.jsp"
-                                           ><button
-                                                type="button"
-                                                class="btn btn-block btn-outline-light"
-                                                >
-                                                Xem ....
-                                            </button></a
-                                        >
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -157,14 +147,6 @@
                                                 href="#top-justified-tab2"
                                                 data-bs-toggle="tab"
                                                 >Đơn Dịch Vụ</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="#top-justified-tab3"
-                                                data-bs-toggle="tab"
-                                                >Thông Báo</a
                                             >
                                         </li>
                                     </ul>

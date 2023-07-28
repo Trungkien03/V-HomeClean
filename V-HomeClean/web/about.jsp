@@ -76,9 +76,7 @@
                             <img class="position-absolute w-100 h-100" src="img/about.jpg" alt="" style="object-fit: cover;">
                             <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
                                 <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-                                    <h1 class="text-white">25</h1>
-                                    <h2 class="text-white">Years</h2>
-                                    <h5 class="text-white mb-0">Experience</h5>
+                                    <img src="css/assets/img/icon.png">
                                 </div>
                             </div>
                         </div>
