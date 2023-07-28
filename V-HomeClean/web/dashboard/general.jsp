@@ -139,7 +139,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Thông Tin</h4>
-                                    <h6>${message}</h6>
+                                    <h6 class="text-center" style="color: green;">${message}</h6>
                                 </div>
                                 <div class="card-body">
                                     <ul class="nav nav-tabs nav-tabs-top nav-justified">

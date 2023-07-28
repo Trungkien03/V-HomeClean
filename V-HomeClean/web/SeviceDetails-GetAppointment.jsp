@@ -87,9 +87,7 @@
                         <img class="position-absolute w-100 h-100" src="${ServiceDetail.image}" alt="" style="object-fit: cover;">
                         <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
                             <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-                                <h1 class="text-white">25</h1>
-                                <h2 class="text-white">Years</h2>
-                                <h5 class="text-white mb-0">Experience</h5>
+                                <img src="css/assets/img/icon.png">
                             </div>
                         </div>
                     </div>
@@ -110,7 +108,7 @@
                                 </div>
                                 <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
                                     <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                    <h6 class="mb-0">24/7 giờ làm việc</h6>
+                                    <h6 class="mb-0">Phục vụ tận tình</h6>
                                 </div>
                                 <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
                                     <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
@@ -138,7 +136,7 @@
                     <p class="mb-0">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>
                 </div>
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-
+                     <h6 class="text-body text-primary display-6 mb-0">Điền thông tin của bạn</h6>
 
                     <form action="MainController" method="post">
                         <input type="hidden" value="${sessionScope.acc.accountID}" name="accountID">
@@ -379,7 +377,7 @@
                 const vinHomesIDPattern = /^s\d{2}\.\d{2}-\d{4}$/i;
 
                 if (!vinHomesIDPattern.test(vinHomesIDValue)) {
-                    vinHomeIDError.textContent = "Mã Tòa và Mã Phòng phải điền theo đúng định dạng Sxx.xx - xxxx (x là số tự nhiên).";
+                    vinHomeIDError.textContent = "Mã Tòa và Mã Phòng phải điền theo đúng định dạng Sxx.xx-xxxx (x là số tự nhiên).";
                 }
             }
 

@@ -65,7 +65,6 @@
                 response.sendRedirect("login.jsp");
             }
         %>
-        <h2>${message}</h2>
         <jsp:include page="navigation.jsp"></jsp:include>
             <section class=" my-5">
                 <div class="container-fluid">
@@ -90,20 +89,21 @@
                             <!-- đay là tab thông tin đơn hàng   -->
                             <div class="tab-pane fade show active" id="task" role="tabpanel" aria-labelledby="security-tab">
                                 <h3 class="mb-4">Danh Sách</h3>
-                                <div class="row">
-                                    <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-success">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">No</th>
-                                                <th class="text-center" style="width: 100px;">Mã đơn hàng</th>
-                                                <th class="text-center">Khách hàng</th>
-                                                <th class="text-center" style="width: 100px;">Dịch vụ</th>
-                                                <th class="text-center" style="width: 150px;">Khu vực</th>
-                                                <th class="text-center">Thời gian</th>
-                                                <th class="text-center" style="width: 150px;">Tình Trạng</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                <h2>${message}</h2>
+                            <div class="row">
+                                <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-success">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center" style="width: 100px;">Mã đơn hàng</th>
+                                            <th class="text-center">Khách hàng</th>
+                                            <th class="text-center" style="width: 100px;">Dịch vụ</th>
+                                            <th class="text-center" style="width: 150px;">Khu vực</th>
+                                            <th class="text-center">Thời gian</th>
+                                            <th class="text-center" style="width: 150px;">Tình Trạng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         <c:forEach var="booking" items="${TaskList}" varStatus="loop">
                                             <c:set var="addressParts" value="${fn:split(booking.bookingAddress, '||')}"/>
                                             <c:set var="date" value="${fn:split(booking.bookingDate, ' ')}"/>

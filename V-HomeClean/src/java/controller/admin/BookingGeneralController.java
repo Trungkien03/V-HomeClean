@@ -124,6 +124,7 @@ public class BookingGeneralController extends HttpServlet {
                         List<AccountDTO> ListStaffsFixWater = aDao.getAvailableStaffByRoleID(roleIDFixWater);
                         List<AccountDTO> ListstaffsClean = aDao.getAvailableStaffByRoleID(roleIDClean);
                         List<AccountDTO> listAccounts = aDao.getAllAccounts();
+                        request.setAttribute("message", "Xác nhận đơn và cập nhật nhân viên thành công");
                         request.setAttribute("listAccounts", listAccounts);
                         request.setAttribute("ListStaffsFixEletric", ListStaffsFixEletric);
                         request.setAttribute("ListStaffsFixWater", ListStaffsFixWater);

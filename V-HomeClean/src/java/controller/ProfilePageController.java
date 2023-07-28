@@ -73,7 +73,7 @@ public class ProfilePageController extends HttpServlet {
                     request.setAttribute("message", "Cập nhật thông tin tài khoản thành công!");
                     url = "userProfile.jsp";
                 }
-                
+
                 //thay đổi mật khẩu
                 if (action.equalsIgnoreCase("Thay Đổi Mật Khẩu")) {
                     String password = request.getParameter("password");
@@ -104,7 +104,7 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
-                
+
                 //đánh giá đơn hàng
                 if (action.equalsIgnoreCase("Đánh giá")) {
                     String bookingIDString = request.getParameter("bookingID");
@@ -135,22 +135,24 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
-                
+
                 //kiểm tra đơn hàng khi vừa mới đặt hàng xong
-                if (action.equalsIgnoreCase("Kiểm tra")) {
+                if (action.equalsIgnoreCase("KiemTra")) {
+                    String notificationID = request.getParameter("notificationID");
+                    nDao.updateStatusNotification(notificationID, "true");
                     request.setAttribute("status", "feedBack");
                     url = "userProfile.jsp";
                 }
-                
+
                 //xem thông báo từ homepage
                 if (action.equalsIgnoreCase("XemThongBao")) {
                     String notificationID = request.getParameter("notificationID");
                     nDao.updateStatusNotification(notificationID, "true");
                     request.setAttribute("status", "checkNoti");
-                    url = "userProfile.jsp";
+                    url = "StaffTaskPageController";
                 }
-                
-                if(action.equalsIgnoreCase("Hủy")){
+
+                if (action.equalsIgnoreCase("Hủy")) {
                     String bookingIDString = request.getParameter("bookingID");
                     int bookingID = 0;
                     if (bookingIDString != null) {
@@ -159,7 +161,7 @@ public class ProfilePageController extends HttpServlet {
                     String feedbackDetail = request.getParameter("feedbackDetail");
                     double rating = 0;
                     String feedbackDefault = "";
-                    if(feedbackDetail != null){
+                    if (feedbackDetail != null) {
                         feedbackDefault = feedbackDetail;
                     }
                     BookingDTO bookingUser = bDao.getBookingByID(bookingIDString);

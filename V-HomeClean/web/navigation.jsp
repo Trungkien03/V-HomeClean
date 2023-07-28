@@ -245,52 +245,55 @@
                                     <li class="notification-link notification-message">
                                         <a href="<c:choose>
                                                <c:when test="${notification.typeNoti == 'Staff'}">
-                                                   StaffTaskPageController
+                                                   ProfilePageController?notificationID=${notification.notificationID}&action=XemThongBao
+                                               </c:when>
+                                               <c:when test="${notification.typeNoti == 'User'}">
+                                                   ProfilePageController?notificationID=${notification.notificationID}&action=KiemTra
                                                </c:when>
                                                <c:otherwise>
-                                                   ProfilePageController?notificationID=${notification.notificationID}&action=XemThongBao
+                                                   StaffTaskPageController
                                                </c:otherwise>
                                            </c:choose>">
                                             <!-- Rest of your code -->
-                                        <div class="media d-flex">
-                                            <span style="width: 50px; text-align: center;" class="avatar avatar-sm flex-shrink-0">
-                                                <c:set var="image" value="img/user.jpg" /> <!-- Khởi tạo giá trị mặc định cho image -->
+                                            <div class="media d-flex">
+                                                <span style="width: 50px; text-align: center;" class="avatar avatar-sm flex-shrink-0">
+                                                    <c:set var="image" value="img/user.jpg" /> <!-- Khởi tạo giá trị mặc định cho image -->
 
-                                                <c:forEach items="${ListBookingAccounts}" var="booking">
-                                                    <c:if test="${notification.bookingID eq booking.bookingID}">
-                                                        <c:forEach items="${listAllAccounts}" var="account">
-                                                            <c:if test="${account.accountID eq booking.staffID}">
-                                                                <c:set var="image" value="${account.image}" />
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </c:if>
-                                                </c:forEach>
-                                                <img class="avatar-img rounded-circle" alt="User Image" src="${image}" />
-                                            </span>
-                                            <div class="media-body">
-                                                <p class="noti-details" style="color: black">
-                                                    ${notification.detail}
-                                                </p>
-                                                <c:set var="minutes" value="${notification.calculateMinutesFromNow()}" />
-                                                <p class="noti-time">
-                                                    <span class="notification-time">
-                                                        <c:choose>
-                                                            <c:when test="${minutes < 60}">
-                                                                ${minutes} phút trước
-                                                            </c:when>
-                                                            <c:when test="${minutes < 1440}">
-                                                                <c:set var="hours" value="${fn:substringBefore((minutes / 60), '.')}"/>
-                                                                ${hours} giờ trước
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <c:set var="days" value="${fn:substringBefore((minutes / 1440), '.')}"/>
-                                                                ${days} ngày trước
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </span>
-                                                </p>
+                                                    <c:forEach items="${ListBookingAccounts}" var="booking">
+                                                        <c:if test="${notification.bookingID eq booking.bookingID}">
+                                                            <c:forEach items="${listAllAccounts}" var="account">
+                                                                <c:if test="${account.accountID eq booking.staffID}">
+                                                                    <c:set var="image" value="${account.image}" />
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <img class="avatar-img rounded-circle" alt="User Image" src="${image}" />
+                                                </span>
+                                                <div class="media-body">
+                                                    <p class="noti-details" style="color: black">
+                                                        ${notification.detail}
+                                                    </p>
+                                                    <c:set var="minutes" value="${notification.calculateMinutesFromNow()}" />
+                                                    <p class="noti-time">
+                                                        <span class="notification-time">
+                                                            <c:choose>
+                                                                <c:when test="${minutes < 60}">
+                                                                    ${minutes} phút trước
+                                                                </c:when>
+                                                                <c:when test="${minutes < 1440}">
+                                                                    <c:set var="hours" value="${fn:substringBefore((minutes / 60), '.')}"/>
+                                                                    ${hours} giờ trước
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <c:set var="days" value="${fn:substringBefore((minutes / 1440), '.')}"/>
+                                                                    ${days} ngày trước
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </span>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
                                         </a>
                                     </li>
                                 </c:forEach>

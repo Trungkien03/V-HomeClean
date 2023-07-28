@@ -334,15 +334,41 @@ INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [S
 GO
 INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (5, N'AC0007', N'Hoàn thành', N'AC0021', N'SE04')
 GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (6, N'AC0007', N'Xác nhận', N'AC0020', N'SE02')
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (6, N'AC0007', N'Hoàn thành', N'AC0020', N'SE02')
 GO
 INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (7, N'AC0007', N'Hoàn thành', N'AC0021', N'SE02')
 GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (8, N'AC0021', N'Chờ xác nhận', N'', N'SE02')
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (8, N'AC0021', N'Hoàn thành', N'AC0003', N'SE02')
 GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (9, N'AC0007', N'Chờ xác nhận', N'', N'SE02')
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (9, N'AC0007', N'Hoàn thành', N'AC0021', N'SE02')
 GO
-INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (10, N'AC0022', N'Chờ xác nhận', N'', N'SE02')
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (10, N'AC0022', N'Hoàn thành', N'AC0005', N'SE02')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (11, N'AC0008', N'Hoàn thành', N'AC0021', N'SE02')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (12, N'AC0008', N'Hoàn thành', N'AC0017', N'SE07')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (13, N'AC0008', N'Hoàn thành', N'AC0016', N'SE06')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (14, N'AC0010', N'Hoàn thành', N'AC0016', N'SE06')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (15, N'AC0010', N'Hoàn thành', N'AC0005', N'SE03')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (16, N'AC0007', N'Hoàn thành', N'AC0006', N'SE02')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (17, N'AC0010', N'Hoàn thành', N'AC0005', N'SE03')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (18, N'AC0010', N'Hoàn thành', N'AC0005', N'SE03')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (19, N'AC0010', N'Hoàn thành', N'AC0005', N'SE03')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (20, N'AC0010', N'Hoàn thành', N'AC0005', N'SE03')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (21, N'AC0010', N'Hoàn thành', N'AC0005', N'SE03')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (22, N'AC0006', N'Hoàn thành', N'AC0003', N'SE03')
+GO
+INSERT [dbo].[Booking] ([BookingID], [AccountID], [BookingStatus], [StaffID], [ServiceID]) VALUES (23, N'AC0007', N'Hoàn thành', N'AC0021', N'SE04')
 GO
 SET IDENTITY_INSERT [dbo].[Booking] OFF
 GO
@@ -350,25 +376,57 @@ SET IDENTITY_INSERT [dbo].[BookingDetail] ON
 GO
 INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (1, 1, 300000.0000, CAST(N'2023-01-28T00:49:00.000' AS DateTime), N'S1.07 || Vinhomes Smart City - Hà Nội', N'Định kì theo tuần', N'Test')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (2, 2, 100000.0000, CAST(N'2023-07-29T04:32:00.000' AS DateTime), N'S1.08 || Vinhomes Smart City - Hà Nội', N'Dịch vụ 1 lần', N'Chuẩn bị kĩ càng giúp tôi')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (2, 2, 100000.0000, CAST(N'2023-02-26T04:32:00.000' AS DateTime), N'S1.08 || Vinhomes Smart City - Hà Nội', N'Dịch vụ 1 lần', N'Chuẩn bị kĩ càng giúp tôi')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (3, 3, 100000.0000, CAST(N'2023-07-29T16:13:00.000' AS DateTime), N'S1.08 || Vinhomes Smart City - Hà Nội', N'Định kì theo tuần', N'Oke chưa ? ')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (3, 3, 100000.0000, CAST(N'2023-02-26T16:13:00.000' AS DateTime), N'S1.08 || Vinhomes Smart City - Hà Nội', N'Định kì theo tuần', N'Oke chưa ? ')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (4, 4, 300000.0000, CAST(N'2023-06-30T15:24:00.000' AS DateTime), N'S1.05 || Vinhomes Smart City - Hà Nội', N'Dịch vụ 1 lần', N'Ok')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (4, 4, 300000.0000, CAST(N'2023-03-30T15:24:00.000' AS DateTime), N'S1.05 || Vinhomes Smart City - Hà Nội', N'Dịch vụ 1 lần', N'Ok')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (5, 5, 200000.0000, CAST(N'2023-08-12T14:26:00.000' AS DateTime), N'S1.01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'Ok')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (5, 5, 200000.0000, CAST(N'2023-04-12T14:26:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Dịch vụ 1 lần', N'Ok')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (6, 6, 100000.0000, CAST(N'2023-07-19T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tháng', N'')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (6, 6, 100000.0000, CAST(N'2023-04-19T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (7, 7, 100000.0000, CAST(N'2023-07-19T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Golden River - TP. Hồ Chí Minh', N'Định kì theo tháng', N'')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (7, 7, 100000.0000, CAST(N'2023-05-19T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (8, 8, 100000.0000, CAST(N'2023-07-21T00:12:00.000' AS DateTime), N'S01 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (8, 8, 100000.0000, CAST(N'2023-05-21T00:12:00.000' AS DateTime), N'S01 || Vinhomes Smart City - Hà Nội', N'Dịch vụ 1 lần', N'')
 GO
-INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (9, 9, 100000.0000, CAST(N'2023-07-27T07:10:00.000' AS DateTime), N's01.01-3201 The Sapphire 1 || Vinhomes Central Park - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (9, 9, 100000.0000, CAST(N'2023-05-27T07:10:00.000' AS DateTime), N's01.01-3201 The Sapphire 1 || Vinhomes Smart City - Hà Nội', N'Dịch vụ 1 lần', N'')
 GO
 INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (10, 10, 100000.0000, CAST(N'2023-07-28T14:40:00.000' AS DateTime), N'S01.12-0101 The Sapphire Parkville || Vinhomes Smart City - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
 GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (11, 11, 100000.0000, CAST(N'2023-07-28T13:13:00.000' AS DateTime), N's01.01-0101 The Sapphire 2 || Vinhomes Smart City - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (12, 12, 100000.0000, CAST(N'2023-05-28T13:18:00.000' AS DateTime), N'S01.02-0120 The Sapphire 3 || Vinhomes Smart City - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (13, 13, 250000.0000, CAST(N'2023-06-29T14:15:00.000' AS DateTime), N'S01.12-0101 The Sapphire 2 || Vinhomes Smart City - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (14, 14, 250000.0000, CAST(N'2023-06-28T14:23:00.000' AS DateTime), N's03.03-0310 The Sapphire 2 || Vinhomes Smart City - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (15, 15, 300000.0000, CAST(N'2023-06-28T13:20:00.000' AS DateTime), N's03.01-0310 The Sapphire Parkville || Vinhomes Smart City - TP. Hồ Chí Minh', N'Dịch vụ 1 lần', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (16, 16, 100000.0000, CAST(N'2023-06-19T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
+GO
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (17, 17, 100000.0000, CAST(N'2023-07-24T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
+GO
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (18, 18, 100000.0000, CAST(N'2023-07-24T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
+GO
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (19, 19, 100000.0000, CAST(N'2023-07-25T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
+GO
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (20, 20, 100000.0000, CAST(N'2023-07-25T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
+GO
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (21, 21, 100000.0000, CAST(N'2023-07-26T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (22, 22, 100000.0000, CAST(N'2023-07-28T20:19:00.000' AS DateTime), N'S1.01 || Vinhomes Smart City - Hà Nội', N'Định kì theo tháng', N'')
+GO
+INSERT [dbo].[BookingDetail] ([BookingDetail_ID], [BookingID], [TotalPrice], [BookingDate], [BookingAddress], [TypeOfService], [Message]) VALUES (23, 23, 100000.0000, CAST(N'2023-07-27T00:12:00.000' AS DateTime), N'S01 || Vinhomes Smart City - Hà Nội', N'Dịch vụ 1 lần', N'')
+GO
 SET IDENTITY_INSERT [dbo].[BookingDetail] OFF
+GO
 GO
 SET IDENTITY_INSERT [dbo].[Notification] ON 
 GO
@@ -463,15 +521,49 @@ SET IDENTITY_INSERT [dbo].[Notification] OFF
 
 SET IDENTITY_INSERT [dbo].[Feedback] ON 
 GO
-INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (1, CAST(N'2023-06-28T11:47:18.540' AS DateTime), N'Dịch vụ tốt và Oke', 2.6, N'AC0006', 1)
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (1, CAST(N'2023-06-28T11:47:18.540' AS DateTime), N'Tôi rất ấn tượng với dịch vụ dọn dẹp! Căn hộ của tôi chưa bao giờ sáng sủa như vậy trước đây. Rất đáng giới thiệu!', 2.6, N'AC0006', 1)
 GO
-INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (2, CAST(N'2023-06-28T12:12:20.373' AS DateTime), N'Thắng đã hiểu chưa ??', 4.5, N'AC0006', 2)
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (2, CAST(N'2023-06-28T12:12:20.373' AS DateTime), N'Dịch vụ sửa chữa rất tốt! Kỹ thuật viên rất giỏi và đã sửa chữa thiết bị của tôi nhanh chóng. Cảm ơn vì dịch vụ xuất sắc', 4.5, N'AC0006', 2)
 GO
-INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (3, CAST(N'2023-07-11T13:38:27.240' AS DateTime), N'OK', 3.5, N'AC0007', 5)
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (3, CAST(N'2023-07-11T13:38:27.240' AS DateTime), N'Nhân viên dọn dẹp làm việc rất cẩn thận và chuyên nghiệp. Chú ý từng chi tiết và để lại ngôi nhà của tôi sạch sẽ không tì vết. Tôi rất hài lòng với kết quả!', 3.5, N'AC0007', 5)
 GO
-INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (4, CAST(N'2023-07-18T20:40:29.160' AS DateTime), N'Oke dịch vụ tốt', 4.6, N'AC0006', 4)
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (4, CAST(N'2023-07-18T20:40:29.160' AS DateTime), N'Nhân viên làm việc tuyệt vời trong căn hộ của tôi. Cảm giác rất dễ chịu khi trở về nhà với một không gian sạch sẽ và ngăn nắp như thế này. Đáng giới thiệu!', 4.6, N'AC0006', 4)
 GO
-INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (5, CAST(N'2023-07-18T20:43:36.263' AS DateTime), N'Oke dịch vụ ổn ', 3.8, N'AC0007', 7)
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (5, CAST(N'2023-07-18T20:43:36.263' AS DateTime), N'Tôi bất ngờ vui mừng với dịch vụ sửa chữa nhanh chóng và hiệu quả. Kỹ thuật viên biết rõ đang làm gì và sửa chữa vấn đề một cách nhanh chóng. Cảm ơn bạn!', 3.8, N'AC0007', 7)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (6, CAST(N'2023-06-28T11:47:18.540' AS DateTime), N'Tôi rất ấn tượng với dịch vụ dọn dẹp! Căn hộ của tôi chưa bao giờ sáng sủa như vậy trước đây. Rất đáng giới thiệu!', 2.6, N'AC0006', 6)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (7, CAST(N'2023-06-28T12:12:20.373' AS DateTime), N'Dịch vụ sửa chữa rất tốt! Kỹ thuật viên rất giỏi và đã sửa chữa thiết bị của tôi nhanh chóng. Cảm ơn vì dịch vụ xuất sắc', 4.5, N'AC0006', 8)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (8, CAST(N'2023-07-11T13:38:27.240' AS DateTime), N'Nhân viên dọn dẹp làm việc rất cẩn thận và chuyên nghiệp. Chú ý từng chi tiết và để lại ngôi nhà của tôi sạch sẽ không tì vết. Tôi rất hài lòng với kết quả!', 3.5, N'AC0007', 9)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (9, CAST(N'2023-07-18T20:40:29.160' AS DateTime), N'Nhân viên làm việc tuyệt vời trong căn hộ của tôi. Cảm giác rất dễ chịu khi trở về nhà với một không gian sạch sẽ và ngăn nắp như thế này. Đáng giới thiệu!', 4.6, N'AC0006', 10)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (10, CAST(N'2023-07-18T20:43:36.263' AS DateTime), N'Tôi bất ngờ vui mừng với dịch vụ sửa chữa nhanh chóng và hiệu quả. Kỹ thuật viên biết rõ đang làm gì và sửa chữa vấn đề một cách nhanh chóng. Cảm ơn bạn!', 3.8, N'AC0007', 11)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (11, CAST(N'2023-06-28T11:47:18.540' AS DateTime), N'Tôi rất ấn tượng với dịch vụ dọn dẹp! Căn hộ của tôi chưa bao giờ sáng sủa như vậy trước đây. Rất đáng giới thiệu!', 2.6, N'AC0006', 12)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (12, CAST(N'2023-06-28T12:12:20.373' AS DateTime), N'Dịch vụ sửa chữa rất tốt! Kỹ thuật viên rất giỏi và đã sửa chữa thiết bị của tôi nhanh chóng. Cảm ơn vì dịch vụ xuất sắc', 4.5, N'AC0006', 13)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (13, CAST(N'2023-07-11T13:38:27.240' AS DateTime), N'Nhân viên dọn dẹp làm việc rất cẩn thận và chuyên nghiệp. Chú ý từng chi tiết và để lại ngôi nhà của tôi sạch sẽ không tì vết. Tôi rất hài lòng với kết quả!', 3.5, N'AC0007', 14)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (14, CAST(N'2023-07-18T20:40:29.160' AS DateTime), N'Nhân viên làm việc tuyệt vời trong căn hộ của tôi. Cảm giác rất dễ chịu khi trở về nhà với một không gian sạch sẽ và ngăn nắp như thế này. Đáng giới thiệu!', 4.6, N'AC0006', 15)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (15, CAST(N'2023-07-18T20:43:36.263' AS DateTime), N'Tôi bất ngờ vui mừng với dịch vụ sửa chữa nhanh chóng và hiệu quả. Kỹ thuật viên biết rõ đang làm gì và sửa chữa vấn đề một cách nhanh chóng. Cảm ơn bạn!', 3.8, N'AC0007', 16)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (16, CAST(N'2023-06-28T11:47:18.540' AS DateTime), N'Tôi rất ấn tượng với dịch vụ dọn dẹp! Căn hộ của tôi chưa bao giờ sáng sủa như vậy trước đây. Rất đáng giới thiệu!', 2.6, N'AC0006', 17)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (17, CAST(N'2023-06-28T12:12:20.373' AS DateTime), N'Dịch vụ sửa chữa rất tốt! Kỹ thuật viên rất giỏi và đã sửa chữa thiết bị của tôi nhanh chóng. Cảm ơn vì dịch vụ xuất sắc', 4.5, N'AC0006', 18)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (18, CAST(N'2023-07-11T13:38:27.240' AS DateTime), N'Nhân viên dọn dẹp làm việc rất cẩn thận và chuyên nghiệp. Chú ý từng chi tiết và để lại ngôi nhà của tôi sạch sẽ không tì vết. Tôi rất hài lòng với kết quả!', 3.5, N'AC0007', 19)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (19, CAST(N'2023-07-18T20:40:29.160' AS DateTime), N'Nhân viên làm việc tuyệt vời trong căn hộ của tôi. Cảm giác rất dễ chịu khi trở về nhà với một không gian sạch sẽ và ngăn nắp như thế này. Đáng giới thiệu!', 4.6, N'AC0006', 20)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (20, CAST(N'2023-07-18T20:43:36.263' AS DateTime), N'Tôi bất ngờ vui mừng với dịch vụ sửa chữa nhanh chóng và hiệu quả. Kỹ thuật viên biết rõ đang làm gì và sửa chữa vấn đề một cách nhanh chóng. Cảm ơn bạn!', 3.8, N'AC0007', 21)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (21, CAST(N'2023-07-11T13:38:27.240' AS DateTime), N'Nhân viên dọn dẹp làm việc rất cẩn thận và chuyên nghiệp. Chú ý từng chi tiết và để lại ngôi nhà của tôi sạch sẽ không tì vết. Tôi rất hài lòng với kết quả!', 3.5, N'AC0007', 22)
+GO
+INSERT [dbo].[Feedback] ([FeedbackID], [Date], [Feedback_Text], [Rating], [AccountID], [BookingID]) VALUES (22, CAST(N'2023-07-18T20:40:29.160' AS DateTime), N'Nhân viên làm việc tuyệt vời trong căn hộ của tôi. Cảm giác rất dễ chịu khi trở về nhà với một không gian sạch sẽ và ngăn nắp như thế này. Đáng giới thiệu!', 4.6, N'AC0006', 23)
 GO
 SET IDENTITY_INSERT [dbo].[Feedback] OFF
 GO

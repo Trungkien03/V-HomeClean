@@ -80,7 +80,6 @@
                                                 data-bs-toggle="tab"
                                                 >Đơn Hẹn</a
                                             >
-                                            <p style="color: #00bf6f">${message}</p>
                                         </li>
                                         <li class="nav-item">
                                             <a

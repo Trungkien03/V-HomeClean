@@ -7,10 +7,12 @@ package controller;
 
 import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.FeedBackDAO;
 import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
+import DTO.FeedBackDTO;
 import DTO.NotificationDTO;
 import DTO.ServiceDTO;
 import java.io.IOException;
@@ -48,6 +50,7 @@ public class HomePageController extends HttpServlet {
         NotificationDAO nDao = new NotificationDAO();
         AccountDAO aDao = new AccountDAO();
         BookingDAO bDao = new BookingDAO();
+        FeedBackDAO fDao = new FeedBackDAO();
         AccountDTO a = (AccountDTO) session.getAttribute("acc");
         if (a != null) {
             String typeNotiUser = "User";
@@ -73,8 +76,15 @@ public class HomePageController extends HttpServlet {
         ListStaffs.addAll(ListStaffsFixEletric);
         ListStaffs.addAll(ListStaffsFixWater);
         ListStaffs.addAll(ListstaffsClean);
+        
+        List<FeedBackDTO> listF = fDao.getAllFeedBack();
+        int totalUser = aDao.CountAccountByRoleID(4);
+        int totalBookingDone = bDao.CountTotalBookingExceptStatus("Hủy");
+        request.setAttribute("totalUser", totalUser);
+        request.setAttribute("totalBookingDone", totalBookingDone);
         request.setAttribute("ListA", ListstaffsClean);
         request.setAttribute("listS", list);
+        request.setAttribute("ListF", listF);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

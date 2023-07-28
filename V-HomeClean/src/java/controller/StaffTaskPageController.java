@@ -84,7 +84,7 @@ public class StaffTaskPageController extends HttpServlet {
                     if (bookingID != 0) {
                         String bookingStatus = "Đang thực hiện";
                         bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
-                        request.setAttribute("message", "Không tìm thấy ID của booking");
+                        request.setAttribute("message", "Bắt đầu thực hiện đơn hàng");
                         check = true;
                     }
                     if (check == true) {
@@ -109,7 +109,7 @@ public class StaffTaskPageController extends HttpServlet {
                         double updateSalary = (userBooking.getTotalPrice() * 70) / 100;
                         double totalUpdate = getUpdateSalary + updateSalary; // cập nhật lại lương nhân viên khi mới làm xong
                         aDao.updateSalaryWithAccountID(staff.getAccountID(), totalUpdate);
-                        request.setAttribute("message", "Không tìm thấy ID của booking");
+                        request.setAttribute("message", "Xác nhận hoàn thành đơn thành công");
                         check = true;
                     }
                     if (check == true) {
