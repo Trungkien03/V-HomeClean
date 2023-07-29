@@ -99,7 +99,7 @@
                             <h1 class="display-6 mb-0">${ServiceDetail.serviceName}</h1>
                         </div>
                         <p>${ServiceDetail.serviceDetail}</p>
-                        <h6 class="mb-2">Giá ước lượng chỉ từ <fmt:formatNumber value="${ServiceDetail.price}" pattern="###,### VND"/></h6>
+                        <h6 class="mb-2">Giá dịch vụ: <fmt:formatNumber value="${ServiceDetail.price}" pattern="###,### VND"/></h6>
                         <div class="border-top mt-4 pt-4">
                             <div class="row g-4">
                                 <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.1s">
@@ -178,7 +178,7 @@
                                 <div style="color: black;" class="form-floating">
                                     <select style="color: black;" required="Vui lòng chọn khu vực" class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
                                         <option value="">-- Chọn Vinhomes --</option>
-                                        <option style="color: black;" value="Vinhomes Smart City - TP. Hồ Chí Minh">Vinhomes Smart City - Hà Nội</option>
+                                        <option style="color: black;" value="Vinhomes Smart City - Hà Nội">Vinhomes Smart City - Hà Nội</option>
                                     </select>
                                     <label for="relationship">Chọn khu vực</label>
                                 </div>
