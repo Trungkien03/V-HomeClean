@@ -82,6 +82,7 @@ public class BookingController extends HttpServlet {
                 String time = request.getParameter("time");
                 String message = request.getParameter("message");
                 String areaAppartment = request.getParameter("areaApartment");
+                String paymentMethod = request.getParameter("paymentMethod");
                 String status = "Chờ xác nhận";
                 String staffID = "";
 
@@ -152,11 +153,17 @@ public class BookingController extends HttpServlet {
                     request.setAttribute("timeError", timeError);
                     checkValidation = false;
                 }
+                
+                if (paymentMethod == null || paymentMethod.isEmpty()) {
+                    String paymentError = "Vui lòng chọn phương thức thanh toán";
+                    request.setAttribute("paymentError", paymentError);
+                    checkValidation = false;
+                }
 
                 if (checkValidation == true) {
                     ServiceDTO b = sdao.getServiceByID(serviceID);
                     int totalPrice = b.getPrice();
-                    int bookingIDNumber = dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
+                    int bookingIDNumber = dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message, paymentMethod);
                     String bookingID = String.valueOf(bookingIDNumber);
                     String detailNotification = a.getFullName() + " mới đặt lịch dịch vụ mới cho căn hộ " + vinHomesID + " ở khu vực " + area + " vào ngày " + date;
                     String typeNoti = "Admin";
@@ -167,6 +174,7 @@ public class BookingController extends HttpServlet {
                     request.setAttribute("bookingDate", bookingDate);
                     request.setAttribute("totalPrice", totalPrice);
                     request.setAttribute("bookingIDNumber", bookingIDNumber);
+                    request.setAttribute("paymentMethod", paymentMethod);
                     request.getRequestDispatcher(SUCCESS).forward(request, response);
                 } else {
                     List<ServiceDTO> list = sdao.getAllService();

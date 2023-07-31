@@ -117,6 +117,7 @@ CREATE TABLE BookingDetail
   TotalPrice MONEY,
   BookingDate DATETIME NOT NULL,
   BookingAddress NVARCHAR(255) NOT NULL,
+  PaymentMethod NVARCHAR(255) NOT NULL,
   TypeOfService NVARCHAR(100) NOT NULL,
   Message NVARCHAR(MAX),
   PRIMARY KEY (BookingDetail_ID),

@@ -150,6 +150,16 @@
                                                         <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="${totalPrice}" pattern="###,### VND" /></p>
                                                     </div>
                                                 </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p style="color: black;" class="mb-0">Phương thức thanh toán:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p style="color: black;" class="text-muted mb-0">${paymentMethod}</p>
+                                                    </div>
+                                                </div>
+                                                <hr>
                                             </div>
 
                                         </div>

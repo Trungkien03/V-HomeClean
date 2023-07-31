@@ -144,7 +144,7 @@ public class StaffTaskPageController extends HttpServlet {
                                 // Chuyển đổi thời gian 1 tuần sau thành String để hiển thị
                                 String oneWeekLaterString = sdf.format(oneWeekLater);
 
-                                int bookingIDNumber = bDao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, oneWeekLaterString, bookingAddress, typeOfService, message);
+                                int bookingIDNumber = bDao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingAddress, bookingAddress, typeOfService, message, typeNotiStaff);
                                 String detailNotificationForAdmin = "Một đơn dịch vụ của khách hàng " + accountBooking.getFullName() + " vừa được mới được tạo, thực hiện vào thời gian " + oneWeekLaterString;
                                 String detailNotificationForUser = "Đơn dịch vụ mới được khởi tạo, thực hiện vào ngày " + oneWeekLaterString;
                                 nDao.InsertNotification(accountBooking.getAccountID(), bookingIDString, detailNotificationForAdmin, "false", typeNotiAdmin);
@@ -183,7 +183,7 @@ public class StaffTaskPageController extends HttpServlet {
                                 // Chuyển đổi thời gian 1 tháng sau thành String để hiển thị
                                 String oneMonthLaterString = sdf.format(oneMonthLater);
 
-                                int bookingIDNumber = bDao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, oneMonthLaterString, bookingAddress, typeOfService, message);
+                                int bookingIDNumber = bDao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingAddress, bookingAddress, typeOfService, message, typeNotiStaff);
                                 String detailNotificationForAdmin = "Một đơn dịch vụ của khách hàng " + accountBooking.getFullName() + " vừa được mới được tạo, thực hiện vào thời gian " + oneMonthLaterString;
                                 String detailNotificationForUser = "Đơn dịch vụ mới được khởi tạo, thực hiện vào ngày " + oneMonthLaterString;
                                 nDao.InsertNotification(accountBooking.getAccountID(), bookingIDString, detailNotificationForAdmin, "false", typeNotiAdmin);

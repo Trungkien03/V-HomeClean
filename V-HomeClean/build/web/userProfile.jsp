@@ -307,6 +307,7 @@
                                             <th>Định Kì</th>
                                             <th>Thời gian</th>
                                             <th>Tổng chi phí</th>
+                                            <th>Phương thức</th>
                                             <th>Chỉnh sửa</th>
                                             <th>Tình Trạng</th>
                                         </tr>
@@ -320,6 +321,7 @@
                                                 <td>${booking.typeOfService}</td>
                                                 <td>${booking.bookingDate}</td>
                                                 <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>
+                                                <td>${booking.paymentMethod}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#b${booking.bookingID}">
                                                         Xem Thêm
@@ -454,6 +456,10 @@
                                                                                         <span style="position: absolute;" class="btn btn-success">VND</span>     
                                                                                     </div>
 
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="text-info">Phương thức</label>
+                                                                                    <input style="color: #000;" readonly="" value="${booking.paymentMethod}" type="text" class="form-control text-center">
                                                                                 </div>
                                                                             </form>
                                                                         </div>

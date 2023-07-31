@@ -3,24 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/header.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/create-service.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/DAO/BlogDAO.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/index.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/SeviceDetails-GetAppointment.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/general-booking.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/admin/BlogsManagementController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/services.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/general.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/service.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/taskStaffsPage.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/about.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/bookings.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/controller/HomePageController.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/DTO/BlogDTO.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/src/java/DAO/FeedBackDAO.java</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/userProfile.jsp</file>
-            <file>file:/C:/Users/trung/OneDrive%20-%20Microsoft%20365%20Business/Desktop/Project%20SWP/V-HomeClean/V-HomeClean/V-HomeClean/web/dashboard/blogs.jsp</file>
+            <file>file:/F:/CN5/SWP391/V-HomeClean/V-HomeClean/web/SeviceDetails-GetAppointment.jsp</file>
+            <file>file:/F:/CN5/SWP391/V-HomeClean/V-HomeClean/src/java/controller/GetAppointmentController.java</file>
+            <file>file:/F:/CN5/SWP391/V-HomeClean/V-HomeClean/web/BookingDone.jsp</file>
+            <file>file:/F:/CN5/SWP391/V-HomeClean/V-HomeClean/src/java/controller/BookingController.java</file>
+            <file>file:/F:/CN5/SWP391/V-HomeClean/V-HomeClean/src/java/controller/StaffTaskPageController.java</file>
+            <file>file:/F:/CN5/SWP391/V-HomeClean/V-HomeClean/web/userProfile.jsp</file>
+            <file>file:/F:/CN5/SWP391/V-HomeClean/V-HomeClean/src/java/controller/ProfilePageController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -12,13 +12,14 @@ public class BookingDTO {
     private int totalPrice;
     private String bookingDate;
     private String bookingAddress;
+    private String paymentMethod;
     private String typeOfService;
     private String message;
 
     public BookingDTO() {
     }
 
-    public BookingDTO(String bookingID, String accountID, String bookingStatus, String staffID, String serviceID, String serviceName, String bookingDetailID, int totalPrice, String bookingDate, String bookingAddress, String typeOfService, String message) {
+    public BookingDTO(String bookingID, String accountID, String bookingStatus, String staffID, String serviceID, String serviceName, String bookingDetailID, int totalPrice, String bookingDate, String bookingAddress, String paymentMethod, String typeOfService, String message) {
         this.bookingID = bookingID;
         this.accountID = accountID;
         this.bookingStatus = bookingStatus;
@@ -29,9 +30,12 @@ public class BookingDTO {
         this.totalPrice = totalPrice;
         this.bookingDate = bookingDate;
         this.bookingAddress = bookingAddress;
+        this.paymentMethod = paymentMethod;
         this.typeOfService = typeOfService;
         this.message = message;
     }
+
+   
 
     public String getBookingID() {
         return bookingID;
@@ -129,12 +133,20 @@ public class BookingDTO {
         this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return "BookingDTO{" + "bookingID=" + bookingID + ", accountID=" + accountID + ", bookingStatus=" + bookingStatus + ", staffID=" + staffID + ", serviceID=" + serviceID + ", serviceName=" + serviceName + ", bookingDetailID=" + bookingDetailID + ", totalPrice=" + totalPrice + ", bookingDate=" + bookingDate + ", bookingAddress=" + bookingAddress + ", TypeOfService=" + typeOfService + ", message=" + message + '}';
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    @Override
+    public String toString() {
+        return "BookingDTO{" + "bookingID=" + bookingID + ", accountID=" + accountID + ", bookingStatus=" + bookingStatus + ", staffID=" + staffID + ", serviceID=" + serviceID + ", serviceName=" + serviceName + ", bookingDetailID=" + bookingDetailID + ", totalPrice=" + totalPrice + ", bookingDate=" + bookingDate + ", bookingAddress=" + bookingAddress + ", paymentMethod=" + paymentMethod + ", typeOfService=" + typeOfService + ", message=" + message + '}';
+    }
     
+
 
     
 }

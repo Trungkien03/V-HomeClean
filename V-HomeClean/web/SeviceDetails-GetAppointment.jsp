@@ -235,6 +235,18 @@
                                 </div>
                                 <strong style="color: #e72734;" id="vinHomeIDError" >${vinHomeIDError}</strong>
                             </div>
+                            
+                            <div class="col-sm-6">
+                                <div style="color: black;" class="form-floating">
+                                    <select style="color: black;" required="" class="form-select bg-light border-0" name="paymentMethod" aria-label="Guardian Relationship">
+                                        <option value="">-- Chọn Phương Thức Thanh Toán --</option>
+                                        <option style="color: black;" value="Tiền mặt">Tiền mặt</option>
+                                        <option style="color: black;" value="Chuyển khoản">Chuyển khoản</option>
+                                    </select>
+                                    <label for="relationship">Chọn hình thức thanh toán</label>
+                                    <strong style="color: #e72734;" >${paymentError}</strong>
+                                </div>
+                            </div>
 
                             <div class="col-12">
                                 <div style="color: black;" class="form-floating">
