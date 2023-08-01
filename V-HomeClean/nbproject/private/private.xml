@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/src/java/controller/StaffTaskPageController.java</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/src/java/controller/GetAppointmentController.java</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/web/dashboard/components.jsp</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/src/java/controller/BookingController.java</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/web/dashboard/general-booking.jsp</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/src/java/DTO/BookingDTO.java</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/web/dashboard/bookings.jsp</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/src/java/controller/admin/BookingGeneralController.java</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/web/userProfile.jsp</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/web/BookingDone.jsp</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/web/taskStaffsPage.jsp</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/web/SeviceDetails-GetAppointment.jsp</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/src/java/DAO/BookingDAO.java</file>
-            <file>file:/C:/Users/tuong/OneDrive/Desktop/SWP391/Project-SWP/V-HomeClean/web/appointment.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
