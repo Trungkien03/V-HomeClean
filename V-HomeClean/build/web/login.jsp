@@ -139,7 +139,7 @@
                         <form action="MainController" method="post">
                             <div class="form-group mb-3">
                                 <!--                                <label for="username">Tên Đăng Nhập</label>-->
-                                <input type="email" name="email" class="form-control" placeholder="Nhập email" id="username">
+                                <input style="color: black;" type="email" name="email" class="form-control" placeholder="Nhập email" id="username">
                                 <% if (userError.getEmail() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getEmail()%></strong>
                                 <% } %>
@@ -147,7 +147,7 @@
                             <div class="form-group mb-3">
                                 <div class="wrapper">
                                     <div class="pass-field">
-                                        <input name="password" type="password" class="form-control" placeholder="Mật khẩu">
+                                        <input style="color: black;" name="password" type="password" class="form-control" placeholder="Mật khẩu">
                                         <i class="fa-solid fa-eye"></i>
                                     </div>
                                     <div class="requirement mt-3">
@@ -166,10 +166,10 @@
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                
+
                                 <div class="wrapper">
                                     <div class="pass-field confirm-pass">
-                                        <input type="password" name="confirmP" class="form-control" placeholder="Xác nhận mật khẩu" id="confirmP">
+                                        <input style="color: black;" type="password" name="confirmP" class="form-control" placeholder="Xác nhận mật khẩu" id="confirmP">
                                         <i class="fa-solid fa-eye"></i>
                                     </div>
                                     <div class="requirement-confirm requirement" style="display: none;">
@@ -185,16 +185,44 @@
                                 <% } %>
                             </div>
                             <div class="form-group mb-3">
-                                
-                                <input type="text" name="fullName" class="form-control" placeholder="Họ và tên" id="password">
+
+                                <input style="color: black;" type="text" name="fullName" class="form-control" placeholder="Họ và tên" id="password">
                                 <% if (userError.getFullName() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getFullName()%></strong>
                                 <% } %>
                             </div>
+
+                            <div class="form-group mb-3">
+
+                                <select style="color: black;" required="" class="form-select" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
+                                    <option style="color: black;" value="">-- Chọn khu vực Vinhomes --</option>
+                                    <option style="color: black;" value="Vinhomes Smart City - TP. Hồ Chí Minh">Vinhomes Smart City - Hà Nội</option>
+                                </select>
+                                <% if (userError.getAddress() != null) {%>
+                                <strong style="color: #e72734;" ><%=userError.getAddress()%></strong>
+                                <% } %>
+                            </div>
+
+                            <div class="form-group mb-3">
+
+                                <select style="color: black;" required="Vui lòng chọn phân khu" class="form-select" id="vinhomesOptions" name="areaApartment" aria-label="Guardian Relationship">
+                                    <option value="">-- Chọn Phân Khu --</option>
+                                    <option style="color: black;" value="The Sapphire 1">The Sapphire 1</option>
+                                    <option style="color: black;" value="The Sapphire 2">The Sapphire 2</option>
+                                    <option style="color: black;" value="The Sapphire 3">The Sapphire 3</option>
+                                    <option style="color: black;" value="The Sapphire Parkville">The Sapphire Parkville</option>
+                                    <option style="color: black;" value="The Miami">The Miami</option>
+                                    <option style="color: black;" value="The Metrolines">The Metrolines</option>
+                                </select>
+                                <% if (userError.getAddress() != null) {%>
+                                <strong style="color: #e72734;" ><%=userError.getAddress()%></strong>
+                                <% } %>
+                            </div>
+
                             <div class="form-group mb-3">
                                 <div class="wrapper">
                                     <div class="room-field">
-                                        <input type="text" name="roomID" class="form-control" placeholder="Mã Phòng và Mã Tòa Ex:S01-01" id="confirmP">
+                                        <input style="color: black;" type="text" name="roomID" class="form-control" placeholder="Mã Phòng và Mã Tòa (ex: S01.01-0112)" id="confirmP">
                                     </div>
                                     <div class="room-requirement requirement" style="display: none;">
                                         <p>Vui lòng:</p>
@@ -205,18 +233,8 @@
                                 </div>
                             </div>
                             <div class="form-group mb-3">
-                                
-                                <select required="" class="form-select" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
-                                    <option value="">-- Chọn khu vực Vinhomes --</option>
-                                    <option value="Vinhomes Smart City - TP. Hồ Chí Minh">Vinhomes Smart City - Hà Nội</option>
-                                </select>
-                                <% if (userError.getAddress() != null) {%>
-                                <strong style="color: #e72734;" ><%=userError.getAddress()%></strong>
-                                <% } %>
-                            </div>
-                            <div class="form-group mb-3">
-                                
-                                <input required="" type="text" name="phone" class="form-control" placeholder="Số điện thoại" id="password">
+
+                                <input style="color: black;" required="" type="text" name="phone" class="form-control" placeholder="Số điện thoại" id="password">
                                 <% if (userError.getPhone() != null) {%>
                                 <strong style="color: #e72734;" ><%=userError.getPhone()%></strong>
                                 <% } %>

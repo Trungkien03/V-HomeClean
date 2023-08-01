@@ -1,4 +1,5 @@
 <%-- Import the necessary taglibs --%>
+<%@page import="DTO.AccountDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -11,14 +12,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-        <title>V-HomeClean - Dashboard</title>
+        <title>V-HomeClean - Quản lý Blog</title>
 
         <link
             rel="shortcut icon"
             type="image/x-icon"
             href="css/assets/img/icon.png"
             />
-        
+
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
@@ -33,6 +34,12 @@
         <link rel="stylesheet" href="css/assets/css/style.css" />
     </head>
     <body>
+        <%
+            AccountDTO user = (AccountDTO) session.getAttribute("acc");
+            if (user == null || user.getRoleID() != 3) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="main-wrapper">
             <jsp:include page="header.jsp" />
             <jsp:include page="sidebar.jsp" />
@@ -68,7 +75,7 @@
                                                     <th class="text-center">Hình Ảnh</th>
                                                     <th class="text-center">Tên</th>
                                                     <th class="text-center">Thể loại</th>
-                                                    <th class="text-center">Chỉnh sửa</th>
+                                                    <th class="text-center">Chi tiết</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -98,11 +105,11 @@
                                                                         <i class="fe fe-eye"></i>
                                                                     </button>
                                                                 </div>
-                                                                <div class="text-end text-center">
+<!--                                                                <div class="text-end text-center">
                                                                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#b${blog.blogID}">
                                                                         <i class="fe fe-lock"></i>
                                                                     </button>
-                                                                </div>
+                                                                </div>-->
 
                                                                 <div class="modal fade" id="b${blog.blogID}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog">

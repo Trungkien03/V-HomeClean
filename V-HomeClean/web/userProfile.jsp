@@ -307,8 +307,11 @@
                                             <th>Định Kì</th>
                                             <th>Thời gian</th>
                                             <th>Tổng chi phí</th>
+                                            <th>Thanh toán</th>
                                             <th>Chỉnh sửa</th>
                                             <th>Tình Trạng</th>
+                                            <th>Khiếu nại</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -320,6 +323,8 @@
                                                 <td>${booking.typeOfService}</td>
                                                 <td>${booking.bookingDate}</td>
                                                 <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>
+                                                <c:set var="payment" value="${booking.message.split('-')[0]}" />
+                                                <td>${payment}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#b${booking.bookingID}">
                                                         Xem Thêm
@@ -358,9 +363,23 @@
                                                                     </c:forEach>
                                                                     <c:choose>
                                                                         <c:when test="${empty staffName}">
-                                                                            <div class="p-3 text-center">
-                                                                                <h4 class="text-center text-danger">Hiện tại chưa có nhân viên phụ trách</h4>
-                                                                            </div>
+                                                                            <c:set var="bankingPart" value="${booking.message.split('-')[0]}" />
+                                                                            <c:if test="${bankingPart eq 'Chuyển khoản'}">
+                                                                                <div class="p-3 text-center">
+                                                                                    <h4 class="text-center text-danger">Hiện tại chưa có nhân viên phụ trách</h4>
+                                                                                    <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
+                                                                                    <p style="color: black;">Nếu bạn thanh toàn rồi, quý khách vui lòng đợi, chúng tôi sẽ xác nhận đơn cho quý khách sớm nhất có thể</p>
+                                                                                    <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
+                                                                                    <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
+                                                                                    <p style="color: red;">Lưu ý: Chúng tôi chỉ chấp nhận thanh toán qua online.</p>
+                                                                                </div>
+                                                                            </c:if>
+                                                                            <c:if test="${bankingPart eq 'Tiền mặt'}">
+                                                                                <div class="p-3 text-center">
+                                                                                    <h4 class="text-center text-danger">Hiện tại chưa có nhân viên phụ trách</h4>
+                                                                                    <p style="color: black;">Hình thức thanh toán là tiền mặt</p>
+                                                                                </div>
+                                                                            </c:if>
                                                                         </c:when>
                                                                         <c:otherwise>
                                                                             <div class="p-3 text-center">
@@ -434,7 +453,12 @@
                                                                                     <label class="text-info">Định kì</label>
                                                                                     <input style="color: #000;" readonly="" value="${booking.typeOfService}" type="text" class="form-control text-center">
                                                                                 </div>
-
+                                                                                <!--Số lượng-->
+                                                                                <div class="form-group">
+                                                                                    <label class="text-info">Số lượng:</label>
+                                                                                    <c:set var="number" value="${booking.message.split('-')[1]}" />
+                                                                                    <input style="color: #000;" readonly="" value="${number}" type="text" class="form-control text-center">
+                                                                                </div>
                                                                                 <div class="form-group">
                                                                                     <fmt:formatNumber var="formattedPrice" value="${booking.totalPrice}" pattern="###,###" />
                                                                                     <label class="text-info">Tổng chi phí</label>
@@ -448,15 +472,20 @@
                                                                                                />
                                                                                         <span style="position: absolute;" class="btn btn-success">VND</span>     
                                                                                     </div>
-
                                                                                 </div>
-                                                                            </form>
+
+                                                                                <div class="form-group">
+                                                                                    <c:set var="payment" value="${booking.message.split('-')[0]}" />
+                                                                                    <label class="text-info">Phương thức</label>
+                                                                                    <input style="color: #000;" readonly="" value="${payment}" type="text" class="form-control text-center">
+                                                                                </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <div class="card">
                                                                         <div class="card-body">
+                                                                            <h4 class="text-center">Nội dung phản hồi</h4>
                                                                             <div style="margin: auto;margin-top: 10px;" class="text-center" id="rateYo${booking.bookingID}"></div>
                                                                             <div class="text-center text-black" style="color: #000">
                                                                                 <c:forEach items="${feedBackList}" var="j">
@@ -474,6 +503,27 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <!--Khiếu nại-->
+                                                                <div class="col-md-12">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <div style="margin: auto;margin-top: 10px;" class="text-center" id="rateYo${booking.bookingID}"></div>
+                                                                            <div class="text-center text-black" style="color: #000">
+                                                                                <c:forEach items="${listComOfUser}" var="j">
+                                                                                    <c:if test="${booking.bookingID eq j.bookingID}">
+
+                                                                                        <h4>Nội dung khiếu nại</h4>
+                                                                                        <p>
+                                                                                            ${j.detail}
+                                                                                        </p>
+
+
+                                                                                    </c:if>
+                                                                                </c:forEach>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
                                                             </div>
 
@@ -481,13 +531,45 @@
                                                         </div>
                                                         <div style="display: flex; justify-content: space-between" class="modal-footer">
                                                             <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
-                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy đơn</button>
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#h${loop.index}">Hủy đơn</button>
                                                             </c:if>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            <div class="modal fade" id="h${loop.index}" tabindex="-2" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 style="color: black;" class="modal-title" id="exampleModalLongTitle">Phản hồi từ quý khách</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form action="ProfilePageController" method="POST">
+                                                            <div style="color: black;" class="modal-body">
+                                                                Quý khách có chắc chắn là hủy đơn hàng này không ạ ?
+                                                                <div class="col-lg-12 col-md-6 wow fadeInUp mt-3" data-wow-delay="0.3s">
+                                                                    <input name="bookingID" type="hidden" value="${booking.bookingID}">
+                                                                    <div class="row g-3">
+                                                                        <div class="col-12">
+                                                                            <div class="form-floating">
+                                                                                <textarea name="feedbackDetail" class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                                                                <label for="message">Hãy cho chúng tôi biết lý do hủy đơn</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="display: flex; justify-content: space-between" class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                                <input id="submitBtn" name="action" value="Hủy" type="submit" class="btn btn-primary">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <td>
                                                 <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
                                                     <button class="btn btn-info">Chờ xác nhận</button>
@@ -497,6 +579,12 @@
                                                 </c:if>
                                                 <c:if test="${booking.bookingStatus eq 'Đang thực hiện'}">
                                                     <button class="btn btn-info">Đang hoạt động</button>
+                                                </c:if>
+                                                <c:if test="${booking.bookingStatus eq 'Hủy'}">
+                                                    <button class="btn btn-danger">Đã Hủy</button>
+                                                </c:if>
+                                                <c:if test="${booking.bookingStatus eq 'Khiếu nại'}">
+                                                    <button class="btn btn-warning">Đang xử lý </button>
                                                 </c:if>
                                                 <c:if test="${booking.bookingStatus eq 'Xác nhận hoàn thành'}">
                                                     <button class="btn btn-info" data-toggle="modal" data-target="#a${loop.index}">Xác nhận đơn</button>
@@ -535,16 +623,61 @@
                                                                     </div>
                                                                     <div style="display: flex; justify-content: space-between" class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                                        <button id="submitBtn" disabled name="action" value="Đánh giá" type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                                                                        <button id="submitBtn" name="action" value="Đánh giá" type="submit" class="btn btn-primary">Gửi đánh giá</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
                                                         </div>
                                                     </div>
+
+
                                                 </c:if>
                                                 <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
                                                     <button class="btn btn-success" >Hoàn tất</button>
                                                 </c:if>
+                                            </td>
+                                            <!--Khieu nại modal-->
+                                            <td>
+                                                <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
+                                                    <button class="btn btn-warning" data-toggle="modal" data-target="#k${loop.index}">Khiếu nại</button>
+                                                </c:if>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="k${loop.index}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">Nội dung khiếu nại</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <form action="ProfilePageController" method="POST">
+                                                                <div class="modal-body">
+                                                                    Hãy cho chúng tôi biết....
+                                                                    <div class="col-lg-12 col-md-6 wow fadeInUp mt-3" data-wow-delay="0.3s">
+
+                                                                        <input name="bookingID" type="hidden" value="${booking.bookingID}">
+                                                                        <div class="row g-3">
+                                                                            <div class="col-12">
+                                                                                <div class="form-floating">
+                                                                                    <textarea name="complainDetail" class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                                                                    <label for="message">Hãy cho chúng tôi biết cảm nhận của quý khách</label>
+                                                                                </div>
+                                                                            </div>                                                                       
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div style="display: flex; justify-content: space-between" class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                                    <button id="submitBtn" name="action" value="Khiếu nại" type="submit" class="btn btn-primary">Gửi đơn</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </td>
                                             </tr>
                                         </c:forEach>

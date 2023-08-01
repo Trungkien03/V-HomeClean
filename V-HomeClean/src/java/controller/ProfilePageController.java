@@ -2,10 +2,12 @@ package controller;
 
 import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.ComplainDAO;
 import DAO.FeedBackDAO;
 import DAO.NotificationDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
+import DTO.ComplainDTO;
 import DTO.FeedBackDTO;
 import DTO.NotificationDTO;
 import java.io.IOException;
@@ -43,14 +45,17 @@ public class ProfilePageController extends HttpServlet {
         BookingDAO bDao = new BookingDAO();
         FeedBackDAO fDao = new FeedBackDAO();
         NotificationDAO nDao = new NotificationDAO();
+        ComplainDAO cDao = new ComplainDAO();
         String action = request.getParameter("action");
         String url = "userProfile.jsp";
         String typeNotiUser = "User"; //xác nhận kiểu noti sẽ được gửi tới khách hàng
         String typeNotiStaff = "Staff";
+        String typeNotiAdmin = "Admin";
         if (a == null) {
             response.sendRedirect("login.jsp");
         } else {
             try {
+                //cập nhật thông tin tài khoản
                 if (action.equalsIgnoreCase("Cập nhật")) {
                     String fullName = request.getParameter("fullName");
                     String dateOfBirth = request.getParameter("dateOfBirth");
@@ -71,6 +76,8 @@ public class ProfilePageController extends HttpServlet {
                     request.setAttribute("message", "Cập nhật thông tin tài khoản thành công!");
                     url = "userProfile.jsp";
                 }
+
+                //thay đổi mật khẩu
                 if (action.equalsIgnoreCase("Thay Đổi Mật Khẩu")) {
                     String password = request.getParameter("password");
                     String newPassword = request.getParameter("newPassword");
@@ -100,6 +107,8 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
+
+                //đánh giá đơn hàng
                 if (action.equalsIgnoreCase("Đánh giá")) {
                     String bookingIDString = request.getParameter("bookingID");
                     String accountID = a.getAccountID();
@@ -129,15 +138,59 @@ public class ProfilePageController extends HttpServlet {
                         url = "userProfile.jsp";
                     }
                 }
-                if (action.equalsIgnoreCase("Kiểm tra")) {
+                //Khieeus nai
+                if (action.equalsIgnoreCase("Khiếu nại")) {
+                    String bookingIDString = request.getParameter("bookingID");
+                    String accountID = a.getAccountID();
+                    String complainDetail = request.getParameter("complainDetail");
+                    String notiDetail = "Khách hàng " + a.getFullName() + " đã khiếu nại về đơn dịch vụ có mã số " + bookingIDString ;
+                    nDao.InsertNotification(accountID, bookingIDString, notiDetail, "false", typeNotiAdmin);
+                    int bookingID = 0;
+                    if (bookingIDString != null) {
+                        bookingID = Integer.parseInt(bookingIDString);
+                    }
+                    String bookingStatus = "Khiếu nại";
+                    bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
+                    cDao.InsertComplain(complainDetail, accountID, bookingIDString);
                     request.setAttribute("status", "feedBack");
                     url = "userProfile.jsp";
                 }
+
+                //kiểm tra đơn hàng khi vừa mới đặt hàng xong
+                if (action.equalsIgnoreCase("KiemTra")) {
+                    String notificationID = request.getParameter("notificationID");
+                    nDao.updateStatusNotification(notificationID, "true");
+                    request.setAttribute("status", "feedBack");
+                    url = "userProfile.jsp";
+                }
+
+                //xem thông báo từ homepage
                 if (action.equalsIgnoreCase("XemThongBao")) {
                     String notificationID = request.getParameter("notificationID");
                     nDao.updateStatusNotification(notificationID, "true");
                     request.setAttribute("status", "checkNoti");
-                    url = "userProfile.jsp";
+                    url = "StaffTaskPageController";
+                }
+
+                if (action.equalsIgnoreCase("Hủy")) {
+                    String bookingIDString = request.getParameter("bookingID");
+                    int bookingID = 0;
+                    if (bookingIDString != null) {
+                        bookingID = Integer.parseInt(bookingIDString);
+                    }
+                    String feedbackDetail = request.getParameter("feedbackDetail");
+                    double rating = 0;
+                    String feedbackDefault = "";
+                    if (feedbackDetail != null) {
+                        feedbackDefault = feedbackDetail;
+                    }
+                    BookingDTO bookingUser = bDao.getBookingByID(bookingIDString);
+                    String accountID = a.getAccountID();
+                    bDao.updateBookingWithBookingIdAndStatus(bookingID, "Hủy");
+                    String notiDetail = "Khách hàng " + a.getFullName() + " đã hủy đơn hàng với mã số " + bookingIDString;
+                    nDao.InsertNotification(accountID, bookingIDString, notiDetail, "false", typeNotiAdmin);
+                    fDao.insertFeedback(feedbackDefault, rating, accountID, bookingIDString);
+                    request.setAttribute("status", "feedBack");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -156,6 +209,8 @@ public class ProfilePageController extends HttpServlet {
                 List<NotificationDTO> listNoti = nDao.getAllNotiByAccountID(accountID);
                 List<AccountDTO> allAccounts = aDao.getAllAccounts();
                 List<NotificationDTO> listNotiOfUser = nDao.getAllNotiByAccountID(a.getAccountID());
+                List<ComplainDTO> listComOfUser = cDao.getListComplain();
+                request.setAttribute("listComOfUser", listComOfUser);
                 request.setAttribute("listNotiOfUser", listNotiOfUser);
                 request.setAttribute("listNoti", listNoti);
                 request.setAttribute("feedBackList", feedBackList);

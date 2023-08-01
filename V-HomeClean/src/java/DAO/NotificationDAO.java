@@ -44,7 +44,7 @@ public class NotificationDAO {
     public List<NotificationDTO> getAllNotiByAccountID(String accountID) {
         String query = "SELECT *\n"
                 + "FROM Notification\n"
-                + "WHERE AccountID = ?\n"
+                + "WHERE AccountID = ? AND Status = 'false'\n"
                 + "ORDER BY ABS(DATEDIFF(minute, Create_at, GETDATE()))";
         List<NotificationDTO> list = new ArrayList<>();
         try {
@@ -187,6 +187,9 @@ public class NotificationDAO {
     }
 
     public static void main(String[] args) {
-        
+        NotificationDAO dao = new NotificationDAO();
+        String notificationID = "57";
+
+        dao.updateStatusNotification(notificationID, "true");
     }
 }

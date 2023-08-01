@@ -32,6 +32,7 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     </head>
 
     <body>
@@ -69,7 +70,7 @@
                                             <h5 class="text-light text-uppercase mb-3 animated slideInDown">Chào mừng đến với <span style="color: #f8e43c">V-HomeClean</span></h5>
                                             <h1 class="display-2 text-light mb-3 animated slideInDown">Dịch vụ Vệ sinh & Sửa chữa Chuyên nghiệp</h1>
                                             <ol class="breadcrumb mb-4 pb-2">
-                                               <li class="breadcrumb-item fs-5 text-light">Uy Tín</li>
+                                                <li class="breadcrumb-item fs-5 text-light">Uy Tín</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Nhanh Chóng</li>
                                                 <li class="breadcrumb-item fs-5 text-light">Tiện Lợi</li>
                                             </ol>
@@ -104,9 +105,7 @@
                                 <img class="position-absolute w-100 h-100" src="img/about.jpg" alt="" style="object-fit: cover;">
                                 <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
                                     <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-                                        <h1 class="text-white">25</h1>
-                                        <h2 class="text-white">Years</h2>
-                                        <h5 class="text-white mb-0">Experience</h5>
+                                        <img src="css/assets/img/icon.png">
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +126,7 @@
                                         </div>
                                         <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
                                             <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                            <h6 class="mb-0">Dịch vụ 24/7</h6>
+                                            <h6 class="mb-0">Phục vụ tận tình</h6>
                                         </div>
                                         <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
                                             <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
@@ -144,54 +143,6 @@
 
 
             <!-- Facts Start -->
-            <div class="container-fluid my-5 p-0">
-                <div class="row g-0">
-                    <div class="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/fact-1.jpg" alt="">
-                            <div class="facts-overlay">
-                                <h1 class="display-1">01</h1>
-                                <h4 class="text-white mb-3">Construction</h4>
-                                <p class="text-white">Aliqu diam amet diam et eos erat ipsum lorem stet lorem sit clita duo justo erat amet</p>
-                                <a class="text-white small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/fact-2.jpg" alt="">
-                            <div class="facts-overlay">
-                                <h1 class="display-1">02</h1>
-                                <h4 class="text-white mb-3">Mechanical</h4>
-                                <p class="text-white">Aliqu diam amet diam et eos erat ipsum lorem stet lorem sit clita duo justo erat amet</p>
-                                <a class="text-white small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.5s">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/fact-3.jpg" alt="">
-                            <div class="facts-overlay">
-                                <h1 class="display-1">03</h1>
-                                <h4 class="text-white mb-3">Architecture</h4>
-                                <p class="text-white">Aliqu diam amet diam et eos erat ipsum lorem stet lorem sit clita duo justo erat amet</p>
-                                <a class="text-white small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.7s">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/fact-4.jpg" alt="">
-                            <div class="facts-overlay">
-                                <h1 class="display-1">04</h1>
-                                <h4 class="text-white mb-3">Interior Design</h4>
-                                <p class="text-white">Aliqu diam amet diam et eos erat ipsum lorem stet lorem sit clita duo justo erat amet</p>
-                                <a class="text-white small" href="">READ MORE<i class="fa fa-arrow-right ms-3"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- Facts End -->
 
 
@@ -241,9 +192,7 @@
                                 <img class="position-absolute w-100 h-100" src="img/feature.jpg" alt="" style="object-fit: cover;">
                                 <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
                                     <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-                                        <h1 class="text-white">25</h1>
-                                        <h2 class="text-white">Years</h2>
-                                        <h5 class="text-white mb-0">Experience</h5>
+                                        <img src="css/assets/img/icon.png">
                                     </div>
                                 </div>
                             </div>
@@ -269,8 +218,8 @@
                         </div>
                     </div>
                     <div class="row g-4 justify-content-center">
-            <!--Thẻ service ở đây-->
-            
+                        <!--Thẻ service ở đây-->
+
                     <c:forEach items="${listS}" begin="1" end="6" var="o">
                         <input value="${o.serviceID}" type="hidden">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -284,86 +233,28 @@
                             </div>
                         </div>
                     </c:forEach>
-            
 
-                    </div>
+
                 </div>
             </div>
-            <!-- Service End -->
+        </div>
+        <!-- Service End -->
 
-
-            <!-- Appointment Start -->
-            <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-                <div class="container py-5">
-                    <div class="row g-5">
-                        <div class="col-lg-5 col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-white text-uppercase mb-2">Bạn có thắc mắc gì không ?</h6>
-                                <h1 class="display-6 text-white mb-0">Chúng tôi sẽ giải đáp mọi thắc mắc của bạn</h1>
-                            </div>
-                            <p class="text-white mb-0">Công ty chúng tôi sẽ trợ giúp cho quý khách hàng hết sức, Chúng tôi luôn đặt ưu tiên trải nghiệm của khách
-                            hàng lên hàng đầu</p>
+        <!-- Team Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-end mb-5">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="border-start border-5 border-primary ps-4">
+                            <h6 class="text-body text-uppercase mb-2">Đội ngũ của chúng tôi</h6>
+                            <h1 class="display-6 mb-0">Nhân viên tiêu biểu</h1>
                         </div>
-                        <div class="col-lg-7 col-md-6 wow fadeIn" data-wow-delay="0.5s">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="gname" placeholder="Gurdian Name">
-                                            <label for="gname">Tên của bạn</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control bg-dark border-0" id="gmail" placeholder="Gurdian Email">
-                                            <label for="gmail">Email của bạn</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="cname" placeholder="Child Name">
-                                            <label for="cname">Số điện thoại</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control bg-dark border-0" id="cage" placeholder="Child Age">
-                                            <label for="cage">Chủ đề câu hỏi</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control bg-dark border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Hãy viết câu hỏi thắc mắc của bạn tại đây</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Đặt câu hỏi</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <p class="mb-0">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>
                     </div>
                 </div>
-            </div>
-            <!-- Appointment End -->
-
-
-            <!-- Team Start -->
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="row g-5 align-items-end mb-5">
-                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="border-start border-5 border-primary ps-4">
-                                <h6 class="text-body text-uppercase mb-2">Đội ngũ của chúng tôi</h6>
-                                <h1 class="display-6 mb-0">Nhân viên tiêu biểu</h1>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <p class="mb-0">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>
-                        </div>
-                    </div>
-                    <div class="row g-4">
+                <div class="row g-4">
                     <c:forEach items="${ListA}" var="o" begin="0" end="2">
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="team-item position-relative">
@@ -374,81 +265,88 @@
                                 </div>
                             </div>
                         </div>
-                       </c:forEach>                        
-                    </div>
+                    </c:forEach>                        
                 </div>
             </div>
-            <!-- Team End -->
+        </div>
+        <!-- Team End -->
 
 
-            <!-- Testimonial Start -->
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="row g-5">
-                        <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="border-start border-5 border-primary ps-4 mb-5">
-                                <h6 class="text-body text-uppercase mb-2">Feedbacks</h6>
-                                <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeClean</h1>
+        <!-- Testimonial Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="border-start border-5 border-primary ps-4 mb-5">
+                            <h6 class="text-body text-uppercase mb-2">Feedbacks</h6>
+                            <h1 class="display-6 mb-0">Khách hàng nói gì về V-HomeClean</h1>
+                        </div>
+                        <p class="mb-4">Đây là những phản hồi nổi bật của khách hàng đã trải nghiệm sử dụng dịch vụ của V-HomeClean. Giúp bạn có thể chọn sử dụng dịch vụ của chúng tôi một cách an tâm từ những trải nghiệm tốt, thực tế của những khách hàng trước.</p>
+
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa fa-users fa-2x text-primary flex-shrink-0"></i>
+                                    <h1 class="ms-3 mb-0">${totalUser}</h1>
+                                </div>
+                                <h5 class="mb-0">Khách hàng thân thiết</h5>
                             </div>
-                            <p class="mb-4">Đây là những phản hồi nổi bật của khách hàng đã trải nghiệm sử dụng dịch vụ của V-HomeClean. Giúp bạn có thể chọn sử dụng dịch vụ của chúng tôi một cách an tâm từ những trải nghiệm tốt, thực tế của những khách hàng trước.</p>
-                            <div class="row g-4">
-                                <div class="col-sm-6">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <i class="fa fa-users fa-2x text-primary flex-shrink-0"></i>
-                                        <h1 class="ms-3 mb-0">777</h1>
-                                    </div>
-                                    <h5 class="mb-0">Khách hàng thân thiết</h5>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fa fa-check fa-2x text-primary flex-shrink-0"></i>
+                                    <h1 class="ms-3 mb-0">${totalBookingDone}</h1>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="d-flex align-items-center mb-2">
-                                        <i class="fa fa-check fa-2x text-primary flex-shrink-0"></i>
-                                        <h1 class="ms-3 mb-0">789</h1>
-                                    </div>
-                                    <h5 class="mb-0">Dịch vụ đã cung cấp</h5>
-                                </div>
+                                <h5 class="mb-0">Dịch vụ đã cung cấp</h5>
                             </div>
                         </div>
-                        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="owl-carousel testimonial-carousel">
+                    </div>
+                    <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="owl-carousel testimonial-carousel">
+                            <c:forEach items="${ListF}" var="o">
                                 <div class="testimonial-item">
-                                    <img class="img-fluid mb-4" src="img/testimonial-1.jpg" alt="">
-                                    <p class="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
+                                    <img class="img-fluid mb-4" src="${o.image}" alt="">
+                                    <p class="fs-5">${o.feedbackDetail}</p>
+                                    <div id="rating${o.feedBackID}"></div>
                                     <div class="bg-primary mb-3" style="width: 60px; height: 5px"></div>
-                                    <h5>Client Name</h5>
-                                    <span>Profession</span>
+                                    <h5>${o.fullName}</h5>
+                                    <span>${o.date}</span>
                                 </div>
-                                <div class="testimonial-item">
-                                    <img class="img-fluid mb-4" src="img/testimonial-2.jpg" alt="">
-                                    <p class="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
-                                    <div class="bg-primary mb-3" style="width: 60px; height: 5px"></div>
-                                    <h5>Client Name</h5>
-                                    <span>Profession</span>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Testimonial End -->
+        </div>
+        <!-- Testimonial End -->
 
 
-            <!-- Footer Start -->
+        <!-- Footer Start -->
         <jsp:include page="footer.jsp"></jsp:include>
-        <!-- Footer End -->
+            <!-- Footer End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/wow/wow.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="lib/wow/wow.min.js"></script>
+            <script src="lib/easing/easing.min.js"></script>
+            <script src="lib/waypoints/waypoints.min.js"></script>
+            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+            <script>
+                $(document).ready(function () {
+            <c:forEach var="o" items="${ListF}">
+                    $("#rating${o.feedBackID}").rateYo({
+                        rating: ${o.rating},
+                        readOnly: true
+                    });
+            </c:forEach>
+                });
+        </script>
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
     </body>

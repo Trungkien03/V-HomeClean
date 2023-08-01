@@ -7,11 +7,13 @@ package controller.admin;
 
 import DAO.AccountDAO;
 import DAO.BookingDAO;
+import DAO.ComplainDAO;
 import DAO.FeedBackDAO;
 import DAO.NotificationDAO;
 import DAO.ServiceDAO;
 import DTO.AccountDTO;
 import DTO.BookingDTO;
+import DTO.ComplainDTO;
 import DTO.FeedBackDTO;
 import DTO.NotificationDTO;
 import DTO.ServiceDTO;
@@ -52,6 +54,7 @@ public class BookingGeneralController extends HttpServlet {
         ServiceDAO sDao = new ServiceDAO();
         AccountDAO aDao = new AccountDAO();
         FeedBackDAO fDao = new FeedBackDAO();
+        ComplainDAO cDao = new ComplainDAO();
         NotificationDAO nDao = new NotificationDAO();
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
@@ -124,6 +127,7 @@ public class BookingGeneralController extends HttpServlet {
                         List<AccountDTO> ListStaffsFixWater = aDao.getAvailableStaffByRoleID(roleIDFixWater);
                         List<AccountDTO> ListstaffsClean = aDao.getAvailableStaffByRoleID(roleIDClean);
                         List<AccountDTO> listAccounts = aDao.getAllAccounts();
+                        request.setAttribute("message", "Xác nhận đơn và cập nhật nhân viên thành công");
                         request.setAttribute("listAccounts", listAccounts);
                         request.setAttribute("ListStaffsFixEletric", ListStaffsFixEletric);
                         request.setAttribute("ListStaffsFixWater", ListStaffsFixWater);
@@ -141,9 +145,37 @@ public class BookingGeneralController extends HttpServlet {
                     String bookingIDString = request.getParameter("bookingID");
                     int bookingID = Integer.parseInt(bookingIDString);
                 }
+                if (action.equalsIgnoreCase("hoanThanhKhieuNai")) {
+                    String bookingIDString = request.getParameter("bookingID");
+                    int bookingID = Integer.parseInt(bookingIDString);
+                    String bookingStatus = "Hoàn thành";
+                    bDao.updateBookingWithBookingIdAndStatus(bookingID, bookingStatus);
+                    BookingDTO booking = bDao.getBookingByID(bookingIDString);
+                    ServiceDTO service = sDao.getServiceByID(booking.getServiceID());
+                    AccountDTO account = aDao.GetAccountByAccountID(booking.getAccountID());
+                    AccountDTO staff = aDao.GetAccountByAccountID(booking.getStaffID());
+                    int roleIDFixElec = 2;
+                    int roleIDFixWater = 5;
+                    int roleIDClean = 6;
+                    List<AccountDTO> ListStaffsFixEletric = aDao.getAvailableStaffByRoleID(roleIDFixElec);
+                    List<AccountDTO> ListStaffsFixWater = aDao.getAvailableStaffByRoleID(roleIDFixWater);
+                    List<AccountDTO> ListstaffsClean = aDao.getAvailableStaffByRoleID(roleIDClean);
+                    List<AccountDTO> listAccounts = aDao.getAllAccounts();
+                    request.setAttribute("message", "Hoàn thành khiếu nại đơn hàng");
+                    request.setAttribute("listAccounts", listAccounts);
+                    request.setAttribute("ListStaffsFixEletric", ListStaffsFixEletric);
+                    request.setAttribute("ListStaffsFixWater", ListStaffsFixWater);
+                    request.setAttribute("ListstaffsClean", ListstaffsClean);
+                    request.setAttribute("booking", booking);
+                    request.setAttribute("service", service);
+                    request.setAttribute("account", account);
+                    request.setAttribute("staff", staff);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
+                List<ComplainDTO> listComOfUser = cDao.getListComplain();
+                request.setAttribute("listComOfUser", listComOfUser);
                 request.getRequestDispatcher("/dashboard/general-booking.jsp").forward(request, response);
             }
         }

@@ -15,7 +15,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>V-HomeClean - Dashboard</title>
+        <title>V-HomeClean - Thông tin tài khoản</title>
 
         <link
             rel="shortcut icon"
@@ -122,16 +122,6 @@
                                             </c:when>
                                         </c:choose>
                                     </div>
-                                    <div class="profile-list">
-                                        <a href="group-history.jsp"
-                                           ><button
-                                                type="button"
-                                                class="btn btn-block btn-outline-light"
-                                                >
-                                                Xem ....
-                                            </button></a
-                                        >
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +129,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Thông Tin</h4>
-                                    <h6>${message}</h6>
+                                    <h6 class="text-center" style="color: green;">${message}</h6>
                                 </div>
                                 <div class="card-body">
                                     <ul class="nav nav-tabs nav-tabs-top nav-justified">
@@ -157,14 +147,6 @@
                                                 href="#top-justified-tab2"
                                                 data-bs-toggle="tab"
                                                 >Đơn Dịch Vụ</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="#top-justified-tab3"
-                                                data-bs-toggle="tab"
-                                                >Thông Báo</a
                                             >
                                         </li>
                                     </ul>

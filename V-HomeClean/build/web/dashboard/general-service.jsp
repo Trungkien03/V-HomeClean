@@ -3,6 +3,7 @@
     Created on : May 28, 2023, 11:32:17 PM
     Author     : Trung Kien
 --%>
+<%@page import="DTO.AccountDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +15,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>V-HomeClean - Dashboard</title>
+        <title>V-HomeClean - Thông tin dịch vụ</title>
 
         <link
             rel="shortcut icon"
@@ -40,6 +41,12 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <%
+            AccountDTO user = (AccountDTO) session.getAttribute("acc");
+            if (user == null || user.getRoleID() != 3) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -256,7 +263,6 @@
 
                 if (status === "create-service" && !isModalDisplayed) {
                     var openModalBtn = document.getElementById('openModalBtn');
-                    openModalBtn.style.display = "block";
                     openModalBtn.click();
                     isModalDisplayed = true;
                 }

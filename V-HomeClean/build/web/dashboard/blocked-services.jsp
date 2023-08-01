@@ -3,6 +3,7 @@
     Created on : May 28, 2023, 11:29:43 PM
     Author     : Trung Kien
 --%>
+<%@page import="DTO.AccountDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +15,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>V-HomeClean - Dashboard</title>
+        <title>V-HomeClean - Dịch vụ bị khóa</title>
 
         <link
             rel="shortcut icon"
@@ -38,6 +39,12 @@
         <link rel="stylesheet" href="css/assets/css/style.css" />
     </head>
     <body>
+        <%
+            AccountDTO user = (AccountDTO) session.getAttribute("acc");
+            if (user == null || user.getRoleID() != 3) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>

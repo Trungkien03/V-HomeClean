@@ -65,7 +65,6 @@
                 response.sendRedirect("login.jsp");
             }
         %>
-        <h2>${message}</h2>
         <jsp:include page="navigation.jsp"></jsp:include>
             <section class=" my-5">
                 <div class="container-fluid">
@@ -90,20 +89,21 @@
                             <!-- đay là tab thông tin đơn hàng   -->
                             <div class="tab-pane fade show active" id="task" role="tabpanel" aria-labelledby="security-tab">
                                 <h3 class="mb-4">Danh Sách</h3>
-                                <div class="row">
-                                    <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-success">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">No</th>
-                                                <th class="text-center" style="width: 100px;">Mã đơn hàng</th>
-                                                <th class="text-center">Khách hàng</th>
-                                                <th class="text-center" style="width: 100px;">Dịch vụ</th>
-                                                <th class="text-center" style="width: 150px;">Khu vực</th>
-                                                <th class="text-center">Thời gian</th>
-                                                <th class="text-center" style="width: 150px;">Tình Trạng</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                <h2>${message}</h2>
+                            <div class="row">
+                                <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-success">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center" style="width: 100px;">Mã đơn hàng</th>
+                                            <th class="text-center">Khách hàng</th>
+                                            <th class="text-center" style="width: 100px;">Dịch vụ</th>
+                                            <th class="text-center" style="width: 150px;">Khu vực</th>
+                                            <th class="text-center">Thời gian</th>
+                                            <th class="text-center" style="width: 150px;">Tình Trạng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         <c:forEach var="booking" items="${TaskList}" varStatus="loop">
                                             <c:set var="addressParts" value="${fn:split(booking.bookingAddress, '||')}"/>
                                             <c:set var="date" value="${fn:split(booking.bookingDate, ' ')}"/>
@@ -189,6 +189,7 @@
                                                                                 <div class="card">
                                                                                     <div class="card-body">
                                                                                         <form action="#">
+                                                                                            
                                                                                             <div class="form-group">
                                                                                                 <label class="text-info">Thời gian</label>
                                                                                                 <input style="color: #000" readonly="" value="${fn:substring(booking.bookingDate, 11, 16)}" type="text" class="form-control text-center">
@@ -211,6 +212,13 @@
                                                                                                 <label class="text-info">Định kì</label>
                                                                                                 <input style="color: #000" readonly="" value="${booking.typeOfService}" type="text" class="form-control text-center">
                                                                                             </div>
+                                                                                            <!--Số lượng-->
+                                                                                            <!--Số lượng-->
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-info">Số lượng:</label>
+                                                                                                <c:set var="number" value="${booking.message.split('-')[1]}" />
+                                                                                                <input style="color: #000;" readonly="" value="${number}" type="text" class="form-control text-center">
+                                                                                            </div>
 
                                                                                             <div class="form-group">
                                                                                                 <fmt:formatNumber var="formattedPrice" value="${booking.totalPrice}" pattern="###,###" />
@@ -225,8 +233,12 @@
                                                                                                            />
                                                                                                     <span style="position: absolute;" class="btn btn-success">VND</span>     
                                                                                                 </div>
-
                                                                                             </div>
+                                                                                             <div class="form-group">
+                                                                                                   <c:set var="payment" value="${booking.message.split('-')[0]}" />
+                                                                                                   <label class="text-info">Phương thức</label>
+                                                                                                   <input style="color: #000;" readonly="" value="${payment}" type="text" class="form-control text-center">
+                                                                                               </div>              
                                                                                         </form>
                                                                                     </div>
                                                                                 </div>
@@ -398,7 +410,7 @@
                 columnDefs: [
                     {"orderable": false, "targets": 5} // Tắt tính năng tự động sắp xếp cho cột đầu tiên
                 ],
-                order: [] // Không sắp xếp ban đầu
+                order: [[5, 'des']]
 
             });
         });
@@ -425,7 +437,8 @@
                         "sSortAscending": ": Sắp xếp cột tăng dần",
                         "sSortDescending": ": Sắp xếp cột giảm dần"
                     }
-                }
+                },
+                order: [[0, 'des']]
             });
         });
 

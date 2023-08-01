@@ -24,11 +24,38 @@ public class BlogDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
+//    public List<BlogDTO> getAllBlog() {
+//        List<BlogDTO> list = new ArrayList<>();
+//        String query = "SELECT b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName\n"
+//                + "FROM Blog b\n"
+//                + "INNER JOIN BlogCate bc ON b.BlogCateID = bc.BlogCateID\n"
+//                + "ORDER BY b.Time DESC";
+//        try {
+//            conn = new DBContext().getConnection();
+//            ps = conn.prepareStatement(query);
+//            rs = ps.executeQuery();
+//            while (rs.next()) {
+//                list.add(new BlogDTO(rs.getString(1),
+//                        rs.getNString(2),
+//                        rs.getNString(3),
+//                        rs.getNString(4),
+//                        rs.getString(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getNString(8),
+//                        rs.getInt(9)));
+//            }
+//        } catch (Exception e) {
+//        }
+//        return list;
+//    }
     public List<BlogDTO> getAllBlog() {
         List<BlogDTO> list = new ArrayList<>();
-        String query = "SELECT b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName, bc.BlogCateID\n"
-                + "FROM Blog b INNER JOIN BlogCate bc ON b.BlogCateID = bc.BlogCateID\n"
-                + "ORDER BY b.Time DESC";
+
+        String query = "SELECT b.BlogID, b.Title, b.SubTitle, b.Content, b.AccountID, b.Time, b.Image, bc.cateName, b.blogCateID\n"
+                + "FROM Blog b\n"
+                + "INNER JOIN BlogCate bc ON b.BlogCateID = bc.BlogCateID\n"
+                + "ORDER BY NEWID()";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -174,9 +201,23 @@ public class BlogDAO {
         return blogID;
     }
 
+    public void DeleteBlog(String blogID) {
+        String query = "DELETE FROM Blog\n"
+                + "WHERE BlogID = ?;";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, blogID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
 
         BlogDAO dao = new BlogDAO();
+
         List<BlogDTO> total = dao.getAllBlog();
         for (BlogDTO blogDTO : total) {
             System.out.println(blogDTO);

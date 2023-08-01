@@ -82,9 +82,14 @@ public class BookingController extends HttpServlet {
                 String time = request.getParameter("time");
                 String message = request.getParameter("message");
                 String areaAppartment = request.getParameter("areaApartment");
+                String numberString = request.getParameter("number");
+                String payment = request.getParameter("payment");
                 String status = "Chờ xác nhận";
                 String staffID = "";
-
+                int number = 1;
+                if(numberString != null){
+                    number = Integer.parseInt(numberString);
+                }
                 if (areaAppartment != null) {
                     vinHomesID = vinHomesID + " " + areaAppartment;
                 }
@@ -152,21 +157,26 @@ public class BookingController extends HttpServlet {
                     request.setAttribute("timeError", timeError);
                     checkValidation = false;
                 }
-
+                message = payment + "-" + numberString;
                 if (checkValidation == true) {
                     ServiceDTO b = sdao.getServiceByID(serviceID);
-                    int totalPrice = b.getPrice();
-                    int bookingIDNumber = dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message);
+                    int totalPrice = b.getPrice() * number;
+                    int bookingIDNumber = dao.InsertBooking(accountID, status, staffID, serviceID, totalPrice, bookingDate, bookingAddress, typeOfService, message, payment);
                     String bookingID = String.valueOf(bookingIDNumber);
                     String detailNotification = a.getFullName() + " mới đặt lịch dịch vụ mới cho căn hộ " + vinHomesID + " ở khu vực " + area + " vào ngày " + date;
                     String typeNoti = "Admin";
                     nDao.InsertNotification(accountID, bookingID, detailNotification, "false", typeNoti);
+                    request.setAttribute("number", number);
+                    request.setAttribute("message", message);
+                    request.setAttribute("servicePrice", b.getPrice());
                     request.setAttribute("serviceName", b.getServiceName());
                     request.setAttribute("vinhomesID", vinHomesID);
                     request.setAttribute("area", area);
                     request.setAttribute("bookingDate", bookingDate);
                     request.setAttribute("totalPrice", totalPrice);
                     request.setAttribute("bookingIDNumber", bookingIDNumber);
+                    request.setAttribute("payment", payment);
+                    
                     request.getRequestDispatcher(SUCCESS).forward(request, response);
                 } else {
                     List<ServiceDTO> list = sdao.getAllService();

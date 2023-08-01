@@ -44,6 +44,7 @@ public class DashboardController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
+        String action = request.getParameter("action");
         int UserID = 4;
         int roleIDFixElec = 2;
         int roleIDFixWater = 5;
@@ -92,9 +93,16 @@ public class DashboardController extends HttpServlet {
         
         List<AccountDTO> AccountsList = aDao.getAllAccounts(); // lấy ra những accounts
         List<BookingDTO> bookingsList = bDao.getAllLatestBookings(); // lấy ra những booking gần nhất
+        List<BookingDTO> bookingsListToday = bDao.getAllBookingToday(); // lấy ra những booking gần nhất
+        if(action != null){
+            String date = request.getParameter("date");
+            bookingsListToday = bDao.getAllBookingBydate(date);
+            String time = request.getParameter("time");
+        }
         int totalActiveBookings = bDao.CountTotalBookingExceptStatus("hủy"); // count tất cả những booking đang trong thời gian hoạt động hoặc chờ được xử lý
         request.setAttribute("AccountsList", AccountsList);
         request.setAttribute("bookingsList", bookingsList);
+        request.setAttribute("bookingsListToday", bookingsListToday);
         request.setAttribute("totalActiveBookings", totalActiveBookings);
         request.getRequestDispatcher("/dashboard/index.jsp").forward(request, response);
     }

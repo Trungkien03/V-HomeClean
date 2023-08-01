@@ -76,9 +76,7 @@
                             <img class="position-absolute w-100 h-100" src="img/about.jpg" alt="" style="object-fit: cover;">
                             <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
                                 <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-                                    <h1 class="text-white">25</h1>
-                                    <h2 class="text-white">Years</h2>
-                                    <h5 class="text-white mb-0">Experience</h5>
+                                    <img src="css/assets/img/icon.png">
                                 </div>
                             </div>
                         </div>
@@ -100,7 +98,7 @@
                                     </div>
                                     <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
                                         <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                        <h6 class="mb-0">Dịch vụ 24/7</h6>
+                                        <h6 class="mb-0">Dịch vụ tốt</h6>
                                     </div>
                                     <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
                                         <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>

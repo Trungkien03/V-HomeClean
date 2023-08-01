@@ -60,29 +60,41 @@
                         <div class="col-md-6">
                             <i class="bi bi-check-circle-fill display-1 text-primary"></i>
                             <h1 class="display-1">Congratulations</h1>
-                            <h1 class="">Đơn của bạn đã được ghi nhận thành công</h1>
-                            <img style="width: 100%" src="img/QRcodeKien.jpg">
-                            <p style="color: black;">Bạn vui lòng thanh toán phí trung gian (chỉ phí trung gian) qua mã QR code
-                            ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
-                            <p style="color: black;"class="mb-4">Cú pháp: Thanh toan - [mã đơn hàng]</p>
-                            <a class="btn btn-primary py-3 px-5" href="HomePageController">Về Lại Trang Chủ</a>
-                        </div>
-                        <div class="col-md-6">
-                            <section style="background-color: #eee;">
-                                <div class="container py-5">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h1>Thông tin đơn của bạn</h1>
-                                            <p class="mb-4">Kiểm tra lại thông tin đơn hàng thông qua Thông Tin Tài Khoản của bạn</p>
-                                            <div style="color: black;">Mã đơn hàng của bạn: 12${bookingIDNumber}</div>
-                                            <div style="color: black;" class="card mb-4">
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Họ và Tên:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p style="color: black;" class="text-muted mb-0">${acc.fullName}</p>
+                            <h3 class="">Đơn của quý khách đã được ghi nhận thành công</h3>
+
+                            <!--Thanh toán online-->
+                        <c:set var="bankingPart" value="${message.split('-')[0]}" />
+
+                        <c:if test="${bankingPart eq 'Chuyển khoản'}">
+                            <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
+                            <p style="color: black;">Quý khách vui lòng thanh toán phí qua mã QR code
+                                ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
+                            <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
+                            <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
+                            <p style="color: red;">Lưu ý: Chúng tôi chỉ chấp nhận thanh toán qua online.</p>
+                        </c:if>
+                        <c:if test="${bankingPart eq 'Tiền mặt'}">
+                            <p style="color: black;">Chúng tôi sẽ xác nhận đơn dịch vụ cho quý khách sớm nhất có thể</p>
+                        </c:if>
+                        <!--Thanh toán offline-->
+                        <a class="btn btn-primary py-3 px-5" href="HomePageController">Về Lại Trang Chủ</a>
+                    </div>
+                    <div class="col-md-6">
+                        <section style="background-color: #eee;">
+                            <div class="container py-5">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h1>Thông tin đơn của bạn</h1>
+                                        <p class="mb-4">Kiểm tra lại thông tin đơn hàng thông qua Thông Tin Tài Khoản của bạn</p>
+                                        <div style="color: black;">Mã đơn hàng của bạn: ${bookingIDNumber}</div>
+                                        <div style="color: black;" class="card mb-4">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Họ và Tên:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p style="color: black;" class="text-muted mb-0">${acc.fullName}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -141,27 +153,39 @@
                                                 </div>
                                                 <hr>
                                                 <div class="row">
+                                                    
+                                                     
                                                     <div class="col-md-3">
-                                                        <p style="color: black;" class="mb-0">Giá ước lượng:</p>
+                                                        <p style="color: black;" class="mb-0">Phương thức thanh toán:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="100000" pattern="###,### VND" /></p>
+                                                        <p style="color: black;" class="text-muted mb-0">${payment}</p>
                                                     </div>
                                                 </div>
+                                                
+
+                                                <hr>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <p style="color: black;" class="mb-0">Phí trung gian:</p>
+                                                        <p style="color: black;" class="mb-0">Chi phí:</p>
                                                     </div>
+
                                                     <div class="col-md-9">
-                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="30000" pattern="###,### VND" /></p>
+                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="${servicePrice}" pattern="###,### VND" /></p>
                                                     </div>
-                                                </div>
-                                                    <div class="row">
                                                     <div class="col-md-3">
-                                                        <p style="color: black;" class="mb-0">Tổng chi phí:</p>
+                                                        <p style="color: black;" class="mb-0">Số lượng:</p>
                                                     </div>
+
                                                     <div class="col-md-9">
-                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="130000" pattern="###,### VND" /></p>
+                                                        <p style="color: black;" class="text-muted mb-0">${number}</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p style="color: black;" class="mb-0">Tổng chi phi:</p>
+                                                    </div>
+
+                                                    <div class="col-md-9">
+                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="${totalPrice}" pattern="###,### VND" /></p>
                                                     </div>
                                                 </div>
                                             </div>

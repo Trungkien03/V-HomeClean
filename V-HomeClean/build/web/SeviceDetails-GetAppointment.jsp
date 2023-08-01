@@ -87,9 +87,7 @@
                         <img class="position-absolute w-100 h-100" src="${ServiceDetail.image}" alt="" style="object-fit: cover;">
                         <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px;">
                             <div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-                                <h1 class="text-white">25</h1>
-                                <h2 class="text-white">Years</h2>
-                                <h5 class="text-white mb-0">Experience</h5>
+                                <img src="css/assets/img/icon.png">
                             </div>
                         </div>
                     </div>
@@ -101,7 +99,7 @@
                             <h1 class="display-6 mb-0">${ServiceDetail.serviceName}</h1>
                         </div>
                         <p>${ServiceDetail.serviceDetail}</p>
-                        <h6 class="mb-2">Giá ước lượng chỉ từ <fmt:formatNumber value="${ServiceDetail.price}" pattern="###,### VND"/></h6>
+                        <h6 class="mb-2">Giá dịch vụ: <fmt:formatNumber value="${ServiceDetail.price}" pattern="###,### VND"/></h6>
                         <div class="border-top mt-4 pt-4">
                             <div class="row g-4">
                                 <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.1s">
@@ -110,7 +108,7 @@
                                 </div>
                                 <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
                                     <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
-                                    <h6 class="mb-0">24/7 giờ làm việc</h6>
+                                    <h6 class="mb-0">Phục vụ tận tình</h6>
                                 </div>
                                 <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
                                     <i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
@@ -138,7 +136,7 @@
                     <p class="mb-0">V-HomeClean luôn cung cấp dịch vụ tốt dành cho bạn cũng như kinh nghiệm và sự hiệu quả của đội ngũ nhân viên. Sẵn sàng giúp bạn có một không gian sống đẹp!</p>
                 </div>
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-
+                    <h6 class="text-body text-primary display-6 mb-0">Điền thông tin của bạn</h6>
 
                     <form action="MainController" method="post">
                         <input type="hidden" value="${sessionScope.acc.accountID}" name="accountID">
@@ -180,7 +178,7 @@
                                 <div style="color: black;" class="form-floating">
                                     <select style="color: black;" required="Vui lòng chọn khu vực" class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
                                         <option value="">-- Chọn Vinhomes --</option>
-                                        <option style="color: black;" value="Vinhomes Central Park - TP. Hồ Chí Minh">Vinhomes Central Park - Hà Nội</option>
+                                        <option style="color: black;" value="Vinhomes Smart City - Hà Nội">Vinhomes Smart City - Hà Nội</option>
                                     </select>
                                     <label for="relationship">Chọn khu vực</label>
                                 </div>
@@ -228,9 +226,22 @@
                                     </select>
                                     <label for="relationship">Chọn khu vực</label>
                                 </div>
-                                <strong style="color: #e72734;" >${areaError}</strong>
                             </div>
-
+                            <div class="col-sm-6">
+                                <div style="color: black;" class="form-floating">
+                                    <select style="color: black;" required="Hình thức thanh toán" class="form-select bg-light border-0" id="vinhomesOptions" name="payment" aria-label="Guardian Relationship">
+                                        <option style="color: black;" value="Chuyển khoản" selected="">Chuyển khoản</option>
+                                        <option style="color: black;" value="Tiền mặt">Tiền mặt</option>
+                                    </select>
+                                    <label for="relationship">Hình thức thanh toán</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div style="color: black;" class="form-floating">
+                                    <input style="color: black;" required="" type="number" class="form-control bg-light border-0" name="number" placeholder="Gurdian Email" value="1">
+                                    <label for="relationship">Số lượng</label>
+                                </div>
+                            </div>
                             <div class="col-sm-6">
                                 <div style="color: black;" class="form-floating">
                                     <input style="color: black;" required="" type="text" class="form-control bg-light border-0" name="vinHomesID" placeholder="Gurdian Email">
@@ -380,7 +391,7 @@
                 const vinHomesIDPattern = /^s\d{2}\.\d{2}-\d{4}$/i;
 
                 if (!vinHomesIDPattern.test(vinHomesIDValue)) {
-                    vinHomeIDError.textContent = "Mã Tòa và Mã Phòng phải điền theo đúng định dạng Sxx.xx - xxxx (x là số tự nhiên).";
+                    vinHomeIDError.textContent = "Mã Tòa và Mã Phòng phải điền theo đúng định dạng Sxx.xx-xxxx (x là số tự nhiên).";
                 }
             }
 

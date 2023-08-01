@@ -12,7 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,7 +28,7 @@ public class BookingDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    public int InsertBooking(String accountID, String status, String staffID, String serviceID, int totalPrice, String bookingDate, String bookingAddress, String typeOfService, String message) {
+    public int InsertBooking(String accountID, String status, String staffID, String serviceID, int totalPrice, String bookingDate, String bookingAddress, String typeOfService, String message, String paymentMethod) {
         int bookingID = -1;
         try {
             conn = new DBContext().getConnection();
@@ -50,14 +53,15 @@ public class BookingDAO {
             }
 
             // Insert data into the BookingDetail table
-            String bookingDetailQuery = "INSERT INTO BookingDetail (BookingID, TotalPrice, BookingDate, BookingAddress, TypeOfService, Message) VALUES (?, ?, ?, ?, ?, ?)";
+            String bookingDetailQuery = "INSERT INTO BookingDetail (BookingID, TotalPrice, BookingDate, BookingAddress, PaymentMethod, TypeOfService, Message) VALUES (?, ?, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(bookingDetailQuery);
             ps.setInt(1, bookingID);
             ps.setInt(2, totalPrice);
             ps.setString(3, bookingDate);
             ps.setNString(4, bookingAddress);
-            ps.setNString(5, typeOfService);
-            ps.setNString(6, message);
+            ps.setNString(5, paymentMethod);
+            ps.setNString(6, typeOfService);
+            ps.setNString(7, message);
             ps.executeUpdate();
 
             conn.commit(); // Commit the transaction
@@ -73,7 +77,7 @@ public class BookingDAO {
             }
         } finally {
             // Close connections and resources
-            if (ps != null) {
+if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException e) {
@@ -93,7 +97,7 @@ public class BookingDAO {
 
     //get all booking by id
     public List<BookingDTO> getBookingDetailByAccountID(String accountID) {
-        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.TypeOfService, bd.Message\n"
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.PaymentMethod, bd.TypeOfService, bd.Message\n"
                 + "FROM Booking b, BookingDetail bd , Service s\n"
                 + "WHERE b.BookingID = bd.BookingID AND b.ServiceID = s.ServiceID AND b.AccountID = ?";
         List<BookingDTO> bookingList = new ArrayList<>();
@@ -114,7 +118,8 @@ public class BookingDAO {
                         rs.getString(9),
                         rs.getNString(10),
                         rs.getNString(11),
-                        rs.getNString(12)));
+                        rs.getNString(12),
+                        rs.getNString(13)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,7 +129,7 @@ public class BookingDAO {
 
     //get all booking by id
     public List<BookingDTO> getBookingDetailByStaffID(String StaffID) {
-        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.TypeOfService, bd.Message\n"
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.PaymentMethod, bd.TypeOfService, bd.Message\n"
                 + "FROM Booking b, BookingDetail bd , Service s\n"
                 + "WHERE b.BookingID = bd.BookingID AND b.ServiceID = s.ServiceID AND b.StaffID = ?\n"
                 + "ORDER BY bd.BookingDate DESC ";
@@ -140,13 +145,14 @@ public class BookingDAO {
                         rs.getNString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getNString(6),
+rs.getNString(6),
                         rs.getString(7),
                         rs.getInt(8),
                         rs.getString(9),
                         rs.getNString(10),
                         rs.getNString(11),
-                        rs.getNString(12)));
+                        rs.getNString(12),
+                        rs.getNString(13)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -156,7 +162,7 @@ public class BookingDAO {
 
     //lấy Booking bằng booking id
     public BookingDTO getBookingByID(String bookingID) {
-        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.TypeOfService, bd.Message\n"
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName ,bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.PaymentMethod, bd.TypeOfService, bd.Message\n"
                 + "FROM Booking b, BookingDetail bd , Service s\n"
                 + "WHERE b.BookingID = bd.BookingID AND b.ServiceID = s.ServiceID AND b.BookingID = ?";
         try {
@@ -176,7 +182,8 @@ public class BookingDAO {
                         rs.getString(9),
                         rs.getNString(10),
                         rs.getNString(11),
-                        rs.getNString(12));
+                        rs.getNString(12),
+                        rs.getNString(13));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -217,18 +224,52 @@ public class BookingDAO {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+}
         return total;
     }
 
     // lấy ra tất cả Booking
     public List<BookingDTO> getAllLatestBookings() {
-        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName, bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.TypeOfService, bd.Message\n"
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName, bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.PaymentMethod, bd.TypeOfService, bd.Message\n"
                 + "FROM Booking b\n"
                 + "JOIN BookingDetail bd ON b.BookingID = bd.BookingID\n"
                 + "JOIN Service s ON b.ServiceID = s.ServiceID\n"
                 + "WHERE b.BookingStatus != 'hủy'\n"
                 + "ORDER BY ABS(DATEDIFF(day, bd.BookingDate, GETDATE()))";
+        List<BookingDTO> bookingList = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                bookingList.add(new BookingDTO(rs.getString(1),
+                      rs.getString(2),
+                        rs.getNString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getNString(6),
+                        rs.getString(7),
+                        rs.getInt(8),
+                        rs.getString(9),
+                        rs.getNString(10),
+                        rs.getNString(11),
+                        rs.getNString(12),
+                        rs.getNString(13)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookingList;
+    }
+
+    public List<BookingDTO> getAllBookingToday() {
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName, bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.PaymentMethod, bd.TypeOfService, bd.Message\n"
+                + "FROM Booking b\n"
+                + "JOIN BookingDetail bd ON b.BookingID = bd.BookingID\n"
+                + "JOIN Service s ON b.ServiceID = s.ServiceID\n"
+                + "WHERE b.BookingStatus != 'hủy'\n"
+                + "AND CONVERT(DATE, bd.BookingDate) = CONVERT(DATE, GETDATE())\n"
+                + "ORDER BY ABS(DATEDIFF(DAY, bd.BookingDate, GETDATE()));";
         List<BookingDTO> bookingList = new ArrayList<>();
         try {
             conn = new DBContext().getConnection();
@@ -246,7 +287,44 @@ public class BookingDAO {
                         rs.getString(9),
                         rs.getNString(10),
                         rs.getNString(11),
-                        rs.getNString(12)));
+rs.getNString(12),
+                        rs.getNString(13)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bookingList;
+    }
+
+    public List<BookingDTO> getAllBookingBydate(String date) {
+        String query = "SELECT b.BookingID, b.AccountID, b.BookingStatus, b.StaffID, b.ServiceID, s.ServiceName, bd.BookingDetail_ID, bd.TotalPrice, bd.BookingDate, bd.BookingAddress, bd.PaymentMethod, bd.TypeOfService, bd.Message\n"
+                + "FROM Booking b\n"
+                + "JOIN BookingDetail bd ON b.BookingID = bd.BookingID\n"
+                + "JOIN Service s ON b.ServiceID = s.ServiceID\n"
+                + "WHERE b.BookingStatus != 'hủy'\n"
+                + "AND CONVERT(DATE, bd.BookingDate) = ?\n"
+                + "ORDER BY ABS(DATEDIFF(DAY, bd.BookingDate, ?));";
+        List<BookingDTO> bookingList = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, date);
+            ps.setString(2, date);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                bookingList.add(new BookingDTO(rs.getString(1),
+                        rs.getString(2),
+                        rs.getNString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getNString(6),
+                        rs.getString(7),
+                        rs.getInt(8),
+                        rs.getString(9),
+                        rs.getNString(10),
+                        rs.getNString(11),
+                        rs.getNString(12),
+                        rs.getNString(13)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -282,7 +360,7 @@ public class BookingDAO {
             ps.setString(1, status);
             ps.setInt(2, bookingID);
             ps.executeUpdate();
-        } catch (Exception e) {
+} catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -358,7 +436,7 @@ public class BookingDAO {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
-            // Đảm bảo đóng kết nối và các tài nguyên
+// Đảm bảo đóng kết nối và các tài nguyên
             try {
                 if (rs != null) {
                     rs.close();
@@ -378,7 +456,10 @@ public class BookingDAO {
 
     public static void main(String[] args) {
         BookingDAO dao = new BookingDAO();
-        ArrayList<Integer> list = dao.getlistTotalByWeek();
-        System.out.println(list);
+        List<BookingDTO> list = dao.getAllBookingBydate("2023-07-27");
+        for (BookingDTO bookingDTO : list) {
+            System.out.println(bookingDTO);
+        }
+
     }
 }
