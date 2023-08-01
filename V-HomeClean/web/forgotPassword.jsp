@@ -13,6 +13,11 @@
         <meta charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <title>V-HomeClean - Quên Mật Khẩu</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
         <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'rel='stylesheet'>
         <link href='css/style.css' rel='stylesheet'>
         <script type='text/javascript'src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>

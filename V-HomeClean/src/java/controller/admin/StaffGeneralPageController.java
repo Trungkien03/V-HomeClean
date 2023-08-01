@@ -6,6 +6,7 @@
 package controller.admin;
 
 import DAO.AccountDAO;
+import DAO.BookingDAO;
 import DTO.AccountDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,7 +40,10 @@ public class StaffGeneralPageController extends HttpServlet {
         HttpSession session = request.getSession();
         String accountID = request.getParameter("accountID"); // dùng để tìm ra user profile người lần đầu
         AccountDAO aDao = new AccountDAO();
+        BookingDAO bDao = new BookingDAO();
         String action = request.getParameter("action");
+        int totalUserBookings = bDao.CountBookingByAccountID(accountID);
+        request.setAttribute("totalUserBookings", totalUserBookings);
         AccountDTO a = (AccountDTO) session.getAttribute("acc"); // account này dùng để lấy ra người đang sử dụng cái trang này
         if (a == null) {
             response.sendRedirect("dashboard/login.jsp");
@@ -57,7 +61,7 @@ public class StaffGeneralPageController extends HttpServlet {
                     String email = request.getParameter("email");
                     String phone = request.getParameter("phone");
                     String roleID_1 = request.getParameter("roleID");
-                    String salaryString =  request.getParameter("salary");
+                    String salaryString = request.getParameter("salary");
                     salaryString = salaryString.replaceAll("[^0-9]", "");
                     // Chuyển đổi thành số
                     int salary = Integer.parseInt(salaryString);
@@ -71,6 +75,7 @@ public class StaffGeneralPageController extends HttpServlet {
                     AccountDTO updatedAccount = aDao.GetAccountByAccountID(accountID_2);
                     String message = "Chỉnh sửa thông tin thành công!";
                     request.setAttribute("account", updatedAccount);
+
                     request.setAttribute("message", message);
                 }
             } catch (Exception e) {

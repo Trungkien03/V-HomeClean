@@ -3,6 +3,7 @@
     Created on : May 28, 2023, 11:32:17 PM
     Author     : Trung Kien
 --%>
+<%@page import="DTO.AccountDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -15,12 +16,12 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>Dreamchat - Dashboard</title>
+        <title>V-HomeClean - Thông tin đơn hẹn</title>
 
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="css/assets/img/favicon.png"
+            href="css/assets/img/icon.png"
             />
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
@@ -36,6 +37,13 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     </head>
     <body>
+
+        <%
+            AccountDTO user = (AccountDTO) session.getAttribute("acc");
+            if (user == null || user.getRoleID() != 3) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -72,7 +80,6 @@
                                                 data-bs-toggle="tab"
                                                 >Đơn Hẹn</a
                                             >
-                                            <p style="color: #00bf6f">${message}</p>
                                         </li>
                                         <li class="nav-item">
                                             <a
@@ -249,7 +256,7 @@
                                                         </c:if>
                                                     </div>
                                                     <div class="text-end text-center">
-                                                        <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
+                                                        <c:if test="${booking.bookingStatus ne 'Hoàn thành'}">
                                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
                                                                 Hủy lịch hẹn
                                                             </button>
@@ -325,11 +332,6 @@
                                                                 <a href="#" class="float-end"><h5>${account.age}</h5></a>
                                                             </div>
                                                             <div class="profile-list">
-                                                                <a href="#"><i class="fe fe-document"></i></a>
-                                                                <a href="#">Tổng Đơn</a>
-                                                                <a href="#" class="float-end"><h5>403</h5></a>
-                                                            </div>
-                                                            <div class="profile-list">
                                                                 <a href="#"><i class="fe fe-activity"></i></a>
                                                                 <a href="#">Tình Trạng</a>
                                                                 <c:choose>
@@ -340,16 +342,6 @@
                                                                         <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
                                                                     </c:when>
                                                                 </c:choose>
-                                                            </div>
-                                                            <div class="profile-list">
-                                                                <a href="group-history.jsp"
-                                                                   ><button
-                                                                        type="button"
-                                                                        class="btn btn-block btn-outline-light"
-                                                                        >
-                                                                        Xem ....
-                                                                    </button></a
-                                                                >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -471,11 +463,6 @@
                                                                         <a href="#" class="float-end"><h5>${staff.age}</h5></a>
                                                                     </div>
                                                                     <div class="profile-list">
-                                                                        <a href="#"><i class="fe fe-document"></i></a>
-                                                                        <a href="#">Tổng Đơn</a>
-                                                                        <a href="#" class="float-end"><h5>403</h5></a>
-                                                                    </div>
-                                                                    <div class="profile-list">
                                                                         <a href="#"><i class="fe fe-activity"></i></a>
                                                                         <a href="#">Tình Trạng</a>
                                                                         <c:choose>
@@ -486,16 +473,6 @@
                                                                                 <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
                                                                             </c:when>
                                                                         </c:choose>
-                                                                    </div>
-                                                                    <div class="profile-list">
-                                                                        <a href="group-history.jsp"
-                                                                           ><button
-                                                                                type="button"
-                                                                                class="btn btn-block btn-outline-light"
-                                                                                >
-                                                                                Xem ....
-                                                                            </button></a
-                                                                        >
                                                                     </div>
                                                                 </div>
                                                             </div>

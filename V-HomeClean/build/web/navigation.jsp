@@ -33,20 +33,20 @@
         <div class="col-lg-7 px-5 text-start">
             <div class="h-100 d-inline-flex align-items-center border-start border-end px-3">
                 <small class="fa fa-phone-alt me-2"></small>
-                <small>+012 345 6789</small>
+                <small>+84 348 931 442</small>
             </div>
             <div class="h-100 d-inline-flex align-items-center border-end px-3">
                 <small class="far fa-envelope-open me-2"></small>
-                <small>info@example.com</small>
+                <small>hieudoan280102@gmail.com</small>
             </div>
             <div class="h-100 d-inline-flex align-items-center border-end px-3">
                 <small class="far fa-clock me-2"></small>
-                <small>Mon - Fri : 09 AM - 09 PM</small>
+                <small>Mon - Sun : 06 AM - 09 PM</small>
             </div>
         </div>
         <div class="col-lg-5 px-5 text-end">
             <div class="h-100 d-inline-flex align-items-center">
-                <a class="btn btn-square border-end border-start" href=""><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-square border-end border-start" href="https://www.facebook.com/dt.hieu218" target="blank"><i class="fab fa-facebook-f"></i></a>
                 <a class="btn btn-square border-end" href=""><i class="fab fa-twitter"></i></a>
                 <a class="btn btn-square border-end" href=""><i class="fab fa-linkedin-in"></i></a>
                 <a class="btn btn-square border-end" href=""><i class="fab fa-instagram"></i></a>
@@ -69,14 +69,7 @@
         <div class="navbar-nav ms-auto py-3 py-lg-0">
             <a href="HomePageController" class="nav-item nav-link active"><strong>Trang Chủ</strong></a>
             <a href="AboutPageController" class="nav-item nav-link"><strong>Giới Thiệu</strong></a>
-            <div class="nav-item dropdown">
-                <a href="ServicePageController" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Dịch Vụ</strong></a>
-                <div class="dropdown-menu bg-light m-0">
-                    <a href="ServicePageController" class="dropdown-item">Tổng Hợp Dịch Vụ</a>
-                    <a href="#" class="dropdown-item">Dịch Vụ Sửa Chữa</a>
-                    <a href="#" class="dropdown-item">Dịch Vụ Dọn Dẹp</a>
-                </div>
-            </div>
+            <a href="ServicePageController" class="nav-item nav-link"><strong>Dịch Vụ</strong></a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><strong>Bài Viết</strong></a>
                 <div class="dropdown-menu bg-light m-0">
@@ -84,13 +77,6 @@
                     <a href="BlogPageController" class="dropdown-item">Bài Viết</a>
 
                     <a href="postBlog.jsp" class="dropdown-item">Đăng Bài Viết</a>
-
-                    
-
-                    <a href="appointment.jsp" class="dropdown-item">Appointment</a>
-                    <a href="team.jsp" class="dropdown-item">Our Team</a>
-                    <a href="testimonial.jsp" class="dropdown-item">Testimonial</a>
-                    <a href="404.jsp" class="dropdown-item">404 Page</a>
                 </div>
             </div>
             <a href="ContactPageController" class="nav-item nav-link"><strong>Liên Hệ</strong></a>
@@ -112,7 +98,7 @@
                         <a href="login.jsp" class="dropdown-item">Đăng Ký</a>
                     </c:if>
                     <c:if test="${sessionScope.acc != null}">
-                        <c:if test="${sessionScope.acc.roleID == 1}">
+                        <c:if test="${sessionScope.acc.roleID == 1 || sessionScope.acc.roleID == 3 }">
                             <a href="DashboardController" class="dropdown-item">Bảng Điều Khiển</a>
                         </c:if>
                     </c:if>
@@ -257,7 +243,18 @@
                             <ul id="notificationList" class="notification-list">
                                 <c:forEach items="${sessionScope.listNotiUnread}" var="notification">
                                     <li class="notification-link notification-message">
-                                        <a href="#">
+                                        <a href="<c:choose>
+                                               <c:when test="${notification.typeNoti == 'Staff'}">
+                                                   ProfilePageController?notificationID=${notification.notificationID}&action=XemThongBao
+                                               </c:when>
+                                               <c:when test="${notification.typeNoti == 'User'}">
+                                                   ProfilePageController?notificationID=${notification.notificationID}&action=KiemTra
+                                               </c:when>
+                                               <c:otherwise>
+                                                   StaffTaskPageController
+                                               </c:otherwise>
+                                           </c:choose>">
+                                            <!-- Rest of your code -->
                                             <div class="media d-flex">
                                                 <span style="width: 50px; text-align: center;" class="avatar avatar-sm flex-shrink-0">
                                                     <c:set var="image" value="img/user.jpg" /> <!-- Khởi tạo giá trị mặc định cho image -->

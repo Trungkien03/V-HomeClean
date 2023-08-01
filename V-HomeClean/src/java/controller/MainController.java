@@ -33,11 +33,12 @@ public class MainController extends HttpServlet {
     private static final String UPDATE_PASSWORD_CONTROLLER = "UpdatePasswordController";
     private static final String BOOKING = "Booking";
     private static final String BOOKING_CONTROLLER = "BookingController";
-    
-   
+    private static final String DISTINCT = "Distinct";
+    private static final String DISTINCT_CONTROLLER = "DistinctServiceController";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String url = ERROR;
@@ -45,9 +46,9 @@ public class MainController extends HttpServlet {
             String action = request.getParameter("action");
             if (LOGIN.equals(action)) {
                 url = LOGIN_CONTROLLER;
-            }else if(REGISTER.equals(action)){
+            } else if (REGISTER.equals(action)) {
                 url = REGISTER_CONTROLLER;
-            }else if(LOGOUT.equals(action)){
+            } else if (LOGOUT.equals(action)) {
                 url = LOGOUT_CONTROLLER;
             } else if (FORGOT.equals(action)) {
                 url = FORGOTPASSWORD_CONTROLLER;
@@ -55,10 +56,11 @@ public class MainController extends HttpServlet {
                 url = VALID_OTP_CONTROLLER;
             } else if (UPDATE_PASSWORD.equals(action)) {
                 url = UPDATE_PASSWORD_CONTROLLER;
-            } else if(BOOKING.equals(action)){
+            } else if (BOOKING.equals(action)) {
                 url = BOOKING_CONTROLLER;
-            } 
-            else {
+            } else if (DISTINCT.equals(action)) {
+                url = DISTINCT_CONTROLLER;
+            } else {
                 request.setAttribute("ERROR", "Your action is not supported!");
             }
         } catch (Exception e) {

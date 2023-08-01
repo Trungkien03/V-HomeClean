@@ -3,6 +3,7 @@
     Created on : May 28, 2023, 11:32:17 PM
     Author     : Trung Kien
 --%>
+<%@page import="DTO.AccountDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,12 +15,12 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>Dreamchat - Dashboard</title>
+        <title>V-HomeClean - Thông tin dịch vụ</title>
 
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="css/assets/img/favicon.png"
+            href="css/assets/img/icon.png"
             />
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
@@ -40,6 +41,12 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <%
+            AccountDTO user = (AccountDTO) session.getAttribute("acc");
+            if (user == null || user.getRoleID() != 3) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -107,21 +114,15 @@
                                     </p>
                                 </div>
                                 <div class="card-body p-0">
-
-                                    <div class="profile-list">
-                                        <a href="#"><i class="fe fe-document"></i></a>
-                                        <a href="#">Tổng Đơn</a>
-                                        <a href="#" class="float-end"><h5>403</h5></a>
-                                    </div>
                                     <div class="profile-list">
                                         <a href="#"><i class="fe fe-activity"></i></a>
                                         <a href="#">Tình Trạng</a>
                                         <c:choose>
                                             <c:when test="${service.status eq true}">
-                                                <a href="#" class="float-end"><h5 style="color: #00bf6f;">Hoạt động</h5></a>
+                                                <a href="#" class="float-end"><h5 style="color: #00bf6f;">Đang Hoạt động</h5></a>
                                             </c:when>
                                             <c:when test="${service.status eq false}">
-                                                <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
+                                                <a href="#" class="float-end"><h5 style="color: #b21f2d;">Ngưng Hoạt Động</h5></a>
                                             </c:when>
                                         </c:choose>
                                     </div>
@@ -151,14 +152,6 @@
                                                 href="#top-justified-tab2"
                                                 data-bs-toggle="tab"
                                                 >Mô Tả Dịch Vụ</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="#top-justified-tab3"
-                                                data-bs-toggle="tab"
-                                                >Thông Báo</a
                                             >
                                         </li>
                                     </ul>
@@ -227,9 +220,6 @@
                                                 <input name="action" type="submit" value="Chỉnh Sửa" class="btn btn-primary" />
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="top-justified-tab3">
-                                            Tab content 3
-                                        </div>
                                     </div>
 
                                 </div>
@@ -273,7 +263,6 @@
 
                 if (status === "create-service" && !isModalDisplayed) {
                     var openModalBtn = document.getElementById('openModalBtn');
-                    openModalBtn.style.display = "block";
                     openModalBtn.click();
                     isModalDisplayed = true;
                 }

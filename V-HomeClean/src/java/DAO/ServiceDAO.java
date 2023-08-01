@@ -80,11 +80,10 @@ public class ServiceDAO {
                 totalServices = rs.getInt("total_count");
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return totalServices;
     }
-
-
 
     public List<ServiceDTO> pagingService(int index) {
         List<ServiceDTO> list = new ArrayList<>();
@@ -113,7 +112,6 @@ public class ServiceDAO {
         return list;
 
     }
-
 
     public int CountServiceByStatus(String status) {
         String query = "SELECT COUNT(*) AS total_count FROM Service WHERE Status = ?";
@@ -240,9 +238,15 @@ public class ServiceDAO {
         return null;
     }
 
+   
+
     public static void main(String[] args) {
+
         ServiceDAO dao = new ServiceDAO();
-        ServiceDTO a = dao.GetServiceByName("Tổng vệ sinh");
-        System.out.println(a);
+        List<ServiceDTO> list = dao.getAllService();
+        for (ServiceDTO serviceDTO : list) {
+            System.out.println(serviceDTO);
+        }
+
     }
 }

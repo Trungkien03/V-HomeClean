@@ -14,12 +14,12 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>Dreamchat - Dashboard</title>
+        <title>V-HomeClean - Thông tin nhân viên</title>
 
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="css/assets/img/favicon.png"
+            href="css/assets/img/icon.png"
             />
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
@@ -99,7 +99,7 @@
                                     <div class="profile-list">
                                         <a href="#"><i class="fe fe-document"></i></a>
                                         <a href="#">Tổng Đơn</a>
-                                        <a href="#" class="float-end"><h5>403</h5></a>
+                                        <a href="#" class="float-end"><h5>${totalUserBookings}</h5></a>
                                     </div>
                                     <div class="profile-list">
                                         <a href="#"><i class="fe fe-disabled"></i></a>
@@ -112,16 +112,6 @@
                                                 <a href="#" class="float-end"><h5 style="color: #b21f2d;">Bị khóa</h5></a>
                                             </c:when>
                                         </c:choose>
-                                    </div>
-                                    <div class="profile-list">
-                                        <a href="group-history.jsp"
-                                           ><button
-                                                type="button"
-                                                class="btn btn-block btn-outline-light"
-                                                >
-                                                Xem ....
-                                            </button></a
-                                        >
                                     </div>
                                 </div>
                             </div>
@@ -148,14 +138,6 @@
                                                 href="#top-justified-tab2"
                                                 data-bs-toggle="tab"
                                                 >Tổng số dịch vụ</a
-                                            >
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                class="nav-link"
-                                                href="#top-justified-tab3"
-                                                data-bs-toggle="tab"
-                                                >Thông Báo</a
                                             >
                                         </li>
                                     </ul>

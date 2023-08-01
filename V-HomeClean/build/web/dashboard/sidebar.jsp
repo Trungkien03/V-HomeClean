@@ -3,7 +3,8 @@
     Created on : May 28, 2023, 11:49:40 PM
     Author     : Trung Kien
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="sidebar" id="sidebar">
@@ -28,55 +29,41 @@
                         <li id="account-create-link"><a href="AccountCreateController">Tạo Tài Khoản Mới</a></li>
                     </ul>
                 </li>
-                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-file-zip"></i> <span> Dịch Vụ </span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul style="display: none">
-                        <li id="orders-details-link"><a href="ServicesManagementController"> Quản Lý Dịch Vụ </a></li>
-                        <li id="orders-details-link"><a href="ServicesBlockPageController"> Dịch Vụ Bị Khóa </a></li>
-                        <li id="orders-management-link"><a href="ServiceCreateController"> Tạo Mới Dịch Vụ </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-file-zip"></i> <span> Đơn Hẹn </span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul style="display: none">
-                        <li id="appointment-details-link"><a href="BookingsManagementController"> Quản Lý Đơn </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-globe"></i> <span> Blogs </span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul style="display: none">
-                        <li id="blog-details-link"><a href="dashboard/orders-details.jsp"> Quản Lý Blog </a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-bell"></i> <span> Thông Báo </span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul style="display: none">
-                        <li id="notification-management-link"><a href="dashboard/general.jsp">Quản Lý Thông Báo</a></li>
-                        <li id="faq-management-link"><a href="dashboard/admob.jsp">Quản Lý Thắc Mắc</a></li>
-                    </ul>
-                </li>
-<!--                <li class="submenu">
-                    <a href="#"
-                       ><i class="fe fe-gear"></i> <span> Cài Đặt </span>
-                        <span class="menu-arrow"></span
-                        ></a>
-                    <ul style="display: none">
-                        <li id="general-settings-link"><a href="dashboard/general.jsp">Cài Đặt Chung</a></li>
-                        <li id="admob-settings-link"><a href="dashboard/admob.jsp">Admob</a></li>
-                    </ul>
-                </li>-->
+                <c:if test="${sessionScope.acc.roleID == 3}">
+                    <li class="submenu">
+                        <a href="#"
+                           ><i class="fe fe-file-zip"></i> <span> Dịch Vụ </span>
+                            <span class="menu-arrow"></span
+                            ></a>
+                        <ul style="display: none">
+                            <li id="orders-details-link"><a href="ServicesManagementController"> Quản Lý Dịch Vụ </a></li>
+                            <li id="orders-details-link"><a href="ServicesBlockPageController"> Dịch Vụ Bị Khóa </a></li>
+                            <li id="orders-management-link"><a href="ServiceCreateController"> Tạo Mới Dịch Vụ </a></li>
+                        </ul>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.acc.roleID == 3}">
+                    <li class="submenu">
+                        <a href="#"
+                           ><i class="fe fe-file-zip"></i> <span> Đơn Hẹn </span>
+                            <span class="menu-arrow"></span
+                            ></a>
+                        <ul style="display: none">
+                            <li id="appointment-details-link"><a href="BookingsManagementController"> Quản Lý Đơn </a></li>
+                        </ul>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.acc.roleID == 3}">
+                    <li class="submenu">
+                        <a href="#"
+                           ><i class="fe fe-globe"></i> <span> Blogs </span>
+                            <span class="menu-arrow"></span
+                            ></a>
+                        <ul style="display: none">
+                            <li id="blog-details-link"><a href="BlogsManagementController"> Quản Lý Blog </a></li>
+                        </ul>
+                    </li>
+                </c:if>
             </ul>
         </div>
     </div>
@@ -87,10 +74,10 @@
     var submenuItems = document.querySelectorAll('.submenu li');
 
     // Lặp qua danh sách các thẻ <li> và gán sự kiện click cho mỗi thẻ
-    submenuItems.forEach(function(item) {
-        item.addEventListener('click', function() {
+    submenuItems.forEach(function (item) {
+        item.addEventListener('click', function () {
             // Bỏ lớp "active" khỏi tất cả các thẻ <li>
-            submenuItems.forEach(function(submenuItem) {
+            submenuItems.forEach(function (submenuItem) {
                 submenuItem.classList.remove('active');
             });
 

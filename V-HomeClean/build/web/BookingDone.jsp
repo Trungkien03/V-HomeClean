@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +14,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>V-HomeClean - Home Clean Website Services</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
 
         <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
+        <link href="css/assets/img/icon.png" rel="icon">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,8 +60,13 @@
                         <div class="col-md-6">
                             <i class="bi bi-check-circle-fill display-1 text-primary"></i>
                             <h1 class="display-1">Congratulations</h1>
-                            <h1 class="mb-4">Đơn của bạn đã được xác nhận thành công</h1>
-                            <p class="mb-4">Kiểm tra lại thông tin đơn hàng thông qua Thông Tin Tài Khoản của bạn</p>
+                            <h3 class="">Đơn của quý khách đã được ghi nhận thành công</h3>
+                            <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
+                            <p style="color: black;">Quý khách vui lòng thanh toán phí qua mã QR code
+                                ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
+                            <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
+                            <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
+                            <p style="color: red;">Lưu ý: Chúng tôi chỉ chấp nhận thanh toán qua online.</p>
                             <a class="btn btn-primary py-3 px-5" href="HomePageController">Về Lại Trang Chủ</a>
                         </div>
                         <div class="col-md-6">
@@ -63,14 +75,16 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h1>Thông tin đơn của bạn</h1>
-                                            <div class="card mb-4">
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <p class="mb-0">Họ và Tên:</p>
-                                                        </div>
-                                                        <div class="col-md-9">
-                                                            <p class="text-muted mb-0">${acc.fullName}</p>
+                                            <p class="mb-4">Kiểm tra lại thông tin đơn hàng thông qua Thông Tin Tài Khoản của bạn</p>
+                                            <div style="color: black;">Mã đơn hàng của bạn: ${bookingIDNumber}</div>
+                                        <div style="color: black;" class="card mb-4">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <p class="mb-0">Họ và Tên:</p>
+                                                    </div>
+                                                    <div class="col-md-9">
+                                                        <p style="color: black;" class="text-muted mb-0">${acc.fullName}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -79,7 +93,7 @@
                                                         <p class="mb-0">Tên dịch vụ:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p class="text-muted mb-0">${serviceName}</p>
+                                                        <p style="color: black;" class="text-muted mb-0">${serviceName}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -88,52 +102,52 @@
                                                         <p class="mb-0">Địa chỉ email:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p class="text-muted mb-0">${acc.email}</p>
+                                                        <p style="color: black;" class="text-muted mb-0">${acc.email}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <p class="mb-0">Số điện thoại:</p>
+                                                        <p style="color: black;" class="mb-0">Số điện thoại:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p class="text-muted mb-0">${acc.phone}</p>
+                                                        <p style="color: black;" class="text-muted mb-0">${acc.phone}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <p class="mb-0">Mã phòng:</p>
+                                                        <p style="color: black;" class="mb-0">Mã phòng:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p class="text-muted mb-0">${vinhomesID}</p>
+                                                        <p style="color: black;" class="text-muted mb-0">${vinhomesID}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <p class="mb-0">Khu vực:</p>
+                                                        <p style="color: black;" class="mb-0">Khu vực:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p class="text-muted mb-0">${area}</p>
+                                                        <p style="color: black;" class="text-muted mb-0">${area}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <p class="mb-0">Thời gian:</p>
+                                                        <p style="color: black;" class="mb-0">Thời gian:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p class="text-muted mb-0">${bookingDate}</p>
+                                                        <p style="color: black;" class="text-muted mb-0">${bookingDate}</p>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <p class="mb-0">Giá ước lượng:</p>
+                                                        <p style="color: black;" class="mb-0">Tổng chi phí:</p>
                                                     </div>
                                                     <div class="col-md-9">
-                                                        <p class="text-muted mb-0">${totalPrice}</p>
+                                                        <p style="color: black;" class="text-muted mb-0"><fmt:formatNumber value="${totalPrice}" pattern="###,### VND" /></p>
                                                     </div>
                                                 </div>
                                             </div>

@@ -66,6 +66,7 @@ public class SingleBlogController extends HttpServlet {
         }
 
         List<CommentDTO> listC = cdao.pagingComment(index, blogID);
+        session.setAttribute("listB", list);
         session.setAttribute("listCmt", listC);
         session.setAttribute("tag", index);
         session.setAttribute("endP", endPage);
@@ -123,6 +124,7 @@ public class SingleBlogController extends HttpServlet {
             if (action.equalsIgnoreCase("paging")) {
                 try {
                     listC = cdao.pagingComment(index, blogID);
+                     session.setAttribute("listB", list);
                     session.setAttribute("BlogDetail", b);
                     session.setAttribute("listCmt", listC);
                     session.setAttribute("tag", index);

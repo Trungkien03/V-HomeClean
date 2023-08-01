@@ -14,12 +14,12 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>Dreamchat - Dashboard</title>
+        <title>V-HomeClean - Quản lý đơn</title>
 
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="css/assets/img/favicon.png"
+            href="css/assets/img/icon.png"
             />
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
@@ -88,7 +88,7 @@
                                                                 <c:set var="accountImage" value="${user.image}" />
                                                             </c:if>
                                                         </c:forEach>
-                                                        <td class="text-center">
+                                                        <td>
                                                             <h2 class="table-avatar">
                                                                 <a 
                                                                     href="#"
@@ -117,7 +117,7 @@
                                                             </c:if>
                                                         </c:forEach>
                                                         <td class="text-center">${o.bookingDate}</td>
-                                                        <td class="text-center">
+                                                        <td>
                                                             <h2 class="table-avatar">
                                                                 <a 
                                                                     href="#"
@@ -132,7 +132,26 @@
                                                                 >
                                                             </h2>
                                                         </td>
-                                                        <td class="text-center">${o.bookingStatus}</td>
+                                                        <td class="text-center">
+                                                            <c:if test="${o.bookingStatus eq 'Chờ xác nhận'}">
+                                                                <button class="btn btn-warning">Chờ xác nhận</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Xác nhận'}">
+                                                                <button class="btn btn-info">Đã xác nhận</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Đang thực hiện'}">
+                                                                <button class="btn btn-info">Đang làm</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Hủy'}">
+                                                                <button class="btn btn-danger">Đã Hủy</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Xác nhận hoàn thành'}">
+                                                                <button class="btn btn-success">Xác Nhận Hoàn Thành</button>
+                                                            </c:if>
+                                                            <c:if test="${o.bookingStatus eq 'Hoàn thành'}">
+                                                                <button  class="btn btn-success">Hoàn Thành</button>
+                                                            </c:if>
+                                                        </td>
                                                         <td class="text-center">
                                                             <div class="actions">
                                                                 <a
@@ -196,7 +215,7 @@
                     columnDefs: [
                         {"orderable": false, "targets": 0} // Tắt tính năng tự động sắp xếp cho cột đầu tiên
                     ],
-                    order: [] // Không sắp xếp ban đầu
+                    order: [[2, 'des']]
                 });
             });
 

@@ -44,7 +44,7 @@ public class NotificationDAO {
     public List<NotificationDTO> getAllNotiByAccountID(String accountID) {
         String query = "SELECT *\n"
                 + "FROM Notification\n"
-                + "WHERE AccountID = ?\n"
+                + "WHERE AccountID = ? AND Status = 'false'\n"
                 + "ORDER BY ABS(DATEDIFF(minute, Create_at, GETDATE()))";
         List<NotificationDTO> list = new ArrayList<>();
         try {
@@ -103,7 +103,7 @@ public class NotificationDAO {
     public List<NotificationDTO> getAllNotificationByTypeNoti(String typeNoti) {
         String query = "SELECT *\n"
                 + "FROM Notification\n"
-                + "WHERE TypeNoti = ?\n"
+                + "WHERE TypeNoti = ? AND Status = 'False'\n"
                 + "ORDER BY ABS(DATEDIFF(minute, Create_at, GETDATE()))";
         List<NotificationDTO> list = new ArrayList<>();
         try {
@@ -171,17 +171,25 @@ public class NotificationDAO {
         return total;
     }
 
-    public static void main(String[] args) {
-        String typeAdmin = "Admin";
-        String typeUser = "User";
-        String typeStaff = "Staff";
-        NotificationDAO dao = new NotificationDAO();
-        List<NotificationDTO> list = dao.getAllNotiByAccountIDAndStatusAndTypeNoti("AC0002", "false", typeUser, typeStaff);
-        for (NotificationDTO notificationDTO : list) {
-            System.out.println(notificationDTO.toString());
+    public void updateStatusNotification(String notificationID, String status) {
+        String query = "UPDATE Notification\n"
+                + "SET Status = ?\n"
+                + "WHERE NotificationID = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, status);
+            ps.setString(2, notificationID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-        int total = dao.CountUnreadNotificationAndTypeNotiAndAccountID("AC0002", "false", typeUser, typeStaff);
-        System.out.println(total);
+    public static void main(String[] args) {
+        NotificationDAO dao = new NotificationDAO();
+        String notificationID = "57";
+
+        dao.updateStatusNotification(notificationID, "true");
     }
 }

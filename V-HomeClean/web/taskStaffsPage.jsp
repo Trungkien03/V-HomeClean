@@ -19,6 +19,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>V-HomeClean - Thông Tin Tài Khoản</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -60,7 +65,6 @@
                 response.sendRedirect("login.jsp");
             }
         %>
-        <h2>${message}</h2>
         <jsp:include page="navigation.jsp"></jsp:include>
             <section class=" my-5">
                 <div class="container-fluid">
@@ -85,21 +89,24 @@
                             <!-- đay là tab thông tin đơn hàng   -->
                             <div class="tab-pane fade show active" id="task" role="tabpanel" aria-labelledby="security-tab">
                                 <h3 class="mb-4">Danh Sách</h3>
-                                <div class="row">
-                                    <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-success">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-center">No</th>
-                                                <th class="text-center">Mã đơn hàng</th>
-                                                <th class="text-center">Khách hàng</th>
-                                                <th class="text-center">Dịch vụ</th>
-                                                <th class="text-center">Khu vực</th>
-                                                <th class="text-center">Tình Trạng</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                <h2>${message}</h2>
+                            <div class="row">
+                                <table style="border: #004085 solid medium" id="example_table1" class="table table-hover text-center table-success">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center" style="width: 100px;">Mã đơn hàng</th>
+                                            <th class="text-center">Khách hàng</th>
+                                            <th class="text-center" style="width: 100px;">Dịch vụ</th>
+                                            <th class="text-center" style="width: 150px;">Khu vực</th>
+                                            <th class="text-center">Thời gian</th>
+                                            <th class="text-center" style="width: 150px;">Tình Trạng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         <c:forEach var="booking" items="${TaskList}" varStatus="loop">
                                             <c:set var="addressParts" value="${fn:split(booking.bookingAddress, '||')}"/>
+                                            <c:set var="date" value="${fn:split(booking.bookingDate, ' ')}"/>
                                             <tr>
                                                 <td class="text-center">${loop.index + 1}</td>
                                                 <c:forEach items="${allAccounts}" var="o">
@@ -115,6 +122,7 @@
                                                 <td class="text-center">${customerName}</td>
                                                 <td class="text-center">${booking.serviceName}</td>
                                                 <td class="text-center">${addressParts[1]}</td>
+                                                <td class="text-center">${date[0]}</td>
 <!--                                                <td><fmt:formatNumber value="${booking.totalPrice}" pattern="###,### VND"/></td>-->
                                                 <td class="text-center">
                                                     <c:if test="${booking.bookingStatus eq 'Xác nhận'}">
@@ -386,7 +394,12 @@
                         "sSortAscending": ": Sắp xếp cột tăng dần",
                         "sSortDescending": ": Sắp xếp cột giảm dần"
                     }
-                }
+                },
+                columnDefs: [
+                    {"orderable": false, "targets": 5} // Tắt tính năng tự động sắp xếp cho cột đầu tiên
+                ],
+                order: [[5, 'des']]
+
             });
         });
 
@@ -412,7 +425,8 @@
                         "sSortAscending": ": Sắp xếp cột tăng dần",
                         "sSortDescending": ": Sắp xếp cột giảm dần"
                     }
-                }
+                },
+                order: [[0, 'des']]
             });
         });
 

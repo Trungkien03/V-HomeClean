@@ -19,6 +19,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>V-HomeClean - Thông Tin Tài Khoản</title>
+        <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="css/assets/img/icon.png"
+            />
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -285,10 +290,6 @@
 
                                     <input class="btn btn-outline-primary change-pass-button" type="submit" name="action" value="Thay Đổi Mật Khẩu"
                                            class="btn btn-block btn-info">
-                                    <!--                            <div>
-                                                                    <button class="btn btn-primary">Update</button>
-                                                                    <button class="btn btn-light">Cancel</button>
-                                                                </div>-->
                                 </form>
                             </div>
                         </div>
@@ -359,6 +360,11 @@
                                                                         <c:when test="${empty staffName}">
                                                                             <div class="p-3 text-center">
                                                                                 <h4 class="text-center text-danger">Hiện tại chưa có nhân viên phụ trách</h4>
+                                                                                <img class="img-thumbnail" style="width: 70%; height: 45%;" src="img/thangQR.jpg">
+                                                                                <p style="color: black;">Nếu bạn thanh toàn rồi, quý khách vui lòng đợi, chúng tôi sẽ xác nhận đơn cho quý khách sớm nhất có thể</p>
+                                                                                <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
+                                                                                <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
+                                                                                <p style="color: red;">Lưu ý: Chúng tôi chỉ chấp nhận thanh toán qua online.</p>
                                                                             </div>
                                                                         </c:when>
                                                                         <c:otherwise>
@@ -399,8 +405,25 @@
                                                                                     <input style="color: #000;" readonly="" value="${fn:substring(booking.bookingDate, 11, 16)}" type="text" class="form-control text-center">
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label class="text-info">Ngày (yyyy-mm-dd)</label>
-                                                                                    <input style="color: #000;" readonly="" value="${fn:substring(booking.bookingDate, 0, 10)}" type="text" class="form-control text-center">
+                                                                                    <label class="text-info">Ngày (mm-dd-yyyy)</label>
+                                                                                    <c:set var="date" value="${fn:split(booking.bookingDate, ' ')}"/>
+                                                                                    <c:set var="formattedDate" value="${fn:split(date[0], '-')}"/>
+
+                                                                                    <c:set var="month" value="${formattedDate[1]}"/>
+                                                                                    <c:choose>
+                                                                                        <c:when test="${fn:length(month) == 1}">
+                                                                                            <c:set var="month" value="0${month}" />
+                                                                                        </c:when>
+                                                                                    </c:choose>
+
+                                                                                    <c:set var="day" value="${formattedDate[2]}"/>
+                                                                                    <c:choose>
+                                                                                        <c:when test="${fn:length(day) == 1}">
+                                                                                            <c:set var="day" value="0${day}" />
+                                                                                        </c:when>
+                                                                                    </c:choose>
+                                                                                    <c:set var="formattedDateString" value="${month}-${day}-${formattedDate[0]}" />
+                                                                                    <input style="color: #000;" readonly="" value="${formattedDateString}" type="text" class="form-control text-center">
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <c:set var="addressArray" value="${fn:split(booking.bookingAddress, '||')}" />
@@ -463,13 +486,45 @@
                                                         </div>
                                                         <div style="display: flex; justify-content: space-between" class="modal-footer">
                                                             <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
-                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy đơn</button>
+                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#h${loop.index}">Hủy đơn</button>
                                                             </c:if>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            <div class="modal fade" id="h${loop.index}" tabindex="-2" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 style="color: black;" class="modal-title" id="exampleModalLongTitle">Phản hồi từ quý khách</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <form action="ProfilePageController" method="POST">
+                                                            <div style="color: black;" class="modal-body">
+                                                                Quý khách có chắc chắn là hủy đơn hàng này không ạ ?
+                                                                <div class="col-lg-12 col-md-6 wow fadeInUp mt-3" data-wow-delay="0.3s">
+                                                                    <input name="bookingID" type="hidden" value="${booking.bookingID}">
+                                                                    <div class="row g-3">
+                                                                        <div class="col-12">
+                                                                            <div class="form-floating">
+                                                                                <textarea name="feedbackDetail" class="form-control bg-light border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                                                                <label for="message">Hãy cho chúng tôi biết lý do hủy đơn</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="display: flex; justify-content: space-between" class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                                <input id="submitBtn" name="action" value="Hủy" type="submit" class="btn btn-primary">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <td>
                                                 <c:if test="${booking.bookingStatus eq 'Chờ xác nhận'}">
                                                     <button class="btn btn-info">Chờ xác nhận</button>
@@ -479,6 +534,9 @@
                                                 </c:if>
                                                 <c:if test="${booking.bookingStatus eq 'Đang thực hiện'}">
                                                     <button class="btn btn-info">Đang hoạt động</button>
+                                                </c:if>
+                                                <c:if test="${booking.bookingStatus eq 'Hủy'}">
+                                                    <button class="btn btn-danger">Đã Hủy</button>
                                                 </c:if>
                                                 <c:if test="${booking.bookingStatus eq 'Xác nhận hoàn thành'}">
                                                     <button class="btn btn-info" data-toggle="modal" data-target="#a${loop.index}">Xác nhận đơn</button>
@@ -517,12 +575,14 @@
                                                                     </div>
                                                                     <div style="display: flex; justify-content: space-between" class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                                        <button id="submitBtn" disabled name="action" value="Đánh giá" type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                                                                        <button id="submitBtn" name="action" value="Đánh giá" type="submit" class="btn btn-primary">Gửi đánh giá</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
                                                         </div>
                                                     </div>
+
+
                                                 </c:if>
                                                 <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
                                                     <button class="btn btn-success" >Hoàn tất</button>
@@ -538,35 +598,57 @@
                             <h3 class="mb-4">Thông Tin Thông Báo</h3>
                             <div class="form-group">
 
-                                <table style="border: #004085 solid medium" id="example_table3" class="table table-hover text-center table-info">
+                                <table style="border: #004085 solid medium" id="example_table3" class="table table-hover table-bordered table-info">
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th>Nội Dung</th>
-                                            <th></th>
+                                            <th class="text-center font-weight-600">Hình Ảnh</th>
+                                            <th class="text-center font-weight-600">Nội Dung</th>
+                                            <th class="text-center font-weight-600">Thời Gian</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Colt Adams</td>
-                                            <td>16740326 5320</td>
-                                        </tr>
+                                        <c:forEach items="${listNotiOfUser}" var="o">
+                                            <tr>
+                                                <td class="text-center">
+                                                    <span style="width: 70px; text-align: center;">
+                                                        <c:set var="image" value="img/user.jpg" /> <!-- Khởi tạo giá trị mặc định cho image -->
+
+                                                        <c:forEach items="${ListBookingAccounts}" var="booking">
+                                                            <c:if test="${o.bookingID eq booking.bookingID}">
+                                                                <c:forEach items="${listAllAccounts}" var="account">
+                                                                    <c:if test="${account.accountID eq booking.staffID}">
+                                                                        <c:set var="image" value="${account.image}" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                        <img style="width: 53px; height: 52px" class="rounded-circle" alt="User Image" src="${image}" />
+                                                    </span>
+                                                </td>
+                                                <td style="width: 300px;">${o.detail}</td>
+
+                                                <c:set var="date" value="${fn:split(o.createAt, ' ')}"/>
+                                                <c:set var="date" value="${fn:split(o.createAt, ' ')}"/>
+                                                <c:set var="formattedDate" value="${fn:split(date[0], '-')}"/>
+
+                                                <c:set var="month" value="${formattedDate[1]}"/>
+                                                <c:choose>
+                                                    <c:when test="${fn:length(month) == 1}">
+                                                        <c:set var="month" value="0${month}" />
+                                                    </c:when>
+                                                </c:choose>
+
+                                                <c:set var="day" value="${formattedDate[2]}"/>
+                                                <c:choose>
+                                                    <c:when test="${fn:length(day) == 1}">
+                                                        <c:set var="day" value="0${day}" />
+                                                    </c:when>
+                                                </c:choose>
+                                                <c:set var="formattedDateString" value="${month}-${day}-${formattedDate[0]}" />
+
+                                                <td>${formattedDateString}</td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -729,6 +811,13 @@
         }
 
         if (status === "feedBack") {
+            window.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('security-tab').click();
+                status = "";
+            });
+        }
+
+        if (status === "checkNoti") {
             window.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('security-tab').click();
                 status = "";

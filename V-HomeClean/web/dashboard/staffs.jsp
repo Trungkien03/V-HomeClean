@@ -14,12 +14,12 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>Dreamchat - Dashboard</title>
+        <title>V-HomeClean - Quản lý nhân viên</title>
 
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="css/assets/img/favicon.png"
+            href="css/assets/img/icon.png"
             />
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
@@ -46,12 +46,12 @@
                         <div class="page-header">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h3 class="page-title">Staffs Management</h3>
+                                    <h3 class="page-title">Quản Lý Nhân Viên</h3>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <a href="dashboard/index.jsp">Dashboard</a>
+                                            <a href="dashboard/index.jsp">Bảng Điều Khiển</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Staffs Management</li>
+                                        <li class="breadcrumb-item active">Quản Lý Nhân Viên</li>
                                     </ul>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                                     <th class="text-center">Vai trò</th>
                                                     <th class="text-center">Số điện thoại</th>
                                                     <th class="text-center">Tuổi</th>
-                                                    <th class="text-center">Tổng Lương</th>
+                                                    <th class="text-center">Lương(Trong Tháng)</th>
                                                     <th class="text-center">Thông tin</th>
                                                     <th class="text-center">Khóa tài khoản</th>
                                                 </tr>

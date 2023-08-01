@@ -3,6 +3,7 @@
     Created on : May 28, 2023, 11:29:43 PM
     Author     : Trung Kien
 --%>
+<%@page import="DTO.AccountDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,12 +15,12 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=0"
             />
-        <title>Dreamchat - Dashboard</title>
+        <title>V-HomeClean - Quản lý dịch vụ</title>
 
         <link
             rel="shortcut icon"
             type="image/x-icon"
-            href="css/assets/img/favicon.png"
+            href="css/assets/img/icon.png"
             />
 
         <link rel="stylesheet" href="css/assets/css/bootstrap.min.css" />
@@ -38,6 +39,12 @@
         <link rel="stylesheet" href="css/assets/css/style.css" />
     </head>
     <body>
+        <%
+            AccountDTO user = (AccountDTO) session.getAttribute("acc");
+            if (user == null || user.getRoleID() != 3) {
+                response.sendRedirect("login.jsp");
+            }
+        %>
         <div class="main-wrapper">
             <jsp:include page="header.jsp"></jsp:include>
             <jsp:include page="sidebar.jsp"></jsp:include>
@@ -115,7 +122,7 @@
                                                                         <div class="modal-body">
                                                                             Bạn có chắc chắn là muốn khóa dịch vụ này chứ ?
                                                                         </div>
-                                                                            <div class="modal-footer" style="display: flex; justify-content: space-between">
+                                                                        <div class="modal-footer" style="display: flex; justify-content: space-between">
                                                                             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><a>Không</a></button>
                                                                             <button type="button" class="btn btn-outline-primary"><a href="ServicesManagementController?action=Khóa&serviceID=${o.serviceID}">
                                                                                     Có
@@ -172,7 +179,8 @@
                             "sSortAscending": ": Sắp xếp cột tăng dần",
                             "sSortDescending": ": Sắp xếp cột giảm dần"
                         }
-                    }
+                    },
+                    order: [[0, 'des']]
                 });
             });
         </script>

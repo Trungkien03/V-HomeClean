@@ -157,7 +157,7 @@
         } else {
             roomRequirementDiv.style.display = "none";
         }
-        const isValidFormat = /^S\d{2}-\d{2}$/.test(roomValue); // Check if the room code matches the format S01-01
+        const isValidFormat = /^s\d{2}\.\d{2}-\d{4}$/i.test(roomValue); // Check if the room code matches the format S01-01
 
         if (isValidFormat) {
             roomRequirementItem.classList.add("valid");

@@ -52,6 +52,7 @@ public class RegisterController extends HttpServlet {
             String roomID = request.getParameter("roomID");
             String area = request.getParameter("area");
             String phone = request.getParameter("phone");
+            String areaAppartment = request.getParameter("areaApartment");
             int roleID = 4;
             String Gender = request.getParameter("gender");
             String dateOfBirth = request.getParameter("DateOfBirth");
@@ -106,12 +107,18 @@ public class RegisterController extends HttpServlet {
                 request.setAttribute("areaError", areaError);
                 checkValidation = false;
             }
+            
+            if(areaAppartment != null){
+                roomID = roomID + " " + areaAppartment;
+            }
+            
             if (!roomID.isEmpty() && !area.isEmpty()) {
                 address = roomID + " || " + area;
             }else{
                 error.setAddress("Vui lòng nhập địa chỉ!");
                 checkValidation = false;
             }
+           
 
             if (Gender == null || Gender.isEmpty()) {
                 error.setGender("Vui lòng chọn giới tính!");

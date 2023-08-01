@@ -13,6 +13,15 @@
 
 
 
+<%
+    AccountDTO user = (AccountDTO) session.getAttribute("acc");
+    if (user == null || (user.getRoleID() != 1 && user.getRoleID() != 3)) {
+        response.sendRedirect("login.jsp");
+    }
+%>
+
+
+
 <div id="header-content" class="header">
     <div class="header-left">
         <a href="HomePageController" class="navbar-brand d-flex align-items-center">
@@ -23,14 +32,14 @@
     <a href="javascript:void(0);" id="toggle_btn">
         <i class="fe fe-text-align-left"></i>
     </a>
-    <div class="top-nav-search">
-        <form>
-            <input type="text" class="form-control" placeholder="Search here" />
-            <button class="btn" type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-        </form>
-    </div>
+    <!--    <div class="top-nav-search">
+            <form>
+                <input type="text" class="form-control" placeholder="Search here" />
+                <button class="btn" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>-->
 
     <a class="mobile_btn" id="mobile_btn">
         <i class="fa fa-bars"></i>
@@ -58,7 +67,7 @@
                     <ul id="notificationList" class="notification-list">
                         <c:forEach items="${sessionScope.listNotifications}" var="o">
                             <li class="notification-message">
-                                <a href="#">
+                                <a href="NotificationController?bookingID=${o.bookingID}&notificationID=${o.notificationID}">
                                     <div class="media d-flex">
                                         <span class="avatar avatar-sm flex-shrink-0">
                                             <c:forEach items="${listAllAccounts}" var="b">
@@ -135,7 +144,31 @@
                     </div>
                     <div class="user-text">
                         <h6>${acc.fullName}</h6>
-                        <p class="text-muted mb-0">Administrator</p>
+                        <p class="text-muted mb-0">
+                            <c:choose>
+                                <c:when test="${sessionScope.acc.roleID == 1}">
+                                    Admin
+                                </c:when>
+                                <c:when test="${sessionScope.acc.roleID == 2}">
+                                    Nhân viên sửa chữa điện
+                                </c:when>
+                                <c:when test="${sessionScope.acc.roleID == 3}">
+                                    Quản lý
+                                </c:when>
+                                <c:when test="${sessionScope.acc.roleID == 4}">
+                                    Khách hàng
+                                </c:when>
+                                <c:when test="${sessionScope.acc.roleID == 5}">
+                                    Nhân viên sửa chữa nước
+                                </c:when>
+                                <c:when test="${sessionScope.acc.roleID == 6}">
+                                    Nhân viên vệ sinh
+                                </c:when>
+                                <c:otherwise>
+                                    Vai trò không xác định
+                                </c:otherwise>
+                            </c:choose>
+                        </p>
                     </div>
                 </div>
                 <a class="dropdown-item" href="UserGeneralPageController?accountID=${acc.accountID}">Cài Đặt Tài Khoản</a>
