@@ -227,6 +227,10 @@
                                                                                                 </div>
 
                                                                                             </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="text-info">Phương thức thanh toán</label>
+                                                                                                <input style="color: #000" readonly="" value="${booking.paymentMethod}" type="text" class="form-control text-center">
+                                                                                            </div>
                                                                                         </form>
                                                                                     </div>
                                                                                 </div>

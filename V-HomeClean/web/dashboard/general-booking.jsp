@@ -1,4 +1,4 @@
-<%-- 
+ <%-- 
     Document   : general
     Created on : May 28, 2023, 11:32:17 PM
     Author     : Trung Kien
@@ -213,6 +213,16 @@
                                                         <span class="btn btn-success">VND</span>
 
                                                     </div>
+                                                </div>
+                                                <div class="form-group" style="display:flex; justify-content: center; align-items: center">
+                                                    <label class="text-info font-weight-600 w-25">Phương thức thanh toán:</label>
+                                                    <input readonly=""
+                                                           required=""
+                                                           name="accountName"
+                                                           type="text"
+                                                           class="form-control"
+                                                           value="${booking.paymentMethod}"
+                                                           />
                                                 </div>
                                                 <div class="form-group" style="display:flex; justify-content: center; align-items: center">
                                                     <label class="text-info font-weight-600 w-25">Trạng thái:</label>
