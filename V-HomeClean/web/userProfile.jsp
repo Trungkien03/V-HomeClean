@@ -310,6 +310,7 @@
                                             <th>Thanh toán</th>
                                             <th>Chỉnh sửa</th>
                                             <th>Tình Trạng</th>
+                                            
                                             <th>Khiếu nại</th>
 
                                         </tr>
@@ -371,13 +372,14 @@
                                                                                     <p style="color: black;">Nếu bạn thanh toàn rồi, quý khách vui lòng đợi, chúng tôi sẽ xác nhận đơn cho quý khách sớm nhất có thể</p>
                                                                                     <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
                                                                                     <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
-                                                                                    <p style="color: red;">Lưu ý: Chúng tôi chỉ chấp nhận thanh toán qua online.</p>
+                                                                                    
                                                                                 </div>
                                                                             </c:if>
                                                                             <c:if test="${bankingPart eq 'Tiền mặt'}">
                                                                                 <div class="p-3 text-center">
                                                                                     <h4 class="text-center text-danger">Hiện tại chưa có nhân viên phụ trách</h4>
                                                                                     <p style="color: black;">Hình thức thanh toán là tiền mặt</p>
+                                                                                    <p class="text-center text-danger"> *Quý khách vui lòng thanh toán đầy đủ số tiền dịch vụ cho nhân viên</p>
                                                                                 </div>
                                                                             </c:if>
                                                                         </c:when>
@@ -490,13 +492,9 @@
                                                                             <div class="text-center text-black" style="color: #000">
                                                                                 <c:forEach items="${feedBackList}" var="j">
                                                                                     <c:if test="${booking.bookingID eq j.bookingID}">
-
-
                                                                                         <p>
                                                                                             ${j.feedbackDetail}
                                                                                         </p>
-
-
                                                                                     </c:if>
                                                                                 </c:forEach>
                                                                             </div>
@@ -511,13 +509,10 @@
                                                                             <div class="text-center text-black" style="color: #000">
                                                                                 <c:forEach items="${listComOfUser}" var="j">
                                                                                     <c:if test="${booking.bookingID eq j.bookingID}">
-
                                                                                         <h4>Nội dung khiếu nại</h4>
                                                                                         <p>
                                                                                             ${j.detail}
                                                                                         </p>
-
-
                                                                                     </c:if>
                                                                                 </c:forEach>
                                                                             </div>
@@ -629,18 +624,20 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </c:if>
+
                                                 <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
                                                     <button class="btn btn-success" >Hoàn tất</button>
                                                 </c:if>
+
                                             </td>
                                             <!--Khieu nại modal-->
                                             <td>
-                                                <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
+                                                
+                                                 <c:if test="${booking.bookingStatus eq 'Hoàn thành'}">
                                                     <button class="btn btn-warning" data-toggle="modal" data-target="#k${loop.index}">Khiếu nại</button>
-                                                </c:if>
+                                                </c:if> 
+
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="k${loop.index}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -677,7 +674,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </td>
                                             </tr>
                                         </c:forEach>

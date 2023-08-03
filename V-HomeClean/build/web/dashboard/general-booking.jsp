@@ -126,7 +126,7 @@
                                                             <c:forEach items="${listComOfUser}" var="j">
                                                                 <c:if test="${booking.bookingID eq j.bookingID}">
                                                                     <h5>
-                                                                       Nội dung: ${j.detail}
+                                                                        Nội dung: ${j.detail}
                                                                     </h5>
                                                                 </c:if>
                                                             </c:forEach>
@@ -240,6 +240,24 @@
                                                         <span class="btn btn-success">VND</span>
                                                     </div>
                                                 </div>
+                                                               
+                                                 <!--Thông tin thanh toán-->              
+                                                <div class="form-group" style="display:flex; align-items: center;">
+                                                    <label class="text-info font-weight-600 w-25">Phương thức thanh toán:</label>
+                                                    <div class="w-100" style="display: flex; justify-content: center; align-items: center;">
+                                                        <c:set var="payment" value="${booking.message.split('-')[0]}" />
+
+                                                        <input readonly=""
+                                                               required=""
+                                                               name="payment"
+                                                               type="text"
+                                                               class="form-control"
+                                                               value="${payment}"
+                                                               />
+                                                    </div>
+                                                </div>
+
+
 
                                                 <div class="form-group" style="display:flex; justify-content: center; align-items: center">
                                                     <label class="text-info font-weight-600 w-25">Trạng thái:</label>
@@ -283,7 +301,7 @@
                                                         </c:if>
                                                     </div>
                                                     <div class="text-end text-center">
-                                                        
+
                                                         <c:if test="${booking.bookingStatus eq 'Khiếu nại'}">
                                                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#khieuNai">
                                                                 Hoàn thành khiếu nại
@@ -301,7 +319,7 @@
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Bạn đã chắc chắn là đã hoàn thành khiếu nại rồi chưa ?
+                                                                    Bạn có chắc chắn đã xử lý xong đơn khiếu nại này chưa?
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>

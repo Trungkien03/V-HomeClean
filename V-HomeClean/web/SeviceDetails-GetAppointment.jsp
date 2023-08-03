@@ -177,7 +177,7 @@
                             <div class="col-sm-6">
                                 <div style="color: black;" class="form-floating">
                                     <select style="color: black;" required="Vui lòng chọn khu vực" class="form-select bg-light border-0" id="vinhomesOptions" name="area" aria-label="Guardian Relationship">
-                                        <option value="">-- Chọn Vinhomes --</option>
+                                        
                                         <option style="color: black;" value="Vinhomes Smart City - Hà Nội">Vinhomes Smart City - Hà Nội</option>
                                     </select>
                                     <label for="relationship">Chọn khu vực</label>
@@ -273,11 +273,8 @@
 
                                         <!--Body-->
                                         <div class="modal-body">
-
                                             <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
-
                                             <p>Bạn có chắc chắn với thông tin mình đã điền chưa ạ ?</p>
-
                                         </div>
 
                                         <!--Footer-->

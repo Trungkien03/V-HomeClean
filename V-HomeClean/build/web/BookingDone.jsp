@@ -71,10 +71,12 @@
                                 ở trên, chúng tôi sẽ xác nhận đơn hàng cho bạn sớm nhất có thể</p>
                             <p style="color: black;">Chủ tài khoản: LE QUOC THANG</p>
                             <p style="color: black;">Cú pháp: Thanh toan - [mã đơn hàng]</p>
-                            <p style="color: red;">Lưu ý: Chúng tôi chỉ chấp nhận thanh toán qua online.</p>
+
                         </c:if>
                         <c:if test="${bankingPart eq 'Tiền mặt'}">
-                            <p style="color: black;">Chúng tôi sẽ xác nhận đơn dịch vụ cho quý khách sớm nhất có thể</p>
+                            <p style="color: black;">Quý khách vui lòng thanh toán đầy đủ tiền dịch vụ cho nhân viên khi hoàn thành đơn </p>
+                            <h5 style="color: black;">Xin chân thành cảm ơn đã tin dùng dịch vụ của chúng tôi</h5>
+
                         </c:if>
                         <!--Thanh toán offline-->
                         <a class="btn btn-primary py-3 px-5" href="HomePageController">Về Lại Trang Chủ</a>
@@ -153,8 +155,8 @@
                                                 </div>
                                                 <hr>
                                                 <div class="row">
-                                                    
-                                                     
+
+
                                                     <div class="col-md-3">
                                                         <p style="color: black;" class="mb-0">Phương thức thanh toán:</p>
                                                     </div>
@@ -162,8 +164,8 @@
                                                         <p style="color: black;" class="text-muted mb-0">${payment}</p>
                                                     </div>
                                                 </div>
-                                                
 
+                                                <!--Phần tính tiền của thắng-->
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-3">

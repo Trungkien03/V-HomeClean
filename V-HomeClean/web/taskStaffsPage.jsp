@@ -238,7 +238,8 @@
                                                                                                    <c:set var="payment" value="${booking.message.split('-')[0]}" />
                                                                                                    <label class="text-info">Phương thức</label>
                                                                                                    <input style="color: #000;" readonly="" value="${payment}" type="text" class="form-control text-center">
-                                                                                               </div>              
+                                                                                               </div>
+                                                                                               <p class="text-danger">Lưu ý: Khi khách hàng thanh toán bằng tiền mặt, hãy chắc chắn rằng bạn đã nhận đủ tiền trước khi bấm vào nút hoàn thành</p>
                                                                                         </form>
                                                                                     </div>
                                                                                 </div>

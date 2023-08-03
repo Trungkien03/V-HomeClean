@@ -157,7 +157,9 @@ public class BookingController extends HttpServlet {
                     request.setAttribute("timeError", timeError);
                     checkValidation = false;
                 }
+                
                 message = payment + "-" + numberString;
+                
                 if (checkValidation == true) {
                     ServiceDTO b = sdao.getServiceByID(serviceID);
                     int totalPrice = b.getPrice() * number;

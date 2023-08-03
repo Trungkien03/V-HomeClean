@@ -145,6 +145,7 @@ public class BookingGeneralController extends HttpServlet {
                     String bookingIDString = request.getParameter("bookingID");
                     int bookingID = Integer.parseInt(bookingIDString);
                 }
+                //khiếu nại
                 if (action.equalsIgnoreCase("hoanThanhKhieuNai")) {
                     String bookingIDString = request.getParameter("bookingID");
                     int bookingID = Integer.parseInt(bookingIDString);
