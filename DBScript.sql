@@ -136,6 +136,19 @@ CREATE TABLE Feedback
   FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 );
 GO
+-- Tạo bảng Complain
+CREATE TABLE Complain
+(
+  ComplainID INT NOT NULL IDENTITY(1,1),
+  Date DATE NOT NULL,
+  Complain_Text NVARCHAR(MAX) NOT NULL,
+  AccountID NVARCHAR(20) NOT NULL,
+  BookingID INT NOT NULL,
+  PRIMARY KEY (ComplainID),
+  FOREIGN KEY (AccountID) REFERENCES Account(AccountID),
+  FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
+);
+GO
 
 -- Tạo bảng Comment
 CREATE TABLE Comment
