@@ -35,7 +35,6 @@ public class RegisterController extends HttpServlet {
     private static final String ERROR = "login.jsp";
     private static final String SUCCESS = "index.jsp";
     private static final int MIN_FULLNAME_LENGTH = 6;
-    private static final int MIN_ADDRESS_LENGTH = 10;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -50,15 +49,17 @@ public class RegisterController extends HttpServlet {
             String password = request.getParameter("password");
             String confirm = request.getParameter("confirmP");
             String fullName = request.getParameter("fullName");
-            String address = request.getParameter("address");
+            String roomID = request.getParameter("roomID");
+            String area = request.getParameter("area");
             String phone = request.getParameter("phone");
+            String areaAppartment = request.getParameter("areaApartment");
             int roleID = 4;
             String Gender = request.getParameter("gender");
             String dateOfBirth = request.getParameter("DateOfBirth");
             String status = "1";
-            String image = "/img/user.jpg";
+            String image = "img/user.jpg";
             double salary = 0.0;
-
+            String address = "";
             AccountDTO a = dao.CheckDuplicatedEmail(email);
             if (a != null) {
                 error.setEmail("Email đã được đăng ký, vui lòng sử dụng email khác!");
@@ -96,13 +97,28 @@ public class RegisterController extends HttpServlet {
                 checkValidation = false;
             }
 
-            if (address.isEmpty()) {
-                error.setAddress("Vui lòng nhập địa chỉ!");
-                checkValidation = false;
-            } else if (address.length() < MIN_ADDRESS_LENGTH) {
-                error.setAddress("Địa chỉ phải chứa ít nhất " + MIN_ADDRESS_LENGTH + " ký tự!");
+            if (roomID.isEmpty()) {
+                String roomIDError = "Vui Lòng nhập mã phòng";
+                request.setAttribute("roomIDError", roomIDError);
                 checkValidation = false;
             }
+            if (area == null || area.isEmpty()) {
+                String areaError = "Vui lòng nhập khu vực";
+                request.setAttribute("areaError", areaError);
+                checkValidation = false;
+            }
+            
+            if(areaAppartment != null){
+                roomID = roomID + " " + areaAppartment;
+            }
+            
+            if (!roomID.isEmpty() && !area.isEmpty()) {
+                address = roomID + " || " + area;
+            }else{
+                error.setAddress("Vui lòng nhập địa chỉ!");
+                checkValidation = false;
+            }
+           
 
             if (Gender == null || Gender.isEmpty()) {
                 error.setGender("Vui lòng chọn giới tính!");

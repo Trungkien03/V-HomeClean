@@ -33,7 +33,7 @@ public class UpdatePasswordController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String url = ERROR;
         try {
-            String password = request.getParameter("password");
+            String password = request.getParameter("newPassword");
             String confirm = request.getParameter("confirm");
             AccountDAO dao = new AccountDAO();
             HttpSession session = request.getSession();
@@ -53,7 +53,7 @@ public class UpdatePasswordController extends HttpServlet {
                 }
             } else {
                 request.setAttribute("ERROR", " Mật khẩu và xác nhận mật khẩu "
-                        + "không trùng khớp. ");
+                        + "không trùng khớp! ");
                 request.getRequestDispatcher("resetPassword.jsp").forward(request, response);
             }
 
